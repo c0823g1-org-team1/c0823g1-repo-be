@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>STT</td>
+        <td>Tên khách hàng</td>
+        <td>Thời gian đặt</td>
+        <td colspan="2">Số lượng người</td>
+        <td>Tài khoản</td>
+        <td>Tên tour</td>
+        <td>Hướng dẫn viên</td>
+        <td>Tổng tiền</td>
+        <td>Trạng thái thanh toán</td>
+    </tr>
+    <tr th:each="b, l : ${bookingPage}">
+        <td th:text="${l.count}"></td>
+        <td th:text="${b.getInforClient()}"></td>
+        <td th:text="${b.getDate()}"></td>
+        <td th:text="${b.getAdultNumber() + b.getChildrenNumber()}"></td>
+        <td th:text="${b.getAccount().getNameAccount()}"></td>
+      <td th:each="t,l : ${b.getDetailPersonTours()}">
+          <span th:text="${t.getTourGuide()}"></span>
+      </td>
+
+    </tr>
+</table>
+</body>
+</html>
