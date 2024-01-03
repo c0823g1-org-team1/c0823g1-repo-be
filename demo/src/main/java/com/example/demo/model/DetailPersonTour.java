@@ -1,4 +1,4 @@
-package com.example.demo.Model;
+package com.example.demo.model;
 
 import jakarta.persistence.*;
 
@@ -6,24 +6,34 @@ import jakarta.persistence.*;
 @Table(name = "detail_persont_tour")
 public class DetailPersonTour {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String tourGuide;
     private String client;
+    private boolean isDelete;
 
     @ManyToOne
-    @JoinColumn(name = "booking_id",referencedColumnName = "id")
+    @JoinColumn(name = "booking_id", referencedColumnName = "id")
     private Booking booking;
 
 
     public DetailPersonTour() {
     }
 
-    public DetailPersonTour(int id, String tourGuide, String client, Booking booking) {
+    public DetailPersonTour(int id, String tourGuide, String client, boolean isDelete, Booking booking) {
         this.id = id;
         this.tourGuide = tourGuide;
         this.client = client;
+        this.isDelete = isDelete;
         this.booking = booking;
+    }
+
+    public boolean isDelete() {
+        return isDelete;
+    }
+
+    public void setDelete(boolean delete) {
+        isDelete = delete;
     }
 
     public int getId() {

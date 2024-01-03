@@ -1,9 +1,8 @@
-package com.example.demo.Model;
+package com.example.demo.model;
 
 import jakarta.persistence.*;
 
 import java.sql.Time;
-import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -16,29 +15,35 @@ public class Booking {
     private String inforClient;
     private int adultNumber;
     private int childrenNumber;
+    private boolean isDelete;
 
     @ManyToOne
-    @JoinColumn(name = "price_id",referencedColumnName = "id")
+    @JoinColumn(name = "price_id", referencedColumnName = "id")
     private Price price;
 
     @OneToMany(mappedBy = "booking")
     private Set<DetailPersonTour> detailPersonTours;
     @ManyToOne
-    @JoinColumn(name = "account_id",referencedColumnName = "id")
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
+
+    @OneToMany(mappedBy = "booking")
+    private Set<Payment> payments;
 
     public Booking() {
     }
 
-    public Booking(int id, Time time, String inforClient, int adultNumber, int childrenNumber, Price price, Set<DetailPersonTour> detailPersonTours, Account account) {
+    public Booking(int id, Time time, String inforClient, int adultNumber, int childrenNumber, boolean isDelete, Price price, Set<DetailPersonTour> detailPersonTours, Account account, Set<Payment> payments) {
         this.id = id;
         this.time = time;
         this.inforClient = inforClient;
         this.adultNumber = adultNumber;
         this.childrenNumber = childrenNumber;
+        this.isDelete = isDelete;
         this.price = price;
         this.detailPersonTours = detailPersonTours;
         this.account = account;
+        this.payments = payments;
     }
 
     public int getId() {
@@ -103,5 +108,21 @@ public class Booking {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public boolean isDelete() {
+        return isDelete;
+    }
+
+    public void setDelete(boolean delete) {
+        isDelete = delete;
+    }
+
+    public Set<Payment> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(Set<Payment> payments) {
+        this.payments = payments;
     }
 }
