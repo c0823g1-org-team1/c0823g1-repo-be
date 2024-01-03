@@ -1,4 +1,4 @@
-package com.example.demo.Model;
+package com.example.demo.model;
 
 import jakarta.persistence.*;
 
@@ -15,6 +15,7 @@ public class DetailAccount {
     private String email;
     private Date date;
     private Long identify;
+    private boolean isDelete;
 
     @ManyToOne
     @JoinColumn(name = "account_id",referencedColumnName = "id")
@@ -23,14 +24,23 @@ public class DetailAccount {
     public DetailAccount() {
     }
 
-    public DetailAccount(int id, String name, Long phone, String email, Date date, Long identify, Account account) {
+    public DetailAccount(int id, String name, Long phone, String email, Date date, Long identify, boolean isDelete, Account account) {
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.date = date;
         this.identify = identify;
+        this.isDelete = isDelete;
         this.account = account;
+    }
+
+    public boolean isDelete() {
+        return isDelete;
+    }
+
+    public void setDelete(boolean delete) {
+        isDelete = delete;
     }
 
     public int getId() {

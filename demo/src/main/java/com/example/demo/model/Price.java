@@ -1,4 +1,4 @@
-package com.example.demo.Model;
+package com.example.demo.model;
 
 import jakarta.persistence.*;
 
@@ -13,6 +13,7 @@ public class Price {
     private int adultPrice;
     private int childrenPrice;
     private int typeTour;
+    private boolean isDelete;
 
     @OneToMany(mappedBy = "price")
     private Set<Tour> tours;
@@ -22,13 +23,22 @@ public class Price {
     public Price() {
     }
 
-    public Price(int id, int adultPrice, int childrenPrice, int typeTour, Set<Tour> tours, Set<Booking> bookings) {
+    public Price(int id, int adultPrice, int childrenPrice, int typeTour, boolean isDelete, Set<Tour> tours, Set<Booking> bookings) {
         this.id = id;
         this.adultPrice = adultPrice;
         this.childrenPrice = childrenPrice;
         this.typeTour = typeTour;
+        this.isDelete = isDelete;
         this.tours = tours;
         this.bookings = bookings;
+    }
+
+    public boolean isDelete() {
+        return isDelete;
+    }
+
+    public void setDelete(boolean delete) {
+        isDelete = delete;
     }
 
     public int getId() {

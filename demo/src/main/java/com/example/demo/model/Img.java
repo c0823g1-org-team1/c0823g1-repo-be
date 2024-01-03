@@ -1,4 +1,4 @@
-package com.example.demo.Model;
+package com.example.demo.model;
 
 import jakarta.persistence.*;
 
@@ -12,6 +12,7 @@ public class Img {
     private String img;
     private int typeImg;
     private String name;
+    private boolean isDelete;
 
     @ManyToOne
     @JoinColumn(name = "tour_id",referencedColumnName = "id")
@@ -20,12 +21,21 @@ public class Img {
     public Img() {
     }
 
-    public Img(String name, int id, String img, int typeImg, Tour tour) {
-        this.name = name;
+    public Img(int id, String img, int typeImg, String name, boolean isDelete, Tour tour) {
         this.id = id;
         this.img = img;
         this.typeImg = typeImg;
+        this.name = name;
+        this.isDelete = isDelete;
         this.tour = tour;
+    }
+
+    public boolean isDelete() {
+        return isDelete;
+    }
+
+    public void setDelete(boolean delete) {
+        isDelete = delete;
     }
 
     public String getName() {

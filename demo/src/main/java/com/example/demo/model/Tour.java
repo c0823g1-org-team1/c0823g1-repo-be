@@ -1,4 +1,4 @@
-package com.example.demo.Model;
+package com.example.demo.model;
 
 import jakarta.persistence.*;
 
@@ -11,6 +11,7 @@ public class Tour {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+    private boolean isDelete;
     @Column(columnDefinition = "LONGTEXT")
     private String description;
 
@@ -30,11 +31,22 @@ public class Tour {
     }
 
 
-    public Tour(int id, String name, String description, Price price) {
+    public Tour(int id, String name, boolean isDelete, String description, Price price, Booking booking, Set<LocationTour> locationTours) {
         this.id = id;
         this.name = name;
+        this.isDelete = isDelete;
         this.description = description;
         this.price = price;
+        this.booking = booking;
+        this.locationTours = locationTours;
+    }
+
+    public boolean isDelete() {
+        return isDelete;
+    }
+
+    public void setDelete(boolean delete) {
+        isDelete = delete;
     }
 
     public int getId() {

@@ -1,4 +1,4 @@
-package com.example.demo.Model;
+package com.example.demo.model;
 
 import jakarta.persistence.*;
 import java.util.Date;
@@ -12,6 +12,7 @@ public class LocationTour {
     private String location;
     private Date date;
     private int typeTour;
+    private boolean isDelete;
 
     @ManyToOne
     @JoinColumn(name = "tour_id",referencedColumnName = "id")
@@ -20,12 +21,21 @@ public class LocationTour {
     public LocationTour() {
     }
 
-    public LocationTour(int id, String location, Date date, int typeTour, Tour tour) {
+    public LocationTour(int id, String location, Date date, int typeTour, boolean isDelete, Tour tour) {
         this.id = id;
         this.location = location;
         this.date = date;
         this.typeTour = typeTour;
+        this.isDelete = isDelete;
         this.tour = tour;
+    }
+
+    public boolean isDelete() {
+        return isDelete;
+    }
+
+    public void setDelete(boolean delete) {
+        isDelete = delete;
     }
 
     public int getId() {
