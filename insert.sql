@@ -14,23 +14,23 @@ values("2001-02-11","admin@gmai.com",191918176,0,"Admin",0123456789,1),
 INSERT INTO price (adult_price,children_price,is_delete,type_tour)
 values(500000,300000,0,1),(600000,400000,0,2),(700000,500000,0,3);
 
-insert into tour (description, is_delete, name,quantity, price_id)
+insert into tour (description, is_delete, name,quantity,image, price_id)
 values(" Sapporo là thành phố đăng cai tổ chức Thế vận hội mùa đông đầu tiên ở châu Á vào năm
                                 1972 và Lễ hội tuyết Sapporo hàng năm làm du khách từ khắp nơi trên thế giới không khỏi
                                 ngây ngất. Sắc xanh của cây lá và hình ảnh trăm hoa đua nở ở Sapporo vào những mùa khác
                                 cũng không kém phần ngoạn mục. Thành phố trẻ và rộng mở này cũng nổi tiếng về bia, thịt
-                                bò, mì ramen, hải sản và rau củ tươi.",0,"Tour Sapporo",15,1),
+                                bò, mì ramen, hải sản và rau củ tươi.",0,"Tour Sapporo",15,"https://res.cloudinary.com/jnto/image/upload/w_750,h_503,fl_lossy,f_auto/v1515928028/hokkaido/Hokkaido1368_2",1),
                                 ("  Là trung tâm chính quyền ở Osaka, Nakanoshima là lát cắt đẹp mắt và được thiết kế phù
                                 hợp của thành phố. Nakanoshima là nơi có tòa thị chính, một số bảo tàng và các công
                                 trình lịch sử
                                 và công viên xinh đẹp để đi dạo. Hãy đến đây khi thời tiết ôn hòa để tận hưởng
                                 chuyến tản bộ thư giãn, dừng chân tại các bảo tàng và nhiều điểm tham quan trên đường
-                                đi.",0,"Osaka",20,2),
+                                đi.",0,"Osaka",20,"https://songhantourist.com/upload/articles-images/images/Ve-dep-hien-dai-va-yen-binh-tai-osaka-nhat-ban.jpg",2),
                                 (" Thành phố Kyoto thu hút hàng triệu du khách địa phương và quốc tế mỗi năm đến đây để tìm
                                 kiếm văn hóa Nhật Bản truyền thống.
                                 Nổi tiếng là nơi gìn giữ vẻ đẹp hoàng gia của Đế Quốc Nhật những năm 794-1868, thành phố
                                 Kyoto ngày nay vẫn còn lưu giữ những ngôi nhà, cung điện, đền chùa mang đậm phong cách
-                                thiết kế truyền thống lịch sử.",0,"Kyoto",10,3);
+                                thiết kế truyền thống lịch sử.",0,"Kyoto",10,"https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Pedestrian_road_with_pavements%2C_paper_umbrellas_and_people_in_yukata%2C_Higashiyama-ku%2C_Kyoto%2C_Japan.jpg/250px-Pedestrian_road_with_pavements%2C_paper_umbrellas_and_people_in_yukata%2C_Higashiyama-ku%2C_Kyoto%2C_Japan.jpg",3);
                                 
 insert into img (img,is_delete,name,type_img,tour_id)
 values('https://res.klook.com/image/upload/c_fill,w_550,h_308/fl_lossy.progressive,q_85/activities/5dcdc32f-Hokkaido-Otaru-Rickshaw-Tour.webp',0,'Sở Thú Asahikawa',1,1),
