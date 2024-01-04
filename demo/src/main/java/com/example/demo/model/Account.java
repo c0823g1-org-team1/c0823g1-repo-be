@@ -17,8 +17,8 @@ public class Account {
     @JoinColumn(name = "role_id",referencedColumnName = "id")
     private Role role;
 
-    @OneToMany(mappedBy = "account")
-    private Set<DetailAccount> detailAccounts;
+    @OneToOne(mappedBy = "account")
+    private DetailAccount detailAccounts;
 
     public Account() {
     }
@@ -62,11 +62,11 @@ public class Account {
         this.role = role;
     }
 
-    public Set<DetailAccount> getDetailAccounts() {
+    public DetailAccount getDetailAccounts() {
         return detailAccounts;
     }
 
-    public void setDetailAccounts(Set<DetailAccount> detailAccounts) {
+    public void setDetailAccounts(DetailAccount detailAccounts) {
         this.detailAccounts = detailAccounts;
     }
 }

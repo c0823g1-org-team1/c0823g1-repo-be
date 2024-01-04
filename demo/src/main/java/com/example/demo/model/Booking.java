@@ -35,8 +35,10 @@ public class Booking {
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
 
-    @OneToMany(mappedBy = "booking")
-    private Set<Payment> payments;
+//    @OneToMany(mappedBy = "booking")
+//    private Set<Payment> payments;
+    @OneToOne(mappedBy = "booking")
+    private Payment payment;
 
     @ManyToOne
     @JoinColumn(name = "tour_id",referencedColumnName = "id")

@@ -17,9 +17,8 @@ public class DetailAccount {
     private Long identify;
     private boolean isDelete;
 
-    @ManyToOne
-    @JoinColumn(name = "account_id",referencedColumnName = "id")
-    private Account account;
+@OneToOne
+private Account account;
 
     public DetailAccount() {
     }
