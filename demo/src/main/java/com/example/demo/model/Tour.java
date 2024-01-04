@@ -20,6 +20,7 @@ public class Tour {
     private int id;
     private String name;
     private boolean isDelete;
+    private int quantity;
     @Column(columnDefinition = "LONGTEXT")
     private String description;
 

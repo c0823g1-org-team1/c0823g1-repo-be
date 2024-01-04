@@ -16,10 +16,9 @@ public class TuanAccountController {
     @Autowired
     private ITuanRoleService roleService;
 
-    @GetMapping("")
-    private String home(Model model) {
-        model.addAttribute("account", accountService.getList());
-        return "index";
-    }
 
+    @GetMapping("login")
+    private String login() {
+        return "/Tuan_account/loginandregister";
+    }
 }
