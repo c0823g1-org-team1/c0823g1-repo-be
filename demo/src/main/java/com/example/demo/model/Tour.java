@@ -22,6 +22,8 @@ public class Tour {
     private boolean isDelete;
     private int quantity;
     @Column(columnDefinition = "LONGTEXT")
+    private String image;
+    @Column(columnDefinition = "LONGTEXT")
     private String description;
 
     @ManyToOne
