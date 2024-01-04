@@ -9,9 +9,7 @@ public class DetailPersonTour {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String tourGuide;
-    private String client;
     private boolean isDelete;
-
     @ManyToOne
     @JoinColumn(name = "booking_id", referencedColumnName = "id")
     private Booking booking;
@@ -20,10 +18,9 @@ public class DetailPersonTour {
     public DetailPersonTour() {
     }
 
-    public DetailPersonTour(int id, String tourGuide, String client, boolean isDelete, Booking booking) {
+    public DetailPersonTour(int id, String tourGuide, boolean isDelete, Booking booking) {
         this.id = id;
         this.tourGuide = tourGuide;
-        this.client = client;
         this.isDelete = isDelete;
         this.booking = booking;
     }
@@ -50,14 +47,6 @@ public class DetailPersonTour {
 
     public void setTourGuide(String tourGuide) {
         this.tourGuide = tourGuide;
-    }
-
-    public String getClient() {
-        return client;
-    }
-
-    public void setClient(String client) {
-        this.client = client;
     }
 
     public Booking getBooking() {

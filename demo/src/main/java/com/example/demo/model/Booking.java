@@ -20,7 +20,6 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private Date date;
-    private String inforClient;
     private int adultNumber;
     private int childrenNumber;
     private boolean isDelete;
@@ -43,7 +42,5 @@ public class Booking {
     @ManyToOne
     @JoinColumn(name = "tour_id",referencedColumnName = "id")
     private Tour tour;
-
-
 
 }
