@@ -28,14 +28,12 @@ public class Booking {
     @JoinColumn(name = "price_id", referencedColumnName = "id")
     private Price price;
 
-    @OneToMany(mappedBy = "booking")
-    private Set<DetailPersonTour> detailPersonTours;
+    @OneToOne(mappedBy = "booking")
+    private DetailPersonTour detailPersonTours;
     @ManyToOne
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
 
-//    @OneToMany(mappedBy = "booking")
-//    private Set<Payment> payments;
     @OneToOne(mappedBy = "booking")
     private Payment payment;
 

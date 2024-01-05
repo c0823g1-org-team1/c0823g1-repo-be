@@ -64,3 +64,12 @@ VALUES (0,'Kiet',1),
 
 insert into payment (status,booking_id)
 values(0,1),(0,2),(0,3);
+
+
+insert into detail_location(description_location,location_tour_id)
+values("Từ khách sạn, bạn sẽ được đưa đến Vườn thú Asahiyama để xem hơn 700 con thú khác nhau đại diện cho khoảng 124 loài. Nơi đây có một đường hầm bằng kính đi xuyên qua hồ chim cánh cụt, cũng như các trụ bằng kính nhỏ nằm ngay giữa chuồng gấu bắc cực và sói để bạn có thể ngắm nhìn các loài động vật tuyệt đẹp này ở một khoảng cách gần hơn. Ngoài ra, nếu đến đây tham quan vào mùa đông, bạn còn có cơ hội xem Penguin Walk nữa đấy. Sau khi tham quan sở thú, bạn sẽ tiếp tục hành trình đi ngang qua con đường Pathwork Road, trước khi đến thăm Vườn hoa Kamifurano hoặc Trang trại Tomita, tùy theo mùa. Thật tuyệt vời đúng không nào!",1),
+("Bắt đầu chuyến đi tùy chỉnh của bạn tại nhà ga xe lửa mang tính biểu tượng hoặc tại một trong những cây cầu bắc qua con kênh trung tâm. Khám phá những nét quyến rũ tiềm ẩn của Otaru khi bạn tận hưởng làn gió mùa hè êm dịu hoặc rúc vào người bạn đồng hành của mình khi bạn được hướng dẫn qua những con đường phủ đầy tuyết lãng mạn vào mùa đông. Thưởng thức phong cảnh ngoạn mục từ một điểm thuận lợi cao hơn trong khi chiếc xe kéo của bạn lướt qua các bến tàu, kênh đào và bãi chăn nuôi nguyên sinh.",2),
+("Con tàu băng qua được lớp băng là nhờ vào hệ thống máy khoan khổng lồ nghiền nát những khối băng khi nó lướt qua, và thật đúng là một kỳ công của kỹ thuật. Nếu bạn may mắn, bạn thậm chí có thể trông thấy nhiều loài chim và hải cẩu gan dạ chống chọi với cái lạnh trong lúc ở trên tàu.",3),
+("Moiwayama nằm cách trung tâm thành phố khoảng 30 phút đi tàu, vào mùa hè, có rất nhiều người đến đây để leo núi, đi bộ đường dài, vào mùa đông lại có nhiều người đến để trượt tuyết.
+
+Cảnh đêm nhìn từ đài quan sát trên đỉnh núi là phong cảnh tuyệt đẹp, được lựa chọn vào “1 trong 3 cảnh đêm đẹp nhất Hokkaido” cùng với núi Hakodate ở thành phố Hakodate và núi Tenguyama ở thành phố Otaru.",4)

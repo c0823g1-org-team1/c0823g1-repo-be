@@ -10,8 +10,7 @@ public class DetailPersonTour {
     private int id;
     private String tourGuide;
     private boolean isDelete;
-    @ManyToOne
-    @JoinColumn(name = "booking_id", referencedColumnName = "id")
+    @OneToOne
     private Booking booking;
 
 

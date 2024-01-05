@@ -10,9 +10,6 @@ public class Payment {
     private int id;
     private boolean status;
 
-//    @ManyToOne
-//    @JoinColumn(name = "booking_id",referencedColumnName = "id")
-//    private Booking booking;
     @OneToOne
     private Booking booking;
 

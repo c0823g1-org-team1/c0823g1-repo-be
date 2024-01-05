@@ -1,10 +1,19 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.Date;
 
 @Entity
 @Table(name = "location_tour")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class LocationTour {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -18,63 +27,7 @@ public class LocationTour {
     @JoinColumn(name = "tour_id",referencedColumnName = "id")
     private Tour tour;
 
-    public LocationTour() {
-    }
+    @OneToOne(mappedBy = "locationTour")
+    private DetailLocation detailLocation;
 
-    public LocationTour(int id, String location, Date date, int typeTour, boolean isDelete, Tour tour) {
-        this.id = id;
-        this.location = location;
-        this.date = date;
-        this.typeTour = typeTour;
-        this.isDelete = isDelete;
-        this.tour = tour;
-    }
-
-    public boolean isDelete() {
-        return isDelete;
-    }
-
-    public void setDelete(boolean delete) {
-        isDelete = delete;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public int getTypeTour() {
-        return typeTour;
-    }
-
-    public void setTypeTour(int typeTour) {
-        this.typeTour = typeTour;
-    }
-
-    public Tour getTour() {
-        return tour;
-    }
-
-    public void setTour(Tour tour) {
-        this.tour = tour;
-    }
 }
