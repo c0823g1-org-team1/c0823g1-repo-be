@@ -25,7 +25,5 @@ public class BookingDTO {
     private boolean isDelete;
     private Account account;
     private Payment payment;
-    private Price price;
     private Tour tour;
-    private DetailPersonTour detailPersonTour;
 }

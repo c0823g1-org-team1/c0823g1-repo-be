@@ -1,7 +1,6 @@
 package com.example.demo.controller;
-
-import com.example.demo.dto.TourDTO;
-import com.example.demo.model.Img;
+import com.example.demo.model.Booking;
+import com.example.demo.model.LocationTour;
 import com.example.demo.model.Tour;
 import com.example.demo.service.IBaoBookingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,24 +17,22 @@ import java.util.List;
 public class BaoBookingController {
     @Autowired
     private IBaoBookingService baoBookingService;
+
     @GetMapping
-    public String getAll(Model model){
+    public String getAll(Model model) {
         List<Tour> list = baoBookingService.getAll();
-        model.addAttribute("tour",list);
+        model.addAttribute("tour", list);
         return "/home";
     }
 
     @GetMapping("detail/{id}")
-    public String detail(@PathVariable int id, Model model){
+    public String detail(@PathVariable int id, Model model) {
         Tour tour = baoBookingService.findById(id);
-        List<Img> list = baoBookingService.img(tour.getId());
-        int count = 0;
-        for (Img img : list){
-            model.addAttribute("img"+count,img.getTypeImg());
-            count ++;
-        }
-        model.addAttribute("listImg",list);
-          model.addAttribute("tours",tour);
-    return "/detail";
+        List<LocationTour> location = baoBookingService.findLocation(tour.getId());
+        Booking booking = baoBookingService.findBookingId(tour.getId());
+        model.addAttribute("books",booking);
+        model.addAttribute("locations",location);
+        model.addAttribute("tours", tour);
+        return "/detail";
     }
 }

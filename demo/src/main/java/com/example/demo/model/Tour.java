@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -25,10 +26,11 @@ public class Tour {
     private String image;
     @Column(columnDefinition = "LONGTEXT")
     private String description;
-
-    @ManyToOne
-    @JoinColumn(name = "price_id", referencedColumnName = "id")
-    private Price price;
+    private int adultPrice;
+    private int childrenPrice;
+    private String tourGuide;
+    private Date departureDate;
+    private Date endDate;
 
     @OneToMany(mappedBy = "tour")
     private Set<Booking> booking;
@@ -37,22 +39,5 @@ public class Tour {
     @OneToMany(mappedBy = "tour")
     private Set<LocationTour> locationTours;
 
-    @OneToMany(mappedBy = "tour")
-    private Set<Img> imgs;
 
-    @Override
-    public String toString() {
-        return "Tour{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", isDelete=" + isDelete +
-                ", quantity=" + quantity +
-                ", image='" + image + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", booking=" + booking +
-                ", locationTours=" + locationTours +
-                ", imgs=" + imgs +
-                '}';
-    }
 }
