@@ -24,7 +24,7 @@
     </tr>
     <tr th:each="b, l : ${bookingPage}">
         <td th:text="${l.count}"></td>
-        <td th:text="${b.getInforClient()}"></td>
+        <td th:text="${b.getAccount().getDetailAccounts().getName()}"></td>
         <td th:text="${b.getDate()}"></td>
         <td th:text="${b.getAdultNumber() + b.getChildrenNumber()}"></td>
         <td th:text="${b.getAccount().getNameAccount()}"></td>
