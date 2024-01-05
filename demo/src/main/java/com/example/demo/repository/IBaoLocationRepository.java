@@ -1,6 +1,5 @@
 package com.example.demo.repository;
 
-import com.example.demo.model.Img;
 import com.example.demo.model.LocationTour;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

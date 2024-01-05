@@ -1,8 +1,5 @@
 package com.example.demo.controller;
-
-import com.example.demo.dto.TourDTO;
 import com.example.demo.model.Booking;
-import com.example.demo.model.Img;
 import com.example.demo.model.LocationTour;
 import com.example.demo.model.Tour;
 import com.example.demo.service.IBaoBookingService;
@@ -31,12 +28,10 @@ public class BaoBookingController {
     @GetMapping("detail/{id}")
     public String detail(@PathVariable int id, Model model) {
         Tour tour = baoBookingService.findById(id);
-        List<Img> list = baoBookingService.img(tour.getId());
         List<LocationTour> location = baoBookingService.findLocation(tour.getId());
         Booking booking = baoBookingService.findBookingId(tour.getId());
         model.addAttribute("books",booking);
         model.addAttribute("locations",location);
-        model.addAttribute("listImg", list);
         model.addAttribute("tours", tour);
         return "/detail";
     }

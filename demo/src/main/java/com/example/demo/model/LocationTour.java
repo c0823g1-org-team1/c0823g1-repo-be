@@ -22,12 +22,14 @@ public class LocationTour {
     private Date date;
     private int typeTour;
     private boolean isDelete;
+    @Column(columnDefinition = "LONGTEXT")
+    private String img;
+    @Column(columnDefinition = "LONGTEXT")
+    private String descriptionLocation;
 
     @ManyToOne
     @JoinColumn(name = "tour_id",referencedColumnName = "id")
     private Tour tour;
 
-    @OneToOne(mappedBy = "locationTour")
-    private DetailLocation detailLocation;
 
 }

@@ -5,9 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.Date;
-import java.util.Set;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "booking")
@@ -19,17 +17,11 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private Date date;
+    private LocalDateTime date;
     private int adultNumber;
     private int childrenNumber;
     private boolean isDelete;
 
-    @ManyToOne
-    @JoinColumn(name = "price_id", referencedColumnName = "id")
-    private Price price;
-
-    @OneToOne(mappedBy = "booking")
-    private DetailPersonTour detailPersonTours;
     @ManyToOne
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
