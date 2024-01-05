@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+</head>
+
+<body>
+<h1>Quản lý booking</h1>
+<table class="table table-bordered border-primary">
+    <tr>
+        <td>STT</td>
+        <td>Tên khách hàng</td>
+        <td>Thời gian đặt</td>
+        <td>Số lượng người</td>
+        <td>Tài khoản</td>
+        <td>Tên tour</td>
+        <td>Hướng dẫn viên</td>
+        <td>Tổng tiền</td>
+        <td>Trạng thái thanh toán</td>
+        <td>Hành động</td>
+    </tr>
+    <tr th:each="b, l : ${bookingPage}">
+        <td th:text="${l.count}"></td>
+        <td th:text="${b.getAccount().getDetailAccounts().getName()}"></td>
+        <td th:text="${b.getDate()}"></td>
+        <td th:text="${b.getAdultNumber() + b.getChildrenNumber()}"></td>
+        <td th:text="${b.getAccount().getNameAccount()}"></td>
+        <td th:text="${b.getTour().getName()}"></td>
+        <td th:each="t,l : ${b.getDetailPersonTours()}">
+            <span th:text="${t.getTourGuide()}"></span>
+        </td>
+        <th th:text="${(b.getPrice().getAdultPrice() * b.getAdultNumber()) + (b.getPrice().getChildrenPrice() * b.getChildrenNumber()) }"></th>
+        <td>
+           <span th:if="${b.getPayment().isStatus() == false}">Chưa Thanh Toán</span>
+            <span th:if="${b.getPayment().isStatus() == true}">Đã Thanh Toán</span>
+        </td>
+        <td></td>
+    </tr>
+</table>
+<nav aria-label="..." th:if="${bookingPage.getTotalPages() > 1}" style="justify-content: center;display: flex">
+    <ul class="pagination pagination-circle">
+        <li class="page-item" th:if="${bookingPage.hasPrevious()}">
+            <a class="page-link" th:href="@{booking(page=${bookingPage.number - 1})}">Previous</a>
+        </li>
+        <div th:each="item, loop : ${#numbers.sequence(1, bookingPage.totalPages )}">
+            <div th:if="${bookingPage.number + 1 == item}">
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link" th:href="@{booking(page=${item - 1})}" th:text="${item}"><span
+                            class="visually-hidden">(current)</span></a>
+                </li>
+            </div>
+            <div th:unless="${bookingPage.number + 1 == item}">
+                <li class="page-item"><a class="page-link" th:href="@{booking(page=${item - 1})}"
+                                         th:text="${item}"></a></li>
+            </div>
+        </div>
+        <li class="page-item" th:if="${bookingPage.hasNext()}">
+            <a class="page-link" th:href="@{booking(page=${bookingPage.number + 1})}">Next</a>
+        </li>
+    </ul>
+</nav>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+</html>
