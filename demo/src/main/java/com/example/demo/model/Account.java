@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.Set;
 
 @Entity
@@ -25,7 +25,7 @@ public class Account {
     private String phoneClient;
     private String emailClient;
     private Date date;
-    private Long identifyClient;
+    private String identifyClient;
     private boolean isDelete;
 
     @ManyToOne
