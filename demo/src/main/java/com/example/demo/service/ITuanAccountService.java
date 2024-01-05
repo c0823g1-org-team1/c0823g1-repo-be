@@ -12,4 +12,5 @@ public interface ITuanAccountService {
     List<Account> getList();
 
     void delete(Account account);
+
 }
