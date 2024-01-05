@@ -8,8 +8,8 @@ values ("admin","123456",2),
 ("bao","123456",1);
 
 insert into detail_account(date,email,identify,is_delete,name,phone,account_id)
-values("2001-02-11","admin@gmai.com",191918176,0,"Admin",0123456789,1),
-	  ("2001-02-11","bao@gmai.com",191918176,0,"Bao",0123456789,2);
+values("2001-02-11","admin@gmai.com",191918176,0,"Admin","0123456789",1),
+	  ("2001-02-11","bao@gmai.com",191918176,0,"Bao","0123456789",2);
       
 INSERT INTO price (adult_price,children_price,is_delete,type_tour)
 values(500000,300000,0,1),(600000,400000,0,2),(700000,500000,0,3);

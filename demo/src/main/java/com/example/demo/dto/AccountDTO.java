@@ -1,23 +1,18 @@
-package com.example.demo.model;
+package com.example.demo.dto;
 
-import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
-import java.util.Set;
 
-@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "account")
-public class Account {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class AccountDTO {
     private int id;
     private String nameAccount;
     private String password;
@@ -26,11 +21,8 @@ public class Account {
     private String emailClient;
     private Date date;
     private Long identifyClient;
-    private boolean isDelete;
+    private Boolean isDelete;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id",referencedColumnName = "id")
-    private Role role;
 
 
 
