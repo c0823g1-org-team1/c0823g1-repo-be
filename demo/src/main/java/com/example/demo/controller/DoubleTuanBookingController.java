@@ -18,13 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class DoubleTuanBookingController {
     @Autowired
     private IDoubleTuanBookingService doubleTuanBookingService;
-    @GetMapping("home")
-    private String homee(){
-        return "home";
-    }
     @GetMapping("")
     private String home(Model model, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "") String nameSearch) {
-        Pageable pageable = PageRequest.of(page, 1, Sort.by("date").ascending());
+        Pageable pageable = PageRequest.of(page, 5, Sort.by("date").ascending());
         Page<Booking> bookingPage = doubleTuanBookingService.getAllBookingPage(pageable, nameSearch);
         model.addAttribute("bookingPage", bookingPage);
         return "booking/managerBooking";

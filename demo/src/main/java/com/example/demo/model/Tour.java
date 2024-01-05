@@ -37,4 +37,22 @@ public class Tour {
     @OneToMany(mappedBy = "tour")
     private Set<LocationTour> locationTours;
 
+    @OneToMany(mappedBy = "tour")
+    private Set<Img> imgs;
+
+    @Override
+    public String toString() {
+        return "Tour{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", isDelete=" + isDelete +
+                ", quantity=" + quantity +
+                ", image='" + image + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", booking=" + booking +
+                ", locationTours=" + locationTours +
+                ", imgs=" + imgs +
+                '}';
+    }
 }
