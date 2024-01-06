@@ -28,20 +28,6 @@ values(500000,300000,"Sapporo là thành phố đăng cai tổ chức Thế vậ
                                 Kyoto ngày nay vẫn còn lưu giữ những ngôi nhà, cung điện, đền chùa mang đậm phong cách
                                 thiết kế truyền thống lịch sử.","https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Pedestrian_road_with_pavements%2C_paper_umbrellas_and_people_in_yukata%2C_Higashiyama-ku%2C_Kyoto%2C_Japan.jpg/250px-Pedestrian_road_with_pavements%2C_paper_umbrellas_and_people_in_yukata%2C_Higashiyama-ku%2C_Kyoto%2C_Japan.jpg",0,"Kyoto",10,"Giau","2024-3-10","2024-3-14");
                                 
-insert into img (img,is_delete,name,type_img,tour_id)
-values('https://res.klook.com/image/upload/c_fill,w_550,h_308/fl_lossy.progressive,q_85/activities/5dcdc32f-Hokkaido-Otaru-Rickshaw-Tour.webp',0,'Sở Thú Asahikawa',1,1),
-('https://res.klook.com/image/upload/c_fill,w_550,h_308/fl_lossy.progressive,q_85/activities/whe4z0utkdcdoadxv3iw.webp',0,'Tour Xe Kéo Ở Otaru,0,Hokkaido',1,1),
-('https://res.klook.com/image/upload/c_fill,w_550,h_308/fl_lossy.progressive,q_85/activities/gaplqtper5oci3koyzj6.webp',0,'Tour Đi Tàu Phá Băng Garinko',1,1),
-('https://res.klook.com/image/upload/c_fill,w_550,h_308/fl_lossy.progressive,q_85/activities/mq0brcss8v0wp3a4d89q.webp',0,'Chuyến Đi Ngắm Cảnh Núi Moiwa',1,1),
-('https://res.klook.com/image/upload/fl_lossy.progressive,w_540,h_360,c_fill,q_85/activities/az8br3r50gcrccqea1bj.webp',0,'Tour Khu Nghỉ Dưỡng Trượt Tuyết Biwako Valley',2,2),
-('https://res.klook.com/image/upload/fl_lossy.progressive,w_540,h_360,c_fill,q_85/activities/ajpsbmsv2gigloas7gzc.webp',0,'1 Ngày Tham Quan Nara, Chùa Todaiji Và Chợ Kuroshio',2,2),
-('https://res.klook.com/image/upload/fl_lossy.progressive,w_540,h_360,c_fill,q_85/activities/gndogtxqtaxjukqywfsk.webp',0,'Đi Tàu Arashiyama Và Đi Thuyền Trên Sông Hozugawa',2,2),
-('https://res.klook.com/image/upload/fl_lossy.progressive,w_540,h_360,c_fill,q_85/activities/ehl1ufar1zrb02sgursk.webp',0,'Tham Quan 1 Đêm Độc Đáo Tại Thành Phố Osaka',2,2),
-('https://res.klook.com/image/upload/fl_lossy.progressive,w_540,h_360,c_fill,q_85/activities/xqvgkqrwlgpczbmnmih1.webp',0,'Tham Quan Và Khám Phá Chùa Ở Kyoto',3,3),
-('https://res.klook.com/image/upload/fl_lossy.progressive,w_540,h_360,c_fill,q_85/activities/lvyncigbp8jwgz3djbcx.webp',0,'Tham Quan Nara Từ Kyoto',3,3),
-('https://res.klook.com/image/upload/fl_lossy.progressive,w_540,h_360,c_fill,q_85/activities/diiiifastnlz9lyqt4mq.webp',0,'Khám Phá Khu Du Lịch Nghỉ Dưỡng Trượt Tuyết Hakodateyama Từ Kyoto',3,3),
-('https://res.klook.com/image/upload/fl_lossy.progressive,w_540,h_360,c_fill,q_85/activities/uvmd09hei8xdnreummxa.webp',0,'1 Ngày Ngắm Cảnh Amanohashidate Và Thị Trấn Ine',3,3);
-
 insert into location_tour (date,description_location,img,is_delete,location,type_tour,tour_id)
 VALUES ('2001-02-11 00:00:00.000000',"Từ khách sạn, bạn sẽ được đưa đến Vườn thú Asahiyama để xem hơn 700 con thú khác nhau đại diện cho khoảng 124 loài. Nơi đây có một đường hầm bằng kính đi xuyên qua hồ chim cánh cụt, cũng như các trụ bằng kính nhỏ nằm ngay giữa chuồng gấu bắc cực và sói để bạn có thể ngắm nhìn các loài động vật tuyệt đẹp này ở một khoảng cách gần hơn. Ngoài ra, nếu đến đây tham quan vào mùa đông, bạn còn có cơ hội xem Penguin Walk nữa đấy. Sau khi tham quan sở thú, bạn sẽ tiếp tục hành trình đi ngang qua con đường Pathwork Road, trước khi đến thăm Vườn hoa Kamifurano hoặc Trang trại Tomita, tùy theo mùa. Thật tuyệt vời đúng không nào!",
 'https://res.klook.com/image/upload/c_fill,w_550,h_308/fl_lossy.progressive,q_85/activities/5dcdc32f-Hokkaido-Otaru-Rickshaw-Tour.webp',0,'Sở Thú Asahikawa',1,1),
