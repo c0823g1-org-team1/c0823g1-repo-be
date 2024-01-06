@@ -6,7 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 import java.sql.Date;
+import java.util.Set;
 
 
 @Entity
@@ -32,6 +34,7 @@ public class Account {
     @JoinColumn(name = "role_id",referencedColumnName = "id")
     private Role role;
 
-
+    @OneToMany(mappedBy = "account")
+    private Set<Booking> booking;
 
 }

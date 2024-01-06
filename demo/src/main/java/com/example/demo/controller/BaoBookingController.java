@@ -28,6 +28,7 @@ public class BaoBookingController {
     @GetMapping("detail/{id}")
     public String detail(@PathVariable int id, Model model) {
         Tour tour = baoBookingService.findById(id);
+        System.out.println(tour);
         List<LocationTour> location = baoBookingService.findLocation(tour.getId());
         Booking booking = baoBookingService.findBookingId(tour.getId());
         model.addAttribute("books",booking);
