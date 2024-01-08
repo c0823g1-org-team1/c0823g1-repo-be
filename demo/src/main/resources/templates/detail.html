@@ -10,19 +10,15 @@
 		integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-	<link rel="apple-touch-icon" href="/vietravel192.png">
-	<link rel="manifest" href="/manifest.json">
-	<link ref="stylesheet" href="/assets/hotelflight/styles/page-main.css">
+	<link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+			rel="stylesheet"/>
 	<title>Detail Booking</title>
-	<script id="facebook-jssdk" src="//connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js"></script>
 	<script type="text/javascript" async=""
 		src="https://www.googletagmanager.com/gtag/js?id=G-39GJVRHQ6K&amp;l=dataLayer&amp;cx=c"></script>
 	<script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-P3D5RK"></script>
 	<script
 		type="text/javascript">!function (e, t, a, n, g) { e[n] = e[n] || [], e[n].push({ "gtm.start": (new Date).getTime(), event: "gtm.js" }); var m = t.getElementsByTagName(a)[0], r = t.createElement(a); r.async = !0, r.src = "https://www.googletagmanager.com/gtm.js?id=GTM-P3D5RK", m.parentNode.insertBefore(r, m) }(window, document, "script", "dataLayer")</script>
-	<script defer="defer" src="/static/js/main.f7e3fdce.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="index.css">
-	<style type="text/css" id="operaUserStyle"></style>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 	integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
 	crossorigin="anonymous" referrerpolicy="no-referrer"/>
@@ -1712,13 +1708,6 @@
 		}
 	</style>
 	<style type="text/css">
-		.styles__sound_icon___23DuG {
-			cursor: pointer;
-			display: -webkit-box;
-			display: -ms-flexbox;
-			display: flex;
-		}
-
 		.styles__sound_icon___23DuG svg {
 			width: 2rem;
 			height: 2rem;
@@ -1739,1345 +1728,6 @@
 		}
 	</style>
 	<style>
-		.swal2-popup.swal2-toast {
-			box-sizing: border-box;
-			grid-column: 1/4 !important;
-			grid-row: 1/4 !important;
-			grid-template-columns: min-content auto min-content;
-			padding: 1em;
-			overflow-y: hidden;
-			background: #fff;
-			box-shadow: 0 0 1px rgba(0, 0, 0, .075), 0 1px 2px rgba(0, 0, 0, .075), 1px 2px 4px rgba(0, 0, 0, .075), 1px 3px 8px rgba(0, 0, 0, .075), 2px 4px 16px rgba(0, 0, 0, .075);
-			pointer-events: all
-		}
-
-		.swal2-popup.swal2-toast>* {
-			grid-column: 2
-		}
-
-		.swal2-popup.swal2-toast .swal2-title {
-			margin: .5em 1em;
-			padding: 0;
-			font-size: 1em;
-			text-align: initial
-		}
-
-		.swal2-popup.swal2-toast .swal2-loading {
-			justify-content: center
-		}
-
-		.swal2-popup.swal2-toast .swal2-input {
-			height: 2em;
-			margin: .5em;
-			font-size: 1em
-		}
-
-		.swal2-popup.swal2-toast .swal2-validation-message {
-			font-size: 1em
-		}
-
-		.swal2-popup.swal2-toast .swal2-footer {
-			margin: .5em 0 0;
-			padding: .5em 0 0;
-			font-size: .8em
-		}
-
-		.swal2-popup.swal2-toast .swal2-close {
-			grid-column: 3/3;
-			grid-row: 1/99;
-			align-self: center;
-			width: .8em;
-			height: .8em;
-			margin: 0;
-			font-size: 2em
-		}
-
-		.swal2-popup.swal2-toast .swal2-html-container {
-			margin: .5em 1em;
-			padding: 0;
-			overflow: initial;
-			font-size: 1em;
-			text-align: initial
-		}
-
-		.swal2-popup.swal2-toast .swal2-html-container:empty {
-			padding: 0
-		}
-
-		.swal2-popup.swal2-toast .swal2-loader {
-			grid-column: 1;
-			grid-row: 1/99;
-			align-self: center;
-			width: 2em;
-			height: 2em;
-			margin: .25em
-		}
-
-		.swal2-popup.swal2-toast .swal2-icon {
-			grid-column: 1;
-			grid-row: 1/99;
-			align-self: center;
-			width: 2em;
-			min-width: 2em;
-			height: 2em;
-			margin: 0 .5em 0 0
-		}
-
-		.swal2-popup.swal2-toast .swal2-icon .swal2-icon-content {
-			display: flex;
-			align-items: center;
-			font-size: 1.8em;
-			font-weight: bold
-		}
-
-		.swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring {
-			width: 2em;
-			height: 2em
-		}
-
-		.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line] {
-			top: .875em;
-			width: 1.375em
-		}
-
-		.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left] {
-			left: .3125em
-		}
-
-		.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right] {
-			right: .3125em
-		}
-
-		.swal2-popup.swal2-toast .swal2-actions {
-			justify-content: flex-start;
-			height: auto;
-			margin: 0;
-			margin-top: .5em;
-			padding: 0 .5em
-		}
-
-		.swal2-popup.swal2-toast .swal2-styled {
-			margin: .25em .5em;
-			padding: .4em .6em;
-			font-size: 1em
-		}
-
-		.swal2-popup.swal2-toast .swal2-success {
-			border-color: #a5dc86
-		}
-
-		.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line] {
-			position: absolute;
-			width: 1.6em;
-			height: 3em;
-			transform: rotate(45deg);
-			border-radius: 50%
-		}
-
-		.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left] {
-			top: -0.8em;
-			left: -0.5em;
-			transform: rotate(-45deg);
-			transform-origin: 2em 2em;
-			border-radius: 4em 0 0 4em
-		}
-
-		.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right] {
-			top: -0.25em;
-			left: .9375em;
-			transform-origin: 0 1.5em;
-			border-radius: 0 4em 4em 0
-		}
-
-		.swal2-popup.swal2-toast .swal2-success .swal2-success-ring {
-			width: 2em;
-			height: 2em
-		}
-
-		.swal2-popup.swal2-toast .swal2-success .swal2-success-fix {
-			top: 0;
-			left: .4375em;
-			width: .4375em;
-			height: 2.6875em
-		}
-
-		.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line] {
-			height: .3125em
-		}
-
-		.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip] {
-			top: 1.125em;
-			left: .1875em;
-			width: .75em
-		}
-
-		.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=long] {
-			top: .9375em;
-			right: .1875em;
-			width: 1.375em
-		}
-
-		.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-tip {
-			animation: swal2-toast-animate-success-line-tip .75s
-		}
-
-		.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-long {
-			animation: swal2-toast-animate-success-line-long .75s
-		}
-
-		.swal2-popup.swal2-toast.swal2-show {
-			animation: swal2-toast-show .5s
-		}
-
-		.swal2-popup.swal2-toast.swal2-hide {
-			animation: swal2-toast-hide .1s forwards
-		}
-
-		div:where(.swal2-container) {
-			display: grid;
-			position: fixed;
-			z-index: 1060;
-			inset: 0;
-			box-sizing: border-box;
-			grid-template-areas: "top-start     top            top-end" "center-start  center         center-end" "bottom-start  bottom-center  bottom-end";
-			grid-template-rows: minmax(min-content, auto) minmax(min-content, auto) minmax(min-content, auto);
-			height: 100%;
-			padding: .625em;
-			overflow-x: hidden;
-			transition: background-color .1s;
-			-webkit-overflow-scrolling: touch
-		}
-
-		div:where(.swal2-container).swal2-backdrop-show,
-		div:where(.swal2-container).swal2-noanimation {
-			background: rgba(0, 0, 0, .4)
-		}
-
-		div:where(.swal2-container).swal2-backdrop-hide {
-			background: rgba(0, 0, 0, 0) !important
-		}
-
-		div:where(.swal2-container).swal2-top-start,
-		div:where(.swal2-container).swal2-center-start,
-		div:where(.swal2-container).swal2-bottom-start {
-			grid-template-columns: minmax(0, 1fr) auto auto
-		}
-
-		div:where(.swal2-container).swal2-top,
-		div:where(.swal2-container).swal2-center,
-		div:where(.swal2-container).swal2-bottom {
-			grid-template-columns: auto minmax(0, 1fr) auto
-		}
-
-		div:where(.swal2-container).swal2-top-end,
-		div:where(.swal2-container).swal2-center-end,
-		div:where(.swal2-container).swal2-bottom-end {
-			grid-template-columns: auto auto minmax(0, 1fr)
-		}
-
-		div:where(.swal2-container).swal2-top-start>.swal2-popup {
-			align-self: start
-		}
-
-		div:where(.swal2-container).swal2-top>.swal2-popup {
-			grid-column: 2;
-			place-self: start center
-		}
-
-		div:where(.swal2-container).swal2-top-end>.swal2-popup,
-		div:where(.swal2-container).swal2-top-right>.swal2-popup {
-			grid-column: 3;
-			place-self: start end
-		}
-
-		div:where(.swal2-container).swal2-center-start>.swal2-popup,
-		div:where(.swal2-container).swal2-center-left>.swal2-popup {
-			grid-row: 2;
-			align-self: center
-		}
-
-		div:where(.swal2-container).swal2-center>.swal2-popup {
-			grid-column: 2;
-			grid-row: 2;
-			place-self: center center
-		}
-
-		div:where(.swal2-container).swal2-center-end>.swal2-popup,
-		div:where(.swal2-container).swal2-center-right>.swal2-popup {
-			grid-column: 3;
-			grid-row: 2;
-			place-self: center end
-		}
-
-		div:where(.swal2-container).swal2-bottom-start>.swal2-popup,
-		div:where(.swal2-container).swal2-bottom-left>.swal2-popup {
-			grid-column: 1;
-			grid-row: 3;
-			align-self: end
-		}
-
-		div:where(.swal2-container).swal2-bottom>.swal2-popup {
-			grid-column: 2;
-			grid-row: 3;
-			place-self: end center
-		}
-
-		div:where(.swal2-container).swal2-bottom-end>.swal2-popup,
-		div:where(.swal2-container).swal2-bottom-right>.swal2-popup {
-			grid-column: 3;
-			grid-row: 3;
-			place-self: end end
-		}
-
-		div:where(.swal2-container).swal2-grow-row>.swal2-popup,
-		div:where(.swal2-container).swal2-grow-fullscreen>.swal2-popup {
-			grid-column: 1/4;
-			width: 100%
-		}
-
-		div:where(.swal2-container).swal2-grow-column>.swal2-popup,
-		div:where(.swal2-container).swal2-grow-fullscreen>.swal2-popup {
-			grid-row: 1/4;
-			align-self: stretch
-		}
-
-		div:where(.swal2-container).swal2-no-transition {
-			transition: none !important
-		}
-
-		div:where(.swal2-container) div:where(.swal2-popup) {
-			display: none;
-			position: relative;
-			box-sizing: border-box;
-			grid-template-columns: minmax(0, 100%);
-			width: 32em;
-			max-width: 100%;
-			padding: 0 0 1.25em;
-			border: none;
-			border-radius: 5px;
-			background: #fff;
-			color: #545454;
-			font-family: inherit;
-			font-size: 1rem
-		}
-
-		div:where(.swal2-container) div:where(.swal2-popup):focus {
-			outline: none
-		}
-
-		div:where(.swal2-container) div:where(.swal2-popup).swal2-loading {
-			overflow-y: hidden
-		}
-
-		div:where(.swal2-container) h2:where(.swal2-title) {
-			position: relative;
-			max-width: 100%;
-			margin: 0;
-			padding: .8em 1em 0;
-			color: inherit;
-			font-size: 1.875em;
-			font-weight: 600;
-			text-align: center;
-			text-transform: none;
-			word-wrap: break-word
-		}
-
-		div:where(.swal2-container) div:where(.swal2-actions) {
-			display: flex;
-			z-index: 1;
-			box-sizing: border-box;
-			flex-wrap: wrap;
-			align-items: center;
-			justify-content: center;
-			width: auto;
-			margin: 1.25em auto 0;
-			padding: 0
-		}
-
-		div:where(.swal2-container) div:where(.swal2-actions):not(.swal2-loading) .swal2-styled[disabled] {
-			opacity: .4
-		}
-
-		div:where(.swal2-container) div:where(.swal2-actions):not(.swal2-loading) .swal2-styled:hover {
-			background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1))
-		}
-
-		div:where(.swal2-container) div:where(.swal2-actions):not(.swal2-loading) .swal2-styled:active {
-			background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2))
-		}
-
-		div:where(.swal2-container) div:where(.swal2-loader) {
-			display: none;
-			align-items: center;
-			justify-content: center;
-			width: 2.2em;
-			height: 2.2em;
-			margin: 0 1.875em;
-			animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
-			border-width: .25em;
-			border-style: solid;
-			border-radius: 100%;
-			border-color: #2778c4 rgba(0, 0, 0, 0) #2778c4 rgba(0, 0, 0, 0)
-		}
-
-		div:where(.swal2-container) button:where(.swal2-styled) {
-			margin: .3125em;
-			padding: .625em 1.1em;
-			transition: box-shadow .1s;
-			box-shadow: 0 0 0 3px rgba(0, 0, 0, 0);
-			font-weight: 500
-		}
-
-		div:where(.swal2-container) button:where(.swal2-styled):not([disabled]) {
-			cursor: pointer
-		}
-
-		div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
-			border: 0;
-			border-radius: .25em;
-			background: initial;
-			background-color: #7066e0;
-			color: #fff;
-			font-size: 1em
-		}
-
-		div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm:focus {
-			box-shadow: 0 0 0 3px rgba(112, 102, 224, .5)
-		}
-
-		div:where(.swal2-container) button:where(.swal2-styled).swal2-deny {
-			border: 0;
-			border-radius: .25em;
-			background: initial;
-			background-color: #dc3741;
-			color: #fff;
-			font-size: 1em
-		}
-
-		div:where(.swal2-container) button:where(.swal2-styled).swal2-deny:focus {
-			box-shadow: 0 0 0 3px rgba(220, 55, 65, .5)
-		}
-
-		div:where(.swal2-container) button:where(.swal2-styled).swal2-cancel {
-			border: 0;
-			border-radius: .25em;
-			background: initial;
-			background-color: #6e7881;
-			color: #fff;
-			font-size: 1em
-		}
-
-		div:where(.swal2-container) button:where(.swal2-styled).swal2-cancel:focus {
-			box-shadow: 0 0 0 3px rgba(110, 120, 129, .5)
-		}
-
-		div:where(.swal2-container) button:where(.swal2-styled).swal2-default-outline:focus {
-			box-shadow: 0 0 0 3px rgba(100, 150, 200, .5)
-		}
-
-		div:where(.swal2-container) button:where(.swal2-styled):focus {
-			outline: none
-		}
-
-		div:where(.swal2-container) button:where(.swal2-styled)::-moz-focus-inner {
-			border: 0
-		}
-
-		div:where(.swal2-container) div:where(.swal2-footer) {
-			margin: 1em 0 0;
-			padding: 1em 1em 0;
-			border-top: 1px solid #eee;
-			color: inherit;
-			font-size: 1em;
-			text-align: center
-		}
-
-		div:where(.swal2-container) .swal2-timer-progress-bar-container {
-			position: absolute;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			grid-column: auto !important;
-			overflow: hidden;
-			border-bottom-right-radius: 5px;
-			border-bottom-left-radius: 5px
-		}
-
-		div:where(.swal2-container) div:where(.swal2-timer-progress-bar) {
-			width: 100%;
-			height: .25em;
-			background: rgba(0, 0, 0, .2)
-		}
-
-		div:where(.swal2-container) img:where(.swal2-image) {
-			max-width: 100%;
-			margin: 2em auto 1em
-		}
-
-		div:where(.swal2-container) button:where(.swal2-close) {
-			z-index: 2;
-			align-items: center;
-			justify-content: center;
-			width: 1.2em;
-			height: 1.2em;
-			margin-top: 0;
-			margin-right: 0;
-			margin-bottom: -1.2em;
-			padding: 0;
-			overflow: hidden;
-			transition: color .1s, box-shadow .1s;
-			border: none;
-			border-radius: 5px;
-			background: rgba(0, 0, 0, 0);
-			color: #ccc;
-			font-family: monospace;
-			font-size: 2.5em;
-			cursor: pointer;
-			justify-self: end
-		}
-
-		div:where(.swal2-container) button:where(.swal2-close):hover {
-			transform: none;
-			background: rgba(0, 0, 0, 0);
-			color: #f27474
-		}
-
-		div:where(.swal2-container) button:where(.swal2-close):focus {
-			outline: none;
-			box-shadow: inset 0 0 0 3px rgba(100, 150, 200, .5)
-		}
-
-		div:where(.swal2-container) button:where(.swal2-close)::-moz-focus-inner {
-			border: 0
-		}
-
-		div:where(.swal2-container) .swal2-html-container {
-			z-index: 1;
-			justify-content: center;
-			margin: 1em 1.6em .3em;
-			padding: 0;
-			overflow: auto;
-			color: inherit;
-			font-size: 1.125em;
-			font-weight: normal;
-			line-height: normal;
-			text-align: center;
-			word-wrap: break-word;
-			word-break: break-word
-		}
-
-		div:where(.swal2-container) input:where(.swal2-input),
-		div:where(.swal2-container) input:where(.swal2-file),
-		div:where(.swal2-container) textarea:where(.swal2-textarea),
-		div:where(.swal2-container) select:where(.swal2-select),
-		div:where(.swal2-container) div:where(.swal2-radio),
-		div:where(.swal2-container) label:where(.swal2-checkbox) {
-			margin: 1em 2em 3px
-		}
-
-		div:where(.swal2-container) input:where(.swal2-input),
-		div:where(.swal2-container) input:where(.swal2-file),
-		div:where(.swal2-container) textarea:where(.swal2-textarea) {
-			box-sizing: border-box;
-			width: auto;
-			transition: border-color .1s, box-shadow .1s;
-			border: 1px solid #d9d9d9;
-			border-radius: .1875em;
-			background: rgba(0, 0, 0, 0);
-			box-shadow: inset 0 1px 1px rgba(0, 0, 0, .06), 0 0 0 3px rgba(0, 0, 0, 0);
-			color: inherit;
-			font-size: 1.125em
-		}
-
-		div:where(.swal2-container) input:where(.swal2-input).swal2-inputerror,
-		div:where(.swal2-container) input:where(.swal2-file).swal2-inputerror,
-		div:where(.swal2-container) textarea:where(.swal2-textarea).swal2-inputerror {
-			border-color: #f27474 !important;
-			box-shadow: 0 0 2px #f27474 !important
-		}
-
-		div:where(.swal2-container) input:where(.swal2-input):focus,
-		div:where(.swal2-container) input:where(.swal2-file):focus,
-		div:where(.swal2-container) textarea:where(.swal2-textarea):focus {
-			border: 1px solid #b4dbed;
-			outline: none;
-			box-shadow: inset 0 1px 1px rgba(0, 0, 0, .06), 0 0 0 3px rgba(100, 150, 200, .5)
-		}
-
-		div:where(.swal2-container) input:where(.swal2-input)::placeholder,
-		div:where(.swal2-container) input:where(.swal2-file)::placeholder,
-		div:where(.swal2-container) textarea:where(.swal2-textarea)::placeholder {
-			color: #ccc
-		}
-
-		div:where(.swal2-container) .swal2-range {
-			margin: 1em 2em 3px;
-			background: #fff
-		}
-
-		div:where(.swal2-container) .swal2-range input {
-			width: 80%
-		}
-
-		div:where(.swal2-container) .swal2-range output {
-			width: 20%;
-			color: inherit;
-			font-weight: 600;
-			text-align: center
-		}
-
-		div:where(.swal2-container) .swal2-range input,
-		div:where(.swal2-container) .swal2-range output {
-			height: 2.625em;
-			padding: 0;
-			font-size: 1.125em;
-			line-height: 2.625em
-		}
-
-		div:where(.swal2-container) .swal2-input {
-			height: 2.625em;
-			padding: 0 .75em
-		}
-
-		div:where(.swal2-container) .swal2-file {
-			width: 75%;
-			margin-right: auto;
-			margin-left: auto;
-			background: rgba(0, 0, 0, 0);
-			font-size: 1.125em
-		}
-
-		div:where(.swal2-container) .swal2-textarea {
-			height: 6.75em;
-			padding: .75em
-		}
-
-		div:where(.swal2-container) .swal2-select {
-			min-width: 50%;
-			max-width: 100%;
-			padding: .375em .625em;
-			background: rgba(0, 0, 0, 0);
-			color: inherit;
-			font-size: 1.125em
-		}
-
-		div:where(.swal2-container) .swal2-radio,
-		div:where(.swal2-container) .swal2-checkbox {
-			align-items: center;
-			justify-content: center;
-			background: #fff;
-			color: inherit
-		}
-
-		div:where(.swal2-container) .swal2-radio label,
-		div:where(.swal2-container) .swal2-checkbox label {
-			margin: 0 .6em;
-			font-size: 1.125em
-		}
-
-		div:where(.swal2-container) .swal2-radio input,
-		div:where(.swal2-container) .swal2-checkbox input {
-			flex-shrink: 0;
-			margin: 0 .4em
-		}
-
-		div:where(.swal2-container) label:where(.swal2-input-label) {
-			display: flex;
-			justify-content: center;
-			margin: 1em auto 0
-		}
-
-		div:where(.swal2-container) div:where(.swal2-validation-message) {
-			align-items: center;
-			justify-content: center;
-			margin: 1em 0 0;
-			padding: .625em;
-			overflow: hidden;
-			background: #f0f0f0;
-			color: #666;
-			font-size: 1em;
-			font-weight: 300
-		}
-
-		div:where(.swal2-container) div:where(.swal2-validation-message)::before {
-			content: "!";
-			display: inline-block;
-			width: 1.5em;
-			min-width: 1.5em;
-			height: 1.5em;
-			margin: 0 .625em;
-			border-radius: 50%;
-			background-color: #f27474;
-			color: #fff;
-			font-weight: 600;
-			line-height: 1.5em;
-			text-align: center
-		}
-
-		div:where(.swal2-container) .swal2-progress-steps {
-			flex-wrap: wrap;
-			align-items: center;
-			max-width: 100%;
-			margin: 1.25em auto;
-			padding: 0;
-			background: rgba(0, 0, 0, 0);
-			font-weight: 600
-		}
-
-		div:where(.swal2-container) .swal2-progress-steps li {
-			display: inline-block;
-			position: relative
-		}
-
-		div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step {
-			z-index: 20;
-			flex-shrink: 0;
-			width: 2em;
-			height: 2em;
-			border-radius: 2em;
-			background: #2778c4;
-			color: #fff;
-			line-height: 2em;
-			text-align: center
-		}
-
-		div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step {
-			background: #2778c4
-		}
-
-		div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step {
-			background: #add8e6;
-			color: #fff
-		}
-
-		div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step-line {
-			background: #add8e6
-		}
-
-		div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step-line {
-			z-index: 10;
-			flex-shrink: 0;
-			width: 2.5em;
-			height: .4em;
-			margin: 0 -1px;
-			background: #2778c4
-		}
-
-		div:where(.swal2-icon) {
-			position: relative;
-			box-sizing: content-box;
-			justify-content: center;
-			width: 5em;
-			height: 5em;
-			margin: 2.5em auto .6em;
-			border: 0.25em solid rgba(0, 0, 0, 0);
-			border-radius: 50%;
-			border-color: #000;
-			font-family: inherit;
-			line-height: 5em;
-			cursor: default;
-			user-select: none
-		}
-
-		div:where(.swal2-icon) .swal2-icon-content {
-			display: flex;
-			align-items: center;
-			font-size: 3.75em
-		}
-
-		div:where(.swal2-icon).swal2-error {
-			border-color: #f27474;
-			color: #f27474
-		}
-
-		div:where(.swal2-icon).swal2-error .swal2-x-mark {
-			position: relative;
-			flex-grow: 1
-		}
-
-		div:where(.swal2-icon).swal2-error [class^=swal2-x-mark-line] {
-			display: block;
-			position: absolute;
-			top: 2.3125em;
-			width: 2.9375em;
-			height: .3125em;
-			border-radius: .125em;
-			background-color: #f27474
-		}
-
-		div:where(.swal2-icon).swal2-error [class^=swal2-x-mark-line][class$=left] {
-			left: 1.0625em;
-			transform: rotate(45deg)
-		}
-
-		div:where(.swal2-icon).swal2-error [class^=swal2-x-mark-line][class$=right] {
-			right: 1em;
-			transform: rotate(-45deg)
-		}
-
-		div:where(.swal2-icon).swal2-error.swal2-icon-show {
-			animation: swal2-animate-error-icon .5s
-		}
-
-		div:where(.swal2-icon).swal2-error.swal2-icon-show .swal2-x-mark {
-			animation: swal2-animate-error-x-mark .5s
-		}
-
-		div:where(.swal2-icon).swal2-warning {
-			border-color: #facea8;
-			color: #f8bb86
-		}
-
-		div:where(.swal2-icon).swal2-warning.swal2-icon-show {
-			animation: swal2-animate-error-icon .5s
-		}
-
-		div:where(.swal2-icon).swal2-warning.swal2-icon-show .swal2-icon-content {
-			animation: swal2-animate-i-mark .5s
-		}
-
-		div:where(.swal2-icon).swal2-info {
-			border-color: #9de0f6;
-			color: #3fc3ee
-		}
-
-		div:where(.swal2-icon).swal2-info.swal2-icon-show {
-			animation: swal2-animate-error-icon .5s
-		}
-
-		div:where(.swal2-icon).swal2-info.swal2-icon-show .swal2-icon-content {
-			animation: swal2-animate-i-mark .8s
-		}
-
-		div:where(.swal2-icon).swal2-question {
-			border-color: #c9dae1;
-			color: #87adbd
-		}
-
-		div:where(.swal2-icon).swal2-question.swal2-icon-show {
-			animation: swal2-animate-error-icon .5s
-		}
-
-		div:where(.swal2-icon).swal2-question.swal2-icon-show .swal2-icon-content {
-			animation: swal2-animate-question-mark .8s
-		}
-
-		div:where(.swal2-icon).swal2-success {
-			border-color: #a5dc86;
-			color: #a5dc86
-		}
-
-		div:where(.swal2-icon).swal2-success [class^=swal2-success-circular-line] {
-			position: absolute;
-			width: 3.75em;
-			height: 7.5em;
-			transform: rotate(45deg);
-			border-radius: 50%
-		}
-
-		div:where(.swal2-icon).swal2-success [class^=swal2-success-circular-line][class$=left] {
-			top: -0.4375em;
-			left: -2.0635em;
-			transform: rotate(-45deg);
-			transform-origin: 3.75em 3.75em;
-			border-radius: 7.5em 0 0 7.5em
-		}
-
-		div:where(.swal2-icon).swal2-success [class^=swal2-success-circular-line][class$=right] {
-			top: -0.6875em;
-			left: 1.875em;
-			transform: rotate(-45deg);
-			transform-origin: 0 3.75em;
-			border-radius: 0 7.5em 7.5em 0
-		}
-
-		div:where(.swal2-icon).swal2-success .swal2-success-ring {
-			position: absolute;
-			z-index: 2;
-			top: -0.25em;
-			left: -0.25em;
-			box-sizing: content-box;
-			width: 100%;
-			height: 100%;
-			border: .25em solid rgba(165, 220, 134, .3);
-			border-radius: 50%
-		}
-
-		div:where(.swal2-icon).swal2-success .swal2-success-fix {
-			position: absolute;
-			z-index: 1;
-			top: .5em;
-			left: 1.625em;
-			width: .4375em;
-			height: 5.625em;
-			transform: rotate(-45deg)
-		}
-
-		div:where(.swal2-icon).swal2-success [class^=swal2-success-line] {
-			display: block;
-			position: absolute;
-			z-index: 2;
-			height: .3125em;
-			border-radius: .125em;
-			background-color: #a5dc86
-		}
-
-		div:where(.swal2-icon).swal2-success [class^=swal2-success-line][class$=tip] {
-			top: 2.875em;
-			left: .8125em;
-			width: 1.5625em;
-			transform: rotate(45deg)
-		}
-
-		div:where(.swal2-icon).swal2-success [class^=swal2-success-line][class$=long] {
-			top: 2.375em;
-			right: .5em;
-			width: 2.9375em;
-			transform: rotate(-45deg)
-		}
-
-		div:where(.swal2-icon).swal2-success.swal2-icon-show .swal2-success-line-tip {
-			animation: swal2-animate-success-line-tip .75s
-		}
-
-		div:where(.swal2-icon).swal2-success.swal2-icon-show .swal2-success-line-long {
-			animation: swal2-animate-success-line-long .75s
-		}
-
-		div:where(.swal2-icon).swal2-success.swal2-icon-show .swal2-success-circular-line-right {
-			animation: swal2-rotate-success-circular-line 4.25s ease-in
-		}
-
-		[class^=swal2] {
-			-webkit-tap-highlight-color: rgba(0, 0, 0, 0)
-		}
-
-		.swal2-show {
-			animation: swal2-show .3s
-		}
-
-		.swal2-hide {
-			animation: swal2-hide .15s forwards
-		}
-
-		.swal2-noanimation {
-			transition: none
-		}
-
-		.swal2-scrollbar-measure {
-			position: absolute;
-			top: -9999px;
-			width: 50px;
-			height: 50px;
-			overflow: scroll
-		}
-
-		.swal2-rtl .swal2-close {
-			margin-right: initial;
-			margin-left: 0
-		}
-
-		.swal2-rtl .swal2-timer-progress-bar {
-			right: 0;
-			left: auto
-		}
-
-		@keyframes swal2-toast-show {
-			0% {
-				transform: translateY(-0.625em) rotateZ(2deg)
-			}
-
-			33% {
-				transform: translateY(0) rotateZ(-2deg)
-			}
-
-			66% {
-				transform: translateY(0.3125em) rotateZ(2deg)
-			}
-
-			100% {
-				transform: translateY(0) rotateZ(0deg)
-			}
-		}
-
-		@keyframes swal2-toast-hide {
-			100% {
-				transform: rotateZ(1deg);
-				opacity: 0
-			}
-		}
-
-		@keyframes swal2-toast-animate-success-line-tip {
-			0% {
-				top: .5625em;
-				left: .0625em;
-				width: 0
-			}
-
-			54% {
-				top: .125em;
-				left: .125em;
-				width: 0
-			}
-
-			70% {
-				top: .625em;
-				left: -0.25em;
-				width: 1.625em
-			}
-
-			84% {
-				top: 1.0625em;
-				left: .75em;
-				width: .5em
-			}
-
-			100% {
-				top: 1.125em;
-				left: .1875em;
-				width: .75em
-			}
-		}
-
-		@keyframes swal2-toast-animate-success-line-long {
-			0% {
-				top: 1.625em;
-				right: 1.375em;
-				width: 0
-			}
-
-			65% {
-				top: 1.25em;
-				right: .9375em;
-				width: 0
-			}
-
-			84% {
-				top: .9375em;
-				right: 0;
-				width: 1.125em
-			}
-
-			100% {
-				top: .9375em;
-				right: .1875em;
-				width: 1.375em
-			}
-		}
-
-		@keyframes swal2-show {
-			0% {
-				transform: scale(0.7)
-			}
-
-			45% {
-				transform: scale(1.05)
-			}
-
-			80% {
-				transform: scale(0.95)
-			}
-
-			100% {
-				transform: scale(1)
-			}
-		}
-
-		@keyframes swal2-hide {
-			0% {
-				transform: scale(1);
-				opacity: 1
-			}
-
-			100% {
-				transform: scale(0.5);
-				opacity: 0
-			}
-		}
-
-		@keyframes swal2-animate-success-line-tip {
-			0% {
-				top: 1.1875em;
-				left: .0625em;
-				width: 0
-			}
-
-			54% {
-				top: 1.0625em;
-				left: .125em;
-				width: 0
-			}
-
-			70% {
-				top: 2.1875em;
-				left: -0.375em;
-				width: 3.125em
-			}
-
-			84% {
-				top: 3em;
-				left: 1.3125em;
-				width: 1.0625em
-			}
-
-			100% {
-				top: 2.8125em;
-				left: .8125em;
-				width: 1.5625em
-			}
-		}
-
-		@keyframes swal2-animate-success-line-long {
-			0% {
-				top: 3.375em;
-				right: 2.875em;
-				width: 0
-			}
-
-			65% {
-				top: 3.375em;
-				right: 2.875em;
-				width: 0
-			}
-
-			84% {
-				top: 2.1875em;
-				right: 0;
-				width: 3.4375em
-			}
-
-			100% {
-				top: 2.375em;
-				right: .5em;
-				width: 2.9375em
-			}
-		}
-
-		@keyframes swal2-rotate-success-circular-line {
-			0% {
-				transform: rotate(-45deg)
-			}
-
-			5% {
-				transform: rotate(-45deg)
-			}
-
-			12% {
-				transform: rotate(-405deg)
-			}
-
-			100% {
-				transform: rotate(-405deg)
-			}
-		}
-
-		@keyframes swal2-animate-error-x-mark {
-			0% {
-				margin-top: 1.625em;
-				transform: scale(0.4);
-				opacity: 0
-			}
-
-			50% {
-				margin-top: 1.625em;
-				transform: scale(0.4);
-				opacity: 0
-			}
-
-			80% {
-				margin-top: -0.375em;
-				transform: scale(1.15)
-			}
-
-			100% {
-				margin-top: 0;
-				transform: scale(1);
-				opacity: 1
-			}
-		}
-
-		@keyframes swal2-animate-error-icon {
-			0% {
-				transform: rotateX(100deg);
-				opacity: 0
-			}
-
-			100% {
-				transform: rotateX(0deg);
-				opacity: 1
-			}
-		}
-
-		@keyframes swal2-rotate-loading {
-			0% {
-				transform: rotate(0deg)
-			}
-
-			100% {
-				transform: rotate(360deg)
-			}
-		}
-
-		@keyframes swal2-animate-question-mark {
-			0% {
-				transform: rotateY(-360deg)
-			}
-
-			100% {
-				transform: rotateY(0)
-			}
-		}
-
-		@keyframes swal2-animate-i-mark {
-			0% {
-				transform: rotateZ(45deg);
-				opacity: 0
-			}
-
-			25% {
-				transform: rotateZ(-25deg);
-				opacity: .4
-			}
-
-			50% {
-				transform: rotateZ(15deg);
-				opacity: .8
-			}
-
-			75% {
-				transform: rotateZ(-5deg);
-				opacity: 1
-			}
-
-			100% {
-				transform: rotateX(0);
-				opacity: 1
-			}
-		}
-
-		body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
-			overflow: hidden
-		}
-
-		body.swal2-height-auto {
-			height: auto !important
-		}
-
-		body.swal2-no-backdrop .swal2-container {
-			background-color: rgba(0, 0, 0, 0) !important;
-			pointer-events: none
-		}
-
-		body.swal2-no-backdrop .swal2-container .swal2-popup {
-			pointer-events: all
-		}
-
-		body.swal2-no-backdrop .swal2-container .swal2-modal {
-			box-shadow: 0 0 10px rgba(0, 0, 0, .4)
-		}
-
-		@media print {
-			body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
-				overflow-y: scroll !important
-			}
-
-			body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown)>[aria-hidden=true] {
-				display: none
-			}
-
-			body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container {
-				position: static !important
-			}
-		}
-
-		body.swal2-toast-shown .swal2-container {
-			box-sizing: border-box;
-			width: 360px;
-			max-width: 100%;
-			background-color: rgba(0, 0, 0, 0);
-			pointer-events: none
-		}
-
-		body.swal2-toast-shown .swal2-container.swal2-top {
-			inset: 0 auto auto 50%;
-			transform: translateX(-50%)
-		}
-
-		body.swal2-toast-shown .swal2-container.swal2-top-end,
-		body.swal2-toast-shown .swal2-container.swal2-top-right {
-			inset: 0 0 auto auto
-		}
-
-		body.swal2-toast-shown .swal2-container.swal2-top-start,
-		body.swal2-toast-shown .swal2-container.swal2-top-left {
-			inset: 0 auto auto 0
-		}
-
-		body.swal2-toast-shown .swal2-container.swal2-center-start,
-		body.swal2-toast-shown .swal2-container.swal2-center-left {
-			inset: 50% auto auto 0;
-			transform: translateY(-50%)
-		}
-
-		body.swal2-toast-shown .swal2-container.swal2-center {
-			inset: 50% auto auto 50%;
-			transform: translate(-50%, -50%)
-		}
-
-		body.swal2-toast-shown .swal2-container.swal2-center-end,
-		body.swal2-toast-shown .swal2-container.swal2-center-right {
-			inset: 50% 0 auto auto;
-			transform: translateY(-50%)
-		}
-
-		body.swal2-toast-shown .swal2-container.swal2-bottom-start,
-		body.swal2-toast-shown .swal2-container.swal2-bottom-left {
-			inset: auto auto 0 0
-		}
-
-		body.swal2-toast-shown .swal2-container.swal2-bottom {
-			inset: auto auto 0 50%;
-			transform: translateX(-50%)
-		}
-
-		body.swal2-toast-shown .swal2-container.swal2-bottom-end,
-		body.swal2-toast-shown .swal2-container.swal2-bottom-right {
-			inset: auto 0 0 auto
-		}
-	</style>
-	<style>
-		.ejoy-sub-active {
-			color: #1296ba !important;
-		}
-
-		.ejoy-sub-hovered {
-			color: #1296ba !important;
-		}
-
-		.ejoy-sub-clzz {
-			cursor: pointer;
-
-			lineHeight: 1.2;
-			font-size: 28px;
-			color: #FFCC00;
-			background: rgba(17, 17, 17, 0.7);
-
-		}
-
-		.ejoy-sub-clzz:hover {
-			color: #1296ba !important;
-		}
-
-		.ej-trans-sub {
-			position: absolute;
-			width: 100%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			z-index: 9999999;
-			cursor: move;
-		}
-
 		.ej-trans-sub>span {
 			color: #3CF9ED;
 			font-size: 18px;
@@ -3093,30 +1743,6 @@
 			color: #0CB1C7;
 			background: rgba(67, 65, 65, 0.7);
 
-		}
-
-		.ej-full-screen-video {
-			position: absolute;
-			width: 30px;
-			height: 30px;
-			top: 30px;
-			right: 10px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			z-index: 99999999;
-			cursor: pointer;
-		}
-
-		.ej-main-sub {
-			position: absolute;
-			width: 100%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			z-index: 99999999;
-			cursor: move;
-			padding: 0 8px;
 		}
 
 		.ej-main-sub>span {
@@ -3160,86 +1786,8 @@
 			font-weight: normal;
 		}
 
-		.viewPopupPro {
-			z-index: 2147483647;
-			cursor: auto;
-			position: absolute;
-			z-index: 2147483647;
-			background: #111111;
-			transition: opacity 1s;
-			width: 172px;
-			height: 66px;
-			opacity: 1;
-			border-radius: 6px;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-		}
-
-		.titlePopupPro {
-			font-style: normal;
-			font-weight: 400;
-			font-size: 10px;
-			line-height: 12px;
-			color: #E5E5E5;
-			text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
-		}
-
-		.viewGoPro {
-			background: #FFCC00;
-			border-radius: 72.6257px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			margin-top: 8px;
-			padding-left: 10px;
-			cursor: pointer;
-
-		}
-
 		.viewGoPro svg {
 			pointer-events: none;
-		}
-
-		.textGoPro {
-			font-style: normal;
-			font-weight: 600;
-			font-size: 10px;
-			line-height: 12px;
-			pointer-events: none;
-			text-align: center;
-			color: #FFFFFF;
-			padding: 4px 14px 4px 4px;
-		}
-
-		.viewPopupPro {
-			top: auto !important;
-			bottom: 15px !important;
-		}
-
-		.view-icon-copy-main-sub:hover>span,
-		.view-icon-edit-sub:hover>span,
-		.view-icon-exit-full-sub:hover>span,
-		.view-icon-full-sub:hover>span,
-		.iconCrownGoPro:hover>span,
-		.view-icon-copy-tran-sub:hover>span {
-			display: block;
-		}
-
-		.iconCrownGoPro {
-			padding-left: 0px !important;
-			padding-right: 8px !important;
-		}
-
-		.iconCrownGoPro svg {
-			width: 17px;
-			height: 17px;
-		}
-
-		.view-icon-full-sub,
-		.view-icon-exit-full-sub {
-			display: flex;
 		}
 
 		.view-icon-full-sub>svg,
@@ -3271,6 +1819,50 @@
 		}
 	</style>
 	<style>
+		.slide-show {
+			width: 500px;
+			overflow: hidden;
+			position: relative;
+		}
+		.list-images {
+			display: flex;
+			transition: 0.5s;
+		}
+		.btn:hover {
+			color: white;
+		}
+		.btn {
+			font-size: 45px;
+			color: #999;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			transition: 0.5s;
+			cursor: pointer;
+		}
+		.btn-left {
+			left: 0;
+		}
+		.btn-right {
+			right: 0;
+		}
+		.index-images {
+			position: absolute;
+			bottom: 10px;
+			display: flex;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+		.index-item {
+			border: 2px solid #999;
+			padding: 10px;
+			margin: 3px;
+			border-radius: 50%;
+		}
+		.active {
+			background-color: #999;
+		}
+
 		 /* Foooter */
 		 .icon-footer {
             margin-top: 20px;
@@ -3332,6 +1924,7 @@
 			color: black;
 			position: relative;
 			font-family: Roboto, sans-serif;
+			text-decoration: none;
 		}
 
 		.button-search {
@@ -4041,6 +2634,7 @@
 			}
 		}
 	</style>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body data-new-gr-c-s-check-loaded="14.1147.0" data-gr-ext-installed=""><noscript><iframe
 			src="https://www.googletagmanager.com/ns.html?id=GTM-P3D5RK" height="0" width="0"
@@ -4093,39 +2687,19 @@
 								</div>
 							</div>
 						</div>
+					</div>
 				</section>
 				<section class="section-02 ">
-					<div class="container ">
-						<div  class="row animate__fadeIn animate__animated">
-							<div th:each="lists,count:${l}" class="col-lg-7 col-md-12 col-sm-12 left ">
-								<div th:if="img1 == 1"  class="image">
-									<img th:src="${lists.getImg()}">
+					<div class="container">
+						<div class="slide-show">
+							<div class="list-images">
+								<div th:each="list:${listImg}">
+									<img th:src="${list.getImg()}" width="100%" alt="">
 								</div>
 							</div>
-							<div class="col-lg-5 col-md-12 col-sm-12 right">
-								<div class="row gy-4">
-									<div class="col-md-12 col-12 small">
-										<div class="row mb-2">
-											<div class="col-6">
-												<div th:if="lists.getTypeImg()==2" class="image">
-													<img
-														th:src="${lists.getImg()}"
-														class="img-fluid" alt="image">
-												</div>
-											</div>
-											<div class="col-6">
-												<div th:if="lists.getTypeImg()==3"  class="image"><img
-														th:src="${lists.getImg()}"
-														class="img-fluid" alt="image"></div>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-12 col-12 big">
-										<div th:if="lists.getTypeImg()==4" class="image"><img
-												th:src="${lists.getImg()}"
-												class="img-fluid" alt="image"></div>
-									</div>
-								</div>
+							<div class="btns">
+								<div class="btn-left btn"><i class='bx bx-chevron-left'></i></div>
+								<div class="btn-right btn"><i class='bx bx-chevron-right'></i></div>
 							</div>
 						</div>
 					</div>
@@ -4134,7 +2708,7 @@
 					<section class="section-06 mb-5">
 						<div class="container">
 							<div class="row">
-								<div class="col-md-12 col-12">
+								<div style="display: flex; justify-content: center;" class="col-md-12 col-12">
 									<h2 class="mb-4">Lịch trình</h2>
 								</div>
 							</div>
@@ -4142,79 +2716,26 @@
 					</section>
 					<section class="section-07-map mb-5">
 						<div class="container">
-							<div class="row">
+							<div th:each="location:${locations}"  class="row">
 								<div class="col-md-4 d-none d-md-block col-12 left">
 									<div class="go-tour">
 										<div class="day day-001">
 											<div class="wrapper"><span class="date-left"> Ngày </span><span
-													class="date-center ">1</span><span class="date-right"><span
-														class="date">06/01/2024</span><span class="location">TP. HCM –
-														ĐỒI CÁT BAY – CHỢ PHAN THIẾT (1 bữa ăn trưa)</span></span></div>
+											th:text="${location.getDate()}"	class="date-center "></span><span class="date-right"><span
+														class="date"></span><span  class="location" th:text="${location.getLocation()}"></span></span>
+											</div>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-8 col-12 right timeline-section">
-									<div>
-										<h3 id="day-00">Ngày 1 - TP. HCM – ĐỒI CÁT BAY – CHỢ PHAN THIẾT (1 bữa ăn trưa)
+									<div >
+										<h3 id="day-00">Ngày <span th:text ="${location.getId()}"></span>
 										</h3>
 										<div class="excerpt"><span class="line"></span>
 											<div>
-
 												<title></title>
-
-
 												<div style="text-align:justify">
-													<div>Quý khách <strong>tập trung lúc 04:30 sáng tại Vietravel
-														</strong>(190 Pasteur, Phường Võ Thị Sáu, Quận 3, TP.Hồ Chí
-														Minh) khởi hành<strong> đi Phan Thiết theo cung đường cao tốc
-															mới Dầu Giây – Phan Thiết</strong>. Đoàn dừng chân ăn sáng
-														trên cung đường đi (tự túc chi phí) và tiếp tục hành trình đến
-														với vùng biển nổi tiếng của khu vực Nam Trung Bộ.<br>
-														<br>
-														Ngồi trên xe, Quý khách sẽ được chiêm ngưỡng cảnh đẹp của vùng
-														đất Bình Thuận như: <strong>Lầu Ông Hoàng, Tháp chăm Poshanu,
-															Bãi Đá Ông Địa, Rạng Dừa Hàm Tiến,…</strong> Đoàn dừng chân
-														tham quan:<br>
-														<br>
-														<strong>• Đồi Cát Vàng: </strong>Một trong những khu vực đẹp
-														nhất nằm ở Mũi Né thu hút khá nhiều du khách do hình dáng đẹp
-														của cát và màu sắc của cát, nơi đây được xem là đồi cát có một
-														không hai tại Việt Nam bắt nguồn từ mỏ sắt cổ tồn tại hàng trăm
-														năm tạo nên.&nbsp;<br>
-														<br>
-														<strong>• Khu du lịch Hòn Rơm - Bãi biển Hòn Rơm</strong>: như
-														một phần đất liền nhô ra khỏi biển với bãi cát vàng trải dài.
-														Đôi khi có những cơn sóng nhẹ nhàng vỗ bờ và hàng dừa xanh cao
-														vút mang đến một bức tranh thủy mặc êm đềm và bình yên, quên đi
-														mọi mệt nhọc trong cuộc sống đời thường. Quý khách sẽ được vui
-														chơi, tắm biển, ngắm cảnh, thưởng ngoạn phong cảnh hữu tình, thơ
-														mộng mà mộc mạc, giản dị hoặc tự do thưởng thức các loại hải sản
-														tươi ngon của vùng biển xinh đẹp này (Chi phí tự túc)&nbsp;<br>
-														<br>
-														Quý khách tắm lại bằng nước ngọt, sau đó đoàn thưởng thức bữa
-														trưa tại nhà hàng và tận hưởng không khí trong lành, khí hậu dễ
-														chịu nên các bạn như được hòa mình, được thả hồn vào thiên
-														nhiên. Tiếp tục khởi hành về trung tâm thành phố Phan Thiết,
-														dừng chân tham quan:&nbsp;<br>
-														<br>
-														<strong>• Dinh Vạn Thủy Tú:</strong> nơi thờ và trưng bày bộ
-														xương cá Ông lớn nhất Việt Nam. Quý khách còn có cơ hội tìm hiểu
-														về tục thờ cá Ông của ngư dân miền Trung.<br>
-														<br>
-														<strong>• Chợ Phan Thiết:</strong> được xây dựng vào năm 1697, ở
-														hai bên bờ sông Mường Mán xưa( sông Cà Ty ngày nay). Nơi đây tập
-														trung nhiều đặc sản nổi tiếng của thành phố biển như các loại
-														hải sản khô – tươi như tôm, mực, cá khô,… Nhưng điều thú vị khi
-														đến với khu chợ nổi tiếng này mà chắc hẳn không ai muốn bỏ lỡ đó
-														là cơ hội <strong>khám phá những món ăn hấp dẫn, mang đậm nét ẩm
-															thực đặc trưng của miền Trung như bánh căn, bánh ướng, chả
-															cá, bánh bột lọc, trứng mực hấp… (chi phí tự
-															túc)&nbsp;</strong><br>
-														<br>
-														Đoàn khởi hành về TP. Hồ Chí Minh. Xe và HDV đưa về điểm đón ban
-														đầu. Chia tay Quý khách và kết thúc chương trình du lịch.<br>
-														&nbsp;
-													</div>
+													<div th:text="${location.getDetailLocation().getDescriptionLocation()}" ></div>
 												</div>
 											</div>
 										</div>
@@ -4234,81 +2755,33 @@
 											<div class="detail-tour-inner">
 												<div class="date"><span>Ngày đi - </span><b>06/01/2024</b></div>
 												<div class="from">
-													<h4>TP. Hồ Chí Minh<span>(Địa điểm)</span></h4>
-													<h4>Phan Thiết<span>(Địa điểm)</span></h4>
+													<h4>TP. Hồ Chí Minh</h4>
+													<h4>Phan Thiết</h4>
 												</div>
-												<div class="p-line"><span><img src="/images/icons/go.png"
-															alt="prop"></span><span><img src="/images/icons/bus.png"
-															alt="prop"></span><span><img src="/images/icons/to.png"
-															alt="prop"></span></div>
-												<div class="time">
-													<h4>05:00</h4><span>Đi thẳng</span>
+													<h4>05:00</h4>
 													<h4>00:00</h4>
 												</div>
 											</div>
-											<div class="detail-tour-inner comeback ">
-												<div class="date"><span>Ngày đi - </span><b>06/01/2024</b></div>
-												<div class="from">
-													<h4>Phan Thiết<span>(Địa điểm)</span></h4>
-													<h4>TP. Hồ Chí Minh<span>(Địa điểm)</span></h4>
-												</div>
-												<div class="p-line"><span><img src="/images/icons/go.png"
-															alt="prop"></span><span><img src="/images/icons/bus.png"
-															alt="prop"></span><span><img src="/images/icons/to.png"
-															alt="prop"></span></div>
-												<div class="time">
-													<h4>00:00</h4><span>Đi thẳng</span>
-													<h4>05:00</h4>
-												</div>
-											</div>
 										</div>
-										<div class="more-info more-info-1 mt-5">
-											<h3 class="tt">Thông tin tập trung</h3>
-											<div class="block"><span>Ngày giờ tập trung</span>
-												<div class="info">04:30<p>06/01/2024</p>
-												</div>
-											</div>
-											<div class="block"><span>Nơi tập trung</span>
-												<div class="info">Vietravel</div>
-											</div>
-										</div>
-									</div>
 								</div>
 								<div class="col-md-6 col-12 right">
-									<h2>Giá tour &amp; phụ thu phòng đơn</h2>
+									<h2>Giá tour</h2>
 									<div class="table-price">
 										<table>
 											<tbody>
 												<tr>
 													<th class="l1">Loại khách</th>
 													<th class="l2">Giá tour</th>
-													<th class="l3">Land tour</th>
 												</tr>
 												<tr>
 													<td>Người lớn (Từ 12 tuổi trở lên)</td>
-													<td class="t-price">599.000&nbsp;₫</td>
-													<td class="l-price ">599.000&nbsp;₫</td>
+													<td th:text="${tours.getPrice().getAdultPrice()}" class="t-price"></td>
 												</tr>
 												<tr>
 													<td>Trẻ em (Từ 5 - 11 tuổi)</td>
-													<td class="t-price">599.000&nbsp;₫</td>
-													<td class="l-price ">299.500&nbsp;₫</td>
+													<td th:text="${tours.getPrice().getChildrenPrice()}"  class="t-price"></td>
 												</tr>
-												<tr>
-													<td>Trẻ nhỏ (Từ 2 - 4 tuổi)</td>
-													<td class="t-price">0&nbsp;₫</td>
-													<td class="l-price ">0&nbsp;₫</td>
-												</tr>
-												<tr>
-													<td>Em bé (Dưới 2 tuổi)</td>
-													<td class="t-price">0&nbsp;₫</td>
-													<td class="l-price ">0&nbsp;₫</td>
-												</tr>
-												<tr class="total">
-													<td>Phụ thu phòng đơn</td>
-													<td class="t-price">0&nbsp;₫</td>
-													<td class="l-price ">0&nbsp;₫</td>
-												</tr>
+
 											</tbody>
 										</table>
 									</div>
@@ -4316,16 +2789,12 @@
 									<div class="table-price">
 										<div class="more-info more-info-2">
 											<div class="block"><span>HDV dẫn đoàn</span>
-												<div>Đang cập nhật</div>
-											</div>
-											<div class="block"><span>HDV tiễn</span>
-												<div>Đang cập nhật</div>
+												<div th:text="${books.getDetailPersonTours().getTourGuide()}"></div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
 					</section>
 				</div>
 			</div>
@@ -4346,6 +2815,58 @@
 		<div id="fb-customer-chat" class="fb-customerchat" page_id="181053065281290" attribution="biz_inbox"></div>
 	</div>
 	<div id="eJOY__extension_root" class="eJOY__extension_root_class" style="all: unset;"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script>
+	const listImage = document.querySelector('.list-images')
+	const imgs = document.getElementsByTagName('img')
+	const btnLeft = document.querySelector('.btn-left')
+	const btnRight = document.querySelector('.btn-right')
+	const length = imgs.length
+	let current = 0
+
+	const handleChangeSlide = () => {
+		if (current == length - 1) {
+			current = 0
+			let width = imgs[0].offsetWidth
+			listImage.style.transform = `translateX(0px)`
+			document.querySelector('.active').classList.remove('active')
+			document.querySelector('.index-item-'+ current).classList.add('active')
+
+		} else {
+			current ++
+			let width = imgs[0].offsetWidth
+			listImage.style.transform = `translateX(${width * -1 * current}px)`
+			document.querySelector('.active').classList.remove('active')
+			document.querySelector('.index-item-'+ current).classList.add('active')
+		}
+	}
+
+	let handleEventChangeSlide = setInterval(handleChangeSlide, 4000)
+
+	btnRight.addEventListener('click', () => {
+		clearInterval(handleEventChangeSlide)
+		handleChangeSlide()
+		handleEventChangeSlide = setInterval(handleChangeSlide, 4000)
+	})
+
+	btnLeft.addEventListener('click', () => {
+		clearInterval(handleEventChangeSlide)
+		if (current == 0) {
+			current = length - 1
+			let width = imgs[0].offsetWidth
+			listImage.style.transform = `translateX(${width * -1 * current}px)`
+			document.querySelector('.active').classList.remove('active')
+			document.querySelector('.index-item-'+ current).classList.add('active')
+		} else {
+			current --
+			let width = imgs[0].offsetWidth
+			listImage.style.transform = `translateX(${width * -1 * current}px)`
+			document.querySelector('.active').classList.remove('active')
+			document.querySelector('.index-item-'+ current).classList.add('active')
+		}
+		handleEventChangeSlide = setInterval(handleChangeSlide, 4000)
+	})
+</script>
 </body>
 
 </html>

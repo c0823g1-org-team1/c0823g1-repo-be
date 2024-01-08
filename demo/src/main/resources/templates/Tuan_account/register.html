@@ -128,25 +128,28 @@
         <form th:action="@{/account/register}" th:object="${accountDto}" method="post">
             <label for="tk">Tên Tài Khoản</label>
             <input id="tk" type="text" placeholder="Ex:tuan123" th:field="*{nameAccount}">
-            <small style="color: red" th:if="${#fields.hasErrors('nameAccount')}" th:errors="*{nameAccount}"></small>
+            <small style="color: red" th:if="${#fields.hasErrors('nameAccount')}" th:errors="*{nameAccount}"></small><br>
+            <small style="color: red" th:if="${isExits == 1}">Tài Khoản Đã Tồn Tại</small><br>
             <label for="mk">Mật Khẩu</label>
             <input id="mk" type="password" placeholder="" th:field="*{password}">
-            <small style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small>
+            <small style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small><br>
             <label for="hvt">Họ Và Tên</label>
             <input id="hvt" type="text" placeholder="Ex: Nguyễn Văn A" th:field="*{nameClient}">
             <small style="color: red" th:if="${#fields.hasErrors('nameClient')}" th:errors="*{nameClient}"></small>
             <label for="sdt">Số Điện Thoại</label>
             <input id="sdt" type="text" placeholder="Ex:0387274038" th:field="*{phoneClient}">
-            <small style="color: red" th:if="${#fields.hasErrors('phoneClient')}" th:errors="*{phoneClient}"></small>
+            <small style="color: red" th:if="${#fields.hasErrors('phoneClient')}" th:errors="*{phoneClient}"></small><br>
+            <small style="color: red" th:if="${isExits2 == 1}">Số Điện Thoại Đã Tồn Tại</small><br>
             <label for="em">Email</label>
             <input id="em" type="text" placeholder="Ex:tuan123@gmail.com" th:field="*{emailClient}">
             <small style="color: red" th:if="${#fields.hasErrors('emailClient')}" th:errors="*{emailClient}"></small>
-<!--            <label for="ntns">Ngày Tháng Năm Sinh</label>-->
-<!--            <input id="ntns" type="date" th:field="*{date}">-->
+            <span style="color:red;" th:if="${isExits3 == 1}">Email Đã Tồn Tạ1</span><br>
+            <label for="ntns">Ngày Tháng Năm Sinh</label>
+            <input id="ntns" type="date" th:field="*{date}">
             <label for="cmnd">Số CMND:</label>
             <input id="cmnd" type="text" placeholder="Ex:123456789101" th:field="*{identifyClient}">
             <small style="color: red" th:if="${#fields.hasErrors('identifyClient')}" th:errors="*{identifyClient}"></small>
-            <input type="submit" class="button" value="Login">
+            <input type="submit" class="button" value="Register">
         </form>
         <div class="signup">
         <span class="signup">Do have an account?

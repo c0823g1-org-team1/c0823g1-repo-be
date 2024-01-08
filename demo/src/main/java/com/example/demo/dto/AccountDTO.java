@@ -1,6 +1,7 @@
 package com.example.demo.dto;
 
 
+import com.example.demo.model.Role;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -10,7 +11,7 @@ import lombok.Setter;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Getter
 @Setter
@@ -33,6 +34,7 @@ public class AccountDTO implements Validator {
     @Pattern(regexp = "[0-9]{12}",message = "Nhập đúng định dạng căn cước công dân 12 số")
     private String identifyClient;
     private Boolean isDelete;
+    private Role role;
 
     @Override
     public boolean supports(Class<?> clazz) {
