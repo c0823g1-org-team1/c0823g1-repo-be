@@ -28,7 +28,6 @@ public class Tour {
     private String description;
     private int adultPrice;
     private int childrenPrice;
-    private String tourGuide;
     private LocalDate departureDate;
     private LocalDate endDate;
     private int view;
@@ -40,6 +39,10 @@ public class Tour {
 
     @OneToMany(mappedBy = "tour")
     private Set<LocationTour> locationTours;
+
+    @ManyToOne
+    @JoinColumn(name = "tourGuild_id",referencedColumnName = "id")
+    private TourGuild tourGuild;
 
     public int numberView(int count) {
         int number = 0;
