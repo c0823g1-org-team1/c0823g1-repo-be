@@ -26,10 +26,8 @@ public class LocationTour {
     private String img;
     @Column(columnDefinition = "LONGTEXT")
     private String descriptionLocation;
-
+    private int tourDay;
     @ManyToOne
     @JoinColumn(name = "tour_id",referencedColumnName = "id")
     private Tour tour;
-
-
 }

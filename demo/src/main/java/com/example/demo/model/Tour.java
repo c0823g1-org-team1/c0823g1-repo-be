@@ -5,9 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.Date;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "tour")
@@ -31,6 +29,8 @@ public class Tour {
     private String tourGuide;
     private Date departureDate;
     private Date endDate;
+    private int view;
+    private int careAbout;
 
     @OneToMany(mappedBy = "tour")
     private Set<Booking> booking;
@@ -38,6 +38,22 @@ public class Tour {
 
     @OneToMany(mappedBy = "tour")
     private Set<LocationTour> locationTours;
+
+    public int numberView(int count) {
+        int number = 0;
+        if (count > 300) {
+            number = 10;
+        } else if (count > 200) {
+            number = 9;
+        } else if (count > 150) {
+            number = 8;
+        } else if (count > 100) {
+            number = 7;
+        } else {
+            number = 6;
+        }
+        return number;
+    }
 
 
 }
