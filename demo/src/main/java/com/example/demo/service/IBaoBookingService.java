@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 
+import java.sql.Date;
 import java.util.List;
 
 public interface IBaoBookingService {
@@ -23,4 +24,5 @@ public interface IBaoBookingService {
     List<Tour> findAllByOrderByAdultPriceAsc();
 
     List<Tour> findAllByOrderByAdultPriceDesc();
+    List<Tour> searchSaveMoney (Date date);
 }
