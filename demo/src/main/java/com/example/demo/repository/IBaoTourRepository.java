@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import javax.xml.crypto.Data;
+import java.sql.Date;
 import java.util.List;
 
 @Repository
@@ -17,10 +19,10 @@ public interface IBaoTourRepository extends JpaRepository<Tour, Integer> {
 //            "where r.id = :id",nativeQuery = true)
 //    TourDTO findIdTour(@Param("id") int id);
 //    like concat('%', :content ,'%')"
-//    @Query(value = "select * from tour t where t.adult_price = :price ",nativeQuery = true,
-//            countQuery = "select count(*) from (select * from tour t where t.adultPrice = :price) temp")
-//    Page<Tour>getAllTour(@Param("price") int price, Pageable pageable);
-    List<Tour> findAllByOrderByAdultPriceAsc();
 
+    List<Tour> findAllByOrderByAdultPriceAsc();
     List<Tour> findAllByOrderByAdultPriceDesc();
+    @Query(value = "select * from tour t where t.adult_price <= 500000 and t.departure_date = :date ",nativeQuery = true)
+    List<Tour> searchSaveMoney (@Param("date") Date date);
+
 }

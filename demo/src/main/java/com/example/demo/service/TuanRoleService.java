@@ -16,8 +16,8 @@ public class TuanRoleService implements ITuanRoleService{
         return roleRepository.findAll();
     }
 
-    @Override
-    public Role findById(int id) {
+    @Override    public Role findById(int id) {
         return roleRepository.findById(id).get();
     }
+
 }

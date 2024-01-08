@@ -5,9 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.time.LocalDate;
 import java.util.*;
 
 @Entity
@@ -30,8 +27,8 @@ public class Tour {
     private int adultPrice;
     private int childrenPrice;
     private String tourGuide;
-    private LocalDate departureDate;
-    private LocalDate endDate;
+    private Date departureDate;
+    private Date endDate;
     private int view;
     private int careAbout;
 
@@ -57,5 +54,6 @@ public class Tour {
         }
         return number;
     }
+
 
 }

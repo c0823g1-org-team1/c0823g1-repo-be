@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 
 @Service
@@ -52,8 +53,9 @@ public class BaoBookingService implements IBaoBookingService {
         return baoTourRepository.findAllByOrderByAdultPriceDesc();
     }
 
-//    @Override
-//    public Page<Tour> getAllTour(int price, Pageable pageable) {
-//        return baoTourRepository.getAllTour(price,pageable);
-//    }
+    @Override
+    public List<Tour> searchSaveMoney(Date date) {
+        return baoTourRepository.searchSaveMoney(date);
+    }
+
 }
