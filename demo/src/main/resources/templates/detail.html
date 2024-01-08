@@ -18,7 +18,6 @@
 	<script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-P3D5RK"></script>
 	<script
 		type="text/javascript">!function (e, t, a, n, g) { e[n] = e[n] || [], e[n].push({ "gtm.start": (new Date).getTime(), event: "gtm.js" }); var m = t.getElementsByTagName(a)[0], r = t.createElement(a); r.async = !0, r.src = "https://www.googletagmanager.com/gtm.js?id=GTM-P3D5RK", m.parentNode.insertBefore(r, m) }(window, document, "script", "dataLayer")</script>
-	<link rel="stylesheet" href="index.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 	integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
 	crossorigin="anonymous" referrerpolicy="no-referrer"/>
@@ -134,50 +133,6 @@
 		}
 	</style>
 	<style>
-		.slide-show {
-			width: 500px;
-			overflow: hidden;
-			position: relative;
-		}
-		.list-images {
-			display: flex;
-			transition: 0.5s;
-		}
-		.btn:hover {
-			color: white;
-		}
-		.btn {
-			font-size: 45px;
-			color: #999;
-			position: absolute;
-			top: 50%;
-			transform: translateY(-50%);
-			transition: 0.5s;
-			cursor: pointer;
-		}
-		.btn-left {
-			left: 0;
-		}
-		.btn-right {
-			right: 0;
-		}
-		.index-images {
-			position: absolute;
-			bottom: 10px;
-			display: flex;
-			left: 50%;
-			transform: translateX(-50%);
-		}
-		.index-item {
-			border: 2px solid #999;
-			padding: 10px;
-			margin: 3px;
-			border-radius: 50%;
-		}
-		.active {
-			background-color: #999;
-		}
-
 		 /* Foooter */
 		 .icon-footer {
             margin-top: 20px;
@@ -259,7 +214,6 @@
 			height: 25px;
 			width: 120px;
 			border: 1px solid #544d4d;
-			/*font-family: "Gabriola";*/
 			background-color: transparent;
 		}
 
@@ -895,10 +849,9 @@
 		.day:before {
 			border-left: 0.5px dashed #2d4271;
 			content: "";
-			height: 73%;
-			left: 123px;
+			height: 30%;
+			left: 63px;
 			position: absolute;
-			top: 122%;
 			z-index: 0;
 		}
 			.date-center {
@@ -916,6 +869,59 @@
 			position: relative;
 			width: 24px;
 			z-index: 1;
+		}
+		.short-rating {
+			display: flex;
+			margin-left: 65px;
+		}
+		.s-rate {
+			align-items: center;
+			display: flex;
+			margin-right: 22px
+		}
+		.newspan {
+			align-items: center;
+			background: #fdc432;
+			border-bottom-right-radius: 5px;
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+			color: #2d4271;
+			display: flex;
+			font-size: 25px;
+			font-weight: 700;
+			height: 50px;
+			justify-content: center;
+			line-height: 20px;
+			margin-right: 11px;
+			position: relative;
+			width: 65px;
+		}
+		.newspan::before {
+			border-right: 10px solid transparent;
+			border-top: 10px solid #fdc432;
+			content: "";
+			display: block;
+			height: 0;
+			left: 0;
+			position: absolute;
+			top: 100%;
+			width: 0;
+			z-index: 1;
+		}
+		.newP {
+			color: #2d4271;
+			font-size: 13px;
+			margin: 0;
+		}
+		.s-wishlist {
+			align-items: center;
+			background: #fff;
+			border: 0.5px solid #d5d5d5;
+			border-radius: 5px;
+			display: flex;
+			height: 50px;
+			justify-content: center;
+			width: 112px;
 		}
 	</style>
 </head>
@@ -940,7 +946,7 @@
 					<div class="container__header-option">
 						<div class="menu">
 							<ul style="list-style: none; font-family: Roboto,sans-serif;" class="list-option">
-								<li><a href="" class="hover">Trang Chủ</a></li>
+								<li><a th:href="@{/home}" class="hover">Trang Chủ</a></li>
 								<li><a href="" class="hover">Thông Tin</a></li>
 								<li><a href="" class="hover">Địa Điểm</a></li>
 								<li><a href="" class="hover">Hổ Trợ</a></li>
@@ -960,6 +966,11 @@
 							<div class="col-md-6 col-12 left">
 								<div class="warp-mark"></div>
 								<h1 th:text="${tours.getName()}" style="margin-left: 60px;font-size: 38px;font-weight: 600;color: orange"></h1>
+								<div class="short-rating">
+									<div class="s-rate">
+										<span th:text="${tours.numberView(tours.getCareAbout())}" class="newspan"></span>
+										<div class="s-comment">Tuyệt vời<p class="newP" th:text="${tours.getCareAbout()}">quan tâm</p></div></div><div class="s-wishlist"><i style="color: #e01600;
+    font-size: 22px;" class="fas fa-heart"></i><label style="margin-left: 8px;" th:text="${tours.getView()}"></label></div></div>
 							</div>
 							<div class="col-md-6 col-12 right">
 								<div class="group-price">
@@ -998,13 +1009,13 @@
 						</div>
 					</section>
 					<section class="section-07-map mb-5">
-						<div class="container">
+						<div style="position: relative" class="container">
 							<div th:each="location:${locations}"  class="row">
 								<div class="col-md-4 d-none d-md-block col-12 left">
 									<div  class="go-tour">
 										<div class="day day-001">
 											<div class="wrapper"><span class="date-left">Ngày</span><span
-											th:text="${location.getId()}" class="date-center "></span><span class="date-right"><span
+											th:text="${location.getTourDay()}" class="date-center "></span><span class="date-right"><span
 														class="date"></span> <span th:text="${location.getDate()}"></span>
 												<span class="location" th:text="${location.getLocation()}"></span>
 											</span>
@@ -1014,7 +1025,7 @@
 								</div>
 								<div class="col-md-8 col-12 right timeline-section">
 									<div >
-										<h3 style="font-weight: bold" id="day-00">Ngày <span  th:text ="${location.getId()}"></span>
+										<h3 style="font-weight: bold" id="day-00">Ngày <span  th:text ="${location.getTourDay()}"></span>
 										</h3>
 										<div class="excerpt"><span class="line"></span>
 											<div>

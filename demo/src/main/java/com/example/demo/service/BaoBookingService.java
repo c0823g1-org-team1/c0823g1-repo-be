@@ -8,6 +8,8 @@ import com.example.demo.repository.IBaoTourRepository;
 
 import com.example.demo.repository.IBaoLocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,9 +38,22 @@ public class BaoBookingService implements IBaoBookingService {
     }
 
     @Override
-    public Booking findBookingId(int id) {
-        return baoBookingRepository.findBookingId(id);
+    public void saveTour(Tour tour) {
+        baoTourRepository.save(tour);
     }
 
+    @Override
+    public List<Tour> findAllByOrderByAdultPriceAsc() {
+        return baoTourRepository.findAllByOrderByAdultPriceAsc();
+    }
 
+    @Override
+    public List<Tour> findAllByOrderByAdultPriceDesc() {
+        return baoTourRepository.findAllByOrderByAdultPriceDesc();
+    }
+
+//    @Override
+//    public Page<Tour> getAllTour(int price, Pageable pageable) {
+//        return baoTourRepository.getAllTour(price,pageable);
+//    }
 }

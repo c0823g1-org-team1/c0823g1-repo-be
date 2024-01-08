@@ -10,23 +10,23 @@ values ("2001-02-11","admin@gmail.com",191918176,0,"admin","admin","123456","012
  
 
 
-insert into tour (adult_price,children_price,description,image, is_delete, name,quantity, tour_guide,departure_date,end_date)
-values(500000,300000,"Sapporo là thành phố đăng cai tổ chức Thế vận hội mùa đông đầu tiên ở châu Á vào năm
+insert into tour (adult_price,care_about,children_price,description,image, is_delete, name,quantity, tour_guide,departure_date,end_date,view)
+values(500000,300,300000,"Sapporo là thành phố đăng cai tổ chức Thế vận hội mùa đông đầu tiên ở châu Á vào năm
                                 1972 và Lễ hội tuyết Sapporo hàng năm làm du khách từ khắp nơi trên thế giới không khỏi
                                 ngây ngất. Sắc xanh của cây lá và hình ảnh trăm hoa đua nở ở Sapporo vào những mùa khác
                                 cũng không kém phần ngoạn mục. Thành phố trẻ và rộng mở này cũng nổi tiếng về bia, thịt
-                                bò, mì ramen, hải sản và rau củ tươi.","https://res.cloudinary.com/jnto/image/upload/w_750,h_503,fl_lossy,f_auto/v1515928028/hokkaido/Hokkaido1368_2",0,"Tour Sapporo",15,"Bao","2024-1-10","2024-1-14"),
-                                (600000,400000,"Là trung tâm chính quyền ở Osaka, Nakanoshima là lát cắt đẹp mắt và được thiết kế phù
+                                bò, mì ramen, hải sản và rau củ tươi.","https://res.cloudinary.com/jnto/image/upload/w_750,h_503,fl_lossy,f_auto/v1515928028/hokkaido/Hokkaido1368_2",0,"Tour Sapporo",15,"Bao","2024-1-10","2024-1-14",50),
+                                (600000,200,400000,"Là trung tâm chính quyền ở Osaka, Nakanoshima là lát cắt đẹp mắt và được thiết kế phù
                                 hợp của thành phố. Nakanoshima là nơi có tòa thị chính, một số bảo tàng và các công
                                 trình lịch sử
                                 và công viên xinh đẹp để đi dạo. Hãy đến đây khi thời tiết ôn hòa để tận hưởng
                                 chuyến tản bộ thư giãn, dừng chân tại các bảo tàng và nhiều điểm tham quan trên đường
-                                đi.","https://songhantourist.com/upload/articles-images/images/Ve-dep-hien-dai-va-yen-binh-tai-osaka-nhat-ban.jpg",0,"Osaka",20,"Hai","2024-2-10","2024-2-14"),
-                                (700000,500000,"Thành phố Kyoto thu hút hàng triệu du khách địa phương và quốc tế mỗi năm đến đây để tìm
+                                đi.","https://songhantourist.com/upload/articles-images/images/Ve-dep-hien-dai-va-yen-binh-tai-osaka-nhat-ban.jpg",0,"Osaka",20,"Hai","2024-2-10","2024-2-14",40),
+                                (700000,100,500000,"Thành phố Kyoto thu hút hàng triệu du khách địa phương và quốc tế mỗi năm đến đây để tìm
                                 kiếm văn hóa Nhật Bản truyền thống.
                                 Nổi tiếng là nơi gìn giữ vẻ đẹp hoàng gia của Đế Quốc Nhật những năm 794-1868, thành phố
                                 Kyoto ngày nay vẫn còn lưu giữ những ngôi nhà, cung điện, đền chùa mang đậm phong cách
-                                thiết kế truyền thống lịch sử.","https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Pedestrian_road_with_pavements%2C_paper_umbrellas_and_people_in_yukata%2C_Higashiyama-ku%2C_Kyoto%2C_Japan.jpg/250px-Pedestrian_road_with_pavements%2C_paper_umbrellas_and_people_in_yukata%2C_Higashiyama-ku%2C_Kyoto%2C_Japan.jpg",0,"Kyoto",10,"Giau","2024-3-10","2024-3-14");
+                                thiết kế truyền thống lịch sử.","https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Pedestrian_road_with_pavements%2C_paper_umbrellas_and_people_in_yukata%2C_Higashiyama-ku%2C_Kyoto%2C_Japan.jpg/250px-Pedestrian_road_with_pavements%2C_paper_umbrellas_and_people_in_yukata%2C_Higashiyama-ku%2C_Kyoto%2C_Japan.jpg",0,"Kyoto",10,"Giau","2024-3-10","2024-3-14",30);
                                 
 insert into location_tour (date,description_location,img,is_delete,location,type_tour,tour_id)
 VALUES ('2001-02-11 00:00:00.000000',"Từ khách sạn, bạn sẽ được đưa đến Vườn thú Asahiyama để xem hơn 700 con thú khác nhau đại diện cho khoảng 124 loài. Nơi đây có một đường hầm bằng kính đi xuyên qua hồ chim cánh cụt, cũng như các trụ bằng kính nhỏ nằm ngay giữa chuồng gấu bắc cực và sói để bạn có thể ngắm nhìn các loài động vật tuyệt đẹp này ở một khoảng cách gần hơn. Ngoài ra, nếu đến đây tham quan vào mùa đông, bạn còn có cơ hội xem Penguin Walk nữa đấy. Sau khi tham quan sở thú, bạn sẽ tiếp tục hành trình đi ngang qua con đường Pathwork Road, trước khi đến thăm Vườn hoa Kamifurano hoặc Trang trại Tomita, tùy theo mùa. Thật tuyệt vời đúng không nào!",
