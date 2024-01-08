@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+            integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <style>
+        :root {
+            --main-color: #FDE0FF;
+        }
+        /* Header */
+        ul{
+            list-style: none;
+        }
+        li{
+            list-style: none;
+        }
+        .container__header {
+            width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+
+        }
+
+        .logo {
+            display: inline-block;
+        }
+
+        .logo img {
+            width: 100px;
+            background-color: transparent;
+        }
+
+        .container__header-option {
+            float: right;
+            box-sizing: border-box;
+            margin-top: 26px;
+
+        }
+
+        .menu {
+            display: flex;
+        }
+
+        .list-option {
+            display: flex;
+        }
+
+        .hover {
+            font-size: 22px;
+            display: inline-block;
+            padding: 0 18px;
+            font-weight: 900;
+            color: black;
+            position: relative;
+        }
+
+        .button-search {
+            background: transparent;
+            border: none;
+            margin-right: 10px;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+
+        .fa-solid {
+            width: 17px;
+        }
+
+        .input {
+            border-radius: 5px;
+            height: 25px;
+            width: 120px;
+            border: 1px solid #544d4d;
+            /*font-family: "Gabriola";*/
+            background-color: transparent;
+        }
+
+        .search {
+            display: flex;
+            align-items: center;
+            margin-left: 140px;
+
+        }
+
+        .hover::before,
+        .hover::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #9EA91C;
+            bottom: -5px;
+            transition: 0.25s ease;
+        }
+
+        .hover:hover::before,
+        .hover:hover::after {
+            width: 50%;
+        }
+
+        :before {
+            left: 0;
+        }
+
+        a:after {
+            right: 0;
+        }
+
+        /* Big img */
+        .big-img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .big-img::before {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url(https://vcdn1-dulich.vnecdn.net/2022/03/22/Nhatban-5-1647922627.jpg?w=460&h=0&q=100&dpr=2&fit=crop&s=FD5C7QjV62sXwZEb9eu-Tg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            z-index: -1;
+            animation: Inout 5s infinite;
+        }
+
+        @keyframes Inout {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .big-img::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            opacity: 0.01;
+            z-index: -1;
+        }
+
+        .big-img-content {
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .big-img-content h2 {
+            font-size: 50px;
+
+        }
+
+        .big-img-content p {
+            font-size: 30px;
+            font-weight: 600;
+            color: #302d2d;
+        }
+
+        .big-img-btn {
+            background-color: transparent;
+            padding: 15px 30px;
+            border: 2px solid var(--main-color);
+            border-radius: 50px;
+            color: rgb(215, 96, 96);
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .big-img-btn:hover {
+            background-color: #FDE0FF;
+
+        }
+
+        /* Body */
+        .body__content {
+            display: block;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .contain__body {
+            max-width: 1140px;
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .content-contry {
+            width: 60%;
+            padding-right: 50px;
+        }
+
+        .contain__body-content {
+            display: flex;
+        }
+
+        .content-contry h3 {
+            font-weight: bold;
+            font-size: 28px;
+            margin: 0;
+        }
+
+        .content-contry h2 {
+            margin: 0;
+        }
+
+        .content-contry p {
+            color: #555;
+            font-size: 20px;
+            line-height: 1.8rem;
+            margin-top: 15px;
+        }
+
+        .content-img {
+            width: 40%;
+        }
+
+        .content-img img {
+            max-width: 100%;
+        }
+
+        .content-img-2 {
+            width: 50%;
+            padding-right: 50px;
+            flex-wrap: wrap;
+            display: flex;
+            justify-content: center;
+        }
+
+        .content-img-2 img {
+            max-width: 100%;
+        }
+
+        .content-contry-2 {
+            width: 40%;
+            padding-right: 50px;
+        }
+
+        .content-contry-2 h3 {
+            font-weight: bold;
+            font-size: 28px;
+            margin: 0;
+        }
+
+        .content-contry-2 h2 {
+            margin: 0;
+        }
+
+        .content-contry-2 p {
+            color: #555;
+            font-size: 20px;
+            line-height: 1.8rem;
+            margin-top: 15px;
+        }
+
+        .content-img-2 img {
+            width: 45%;
+            padding: 5px;
+        }
+
+        .title {
+            text-align: center;
+        }
+
+        .title-sub {
+        }
+
+        .title-text {
+            font-size: 28px;
+        }
+
+        .top-text {
+            font-size: 20px;
+        }
+
+
+        /*areaInsta*/
+        .areaInsta {
+            background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSflxr45R3hPw8GB_MBgyLRbvouRI2NsJCjhw&usqp=CAU) no-repeat;
+            background-size: cover;
+        }
+
+        .areaInsta .container__header .boxTitle {
+            text-align: center;
+            padding-top: 30px;
+        }
+
+        .boxTitle h2 {
+            margin: 10px 0;
+        }
+
+        .boxTitle h3 {
+            margin: 0;
+        }
+
+        .areaInsta .container__header .boxFeature {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 44.5px 0 0 1px;
+            padding-bottom: 142px;
+        }
+
+        .areaInsta .container__header .boxFeature li {
+            width: 323px;
+            overflow: hidden;
+        }
+
+        .areaInsta .container__header .boxFeature li a:hover img {
+            transform: scale(1.2);
+            transition: .25s all linear;
+        }
+
+        .areaInsta .container__header .boxFeature li a {
+            display: block;
+        }
+
+        .areaInsta .container__header .boxFeature li:not(:nth-child(3n)) {
+            margin-right: 15px;
+        }
+
+        .areaInsta .container__header .boxFeature li:nth-child(n+4) {
+            margin-top: 14px;
+        }
+
+        .img-insta {
+            max-width: 100%;
+            height: auto;
+            vertical-align: top;
+            border: 0;
+        }
+
+
+        /* Tour */
+        .title {
+            font-weight: normal;
+            padding-bottom: 5px;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .title-span {
+            font-size: 2rem;
+            color: #ff5205;
+            font-weight: bold;
+        }
+
+        .title-sub {
+            color: #dd0010;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding-bottom: 10px;
+        }
+
+        .top-text {
+            padding-top: 20px;
+            text-align: center;
+            line-height: 2.1rem;
+            font-size: 0.95rem;
+        }
+
+        .page-item {
+            display: flex;
+            justify-content: center;
+            column-gap: 30px;
+            padding-top: 30px;
+            margin-bottom: 50px;
+        }
+
+        .list {
+            height: 100%;
+            width: 30%;
+        }
+
+        .img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .list-body__title {
+            font-size: 30px;
+            font-weight: bold;
+            line-height: 15px;
+            color: #ff5205;
+        }
+
+        .list-body {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #e6e6e6;
+            padding-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .list-body::after {
+            width: 2rem;
+            height: 1px;
+            background: #12896f;
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            display: block;
+            transition: all 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+        }
+
+        .list-footer__link {
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            color: #12896f;
+        }
+
+        .icon {
+            width: 8%;
+            margin-left: 10px;
+        }
+
+        /* Foooter */
+        .icon-footer {
+            margin-top: 20px;
+        }
+
+        .icon-footer i {
+            margin: 0 5px;
+        }
+
+        .contain-map {
+            height: 541.65px;
+            width: 100%;
+            margin: 30px auto 0;
+            text-align: center;
+        }
+
+        .contain-map img {
+            width: 70%;
+            position: relative;
+            z-index: 1;
+        }
+
+        body {
+            /*font-family: "Gabriola";*/
+            background-color: #fffbf0;
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #1c1c1c;
+
+        }
+
+        #header {
+            position: fixed;
+            padding-top: 5px;
+            z-index: 999;
+            width: 100%;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>Document</title>
+</head>
+
+<body style="margin: 0  !important;">
+<!-- Hedear -->
+<div id="header" class="top">
+    <div class="container__header">
+        <a href="#" class="logo">
+            <img style="background:transparent;"
+                 src="https://png.pngtree.com/png-clipart/20190920/original/pngtree-japanese-logo-decoration-illustration-png-image_4609124.jpg"
+                 alt="">
+        </a>
+        <div class="container__header-option">
+            <div class="menu">
+                <ul style="list-style: none !important;" class="list-option">
+                    <li><a href="" class="hover">Trang Chủ</a></li>
+                    <li><a href="" class="hover">Thông Tin</a></li>
+                    <li><a th:href="@{/home/hottour}" class="hover">Địa Điểm</a></li>
+                    <li><a href="" class="hover">Hổ Trợ</a></li>
+                </ul>
+                <div class="search">
+                    <a th:href="@{/account/login}" class="hover">Đăng Nhập</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Big-img -->
+<section class="big-img">
+    <div class="big-img-content">
+        <h2>Tour Japand</h2>
+        <p>Chào mừng tới bình nguyên vô tận</p>
+        <!-- <button class="big-img-btn">Show</button> -->
+    </div>
+</section>
+<section class="body__content">
+    <div class="contain__body">
+        <div class="contain__body-content">
+            <div class="content-contry">
+                <h3>Những điều nên làm ở Nhật</h3>
+                <h2>日本でやるべきこと</h2>
+                <p>
+                    Tắm suối nước nóng onsen là một văn hóa lâu đời ở đất nước mặt trời mọc. Nhật Bản được đánh
+                    giá là quốc gia có nguồn khoáng nóng dồi dào hàng đầu trên thế giới. <br>
+                    Thung lũng Owakudani là một miệng núi lửa được hình thành từ đợt phun trào cuối của núi lửa
+                    Hakone từ cách đây khoảng 3.000 năm. <br>
+                    Và một trong những trải nghiệm thú vị ở Nhật “đốn tim” mọi du khách chính là tận mắt chiêm
+                    ngưỡng núi Phú Sĩ “trong truyền thuyết”. Đây là “sản phẩm” của quá trình phun trào liên tục của
+                    núi lửa
+                    khoảng 100.000 năm trước. <br>
+                    Chùa Thanh Thuỷ hay Chùa Kiyomizu được xây dựng từ năm 778 - một ngôi chùa cổ kính nhất cố đô
+                    Kyoto.
+                    Trong chùa có 3 dòng thác thiêng để cầu tình duyên, trường thọ, học hành thành đạt. <br>
+                    Rừng tre Sanago được đánh giá là một trong những khu rừng đẹp nhất ở Nhật. Khu rừng này có diện
+                    tích khoảng 16km2 là “lá phổi xanh” của Kyoto. <br>
+                    Khám phá lâu đài Osaka cổ kính cũng là một trải nghiệm thú vị ở Nhật khó có thể quên. Đây được
+                    coi là biểu tượng của thành phố Osaka và là một trong "tam đại danh thành của Nhật Bản".
+                </p>
+            </div>
+            <div class="content-img">
+                <img src="https://img.freepik.com/premium-vector/japan-landmark-travel-map-flat-design-elements_372699-98.jpg?w=2000"
+                     alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="body__content">
+    <div class="contain__body">
+        <div class="contain__body-content">
+            <div class="content-img-2">
+                <img src="https://www.mitaco.net.vn/wp-content/uploads/2022/12/dieu-ban-phai-biet-khi-su-dung-xe-dap-o-nhat-ban-1.jpg"
+                     alt="">
+                <img src="https://www.vietnambooking.com/wp-content/uploads/2017/04/du-lich-nhat-ban-19-04-2017-2.jpg"
+                     alt="">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJtJqkpHvpzHIDrIeqsfnUhJB3lVKYBIG4Dg&usqp=CAU"
+                     alt="">
+                <img src="https://www.vietnambooking.com/wp-content/uploads/2017/04/du-lich-nhat-ban-19-04-2017-3.jpg"
+                     alt="">
+            </div>
+            <div class="content-contry-2">
+                <h3>Phương tiện du lịch ở Nhật</h3>
+                <h2>日本国内の移動手段</h2>
+                <p>
+                    Thông thường các du khách khi du lịch nước ngoài đến Nhật Bản thường di chuyển bằng tàu Japan
+                    Rail Pass (tàu JR).
+                    Bạn nên mua tấm vé siêu rẻ Seishu Juuhachi Kippu để thoải mái vi vu với các chuyến đi dài nhé.
+                    <br>
+                    Xe bus được nhiều du khách và cả người dân địa phương đánh giá là phương tiện đi lại có giá
+                    thành rẻ nhất Nhật Bản.
+                    Một chuyến xe bus thường có giá khoảng 150 tới 250 yên (khoảng 30.000 đến 50.000 VNĐ). Xe bus
+                    đường dài cũng chỉ có
+                    giá từ 500 yên (từ 100.000 VNĐ trở lên). <br>
+                    Nếu muốn đến những địa điểm gần hoặc di chuyển trong thành phố thì có lẽ taxi là lựa chọn thích
+                    hợp nhất. Tuy giá
+                    thành của phương tiện này khá đắt đỏ nhưng đổi lại sẽ tiết kiệm tối đa thời gian và tránh tình
+                    trạng quá tải, ùn tắc. <br>
+                    Xe buýt đường dài và dịch vụ tàu hỏa địa phương là các phương tiện đi lại có chi phí thấp khác.
+                    Hãy cân nhắc cả lựa
+                    chọn đi xe buýt chạy ban đêm để tiết kiệm tiền phòng một đêm. <br>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="sightseeing ">
+    <div class="list__banner" style="
+                      background: linear-gradient(
+                          rgba(0, 0, 0, 0.4),
+                          rgba(0, 0, 0, 0.2)
+                        ),
+                        url(https://lightboat.lightworks.co.jp/vn/wp-content/uploads/2023/07/赤富士.jpg) center/ cover fixed;
+                      height: 400px;
+                    "></div>
+    <div class="contain__body">
+        <div class="list__item">
+            <div class="title">
+                <h2 class="title-text">
+                    Những điểm du lịch ở nhật bản
+                </h2>
+                <h3 class="title-sub">日本の観光名所</h3>
+                <p class="top-text">
+                    Xứ sở hoa anh đào nổi tiếng với những cảnh quan thơ mộng, nơi có loài hoa đào hồng rực cả
+                    một góc trời tạo nên không gian trữ tình làm xiêu lòng bất cứ du khách nào. Hơn nữa, với
+                    những công trình kiến trúc kì vĩ như những đền thờ, ngôi chùa đầy tính tôn giáo, những bảo
+                    tàng hay khu vườn truyền thống đậm nét văn hoá xứ phù tang luôn có sức hút lớn với những
+                    tín đồ ưa thích khám phá.(Núi Phú Sĩ, Tháp Tokyo, Lâu đài Himeji, Đền Kinkaku-ji, Quần thể kiến
+                    trúc Phật giáo Horyuji).
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="contain-map">
+        <img src="https://www.tugo.com.vn/wp-content/uploads/Có-rất-nhiều-loại-bản-đồ-du-lịch-dành-cho-du-khách-đến-Nhật-Bản.png"
+             alt="">
+    </div>
+</section>
+
+
+<!-- List Tour -->
+<section class="body__content">
+    <div class="contain__body">
+        <div class="title center">
+            <h2 class="title-text">
+                <span class="title-span">Tour Japan</span>
+            </h2>
+            <h3>ツアージャパン</h3>
+            <p class="top-text">
+                Nếu bạn đang băn khoăn lần đầu tiên đến thăm nơi nào ở Nhật bản, chúng tôi khuyên bạn nên lên kế
+                hoạch này! <br/>Nhật Bản, thành phố lớn phát triển rực rỡ như một
+                thành phố thương mại, có rất nhiều điểm tham quan hấp dẫn! Hướng dẫn viên tiếng Việt của chúng tôi
+                sẽ hướng dẫn bạn một cách hiệu quả đến các điểm du lịch ở thành phố Nhật.
+                Bạn có thể nhìn thấy những điểm nổi bật của thành phố Nhật Bản một cách hiệu quả trong nửa ngày và
+                cũng có thể ghé thăm các cửa hàng lưu niệm, lý tưởng để lên kế hoạch cho kỳ nghỉ của bạn vào ngày
+                bạn đến hoặc vào ngày cuối cùng của bạn.
+            </p>
+        </div>
+        <div class="page-item">
+            <div th:each="list,count:${tour}" class="page-item__list list">
+                <div class="list-img">
+                    <img class="img"
+                         th:src="${list.getImage()}"
+                         alt=""/>
+                    <div class="overplay"></div>
+                </div>
+                <div class="list-body">
+                    <h3 th:text="${list.getName()}" class="list-body__title"></h3>
+                    <p th:text="${list.getDescription()}" class="list-body__des text">
+                    </p>
+                </div>
+                <div class="list-footer">
+                    <div class="list-footer__link">
+                        <a th:href="@{/home/detail/{id}(id=${list.getId()})}">Đặt Tour</a>
+                        <img class="icon"
+                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAqFBMVEX////t7e319fXu7u729vbs7Ozr6+vp6en+vID4tnrx8fH7uX7/voP1+Pr+vH/t8PL5snL+uXr4tHX+uHb+wIj6sGz+xpX5wI/q7/P1yKP//frv6uf5xZf4uoX16uD+3sLy3Mv0zq/+7uDy1Lz+zaH99/D+1K/+48vw4dXw18P+6df207b/tnH607L1yqf2xJz4qGHs3tX/xY79z6byvY7/3L3/ypzuz7fv49NXAAAR90lEQVR4nO2dCX+iOheHZb0sQgKIUimupW6tzthlvv83e4MsLpAQIGbazuvvzsy5EpMcF57zP9l6kiQJcg89lB9q9P7v4bc3egJ6nCwVGeIPNHqyLIti9peY/vWjjPRzlJG/amKIP88QeqklSUrq6o8zpH/FQ1VV0o9VVZT/fpah9NAf9XTP+e+HGlc8lL4Avu5IfPVrdOg+xM8QKUlfANB3In6KR1H+5ugXxfKl9HMsEMkc/bLEle+SULqUEr8AiCixJpJh8KSfIZQuSff2UOLpYVVbOfELRDJGv6waHPkuKULpUhXxVVbMRT8LfnxXM0OSSMRna0iSYXCkX9oW+lXw0/ioMY5BkpHCnEz8syGxUP3JrY0b3/OPjkj8C6Mz+uW0Dm5C/hSsiHI98VmRWlayGzcn0Etpnw2sxr8LfKV71VxCrpR7iFfAf1+JF31t/iqx8JCo8cv0bIv+7FvKT8jLkkLqKlHjt0O/Kqj353tuqGoubuk0PhvDyEIZDhhU87yEWgL9HYmv4uHLE/Q1xO+IfoNFwEAVVBj1bVUT/wL9TeArpw+x2as6GFloQgwGTl6yEum8RwdSWqDwtzarzw5oAleKpm8rOY3AmPiGwS2UEZE2S3MWBrEwnvitQI9+3hxBn31LBQZZfRr0J/XINWVYGhkSGmb1uyl6rvlsqYgu6gp/Vw/pjRriU6H/+u1khnUJe0kxDPqgoob4NKq/eHBS9HlvKOX/ycuO+Xm5gC8fRZ9CQiKCnj3xuSl6gajo70V8sspmbhSfIb2HjbBecQnV80VG7X/MOL5wm7rnQXzOBr3I/q4e0idKaIn/fQ1a4mNS9zyEfLe26IlfxVx+ir5Qni1n7jUlUiZzUaNqm5dzRW4b4iNxXSh6bjmLPEZr6WEzjArSGfQc5/upnIkvCdz4rhZD87nwbT9zr4FhGNzoJxRtGW0mBrT0UOLoodTRw3bEF5grelJb2eCE1ETadyG+fPngQPzr9ngQXzIKHhr8iC/xI74onD3kl8NvnU1vQXzxHNNwUfRMPGyIUTXP4fMcrG8bXXxTjc+D+N/H+Ac8pCU+HrVMpvlVZ/VZ1Eyd1Sdl0e8h9tvxvQvxE+GrYMrcQexL7fjehfhiMiGWtjADg1VbVMTP4yb+HpLWDjDP6svom0NgLlOxj3qWDWbxyuorgqTUKnGV2YQ9Jb2FMkojUPFQRUEhR46xneFP5aGUTx/j4qFgiNkzwGLhIQ3x0U+QRlwzQb9igNQxFczmr9PVdhES0I8f66cnfiNxndgdAH16+WS2e317epJF69VzXNeFI0uWJ6Jl3Yn4skHkMlPQWwDdQ1e25+i6CZe93vYl8dD9RJce4eMybFVzLfFFjkJ+sgeG0Bv2HRdCPer1xqvpfH8YPaFLfd11/eM07jVeWF9PfAmfugdgHbLzcDGE7hqovdXn23IWpoM/FkAP9G/sQlfXbaffHP00xMeB3vo9+vW7dKmlEo+fPNscuWH6dS1P9V/PI9/2pr1kCd5NeNCB+KqiErLowdKznW15Up+qtEB//MvVzcFwOybMEoz/RBMUeGwZEl8irdAHS2hrzhRUvlzEvarKOLHhHer7SU1/AECFp/4zO+ILpJl/ITQ1zX6u9LDRXP1gOUVG+BACisJg5mnOUQWsiE9YXgfmbuLhMOiozSXwAF9WSYVUS/mk2cCxbXRH6q7x5QLe1Ty1RrqJHrpVmRCgRr9sDF3Te6CGOHo8OqbpzaybSyLuVTjiy4KBVfSpMbBNXdf9cXUZ9BWhiAokZTxwNLgE+cSAukaTMuAA+95nj3ZdAJb4Rs3yurGnJR7CBbZM7ioJVqDv2M4aFMMEEs2wefDw8sGA+FLNLITYST1ckduw1iGpeWExcGIrX0cvUg7WC9seC40vkCfjLbx+4qH7gS1z6uv01xo3ex+FRIHaG8dJ4NJmhv9EoEJ/JfEpxHUwgzq6l2r2OyCMv4cRdD4qL4EgXE+fh1sVLKPD62obN5y5N9lDm7JwBQ8ligVhs0g/eahFeDQJE+ia9mfFpfFyf3jYbT1nhVoPJ6uPt4E/AxK93gXv0Ezeu5bERw7WKPrpAOqZhzDEhyA7VMbWxtfIFldxbzyRkMx9cpxYyfMjoSCFjwtaD6XQN20nbk38fKcATHp/4TiannnYh3j4gr0bmZq3uLg02cx3i9MXWAAbDwXSF8sxwabvv40pEwIo4LCdpzYav57Ucugi0id/Tg93aeEKW3sUTJvuziqeCUMk1fP/MZ3RqbX8VaIlb2A/pJ1XgNqGa7kM+ttnbogvG1VL2m+YG/k+/DjaJ1ro2hu+8JOmmZEegcp6nl1/AjKIZ43KIIz8mNx6YaygDmFNmQriiwS9exa+6zDoDbTMwwG+8DB5FyL4u7Ket5c5KKKL4hI42GM6mlvRaEejv2934KHZKUBCPRtr2WfYR793XOH0XTDn1fVMwiqRDp5jynhFAaAl8anS6SikyT3c4sqM7bSMWV1PsWa/TOqOMwTkWuKr9Rj9DbN7qe7uA3IZ25nP3/9YN2X+A7fPnI1UCtPQPNy0Ij7N1nSzwkPdDDDhwcbNmOm681t1C6Joi2si9B9rWs+M1afrr2uHG1qO428yDxEY/RBTZp97qEdBKUiK4BTXBFj6W6puDB0dvXd14VermXvjVUF8JC82VqkMqjpeuUUZNxJuyoDMw6omJGAeqbqx9VALQV3Cv/HMPdkSX8/ARw/nYN2UsSxjNXSvykQT6zqWGMGlhWvCWvoTmv6IfUT9SdesftmYuugb2tfye6mmOZfj+MltevvkJAncyzK2Owuu6hl6O4BvC+4BRX/A3NGcD6tjVr9kLPxEFha9R/86G3DOgkuzN8+xU8dsz/OyMprpz6/w9ensAZ7mDy5Vf8IXx+vXpBGaz9wbRxCa87598fkM8r6Ks4MO7dx5720Rz0bo00zfDvh+GYJ8eiO8h/L6MaTpD3j+2MYMsvqlBPtaCZyLb6DmLQMQoFvLm3nx5fRHiYiwgt976KRvh+tuz/XE8YTQhBIwm/jXcuZe7J/vpchwPp+O0Idu8YzuDRfn/PxmlF3yH8K8HkHBjxc0G/THRw5dZu4t4JWHKG6xL/ihw+gKaABMHnQHPfTRskA/UdHH2zFlf5TJbEwu087DbaHx9bIB9Vmp94Gxev5YoGD5LPaXfWwT1tZ/o+oPGEHor2o8bEP83vTmM7wwHH0JwA2FK/L8KHBxnnFNWNOXFVV/giRueiaXabU6z3p1zOqH4+5ki6oe6+B6E6u6jHWAE6pVANYMokYtxsRPUHuwL++lZwOOkDimrQcFc7gcvqtT9if2bNMP2e/AA0b2BfHPBtwF9PVYE9/dV19awQOVulVOwydwQyrcanWeJJlaxWdoO1sCxMtGsIMnEVG+FJE7fWm82Tp8rPewGUaVIHT7FR46K4uynmysPxi9x1Vlxjv9NmOPNabe43xGGhRoTnzFGn/YWukWigy3JORpjN/r61cFoaA2qYeQK2hHfBDuHacCEonhYmU7IT+/80fTOI0B0DPjxQH+bjRLkLHGD0IUZWJAn8QyH5T1nBMl4B3qjjechqgfk+mn5kH0G2ziYTjZLtgRP977bjIUgfkMddN7ok3LC9ke/lI4H3me87JOkhce8nUDgiYRCPgFvTcq4tcPuyNt716A3q4kvo7EPE3kIOZ7+KPwQQ5nBzeJAR5Hr5M0XqCOQERrZNoj0qQ+euLLOwgv7py29+KWiY9+i3BLW2E+xI/wk97uLSSgG8/3e0ZtKiyIv3LcC75D52kbLyMkB7US+r1nOh4y2uF+6upwXd5Ovynxx0Pv/EG5MPozPr3l64Pr2CUwOsfYovGwk2OFsUUebkCdh3VgHQ/yUQrbduBhDdLgE/3Ow+nAs8vBzSagQTaTPfxj5OE+wJehI37k5uOhcLS51uZqkHyQtzdV+BnTIRs/T4/aMAfHN9KQxDUPq/PH41+nVIXjDXYhKMMKiCv7FhuOvU0ucZj/fpNNb7mvPgqRfe1puugFVWWCyaddigFs71MF9WsYmB/fU55tSEV8AEKpnLov1PpLEgNA3TyFO8WHafsbQDN7v+vxPdcdk0qzDen33MMyd6ibrhetRGv7dJXK1weP4W3CvxL9DTMMN7mCt9FosM5PACxv/VcmfnPmxkPzYX26X1vhTocZGM2o3x/2dwDUo7/b4r5PdDOdneqpXD/IZM89K8hH5CUA1p8nQkajaHjsDwejNa2WbWu8JUA8PVO5uo7JnntndqMb6+Z48nCI/jv2k2T+nmYyHisPy20x22U3N95hMpKBbjvu6Hg8JsEA1Lf1L++A/mfk4Z+TP6Vp/CTit025L176OoSHRS/+GMBRlBLSfw/B3dAfJENsKyW/J9Nq/PZr8V770Tydkz5ePiYz9xJ+QH92N+KDV8SoKcCf2sN+PT667aSNobvOPvJeXrxovm4k2xvGNGP0IHwq7PfcE4x8md5pAeF4nPhM8fI8ymnaqFzjRZc99yqMiwAh/Yd6qb7Y+uS+iUja45eg8dutvJPyOeltIN4K/RPd1B/wZdjuqy8WUQXzE+rwRghH5ju+DON99Yu97rl6aI4e6zxkRfzkUJvy6XX3NpA8f8SXYbsDT3pba7M6ryX6hcQ4avYxaJ3Vb5FgJ654Y2wk6wfF48AZVErzexG/nEe4p4coWHt+fvqsXgbJlvhCseWf0bVCetVPs8E+K+IXdBfP8/2ZxhK3xsWWf+SOnbxsJ67LYG0J+qqEP31mQAbZhO87E792OxnmRt6WuJutq5cDMNT4XI/EvdgR6PRM7EPo13nYGfT5YcocQS8ruaJPcuz4wgyIn59epzTY676jcX1qT9/ue2H3cXwC+g25QT3sFbA80DRvclfi8/fwcisEST7amre+L/HbafMONaPOn0EvDx3nZQPuSfzOR+sSaqa4JG+Wm83kvsSXFX7b7Va0nu3wwkXjf0Xja52W2zK4+T2ZxDUecpXkzA3Fh/4btkxb4hc3Og58r5X/fc0+4LcFaL/rPMc96jL6SZhzeAe2/Y7fFqClh2rDBEc3I3s3k0xelYdD2x4RPGxJfEZb4NK1ZRRphEr5/2SftnZgR/wUt2kSnse++lf8rrhkPbiO2XgHHhJh8+NlirNOeWBdMHCjDDJYHh6exyyJn+/CJ3I8OZZ4pk0W07AjfnFEEF8P+Z2kcz62h+dJOqjPCraM1HnmXoXKbnWoTUvQF9n0fBbbTZnti62PwHcmvnHmYSWEF47mRgA7yv31PVTriB8n++WwHscv9iHiQXyhSJRUlxlrtu6GjDU+o03v6Yx8TkBulYKBZCegCaY/TDQ+D0MhzCsAkZts1vSDNT44RMPj4gdrfEECtasRKEH/JRR902l+1MRntXy+UVAhUIv9QAhxO//T8pCnoi+EL7XIfh6Z2G1yqD2sQu19DYM+jfAMdbjEbGFAR/zLLPrd+Z5PDBBIjV6vAthC3X3ErCagIL54c3Dd/UGfzwogBBXyGf/JX8myfLGyhzTEL0aw+SXq0a+Cehw/eSYY2skIW1viGwTa3MdofGoP+HA0Z1e5Vr6W+KL0FzxsfGqPsHjxnOotfeqJL6n8J+PJCnYzfwz6x6tF3Ib46hm+/FL3QoOVAmf0S0JL4ucrrvlhkPnEP5KHaoOogmXOgrGHBOIrHI/EvczhNzqRp7YwlviimE2NE5lAnC51f6HbaV9Vt4c/gfjZ/foO5+LhU/eS0PzIPJm8rIBAfCOfbsgVg+1eTkiH44lfjITwDWWY14wlPkLuX9DvxOP52ql+MvHz2xEPaS90CioIx/dU85CcRb+HIeCX19EaGI1e6aGRj4TUHyHAypAaKPqGHlYQ36BZTHcH0HerB4d+xqvz2oG+YHbXgKEC/WXisz0Ojy5jjx2jb2ZUZiFu99VPfvCZwRP0NAfotET/7b76nGfdp40ajE4arlwLcUN8GcnPvwB6duMFZfS3PUmH3Rg9szN2cei/4iH/5XUKZuC6k3FdYeVZQfw8VLuHMiXjJkqpIL7CE/SMzti9HIC4qbBMfG6T8QpZz3y84BL9BI3PUdqzrvkS/T9iHJ+I/p8xjk9C/0+Yq89oHP/bGQX6/9qqOm7GP+Bhhcb/WcZX0Ph3Nb4C8e9r/Fji4zT+DzT+AQ//B0rGOmFU4lnxAAAAAElFTkSuQmCC"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- #areaNews -->
+<div class="areaInsta">
+    <div class="container__header">
+        <div class="boxTitle">
+            <h2>Instagram</h2>
+            <h3>インスタグラム</h3>
+        </div>
+        <ul class="boxFeature">
+            <li>
+                <a href="javascript:void(0)">
+                    <img class="img-insta"
+                         src="https://images.kienthuc.net.vn/zoomh/800/Uploaded/thuhien/2020_11_25/anh-cuc-doc-ve-cuoc-song-doi-thuong-o-nhat-ban-Hinh-2.jpg"
+                         alt="">
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)">
+                    <img class="img-insta"
+                         src="https://images.kienthuc.net.vn/zoomh/800/Uploaded/thuhien/2020_11_25/anh-cuc-doc-ve-cuoc-song-doi-thuong-o-nhat-ban.jpg"
+                         alt="">
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)">
+                    <img class="img-insta"
+                         src="https://images.kienthuc.net.vn/zoomh/800/Uploaded/thuhien/2020_11_25/anh-cuc-doc-ve-cuoc-song-doi-thuong-o-nhat-ban-Hinh-5.jpg"
+                         alt="">
+                </a>
+            </li>
+            <li>
+                <a href="v">
+                    <img class="img-insta"
+                         src="https://images.kienthuc.net.vn/zoomh/800/Uploaded/thuhien/2020_11_25/anh-cuc-doc-ve-cuoc-song-doi-thuong-o-nhat-ban.jpg"
+                         alt="">
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)">
+                    <img class="img-insta"
+                         src="https://images.kienthuc.net.vn/zoomh/800/Uploaded/thuhien/2020_11_25/anh-cuc-doc-ve-cuoc-song-doi-thuong-o-nhat-ban-Hinh-6.jpg"
+                         alt="">
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)">
+                    <img class="img-insta"
+                         src="https://images.kienthuc.net.vn/zoomh/800/Uploaded/thuhien/2020_11_25/anh-cuc-doc-ve-cuoc-song-doi-thuong-o-nhat-ban-Hinh-7.jpg"
+                         alt="">
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- Footer -->
+<footer class="doc-footer">
+    <div align="center">
+        <div class="icon-footer">
+            <i style="color: blue;" class="fa-brands fa-facebook"></i>
+            <i style="color: red;" class="fa-brands fa-instagram"></i>
+            <i style="color: blue;" class="fa-brands fa-twitter"></i>
+        </div>
+        <p style="margin: 0;">TEL: 0768568962</p>
+        <address style="font-size: 20px;">280 Tran Hung Dao, An Hai Tay, Son Tra, Da Nang.</address>
+    </div>
+</footer>
+<script>
+    const toP = document.querySelector(".top")
+    window.addEventListener("scroll", function () {
+        const x = window.pageYOffset;
+        if (x > 80) {
+            toP.classList.add("active")
+        } else {
+            toP.classList.remove("active")
+        }
+    })
+</script>
+</body>
+</html>
