@@ -27,7 +27,7 @@ public class Account {
     private String phoneClient;
     private String emailClient;
     private Date date;
-    private Long identifyClient;
+    private String identifyClient;
     private boolean isDelete;
 
     @ManyToOne
