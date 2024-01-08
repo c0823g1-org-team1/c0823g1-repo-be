@@ -3,6 +3,8 @@ package com.example.demo.service;
 import com.example.demo.model.Account;
 import com.example.demo.repository.TuanAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,5 +34,27 @@ public class TuanAccountService implements ITuanAccountService {
         accountRepository.delete(account);
     }
 
+    @Override
+    public Account checkUserAccount(String nameAccount) {
+        return accountRepository.checkUserAccount(nameAccount);
+    }
 
+    @Override
+    public Account checkPhoneAccount(String phone_client) {
+        return accountRepository.checkPhoneAccount(phone_client);
+    }
+
+    @Override
+    public Account checkEmailAccount(String email_client) {
+        return accountRepository.checkEmailAccount(email_client);
+    }
+
+    @Override
+    public Account checkIndentifyAccount(String identify_client) {
+        return accountRepository.checkIndentifyAccount(identify_client);
+    }
+    @Override
+    public Page<Account> getAllAccountPage(Pageable pageable, String account_name, Integer role_id) {
+        return accountRepository.getAllAccountPage(pageable,account_name,role_id);
+    }
 }
