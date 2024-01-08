@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .hover-image {
+            transition: transform 0.3s ease; /* Thêm hiệu ứng chuyển đổi mượt mà */
+        }
+
+        .hover-image:hover {
+            transform: scale(1.1); /* Kích thước hình ảnh tăng lên 110% */
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<h2 style="text-align: center;color: rgb(13,110,253)">Quản lý tour</h2>
+<div class="container-fluid row row-cols-1 row-cols-md-4 g-3">
+    <table style="width: 100%">
+        <tr>
+            <th style="width: 50%">
+                <a th:href="@{/tours/create}" style="text-decoration: none">Thêm Tour</a>
+            </th>
+            <th style=" width: 50%;">
+                <form th:action="@{/tours/search}" method="post" style="text-align: right;position: relative;right: 5em">
+                    <input type="text" name="name-search" placeholder="Nhập tour cần tìm">
+                <button type="submit" class="btn btn-sm btn-primary" style="position: relative;bottom: 3px">Search</button>
+                </form>
+            </th>
+        </tr>
+    </table>
+</div>
+
+<br>
+<div class="container-fluid" >
+    <div class="row row-cols-1 row-cols-md-4 g-3" >
+        <div class="col-12 col-md-4 col-sm-12" th:each="t:${tours}">
+            <div class="card" style="width: 25rem;height: 33rem">
+                <img th:src="${t.image}" class="card-img-top hover-image" style="height: 15rem" alt="...">
+                <div class="card-body" style="height: 15rem">
+<!--                    <p class="card-text h-5"> <span th:text="${t.description}"></span> </p>-->
+                    <a th:href="@{/tours/{id}/detail(id=${t.id})}" style="text-decoration: none">
+                        <h5 class="card-title" th:text="${t.name}" style="position: relative;left: 15px"></h5>
+                    </a>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Ngày bắt đầu: <span th:text="${df.format(t.departureDate)}"></span></li>
+                        <li class="list-group-item">Ngày kết thúc: <span th:text="${df.format(t.endDate)}"></span></li>
+                        <li class="list-group-item">Số lượng người: <span th:text="${t.quantity}"></span> <span>slot</span></li>
+                        <li class="list-group-item">Giá người lớn: <span th:text="${t.adultPrice}"></span> VNĐ</li>
+                        <li class="list-group-item">Giá trẻ em: <span th:text="${t.childrenPrice}"></span> VNĐ</li>
+                    </ul>
+                </div>
+                <div class="card-body" style="position: relative;left: 15px">
+                    <a th:href="@{/tours/{id}/detail(id=${t.id})}" class="card-link">Xem chi tiết</a>
+                    <a th:href="@{/tours/{id}/edit(id=${t.id})}" class="card-link">Chỉnh sửa</a>
+<!--                    <a th:href="@{/tours/{id}/delete(id=${t.id})}" class="card-link">Xóa tour</a>-->
+                    <a href="#" class="card-link" data-bs-toggle="modal"
+                            data-bs-target="#deleteModal"
+                            th:attr="id-delete=${t.getId()} ,name-delete=${t.getName()} "
+                            onclick="deleteCustomer(this)">
+                        Xóa
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<br>
+<div style="text-align: center">
+    <a th:if="${tours.hasPrevious()}" th:href="@{/tours(page = ${tours.number - 1})}">Previous</a>
+    <span th:text="${tours.number +1 }"></span>/<span th:text="${tours.totalPages}"></span>
+    <a th:if="${tours.hasNext()}" th:href="@{/tours(page = ${tours.number + 1})}">Next</a>
+</div>
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form th:action="@{/tours/delete}" method="post">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="deleteModalLabel">Delete customer:</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure want to delete <span id="nameDelete"></span>?
+                    <input type="hidden" id="idDelete" name="idDelete" value="idDelete">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    function deleteCustomer(button) {
+        let id = button.getAttribute('id-delete');
+        let name = button.getAttribute('name-delete');
+        document.getElementById("idDelete").value = id;
+        document.getElementById("nameDelete").innerText = name;
+    }
+    function formatMoneyVND(amount) {
+        const formatter = new Intl.NumberFormat('vi-VN', {
+            style: 'currency',
+            currency: 'VND'
+        });
+        return formatter.format(amount);
+    }
+    let adult = +document.getElementById('adultPrice').value;
+    let price = formatMoneyVND(adult);
+    console.log(adult);
+    document.getElementById('adultPrice1').innerText = price;
+</script>
+</html>
