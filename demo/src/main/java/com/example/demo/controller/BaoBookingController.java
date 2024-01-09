@@ -1,18 +1,20 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.Account;
+import com.example.demo.model.Booking;
 import com.example.demo.model.LocationTour;
 import com.example.demo.model.Tour;
 import com.example.demo.service.IBaoBookingService;
+import com.example.demo.service.ITuanAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 @Controller
@@ -20,6 +22,8 @@ import java.util.*;
 public class BaoBookingController {
     @Autowired
     private IBaoBookingService baoBookingService;
+    @Autowired
+    private ITuanAccountService tuanAccountService;
 
     @GetMapping
     public String getAll(Model model) {
@@ -31,12 +35,16 @@ public class BaoBookingController {
     @GetMapping("detail/{id}")
     public String detail(@PathVariable int id, Model model) {
         Tour tour = baoBookingService.findById(id);
+        Account account = tuanAccountService.findById(1);
+        Booking booking = new Booking();
         tour.setCareAbout(tour.getCareAbout() + 1);
         baoBookingService.saveTour(tour);
         List<LocationTour> location = baoBookingService.findLocation(tour.getId());
         model.addAttribute("locations", location);
         model.addAttribute("tours", tour);
-        return "/detail";
+        model.addAttribute("bookings",booking);
+        model.addAttribute("account",account);
+        return "detailTour";
     }
 
     @GetMapping("/hottour")
@@ -82,71 +90,49 @@ public class BaoBookingController {
     }
 
     @GetMapping("/searchTour")
-    public String searchOptionTour(Model model, @RequestParam(name = "AmountDate", defaultValue = "0") String day,
-                                   @RequestParam(name = "date", defaultValue = "2024-01-10") String date,
-                                   @RequestParam(name = "TourLine", defaultValue = "0") String typeTour,
-                                   @RequestParam(name = "savePrice", defaultValue = "0") String savePrice) throws ParseException {
+    public String searchOptionTour(Model model, @RequestParam(name = "AmountDate",defaultValue = "0") String day,
+                                   @RequestParam(name = "date", required = false) String date,
+                                   @RequestParam(name = "TourLine", required = false,defaultValue = "0") String typeTour,
+                                   @RequestParam(name = "savePrice", required = false,defaultValue = "0") String savePrice) throws ParseException {
         List<Tour> tours = baoBookingService.getAll();
-        List<Tour> tours3d = new ArrayList<>();
-        List<Tour> tours4d = new ArrayList<>();
-        java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
-        java.sql.Date date1 = new java.sql.Date(utilDate.getTime());
+        List<Tour> selectedTours = new ArrayList<>();
+        LocalDate utilDate = null;
+        try {
+             utilDate = LocalDate.parse(date);
+        }catch (DateTimeParseException e) {
+            e.printStackTrace();
+        }
         int days = Integer.parseInt(day);
         int typeTours = Integer.parseInt(typeTour);
         int savePrices = Integer.parseInt(savePrice);
         for (Tour tour : tours) {
-            Date departureDate = tour.getDepartureDate();
-            Date endDate =  tour.getEndDate();
-            long durationInMillis = endDate.getTime() - departureDate.getTime();
-            long durationInDays = durationInMillis / (24 * 60 * 60 * 1000);
-            if (durationInDays == 3) {
-                tours3d.add(tour);
-            } else if (durationInDays == 4) {
-                tours4d.add(tour);
+            LocalDate departureDate = tour.getDepartureDate();
+            LocalDate endDate = tour.getEndDate();
+            long durationInDays = ChronoUnit.DAYS.between(departureDate, endDate);
+            if ((days == 3 && durationInDays == 3) || (days == 4 && durationInDays == 4)) {
+                selectedTours.add(tour);
             }
         }
-        if (days == 3 & savePrices != 0 ) {
-            for (Tour tour : tours3d) {
-                if (tour.getCareAbout() >= typeTours ) {
-                    List<Tour> save = baoBookingService.searchSaveMoney(date1);
-                    model.addAttribute("tour", save);
-                } else {
-                    List<Tour> save = baoBookingService.searchSaveMoney( date1);
-                    model.addAttribute("tour", save);
-                }
-            }
-        } else if (days == 4 & savePrices != 0 ) {
-            for (Tour tour : tours4d) {
-                if (tour.getCareAbout() >= typeTours ) {
-                    List<Tour> save = baoBookingService.searchSaveMoney( date1);
-                    model.addAttribute("tour", save);
-                } else {
-                    List<Tour> save = baoBookingService.searchSaveMoney(date1);
-                    model.addAttribute("tour", save);
-                }
+        List<Tour> save = new ArrayList<>();
+        for (Tour tour : selectedTours) {
+            if ((days == 3 && tour.getCareAbout() >= typeTours) ||
+                    (days == 4  && tour.getCareAbout() >= typeTours) ||
+                    (days == 3  && tour.getAdultPrice() >= savePrices) ||
+                    (days == 4  && tour.getCareAbout() >= savePrices)) {
+                save.addAll(baoBookingService.searchManyOption(utilDate));
+                break;
             }
         }
-        if (days == 3 & typeTours != 0 ) {
-            for (Tour tour : tours3d) {
-                if (tour.getAdultPrice() >= savePrices ) {
-                    List<Tour> save = baoBookingService.searchSaveMoney(date1);
-                    model.addAttribute("tour", save);
-                } else {
-                    List<Tour> save = baoBookingService.searchSaveMoney( date1);
-                    model.addAttribute("tour", save);
-                }
-            }
-        } else if (days == 4 & typeTours != 0 ) {
-            for (Tour tour : tours4d) { 
-                if (tour.getCareAbout() >= savePrices ) {
-                    List<Tour> save = baoBookingService.searchSaveMoney( date1);
-                    model.addAttribute("tour", save);
-                } else {
-                    List<Tour> save = baoBookingService.searchSaveMoney(date1);
-                    model.addAttribute("tour", save);
-                }
+        for (Tour tour : tours) {
+            if (tour.getAdultPrice() <= savePrices && utilDate == null){
+                save.addAll(baoBookingService.searchSavePrice(savePrices));
+                break;
+            }else {
+                save.addAll(baoBookingService.searchHotTour(typeTours));
+                break;
             }
         }
+        model.addAttribute("tour", save);
         return "/search";
     }
 }
