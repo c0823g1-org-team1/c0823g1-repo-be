@@ -47,8 +47,6 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Ngày bắt đầu: <span th:text="${df.format(t.departureDate)}"></span></li>
                         <li class="list-group-item">Ngày kết thúc: <span th:text="${df.format(t.endDate)}"></span></li>
-<!--                        <li class="list-group-item"> <span th:text="${t.departureDate}"></span></li>-->
-<!--                        <li class="list-group-item"> <span th:text="${t.endDate}"></span></li>-->
                         <li class="list-group-item">Số lượng người: <span th:text="${t.quantity}"></span> <span>slot</span></li>
                         <li class="list-group-item">Giá người lớn: <span th:text="${t.adultPrice}"></span> VNĐ</li>
                         <li class="list-group-item">Giá trẻ em: <span th:text="${t.childrenPrice}"></span> VNĐ</li>
@@ -71,6 +69,9 @@
     </div>
 </div>
 <br>
+<div th:if="${msg == 1}">
+    <a onload="return showNotification()"></a>
+</div>
 <div style="text-align: center">
     <a th:if="${tours.hasPrevious()}" th:href="@{/tours(page = ${tours.number - 1})}">Previous</a>
     <span th:text="${tours.number +1 }"></span>/<span th:text="${tours.totalPages}"></span>
@@ -81,16 +82,16 @@
         <div class="modal-content">
             <form th:action="@{/tours/delete}" method="post">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="deleteModalLabel">Delete customer:</h1>
+                    <h1 class="modal-title fs-5" id="deleteModalLabel">Xóa tour:</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Are you sure want to delete <span id="nameDelete"></span>?
+                    Bạn muốn xóa tour <span id="nameDelete"></span>?
                     <input type="hidden" id="idDelete" name="idDelete" value="idDelete">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-sm btn-danger">Xóa</button>
                 </div>
             </form>
         </div>

@@ -24,7 +24,7 @@
 <!--<h3>Thông tin tour</h3>-->
 <h3 style="text-align: center">Tour <span th:text="${tour.name}"></span></h3>
 
-<form th:object="${tour}" class="col-6" style="margin-left: 24%" method="post">
+<form th:object="${tour}" class="col-6" style="margin-left: 24%" method="post" >
 <!--    <h1 class="text-center">Chỉnh sửa tour <span th:text="*{name}" ></span></h1>-->
     <input type="hidden" th:field="*{id}">
     <label for="name" class="form-label">Tên Tour: </label>
@@ -48,9 +48,9 @@
     <label for="tourGuy" class="form-label">Hướng dẫn viên: </label>
     <input id="tourGuy" type="text" th:field="*{tourGuide}" class="form-control">
     <p th:if="${#fields.hasErrors('tourGuide')}" th:errors="*{tourGuide}">a</p>
-    <input type="hidden"  th:field="*{image}">
-    <label for="file" class="form-label">Chọn tệp ảnh : </label>
-    <input type="file" class="form-control" id="file" th:field="*{file}">
+    <label for="img" class="form-label">Link ảnh: </label>
+    <input id="img" type="text" th:field="*{image}" class="form-control">
+    <p th:if="${#fields.hasErrors('image')}" th:errors="*{image}">a</p>
     <label for="detail" class="form-label">Giới thiệu tour</label>
     <textarea id="detail" th:field="*{description}" class="form-control" cols="50" rows="10"></textarea>
     <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}">a</p>
@@ -58,6 +58,8 @@
     <br>
     <input type="submit" value="Save" class="btn btn-primary float-end" style="width: 100%">
 </form>
+<script>
 
+</script>
 </body>
 </html>

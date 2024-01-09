@@ -35,82 +35,89 @@ public class HaiTourController {
     private IHaiLocationTourService haiLocationTourService;
 
     @ModelAttribute("locationTour")
-    public List<LocationTour> locationTourList(){
+    public List<LocationTour> locationTourList() {
         return haiLocationTourService.findAll();
     }
+
     @GetMapping
     public String showTour(@PageableDefault(value = 3) Pageable pageable,
-                           Model model){
+                           Model model) {
         Page<Tour> tourPage = haiTourService.findAll(pageable);
-        model.addAttribute("tours",tourPage);
+        model.addAttribute("tours", tourPage);
         model.addAttribute("df", DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         return "/hai_tour/home-tour";
     }
+
     @GetMapping("/{id}/detail")
     public String showDetailTour(@PathVariable int id,
-                                 Model model){
+                                 Model model) {
         Tour tour = haiTourService.findById(id).get();
-        model.addAttribute("tour",tour);
+        model.addAttribute("tour", tour);
         model.addAttribute("df", DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         return "/hai_tour/detail";
     }
+
     @GetMapping("/{id}/edit")
     public String editTour(@PathVariable int id,
-                           Model model){
-        model.addAttribute("tour",haiTourService.findById(id).get());
+                           Model model) {
+        model.addAttribute("tour", haiTourService.findById(id).get());
         return "/hai_tour/edit";
     }
+
     @PostMapping("/{id}/edit")
-    public String saveTour(@Valid @ModelAttribute("tour") TourDTO tourDTO, BindingResult bindingResult ,
+    public String saveTour(@Valid @ModelAttribute("tour") TourDTO tourDTO, BindingResult bindingResult,
                            @PathVariable int id,
                            RedirectAttributes redirectAttributes,
-                           Model model){
-        new TourDTO().validate(tourDTO,bindingResult);
-        if (bindingResult.hasFieldErrors()){
-            model.addAttribute("tour",tourDTO);
+                           Model model) {
+        new TourDTO().validate(tourDTO, bindingResult);
+        if (bindingResult.hasFieldErrors()) {
+            model.addAttribute("tour", tourDTO);
             return "/hai_tour/edit";
         }
         Tour tour = haiTourService.findById(id).get();
-        BeanUtils.copyProperties(tourDTO,tour);
+        BeanUtils.copyProperties(tourDTO, tour);
         haiTourService.save(tour);
-        redirectAttributes.addFlashAttribute("message","Sửa thành công");
+        redirectAttributes.addFlashAttribute("message", "Sửa thành công");
         return "redirect:/tours";
 
     }
+
     @GetMapping("/create")
-    public String createTour(Model model){
-        model.addAttribute("tour",new TourDTO());
+    public String createTour(Model model) {
+        model.addAttribute("tour", new TourDTO());
         return "/hai_tour/edit";
     }
+
     @PostMapping("/create")
     public String saveTour(@Valid @ModelAttribute("tour") TourDTO tourDTO,
-                           BindingResult bindingResult,Model model) {
+                           BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
         System.out.println(tourDTO.toString());
         new TourDTO().validate(tourDTO, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             model.addAttribute("tour", tourDTO);
             return "/hai_tour/edit";
         }
-        tourDTO.setImage(tourDTO.getFile().getOriginalFilename());
-            Tour tour = new Tour();
-            BeanUtils.copyProperties(tourDTO, tour);
-            haiTourService.save(tour);
-            return "redirect:/tours";
+        Tour tour = new Tour();
+        BeanUtils.copyProperties(tourDTO, tour);
+        haiTourService.save(tour);
+        return "redirect:/tours";
     }
+
     @PostMapping("/delete")
-    public String delete(@RequestParam("idDelete") int id){
+    public String delete(@RequestParam("idDelete") int id) {
         Tour tour = haiTourService.findById(id).get();
         tour.setDelete(true);
         haiTourService.save(tour);
         return "redirect:/tours";
     }
+
     @PostMapping("/search")
     public String search(@RequestParam("name-search") String name,
                          @PageableDefault(value = 3) Pageable pageable,
-                         Model model){
-        Page<Tour> tours = haiTourService.findAllByNameContaining(name,pageable);
+                         Model model) {
+        Page<Tour> tours = haiTourService.findAllByNameContaining(name, pageable);
         model.addAttribute("df", DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-        model.addAttribute("tours",tours);
+        model.addAttribute("tours", tours);
         return "/hai_tour/home-tour";
     }
 
