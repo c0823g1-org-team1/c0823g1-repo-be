@@ -20,17 +20,47 @@
 <body>
 <!--<h3>Thông tin tour</h3>-->
 <div class="row" style="width: 100%" >
-    <div class="col-3">
+    <div class="col-4">
+<!--        <div class="sticky" style="font-size: 15px">-->
+<!--            <h3>Tour: <span th:text="${tour.name}"></span></h3>-->
+<!--            <p>Số người trong tour: <span th:text="${tour.quantity}"></span></p>-->
+<!--            <p>Ngày khởi hành: <span th:text="${df.format(tour.departureDate)}"></span></p>-->
+<!--            <p>Ngày kết thúc: <span th:text="${df.format(tour.endDate)}"></span></p>-->
+<!--            <p>Giá người lớn: <span th:text="${tour.adultPrice}"></span></p>-->
+<!--            <p>Giá trẻ em: <span th:text="${tour.childrenPrice}"></span></p>-->
+<!--            <p>Hướng dẫn viên: <span th:text="${tour.tourGuild.name}"></span></p>-->
+<!--        </div>-->
         <div class="sticky">
-            <h3>Tour: <span th:text="${tour.name}"></span></h3>
-            <p>Số người trong tour: <span th:text="${tour.quantity}"></span></p>
-            <p>Ngày khởi hành: <span th:text="${df.format(tour.departureDate)}"></span></p>
-            <p>Ngày kết thúc: <span th:text="${df.format(tour.endDate)}"></span></p>
-            <p>Giá người lớn: <span th:text="${tour.adultPrice}"></span></p>
-            <p>Giá trẻ em: <span th:text="${tour.childrenPrice}"></span></p>
-            <p>Hướng dẫn viên: <span th:text="${tour.tourGuide}"></span></p>
+            <table th:object="${tour}">
+                <tr style="text-align: center">
+                    <th colspan="2">Thông tin tour <span th:text="${tour.name}"></span></th>
+                </tr>
+                <tr>
+                    <th>Số người trong tour:</th>
+                    <td th:text="${tour.quantity}"></td>
+                </tr>
+                <tr>
+                    <th>Ngày khởi hành:</th>
+                    <td th:text="${df.format(tour.departureDate)}"></td>
+                </tr>
+                <tr>
+                    <th>Ngày kết thúc:</th>
+                    <td th:text="${df.format(tour.endDate)}"></td>
+                </tr>
+                <tr>
+                    <th>Giá người lớn:</th>
+                    <td th:text="${tour.adultPrice}"><span>VNĐ</span></td>
+                </tr>
+                <tr>
+                    <th>Giá trẻ em:</th>
+                    <td th:text="${tour.childrenPrice}"></td>
+                </tr>
+                <tr>
+                    <th>Hướng dẫn viên:</th>
+                    <td th:text="${tour.tourGuild.name}"></td>
+                </tr>
+            </table>
         </div>
-
     </div>
     <div class="col-8" >
         <h1>Các địa điểm trong tour <span th:text="${tour.name}"></span></h1>

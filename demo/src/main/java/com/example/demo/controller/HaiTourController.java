@@ -2,7 +2,9 @@ package com.example.demo.controller;
 
 import com.example.demo.model.LocationTour;
 import com.example.demo.model.Tour;
+import com.example.demo.model.TourGuild;
 import com.example.demo.model.hai_DTO.TourDTO;
+import com.example.demo.repository.IHaiTourGuidRepository;
 import com.example.demo.service.IHaiLocationTourService;
 import com.example.demo.service.IHaiTourService;
 import jakarta.validation.Valid;
@@ -33,10 +35,17 @@ public class HaiTourController {
     private IHaiTourService haiTourService;
     @Autowired
     private IHaiLocationTourService haiLocationTourService;
+    @Autowired
+    private IHaiTourGuidRepository haiTourGuidRepository;
 
     @ModelAttribute("locationTour")
     public List<LocationTour> locationTourList() {
         return haiLocationTourService.findAll();
+    }
+
+    @ModelAttribute("tourGuild")
+    public List<TourGuild> tourGuilds() {
+        return haiTourGuidRepository.findAll();
     }
 
     @GetMapping
@@ -60,7 +69,7 @@ public class HaiTourController {
     @GetMapping("/{id}/edit")
     public String editTour(@PathVariable int id,
                            Model model) {
-        model.addAttribute("tour", haiTourService.findById(id).get());
+        model.addAttribute("tour", haiTourService.findById(id));
         return "/hai_tour/edit";
     }
 
@@ -73,6 +82,16 @@ public class HaiTourController {
         if (bindingResult.hasFieldErrors()) {
             model.addAttribute("tour", tourDTO);
             return "/hai_tour/edit";
+        }
+        for (Tour t : haiTourService.findAll()) {
+            if ((tourDTO.getDepartureDate().isAfter(t.getDepartureDate()) && tourDTO.getDepartureDate().isBefore(t.getEndDate().plusDays(1)))
+                    || (tourDTO.getEndDate().isAfter(t.getDepartureDate().minusDays(1)) && tourDTO.getEndDate().isBefore(t.getEndDate()))) {
+                if (t.getTourGuild() == tourDTO.getTourGuild()) {
+                    model.addAttribute("mess", "Hướng dẫn viên " +t.getTourGuild().getName()+" có lịch trong thời gian "+t.getDepartureDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) +" đến "+t.getEndDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))+ " ! Vui lòng chọn HDV khác");
+                    return "/hai_tour/edit";
+                }
+            }
+
         }
         Tour tour = haiTourService.findById(id).get();
         BeanUtils.copyProperties(tourDTO, tour);
@@ -95,6 +114,20 @@ public class HaiTourController {
         new TourDTO().validate(tourDTO, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             model.addAttribute("tour", tourDTO);
+            return "/hai_tour/edit";
+        }
+        for (Tour t : haiTourService.findAll()) {
+            if ((tourDTO.getDepartureDate().isAfter(t.getDepartureDate()) && tourDTO.getDepartureDate().isBefore(t.getEndDate().plusDays(1)))
+                    || (tourDTO.getEndDate().isAfter(t.getDepartureDate().minusDays(1)) && tourDTO.getEndDate().isBefore(t.getEndDate()))) {
+                if (t.getTourGuild() == tourDTO.getTourGuild()) {
+                    model.addAttribute("mess", "Hướng dẫn viên " +t.getTourGuild().getName()+" có lịch trong thời gian "+t.getDepartureDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) +" đến "+t.getEndDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))+ " ! Vui lòng chọn HDV khác");
+                    return "/hai_tour/edit";
+                }
+            }
+
+        }
+        if (tourDTO.getChildrenPrice()>tourDTO.getAdultPrice()){
+            model.addAttribute("mess1", "Giá của trẻ em phải nhỏ hơn hoặc bằng giá cho người lớn");
             return "/hai_tour/edit";
         }
         Tour tour = new Tour();
