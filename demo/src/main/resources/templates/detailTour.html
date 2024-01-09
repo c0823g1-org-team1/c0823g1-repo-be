@@ -923,45 +923,6 @@
 			justify-content: center;
 			width: 112px;
 		}
-		.form input {
-			height: 60px;
-			width: 100%;
-			padding: 0 15px;
-			font-size: 17px;
-			margin-bottom: 1.3rem;
-			border: 1px solid #ddd;
-			border-radius: 6px;
-			outline: none;
-		}
-
-		.form input:focus {
-			box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
-		}
-
-		.form a {
-			font-size: 16px;
-			color: #009579;
-			text-decoration: none;
-		}
-
-		.form a:hover {
-			text-decoration: underline;
-		}
-
-		.form input.button {
-			color: #fff;
-			background: #009579;
-			font-size: 1.2rem;
-			font-weight: 500;
-			letter-spacing: 1px;
-			margin-top: 1.7rem;
-			cursor: pointer;
-			transition: 0.4s;
-		}
-
-		.form input.button:hover {
-			background: #006653;
-		}
 	</style>
 </head>
 <body data-new-gr-c-s-check-loaded="14.1147.0" data-gr-ext-installed=""><noscript><iframe
@@ -1016,82 +977,8 @@
 								</div>
 								<div class="group-add-cart">
 									<div class="boder">
-<!--										<a title="Đặt ngay" href="#" class="add-to-cart"><i class="fal fa-shopping-cart"></i>Đặt ngay</a>-->
-										<a style="cursor: pointer" title="Đặt ngay" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="add-to-cart"><i class="fal fa-shopping-cart"></i>Đặt ngay</a>
-										<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-											 aria-labelledby="staticBackdropLabel" aria-hidden="true">
-											<div class="modal-dialog">
-												<div class="modal-content">
-													<div class="modal-header">
-														<h1 class="modal-title fs-5" id="staticBackdropLabel">Đặt tour</h1>
-														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-													</div>
-													<div class="modal-body">
-														<form th:action="@{booking/addBooking}" method="get" th:object="${bookings}">
-															<input type="hidden" th:field="*{tour}">
-															<input type="hidden" th:field="*{account}">
-															<input type="hidden" th:field="*{date}">
-															<fieldset disabled>
-																<div class="mb-3">
-																	<label for="disabledTextInput" class="form-label">Tên khách hàng</label>
-																	<input type="text" id="disabledTextInput" class="form-control"
-																		   th:value="${account.getNameClient()}">
-																</div>
-																<div class="mb-3">
-																	<label class="form-label">Tên tour</label>
-																	<input type="text" class="form-control"
-																		   th:value="${tours.getName()}">
-																</div>
-																<div class="mb-3">
-																	<label class="form-label">Giá tiền trẻ em</label>
-																	<input type="text" class="form-control"
-																		   th:value="${tours.getChildrenPrice()}" id="childrenPrice">
-																</div>
-																<div class="mb-3">
-																	<label class="form-label">Giá tiền người lớn</label>
-																	<input type="text" class="form-control"
-																		   th:value="${tours.getAdultPrice()}" id="adultPrice">
-																</div>
-																<div class="mb-3">
-																	<label class="form-label">Số lượng người được dùng</label>
-																	<input type="text" class="form-control"
-																		   th:value="${tours.getQuantity()}" id="sl">
-																</div>
-															</fieldset>
-															<div class="mb-3">
-																<label class="form-label">Nhap so luong nguoi lon: </label>
-																<input class="btn btn-primary" type="button" value="-"
-																	   onclick="adjustQuantity('adult', 'GIAM', 'sl')">
-																<input style="border: none" type="text" name="adultQuantity" id="adultQuantity" value="1"
-																	   th:field="*{adultNumber}"
-																	   readonly>
-																<input class="btn btn-primary" type="button" value="+"
-																	   onclick="adjustQuantity('adult', 'TANG', 'sl')">
-															</div>
-															<!-- Children Quantity -->
-															<div class="mb-3">
-																<label class="form-label">Nhap so luong tre em: </label>
-																<input class="btn btn-primary" type="button" value="-"
-																	   onclick="adjustQuantity('children', 'GIAM', 'sl')">
-																<input style="border: none" type="text" name="childrenQuantity" id="childrenQuantity"
-																	   th:field="*{childrenNumber}"
-																	   value="0" readonly>
-																<input class="btn btn-primary" type="button" value="+"
-																	   onclick="adjustQuantity('children', 'TANG', 'sl')">
-															</div>
-															<div class="mb-3">
-																<label class="form-label"></label>
-																<span id="totalAmount"></span>
-															</div>
-															<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-															<button type="submit" class="btn btn-primary" id="btn-submit" disabled>Understood</button>
-														</form>
-													</div>
-													<div class="modal-footer">
-													</div>
-												</div>
-											</div>
-										</div>
+										<a title="Đặt ngay" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="add-to-cart"><i class="fal fa-shopping-cart"></i>Đặt ngay</a>
+
 									</div>
 								</div>
 							</div>
@@ -1199,7 +1086,7 @@
 									<div class="table-price">
 										<div class="more-info more-info-2">
 											<div class="block"><span>HDV dẫn đoàn</span>
-												<div th:text="${tours.getTourGuild().getName()}"></div>
+												<div th:text="${tours.getTourGuide()}"></div>
 											</div>
 										</div>
 									</div>
@@ -1241,65 +1128,6 @@
 		if (myIndex > x.length) {myIndex = 1}
 		x[myIndex-1].style.display = "block";
 		setTimeout(carousel, 2000); // Change image every 2 seconds
-	}
-</script>
-<script>
-	function adjustQuantity(type, adjustment, sl) {
-		const quantityId = type === 'adult' ? 'adultQuantity' : 'childrenQuantity';
-		const quantity = document.getElementById(quantityId);
-		const maxQuantity = +document.getElementById('sl').value;
-
-		let adultQuantity = +document.getElementById('adultQuantity').value;
-		let childrenQuantity = +document.getElementById('childrenQuantity').value;
-
-		if (adjustment === 'GIAM') {
-			if (type === 'adult' && adultQuantity > 0) {
-				adultQuantity--;
-			} else if (type === 'children' && childrenQuantity > 0) {
-				childrenQuantity--;
-			}
-		} else if (adjustment === 'TANG') {
-			if (type === 'adult' && adultQuantity < maxQuantity) {
-				adultQuantity++;
-			} else if (type === 'children' && childrenQuantity < maxQuantity) {
-				childrenQuantity++;
-			}
-		}
-
-		document.getElementById('adultQuantity').value = adultQuantity;
-		document.getElementById('childrenQuantity').value = childrenQuantity;
-
-		updateTotalAmount();
-	}
-
-	function updateTotalAmount() {
-		const adultQuantity = +document.getElementById('adultQuantity').value;
-		const childrenQuantity = +document.getElementById('childrenQuantity').value;
-		const adultPrice = +document.getElementById('adultPrice').value;
-		const childrenPrice = +document.getElementById('childrenPrice').value;
-		const maxQuantity = +document.getElementById('sl').value;
-
-		if (adultQuantity + childrenQuantity <= maxQuantity) {
-			const totalAmount = adultQuantity * adultPrice + childrenQuantity * childrenPrice;
-			if (totalAmount === 0) {
-				document.getElementById('totalAmount').innerText = 'Vui lòng nhập số lượng người';
-				document.getElementById('btn-submit').disabled = true;
-			} else {
-				document.getElementById('totalAmount').innerText = 'Tổng tiền: ' + formatMoneyVND(totalAmount);
-				document.getElementById('btn-submit').disabled = false;
-			}
-		} else {
-			document.getElementById('totalAmount').innerText = 'Số lượng người vượt quá giới hạn';
-			document.getElementById('btn-submit').disabled = true;
-		}
-	}
-
-	function formatMoneyVND(amount) {
-		const formatter = new Intl.NumberFormat('vi-VN', {
-			style: 'currency',
-			currency: 'VND'
-		});
-		return formatter.format(amount);
 	}
 </script>
 </body>
