@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .sticky {
+            position: sticky;
+            top: 0;
+            /*background-color: yellow;*/
+            padding: 50px;
+            font-size: 20px;
+        }
+        body{
+            /*background-image: url("https://i.pinimg.com/originals/bc/f0/76/bcf076d639983703dac08e2451612a1f.jpg");*/
+        }
+        p{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<!--<h3>Thông tin tour</h3>-->
+<h3 style="text-align: center">Tour <span th:text="${tour.name}"></span></h3>
+
+<form th:object="${tour}" class="col-6" style="margin-left: 24%" method="post">
+<!--    <h1 class="text-center">Chỉnh sửa tour <span th:text="*{name}" ></span></h1>-->
+    <input type="hidden" th:field="*{id}">
+    <label for="name" class="form-label">Tên Tour: </label>
+    <input id="name" type="text" th:field="*{name}" class="form-control">
+    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">abc</p>
+    <label for="people" class="form-label">Số người trong tour:</label>
+    <input id="people" type="number" th:field="*{quantity}" class="form-control">
+    <p th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}">abc</p>
+    <label for="beginDay" class="form-label">Ngày khởi hành:</label>
+    <input id="beginDay" type="date" th:value="${tour.departureDate}" th:field="*{departureDate}" class="form-control">
+    <p th:if="${#fields.hasErrors('departureDate')}" th:errors="*{departureDate}">abc</p>
+    <label for="endDay" class="form-label">Ngày kết thúc:</label>
+    <input id="endDay" type="date" th:field="*{endDate}" class="form-control" th:value="*{endDate}">
+    <p th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}">a</p>
+    <label for="oldPrice" class="form-label"> Giá người lớn:</label>
+    <input id="oldPrice" type="number" th:field="*{adultPrice}" class="form-control">
+    <p th:if="${#fields.hasErrors('adultPrice')}" th:errors="*{adultPrice}">a</p>
+    <label for="childPrice" class="form-label">Giá trẻ em:</label>
+    <input id="childPrice" type="number" th:field="*{childrenPrice}" class="form-control">
+    <p th:if="${#fields.hasErrors('childrenPrice')}" th:errors="*{childrenPrice}">a</p>
+    <label for="tourGuy" class="form-label">Hướng dẫn viên: </label>
+    <input id="tourGuy" type="text" th:field="*{tourGuide}" class="form-control">
+    <p th:if="${#fields.hasErrors('tourGuide')}" th:errors="*{tourGuide}">a</p>
+    <input type="hidden"  th:field="*{image}">
+    <label for="file" class="form-label">Chọn tệp ảnh : </label>
+    <input type="file" class="form-control" id="file" th:field="*{file}">
+    <label for="detail" class="form-label">Giới thiệu tour</label>
+    <textarea id="detail" th:field="*{description}" class="form-control" cols="50" rows="10"></textarea>
+    <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}">a</p>
+
+    <br>
+    <input type="submit" value="Save" class="btn btn-primary float-end" style="width: 100%">
+</form>
+
+</body>
+</html>
