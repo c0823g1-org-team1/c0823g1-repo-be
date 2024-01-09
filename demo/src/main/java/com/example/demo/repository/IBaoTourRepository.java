@@ -1,15 +1,12 @@
 package com.example.demo.repository;
 
 import com.example.demo.model.Tour;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import javax.xml.crypto.Data;
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -23,6 +20,11 @@ public interface IBaoTourRepository extends JpaRepository<Tour, Integer> {
     List<Tour> findAllByOrderByAdultPriceAsc();
     List<Tour> findAllByOrderByAdultPriceDesc();
     @Query(value = "select * from tour t where t.adult_price <= 500000 and t.departure_date = :date ",nativeQuery = true)
-    List<Tour> searchSaveMoney (@Param("date") Date date);
+    List<Tour> searchManyOption (@Param("date") LocalDate date);
 
+    @Query(value = "select * from tour t where t.care_about >= :cartAbout",nativeQuery = true)
+    List<Tour> searchHotTour(@Param("cartAbout") int careAbout);
+
+    @Query(value = "select * from tour t where t.adult_price <= :adultPrice",nativeQuery = true)
+    List<Tour> searchSavePrice(@Param("adultPrice") int adultPrice);
 }
