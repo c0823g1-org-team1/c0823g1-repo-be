@@ -126,7 +126,7 @@
         <header>Login</header>
         <div th:if="${#request.getParameter('error') == 'true'}"
              style="color:red;margin:10px 0px;">
-            Login Failed!!!<br />
+            Login Failed!!!<br/>
             Reason :
             <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
                   th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
@@ -143,6 +143,11 @@
         <div class="signup">
         <span class="signup">Don't have an account?
        <a th:href="@{/account/register}"><label>Signup</label></a>
+        </span>
+        </div>
+        <div class="signup">
+        <span class="signup">Forgot your password ?
+        <a th:href="@{/account/forgot1}"><label>Forgot</label></a>
         </span>
         </div>
     </div>

@@ -4,13 +4,10 @@ import com.example.demo.model.LocationTour;
 import com.example.demo.model.Tour;
 import com.example.demo.service.IBaoBookingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -31,6 +28,7 @@ public class BaoBookingController {
     @GetMapping("detail/{id}")
     public String detail(@PathVariable int id, Model model) {
         Tour tour = baoBookingService.findById(id);
+
         tour.setCareAbout(tour.getCareAbout() + 1);
         baoBookingService.saveTour(tour);
         List<LocationTour> location = baoBookingService.findLocation(tour.getId());
@@ -96,7 +94,7 @@ public class BaoBookingController {
         int savePrices = Integer.parseInt(savePrice);
         for (Tour tour : tours) {
             Date departureDate = tour.getDepartureDate();
-            Date endDate =  tour.getEndDate();
+            Date endDate = tour.getEndDate();
             long durationInMillis = endDate.getTime() - departureDate.getTime();
             long durationInDays = durationInMillis / (24 * 60 * 60 * 1000);
             if (durationInDays == 3) {
@@ -105,20 +103,20 @@ public class BaoBookingController {
                 tours4d.add(tour);
             }
         }
-        if (days == 3 & savePrices != 0 ) {
+        if (days == 3 & savePrices != 0) {
             for (Tour tour : tours3d) {
-                if (tour.getCareAbout() >= typeTours ) {
+                if (tour.getCareAbout() >= typeTours) {
                     List<Tour> save = baoBookingService.searchSaveMoney(date1);
                     model.addAttribute("tour", save);
                 } else {
-                    List<Tour> save = baoBookingService.searchSaveMoney( date1);
+                    List<Tour> save = baoBookingService.searchSaveMoney(date1);
                     model.addAttribute("tour", save);
                 }
             }
-        } else if (days == 4 & savePrices != 0 ) {
+        } else if (days == 4 & savePrices != 0) {
             for (Tour tour : tours4d) {
-                if (tour.getCareAbout() >= typeTours ) {
-                    List<Tour> save = baoBookingService.searchSaveMoney( date1);
+                if (tour.getCareAbout() >= typeTours) {
+                    List<Tour> save = baoBookingService.searchSaveMoney(date1);
                     model.addAttribute("tour", save);
                 } else {
                     List<Tour> save = baoBookingService.searchSaveMoney(date1);
@@ -126,20 +124,20 @@ public class BaoBookingController {
                 }
             }
         }
-        if (days == 3 & typeTours != 0 ) {
+        if (days == 3 & typeTours != 0) {
             for (Tour tour : tours3d) {
-                if (tour.getAdultPrice() >= savePrices ) {
+                if (tour.getAdultPrice() >= savePrices) {
                     List<Tour> save = baoBookingService.searchSaveMoney(date1);
                     model.addAttribute("tour", save);
                 } else {
-                    List<Tour> save = baoBookingService.searchSaveMoney( date1);
+                    List<Tour> save = baoBookingService.searchSaveMoney(date1);
                     model.addAttribute("tour", save);
                 }
             }
-        } else if (days == 4 & typeTours != 0 ) {
-            for (Tour tour : tours4d) { 
-                if (tour.getCareAbout() >= savePrices ) {
-                    List<Tour> save = baoBookingService.searchSaveMoney( date1);
+        } else if (days == 4 & typeTours != 0) {
+            for (Tour tour : tours4d) {
+                if (tour.getCareAbout() >= savePrices) {
+                    List<Tour> save = baoBookingService.searchSaveMoney(date1);
                     model.addAttribute("tour", save);
                 } else {
                     List<Tour> save = baoBookingService.searchSaveMoney(date1);

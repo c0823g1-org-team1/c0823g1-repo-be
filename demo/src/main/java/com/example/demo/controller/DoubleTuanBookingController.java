@@ -57,7 +57,7 @@ public class DoubleTuanBookingController {
         return "/booking/book";
     }
 
-    @GetMapping("addBooking")
+    @GetMapping("booking/addBooking")
     private String addBooking(Booking booking) {
         booking.setDate(LocalDateTime.now());
         doubleTuanBookingService.save(booking);
@@ -66,6 +66,7 @@ public class DoubleTuanBookingController {
         message.setTo(account.getEmailClient());
         message.setSubject("Cảm ơn bạn đã sử dụng dịch vụ");
         message.setText("Cảm ơn bạn đã sử dụng dịch vụ");
-        return "redirect:/booking";
+        javaMailSender.send(message);
+        return "redirect:/home";
     }
 }

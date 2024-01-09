@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("Tuan_account")
+@RequestMapping("/account")
 public class MailController {
     @Autowired
     JavaMailSender javaMailSender;
@@ -38,7 +38,7 @@ public class MailController {
                 break;
             }
         }
-        String subject = "Quen mat khau";
+        String subject = "Đổi mật khẩu ";
         String url = "http://localhost:8080/Tuan_account/formPassword/" + id;
         message.setTo(email);
         message.setSubject(subject);
