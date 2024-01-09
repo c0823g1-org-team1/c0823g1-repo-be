@@ -6,6 +6,13 @@ insert into account(date,email_client,identify_client,is_delete,name_account,nam
 values ("2001-02-11","admin@gmail.com",191918176,0,"admin","admin","123456","0123456789",2),
 ("2001-02-11","bao@gmail.com",191918176,0,"bao","bao","123456","0123456789",1),
 ("2001-02-11","tuan@gmail.com",191918176,0,"tuan","tuan","123456","0123456789",1);
+
+insert into tour_guild(date,email_guild,is_delete,name,phone_guild)
+values('1999-02-20','tranducphuong@gmail.com',0,'Phuong TD','0912345678'),
+('1993-02-20','lamtran@gmail.com',0,'Lam','0912345678'),
+('1997-02-20','tronghai@gmail.com',0,'Hai','0912345678'),
+('2005-02-20','tieuvi@gmail.com',0,'Vi','0912345678'),
+('2002-02-20','dobeo@gmail.com',0,'Do','0912345678');
  
 insert into tour (adult_price,care_about,children_price,departure_date,description,end_date,image, is_delete, name,quantity,view,tour_guild_id)
 values(500000,300,300000,"2024-1-10","Sapporo là thành phố đăng cai tổ chức Thế vận hội mùa đông đầu tiên ở châu Á vào năm
@@ -87,9 +94,3 @@ VALUES (5,5,'2001-02-11 00:00:00.000000',0,1,1),
 insert into payment (status,booking_id)
 values(0,1),(0,2),(0,3);
 
-insert into tour_guild(date,email_guild,is_delete,name,phone_guild)
-values('1999-02-20','tranducphuong@gmail.com',0,'Phuong TD','0912345678'),
-('1993-02-20','lamtran@gmail.com',0,'Lam','0912345678'),
-('1997-02-20','tronghai@gmail.com',0,'Hai','0912345678'),
-('2005-02-20','tieuvi@gmail.com',0,'Vi','0912345678'),
-('2002-02-20','dobeo@gmail.com',0,'Do','0912345678');

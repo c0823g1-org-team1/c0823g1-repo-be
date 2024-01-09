@@ -1,18 +1,14 @@
 package com.example.demo.service;
 
-import com.example.demo.model.Booking;
 import com.example.demo.model.LocationTour;
 import com.example.demo.model.Tour;
-import com.example.demo.repository.IBaoBookingRepository;
 import com.example.demo.repository.IBaoTourRepository;
 
 import com.example.demo.repository.IBaoLocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -21,8 +17,7 @@ public class BaoBookingService implements IBaoBookingService {
     private IBaoTourRepository baoTourRepository;
     @Autowired
     private IBaoLocationRepository baoLocationRepository;
-    @Autowired
-    private IBaoBookingRepository baoBookingRepository;
+
     @Override
     public List<Tour> getAll() {
         return baoTourRepository.findAll();
@@ -54,8 +49,19 @@ public class BaoBookingService implements IBaoBookingService {
     }
 
     @Override
-    public List<Tour> searchSaveMoney(Date date) {
-        return baoTourRepository.searchSaveMoney(date);
+    public List<Tour> searchManyOption(LocalDate date) {
+        return baoTourRepository.searchManyOption(date);
     }
+
+    @Override
+    public List<Tour> searchHotTour(int careAbout) {
+        return baoTourRepository.searchHotTour(careAbout);
+    }
+
+    @Override
+    public List<Tour> searchSavePrice(int adultPrice) {
+        return baoTourRepository.searchSavePrice(adultPrice);
+    }
+
 
 }
