@@ -10,16 +10,18 @@
 <div>
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex" method="get" th:action="@{/account}">
+                <input class="form-control me-2" name="account_name" type="search" placeholder="Search" aria-label="Search" th:value="${account_name}">
                 <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
-    <select class="form-select" aria-label="Default select example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
+    <select class="form-select" aria-label="Default select example" name="role_id">
+        <option th:each="r , status : ${roles}" th:text="${r.getName()}" th:value="${r.getId()}"></option>
     </select>
+    </form>
+</div>
+    </nav>
+
+
+
 </div>
 
 <table class="table table-light table-striped table-hover">
@@ -34,12 +36,12 @@
     </thead>
     <tbody>
     <tr th:if="${accounts.getTotalElements() <= 0}">
-    <th colspan="4" class="text-center">Không có dữ liệu</th>
+    <th colspan="5" class="text-center">Không có dữ liệu</th>
     </tr>
     <tr th:each="ac , status : ${accounts}">
         <th scope="row" th:text="${status.count + accounts.size * accounts.number}"></th>
         <td  th:text="${ac.getNameClient()}"></td>
-        <td th:text="${ac.getNameAccount()}"></td>
+        <td th:text="${ac.getUsername()}"></td>
         <td th:text="${ac.getRole().getName()}"></td>
         <td><a></a></td>
     </tr>

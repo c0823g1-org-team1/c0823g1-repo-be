@@ -20,7 +20,7 @@ import java.sql.Date;
 public class AccountDTO implements Validator {
     private int id;
     @Size(min = 6,max = 20 , message = "Tài Khoản Chỉ Được 6-20 ký tự")
-    private String nameAccount;
+    private String username;
     @Size(min =6 ,max = 20,message = "Mật Khẩu Chỉ được 6-20 ký tự")
     private String password;
     @Size(min = 4,max = 20,message = "Tên Của Bạn từ 4 - 20 ký tự")
