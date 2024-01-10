@@ -32,7 +32,7 @@ public class MailController {
         String pass = null;
         int id = 0;
         for (Account account1 : accountList) {
-            if (account1.getNameAccount().equals(account)) {
+            if (account1.getUsername().equals(account)) {
                 email = account1.getEmailClient();
                 id = account1.getId();
                 break;

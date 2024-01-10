@@ -5,6 +5,8 @@ import com.example.demo.repository.TuanAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +15,8 @@ import java.util.List;
 public class TuanAccountService implements ITuanAccountService {
     @Autowired
     private TuanAccountRepository accountRepository;
+
+
 
     @Override
     public void save(Account account) {
@@ -56,5 +60,10 @@ public class TuanAccountService implements ITuanAccountService {
     @Override
     public Page<Account> getAllAccountPage(Pageable pageable, String account_name, Integer role_id) {
         return accountRepository.getAllAccountPage(pageable,account_name,role_id);
+    }
+
+    @Override
+    public Account findByUserName(String userName) {
+        return accountRepository.findByUsername(userName);
     }
 }
