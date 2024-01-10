@@ -1,10 +1,7 @@
 package com.example.demo.service;
 
 
-import com.example.demo.model.Booking;
-import com.example.demo.model.LocationTour;
-import com.example.demo.model.Tour;
-import com.example.demo.model.TourGuild;
+import com.example.demo.model.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
@@ -18,6 +15,7 @@ public interface IBaoBookingService {
 
     Tour findById(int id);
 
+
     List<LocationTour> findLocation(int id);
 
     void saveTour(Tour tour);
@@ -29,4 +27,7 @@ public interface IBaoBookingService {
     List<Tour> searchManyOption (LocalDate date);
     List<Tour> searchHotTour( int careAbout);
     List<Tour> searchSavePrice(int adultPrice);
+    void savePayment(Payment payment);
+    Payment findIdPayment ( int id);
+    Booking save(Booking booking);
 }

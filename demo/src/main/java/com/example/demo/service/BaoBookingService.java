@@ -1,7 +1,11 @@
 package com.example.demo.service;
 
+import com.example.demo.model.Booking;
 import com.example.demo.model.LocationTour;
+import com.example.demo.model.Payment;
 import com.example.demo.model.Tour;
+import com.example.demo.repository.IBaoBookingRepository;
+import com.example.demo.repository.IBaoPaymentRepository;
 import com.example.demo.repository.IBaoTourRepository;
 
 import com.example.demo.repository.IBaoLocationRepository;
@@ -17,6 +21,10 @@ public class BaoBookingService implements IBaoBookingService {
     private IBaoTourRepository baoTourRepository;
     @Autowired
     private IBaoLocationRepository baoLocationRepository;
+    @Autowired
+    private IBaoPaymentRepository baoPaymentRepository;
+    @Autowired
+    private IBaoBookingRepository baoBookingRepository;
 
     @Override
     public List<Tour> getAll() {
@@ -61,6 +69,21 @@ public class BaoBookingService implements IBaoBookingService {
     @Override
     public List<Tour> searchSavePrice(int adultPrice) {
         return baoTourRepository.searchSavePrice(adultPrice);
+    }
+
+    @Override
+    public void savePayment(Payment payment) {
+        baoPaymentRepository.save(payment);
+    }
+
+    @Override
+    public Payment findIdPayment(int id) {
+        return baoPaymentRepository.findIdPayment(id);
+    }
+
+    @Override
+    public Booking save(Booking booking) {
+        return baoBookingRepository.save(booking);
     }
 
 
