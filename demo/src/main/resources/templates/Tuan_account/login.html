@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!-- Coding By CodingNepal - codingnepalweb.com -->
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -134,11 +135,12 @@
 <!--         </span>-->
 
 <!--        </div>-->
-        <form name='f' th:action="@{/}" method="post">
-            <input type="text" name="username" placeholder="Enter your email">
+
+        <form name='f'  method="post">
+            <input type="text" name="username" placeholder="Enter your email" >
             <input type="password" name="password" placeholder="Enter your password">
             <a href="#">Forgot password?</a>
-            <input type="button" class="button" value="Login">
+            <input type="submit" class="button" value="Login">
         </form>
         <div class="signup">
         <span class="signup">Don't have an account?

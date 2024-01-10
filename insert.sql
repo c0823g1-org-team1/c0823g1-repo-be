@@ -94,3 +94,12 @@ VALUES (5,5,'2001-02-11 00:00:00.000000',0,1,1),
 insert into payment (status,booking_id)
 values(0,1),(0,2),(0,3);
 
+<<<<<<< HEAD
+=======
+insert into tour_guild(date,email_guild,is_delete,name,phone_guild)
+values('1999-02-20','tranducphuong@gmail.com',0,'Phuong TD','0912345678'),
+('1993-02-20','lamtran@gmail.com',0,'Lam','0912345678'),
+('1997-02-20','tronghai@gmail.com',0,'Hai','0912345678'),
+('2005-02-20','tieuvi@gmail.com',0,'Vi','0912345678'),
+('2002-02-20','dobeo@gmail.com',0,'Do','0912345678');
+>>>>>>> b7ea937 (first commit)

@@ -127,9 +127,9 @@
         <header>Signup</header>
         <form th:action="@{/account/register}" th:object="${accountDto}" method="post">
             <label for="tk">Tên Tài Khoản</label>
-            <input id="tk" type="text" placeholder="Ex:tuan123" th:field="*{nameAccount}">
-            <small style="color: red" th:if="${#fields.hasErrors('nameAccount')}"
-                   th:errors="*{nameAccount}"></small><br>
+            <input id="tk" type="text" placeholder="Ex:tuan123" th:field="*{username}">
+            <small style="color: red" th:if="${#fields.hasErrors('username')}"
+                   th:errors="*{username}"></small><br>
             <small style="color: red" th:if="${isExits == 1}">Tài Khoản Đã Tồn Tại</small><br>
             <label for="mk">Mật Khẩu</label>
             <input id="mk" type="password" placeholder="" th:field="*{password}">

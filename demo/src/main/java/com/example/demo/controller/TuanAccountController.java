@@ -36,8 +36,6 @@ public class TuanAccountController {
                                 @RequestParam(value = "sortDirection", required = false, defaultValue = "ASC") String sortDirection) {
         Pageable pageable = PageRequest.of(page, size, Sort.Direction.valueOf(sortDirection), sortBy);
         Page<Account> accounts = this.accountService.getAllAccountPage(pageable, account_name, role_id);
-        System.out.println(role_id);
-        model.addAttribute("roles",roleService.getList());
         model.addAttribute("account_name",account_name);
         model.addAttribute("role_id",role_id);
         model.addAttribute("accounts",accounts);
