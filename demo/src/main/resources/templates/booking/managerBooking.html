@@ -27,7 +27,7 @@
         <td th:text="${b.getAccount().nameClient}"></td>
         <td th:text="${b.getDate()}"></td>
         <td th:text="${b.getChildrenNumber() + b.getAdultNumber()}"></td>
-        <td th:text="${b.getAccount().getUsername()}"></td>
+        <td th:text="${b.getAccount().getNameAccount()}"></td>
         <td th:text="${b.getTour().getName()}"></td>
         <td th:text="${b.getTour().getTourGuide()}"></td>
         <td th:text="${b.getChildrenNumber() * b.getTour().getChildrenPrice() + b.getAdultNumber() * b.getTour().getAdultPrice()}"></td>
