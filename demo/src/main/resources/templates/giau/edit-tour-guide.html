@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Sửa</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+          crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container flex" style="width: 50%; height: 100%; padding: 4.5em">
+  <form th:action="@{editGuide}" method="get" th:object="${tourGuide}" style="width: 100%; position: relative">
+    <h1 style="color: black; text-align: center">Sửa hướng dẫn viên</h1>
+    <div class="form-group">
+      <input type="hidden" th:field="*{id}">
+      <label for="name" class="form-label">Tên:</label>
+      <input type="text" class="form-control" id="name" name="name" th:field="*{name}" maxlength="30" required>
+      <div class="form-text" style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="date" class="form-label">Ngày sinh:</label>
+      <input type="date" class="form-control" id="date" name="date" th:field="*{date}" required>
+      <div class="form-text" style="color: red" th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></div>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="phoneGuild" class="form-label">Số điện thoại:</label>
+      <input type="tel" class="form-control" id="phoneGuild" name="phoneGuild" th:field="*{phoneGuild}" maxlength="13" required minlength="10">
+      <div class="form-text" style="color: red" th:if="${#fields.hasErrors('phoneGuild')}" th:errors="*{phoneGuild}"></div>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="emailGuild" class="form-label">Email:</label>
+      <input type="email" class="form-control" id="emailGuild" name="emailGuild" th:field="*{emailGuild}" required>
+      <div class="form-text" style="color: red" th:if="${#fields.hasErrors('emailGuild')}" th:errors="*{emailGuild}"></div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <input type="submit" class="btn btn-primary" value="Cập nhật thay đổi"
+           style="width: 45%; position: absolute;bottom: 0">
+    <a th:href="@{/tourGuide}" class="btn"
+       style="right: 0;width: 45%; position: absolute;bottom: 0; background-color: #f44566; color: white;">Quay
+      lại trang trước</a>
+  </form>
+</div>
+</body>
+</html>
