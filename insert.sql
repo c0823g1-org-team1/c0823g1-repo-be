@@ -1,11 +1,11 @@
 use booking_tour;
 insert into role(name)
-values("Thành Viên"),("Nhân Viên");
+values("ROLE_ADMIN"),("ROLE_USER");
 
 insert into account(date,email_client,identify_client,is_delete,name_account,name_client, password,phone_client,role_id)
-values ("2001-02-11","admin@gmail.com",191918176,0,"admin","admin","123456","0123456789",2),
-("2001-02-11","bao@gmail.com",191918176,0,"bao","bao","123456","0123456789",1),
-("2001-02-11","tuan@gmail.com",191918176,0,"tuan","tuan","123456","0123456789",1);
+values ("2001-02-11","admin@gmail.com",191918176,0,"admin","admin","123456","0123546789",2),
+("2001-02-11","bao@gmail.com",191918176,0,"bao","bao","123456","0123457689",1),
+("2001-02-11","tuan@gmail.com",191918176,0,"tuan","tuan","123456","0132456789",1);
 
 insert into tour_guild(date,email_guild,is_delete,name,phone_guild)
 values('1999-02-20','tranducphuong@gmail.com',0,'Phuong TD','0912345678'),
