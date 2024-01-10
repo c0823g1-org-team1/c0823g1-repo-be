@@ -33,4 +33,17 @@ public class Booking {
     @JoinColumn(name = "tour_id",referencedColumnName = "id")
     private Tour tour;
 
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "id=" + id +
+                ", date=" + date +
+                ", adultNumber=" + adultNumber +
+                ", childrenNumber=" + childrenNumber +
+                ", isDelete=" + isDelete +
+                ", account=" + account +
+                ", payment=" + payment +
+                ", tour=" + tour +
+                '}';
+    }
 }
