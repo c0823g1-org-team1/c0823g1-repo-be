@@ -587,7 +587,7 @@
                 </ul>
                 <div class="search">
                     <div sec:authorize="!isAuthenticated()" >
-                        <a href="/login">  Đăng Nhập</a>
+                        <a th:href="@{account/login}">  Đăng Nhập</a>
 
                     </div>
                     <div sec:authorize="isAuthenticated()" >
