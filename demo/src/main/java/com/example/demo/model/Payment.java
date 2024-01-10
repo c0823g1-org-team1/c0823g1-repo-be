@@ -1,17 +1,9 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "payment")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,9 +13,36 @@ public class Payment {
     @OneToOne
     private Booking booking;
 
+    public Payment() {
+    }
 
-    public Payment(boolean status, Booking booking) {
+    public Payment(int id, boolean status, Booking booking) {
+        this.id = id;
         this.status = status;
+        this.booking = booking;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
         this.booking = booking;
     }
 }
