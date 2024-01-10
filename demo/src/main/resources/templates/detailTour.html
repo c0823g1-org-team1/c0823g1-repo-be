@@ -1017,7 +1017,7 @@
 								</div>
 								<div class="group-add-cart">
 									<div class="boder">
-										<a title="Đặt ngay" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="add-to-cart"><i class="fal fa-shopping-cart"></i>Đặt ngay</a>
+										<a title="Đặt ngay" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="add-to-cart"><i class="fal fa-shopping-cart"></i> Đặt ngay</a>
 										<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
 											 aria-labelledby="staticBackdropLabel" aria-hidden="true">
 											<div class="modal-dialog">
@@ -1027,10 +1027,11 @@
 														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 													</div>
 													<div class="modal-body">
-														<form th:action="@{booking/addBooking}" method="get" th:object="${bookings}">
+														<form th:action="@{/pay}" method="get" th:object="${bookings}">
 															<input type="hidden" th:field="*{tour}">
 															<input type="hidden" th:field="*{account}">
 															<input type="hidden" th:field="*{date}">
+
 															<fieldset disabled>
 																<div class="mb-3">
 																	<label for="disabledTextInput" class="form-label">Tên khách hàng</label>
@@ -1083,8 +1084,8 @@
 																<label class="form-label"></label>
 																<span id="totalAmount"></span>
 															</div>
-															<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-															<button type="submit" class="btn btn-primary" id="btn-submit" disabled>Understood</button>
+															<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+															<button type="submit" class="btn btn-primary" id="btn-submit" disabled>Đặt</button>
 														</form>
 													</div>
 													<div class="modal-footer">
@@ -1199,7 +1200,7 @@
 									<div class="table-price">
 										<div class="more-info more-info-2">
 											<div class="block"><span>HDV dẫn đoàn</span>
-												<div th:text="${tours.getTourGuide()}"></div>
+												<div th:text="${tours.getTourGuild().getName()}"></div>
 											</div>
 										</div>
 									</div>
