@@ -131,7 +131,7 @@ public class PaymentController {
             @RequestParam(value = "vnp_OrderInfo", required = false) String order,
             @RequestParam(value = "vnp_ResponseCode", required = false) String responseCode,
             Model model, RedirectAttributes redirectAttributes, @PathVariable int id) {
-         Payment payment = new Payment(false,tuanBookingService .findById(id));
+        Payment payment = new Payment(false,tuanBookingService .findById(id));
         System.out.println(payment);
         if (responseCode.equals("00")) {
             payment.setStatus(true);

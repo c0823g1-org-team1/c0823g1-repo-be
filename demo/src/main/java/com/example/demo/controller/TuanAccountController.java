@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,6 +26,8 @@ public class TuanAccountController {
     private ITuanAccountService accountService;
     @Autowired
     private ITuanRoleService roleService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("")
     public String getAllAccount(Model model,
@@ -36,6 +39,8 @@ public class TuanAccountController {
                                 @RequestParam(value = "sortDirection", required = false, defaultValue = "ASC") String sortDirection) {
         Pageable pageable = PageRequest.of(page, size, Sort.Direction.valueOf(sortDirection), sortBy);
         Page<Account> accounts = this.accountService.getAllAccountPage(pageable, account_name, role_id);
+        System.out.println(role_id);
+        model.addAttribute("roles",roleService.getList());
         model.addAttribute("account_name",account_name);
         model.addAttribute("role_id",role_id);
         model.addAttribute("accounts",accounts);
@@ -59,7 +64,7 @@ public class TuanAccountController {
     @PostMapping("register")
     public String register(@Valid @ModelAttribute("accountDto") AccountDTO accountDto, BindingResult bindingResult, Model model) {
         Boolean flag = false;
-        if (accountService.checkUserAccount(accountDto.getNameAccount()) != null) {
+        if (accountService.checkUserAccount(accountDto.getUsername()) != null) {
             model.addAttribute("isExits", 1);
             flag = true;
         }
@@ -80,11 +85,13 @@ public class TuanAccountController {
         if (bindingResult.hasFieldErrors()) {
             return "Tuan_account/register";
         } else {
+            String encodedPassword =passwordEncoder.encode(accountDto.getPassword());
             Account account = new Account();
             BeanUtils.copyProperties(accountDto, account);
             account.setRole(roleService.findById(1));
+            account.setPassword(encodedPassword);
             accountService.save(account);
-            return "Tuan_account/login";
+            return "redirect:/account/login";
         }
     }
 }

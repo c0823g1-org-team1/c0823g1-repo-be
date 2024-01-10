@@ -1,1116 +1,862 @@
-<html lang="en" class="mdl-js">
-<head>
-	<link
-		href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap"
-		rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css?display=swap">
-	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css?display=swap"
-		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css?display=swap" rel="stylesheet"
-		integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-	<link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
-			rel="stylesheet"/>
-	<title>Detail Booking</title>
-	<script type="text/javascript" async=""
-		src="https://www.googletagmanager.com/gtag/js?id=G-39GJVRHQ6K&amp;l=dataLayer&amp;cx=c"></script>
-	<script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-P3D5RK"></script>
-	<script
-		type="text/javascript">!function (e, t, a, n, g) { e[n] = e[n] || [], e[n].push({ "gtm.start": (new Date).getTime(), event: "gtm.js" }); var m = t.getElementsByTagName(a)[0], r = t.createElement(a); r.async = !0, r.src = "https://www.googletagmanager.com/gtm.js?id=GTM-P3D5RK", m.parentNode.insertBefore(r, m) }(window, document, "script", "dataLayer")</script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-	integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-	crossorigin="anonymous" referrerpolicy="no-referrer"/>
-	<style type="text/css">
-		.styles__sound_icon___23DuG svg {
-			width: 2rem;
-			height: 2rem;
-		}
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap"
+        rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css?display=swap">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css?display=swap"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css?display=swap" rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"/>
+<title>Detail Booking</title>
+<script type="text/javascript" async=""
+        src="https://www.googletagmanager.com/gtag/js?id=G-39GJVRHQ6K&amp;l=dataLayer&amp;cx=c"></script>
+<script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-P3D5RK"></script>
+<script
+        type="text/javascript">!function (e, t, a, n, g) {
+    e[n] = e[n] || [], e[n].push({"gtm.start": (new Date).getTime(), event: "gtm.js"});
+    var m = t.getElementsByTagName(a)[0], r = t.createElement(a);
+    r.async = !0, r.src = "https://www.googletagmanager.com/gtm.js?id=GTM-P3D5RK", m.parentNode.insertBefore(r, m)
+}(window, document, "script", "dataLayer")</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<style type="text/css">
+    .styles__sound_icon___23DuG svg {
+        width: 2rem;
+        height: 2rem;
+    }
 
-		.styles__sound_icon_auto_width___EVA69 svg {
-			width: auto;
-			height: auto;
-		}
+    .styles__sound_icon_auto_width___EVA69 svg {
+        width: auto;
+        height: auto;
+    }
 
-		.styles__sound_icon___23DuG svg path {
-			-webkit-transition: fill .5s;
-			transition: fill .5s;
-		}
+    .styles__sound_icon___23DuG svg path {
+        -webkit-transition: fill .5s;
+        transition: fill .5s;
+    }
 
-		.styles__sound_active___2_Hr_ svg path {
-			fill: #7AC70C;
-		}
-	</style>
-	<style>
-		.ej-trans-sub>span {
-			color: #3CF9ED;
-			font-size: 18px;
-			text-align: center;
-			padding: 0 16px;
-			line-height: 1.5;
-			background: rgba(32, 26, 25, 0.8);
-			// text-shadow: 0px 1px 4px black;
-			padding: 0 8px;
+    .styles__sound_active___2_Hr_ svg path {
+        fill: #7AC70C;
+    }
+</style>
+<style>
+    .ej-trans-sub > span {
+        color: #3CF9ED;
+        font-size: 18px;
+        text-align: center;
+        padding: 0 16px;
+        line-height: 1.5;
+        background: rgba(32, 26, 25, 0.8);
+    / / text-shadow: 0 px 1 px 4 px black;
+        padding: 0 8px;
 
-			lineHeight: 1.2;
-			font-size: 16px;
-			color: #0CB1C7;
-			background: rgba(67, 65, 65, 0.7);
+        lineHeight: 1.2;
+        font-size: 16px;
+        color: #0CB1C7;
+        background: rgba(67, 65, 65, 0.7);
 
-		}
+    }
 
-		.ej-main-sub>span {
-			color: white;
-			font-size: 20px;
-			line-height: 1.5;
-			text-align: center;
-			background: rgba(32, 26, 25, 0.8);
-			padding: 2px 8px;
+    .ej-main-sub > span {
+        color: white;
+        font-size: 20px;
+        line-height: 1.5;
+        text-align: center;
+        background: rgba(32, 26, 25, 0.8);
+        padding: 2px 8px;
 
-			lineHeight: 1.2;
-			font-size: 28px;
-			color: #FFCC00;
-			background: rgba(17, 17, 17, 0.7);
+        lineHeight: 1.2;
+        font-size: 28px;
+        color: #FFCC00;
+        background: rgba(17, 17, 17, 0.7);
 
-		}
+    }
 
-		.ej-main-sub .ejoy-sub-clzz {
-			background: transparent !important
-		}
+    .ej-main-sub .ejoy-sub-clzz {
+        background: transparent !important
+    }
 
-		.tran-subtitle>span {
-			cursor: pointer;
-			padding-left: 10px;
-			top: 2px;
-			position: relative;
-		}
+    .tran-subtitle > span {
+        cursor: pointer;
+        padding-left: 10px;
+        top: 2px;
+        position: relative;
+    }
 
-		.tran-subtitle>span>span {
-			position: absolute;
-			top: -170%;
-			background: rgba(0, 0, 0, 0.5);
-			font-size: 13px;
-			line-height: 20px;
-			padding: 2px 8px;
-			color: white;
-			display: none;
-			border-radius: 4px;
-			white-space: nowrap;
-			left: -50%;
-			font-weight: normal;
-		}
+    .tran-subtitle > span > span {
+        position: absolute;
+        top: -170%;
+        background: rgba(0, 0, 0, 0.5);
+        font-size: 13px;
+        line-height: 20px;
+        padding: 2px 8px;
+        color: white;
+        display: none;
+        border-radius: 4px;
+        white-space: nowrap;
+        left: -50%;
+        font-weight: normal;
+    }
 
-		.viewGoPro svg {
-			pointer-events: none;
-		}
+    .viewGoPro svg {
+        pointer-events: none;
+    }
 
-		.view-icon-full-sub>svg,
-		.view-icon-exit-full-sub>svg {
-			pointer-events: none;
-		}
+    .view-icon-full-sub > svg,
+    .view-icon-exit-full-sub > svg {
+        pointer-events: none;
+    }
 
-		.tran-subtitle>span>svg {
-			width: 16px;
-			height: 16px;
-			pointer-events: none;
-			display: inline-flex !important;
-			vertical-align: baseline !important;
-		}
+    .tran-subtitle > span > svg {
+        width: 16px;
+        height: 16px;
+        pointer-events: none;
+        display: inline-flex !important;
+        vertical-align: baseline !important;
+    }
 
-		.view-icon-copy-main-sub>svg {
-			pointer-events: none;
-			color: #FFCC00
-		}
+    .view-icon-copy-main-sub > svg {
+        pointer-events: none;
+        color: #FFCC00
+    }
 
-		.iconCrownGoPro {
-			padding-left: 0 !important;
-			padding-right: 8px !important;
-		}
+    .iconCrownGoPro {
+        padding-left: 0 !important;
+        padding-right: 8px !important;
+    }
 
-		.view-icon-copy-tran-sub>svg {
-			pointer-events: none;
-			color: #0CB1C7
-		}
-	</style>
-	<style>
-		 /* Foooter */
-		 .icon-footer {
-            margin-top: 20px;
+    .view-icon-copy-tran-sub > svg {
+        pointer-events: none;
+        color: #0CB1C7
+    }
+</style>
+<style>
+    /* Foooter */
+    .icon-footer {
+        margin-top: 20px;
+    }
+
+    .icon-footer i {
+        margin: 0 5px;
+    }
+
+    .contain-map {
+        height: 541.65px;
+        width: 100%;
+        margin: 30px auto 0;
+        text-align: center;
+    }
+
+    .contain-map img {
+        width: 70%;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Header */
+    .container__header {
+        width: 1100px;
+        margin: 0 auto;
+        padding: 0 30px;
+        font-family: Roboto, sans-serif;
+    }
+
+    .logo {
+        display: inline-block;
+    }
+
+    .logo img {
+        width: 100px;
+        background-color: transparent;
+    }
+
+    .container__header-option {
+        float: right;
+        box-sizing: border-box;
+        margin-top: 26px;
+
+    }
+
+    .menu {
+        display: flex;
+    }
+
+    .list-option {
+        display: flex;
+    }
+
+    .hover {
+        font-size: 22px;
+        display: inline-block;
+        padding: 0 18px;
+        font-weight: 700;
+        color: black;
+        position: relative;
+        font-family: Roboto, sans-serif;
+        text-decoration: none;
+    }
+
+    .button-search {
+        background: transparent;
+        border: none;
+        margin-right: 10px;
+        margin-top: 5px;
+        cursor: pointer;
+    }
+
+    .fa-solid {
+        width: 17px;
+    }
+
+    .input {
+        border-radius: 5px;
+        height: 25px;
+        width: 120px;
+        border: 1px solid #544d4d;
+        background-color: transparent;
+    }
+
+    .search {
+        display: flex;
+        align-items: center;
+        margin-left: 140px;
+
+    }
+
+    .hover::before,
+    .hover::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background-color: #9EA91C;
+        bottom: -5px;
+        transition: 0.25s ease;
+    }
+
+    .hover:hover::before,
+    .hover:hover::after {
+        width: 50%;
+    }
+
+    :before {
+        left: 0;
+    }
+
+    a:after {
+        right: 0;
+    }
+</style>
+<script type="text/javascript" async=""
+        src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/10799997474/?random=1704381942326&amp;cv=11&amp;fst=1704381942326&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45je3bt0v9117034688z86778132&amp;gcd=11l1l1l1l1&amp;dma=0&amp;u_w=1366&amp;u_h=768&amp;url=https%3A%2F%2Ftravel.com.vn%2FtourNDSGN550-016-060124XE-F-1%2Fphan-thiet-mui-ne-hon-rom-doi-cat-bay-trai-nghiem-cung-duong-cao-toc-moi-dau-giay-phan-thiet-kich-cau-du-lich.aspx&amp;ref=https%3A%2F%2Ftravel.com.vn%2Fdong-tour%2Ftour-gia-soc.aspx&amp;hn=www.googleadservices.com&amp;frm=0&amp;tiba=Phan%20Thi%E1%BA%BFt%20-%20M%C5%A9i%20N%C3%A9%20-%20H%C3%B2n%20R%C6%A1m%20-%20%C4%90%E1%BB%93i%20C%C3%A1t%20Bay%20-%20Tr%E1%BA%A3i%20nghi%E1%BB%87m%20cung%20%C4%91%C6%B0%E1%BB%9Dng%20cao%20t%E1%BB%91c%20m%E1%BB%9Bi%20D%E1%BA%A7u%20Gi%C3%A2y%20Phan%20Thi&amp;auid=953656475.1704381932&amp;uaa=x86&amp;uab=64&amp;uafvl=Not_A%2520Brand%3B8.0.0.0%7CChromium%3B120.0.6099.130%7COpera%3B106.0.4998.19&amp;uamb=0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;data=event%3Dgtag.config&amp;rfmt=3&amp;fmt=4"></script>
+<style type="text/css"
+       data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget css:fb.css.customer_chat_plugin_iframe">
+    .fb_reset > div {
+        overflow: hidden
+    }
+
+    @keyframes fb_transform {
+        from {
+            opacity: 0;
+            transform: scale(.95)
         }
 
-        .icon-footer i {
-            margin: 0 5px;
+        to {
+            opacity: 1;
+            transform: scale(1)
+        }
+    }
+
+    .fb_reset > div {
+        overflow: hidden
+    }
+
+    @keyframes fb_transform {
+        from {
+            opacity: 0;
+            transform: scale(.95)
         }
 
-        .contain-map {
-            height: 541.65px;
-            width: 100%;
-            margin: 30px auto 0;
-            text-align: center;
+        to {
+            opacity: 1;
+            transform: scale(1)
+        }
+    }
+
+    .fb_dialog_content .dialog_title > span {
+        background: url(https://connect.facebook.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;
+        float: left;
+        padding: 5px 0 7px 26px
+    }
+
+
+    .fb_dialog_content .dialog_header table {
+        height: 43px;
+        width: 100%
+    }
+
+    .fb_dialog_content .dialog_header .touchable_button input {
+        background: none;
+        border: none;
+        color: #fff;
+        font: bold 12px Helvetica, sans-serif;
+        margin: 2px -12px;
+        padding: 2px 6px 3px 6px;
+        text-shadow: rgba(0, 30, 84, .296875) 0 -1px 0
+    }
+
+    @keyframes rotateSpinner {
+        0% {
+            transform: rotate(0deg)
         }
 
-        .contain-map img {
-            width: 70%;
-            position: relative;
-            z-index: 1;
+        100% {
+            transform: rotate(360deg)
         }
-		/* Header */
-		.container__header {
-			width: 1100px;
-			margin: 0 auto;
-			padding: 0 30px;
-			font-family: Roboto, sans-serif;
-		}
-
-		.logo {
-			display: inline-block;
-		}
-
-		.logo img {
-			width: 100px;
-			background-color: transparent;
-		}
-
-		.container__header-option {
-			float: right;
-			box-sizing: border-box;
-			margin-top: 26px;
-
-		}
-
-		.menu {
-			display: flex;
-		}
-
-		.list-option {
-			display: flex;
-		}
-
-		.hover {
-			font-size: 22px;
-			display: inline-block;
-			padding: 0 18px;
-			font-weight: 700;
-			color: black;
-			position: relative;
-			font-family: Roboto, sans-serif;
-			text-decoration: none;
-		}
-
-		.button-search {
-			background: transparent;
-			border: none;
-			margin-right: 10px;
-			margin-top: 5px;
-			cursor: pointer;
-		}
-
-		.fa-solid {
-			width: 17px;
-		}
-
-		.input {
-			border-radius: 5px;
-			height: 25px;
-			width: 120px;
-			border: 1px solid #544d4d;
-			background-color: transparent;
-		}
-
-		.search {
-			display: flex;
-			align-items: center;
-			margin-left: 140px;
-
-		}
-
-		.hover::before,
-		.hover::after {
-			content: "";
-			position: absolute;
-			width: 0;
-			height: 2px;
-			background-color: #9EA91C;
-			bottom: -5px;
-			transition: 0.25s ease;
-		}
-
-		.hover:hover::before,
-		.hover:hover::after {
-			width: 50%;
-		}
-
-		:before {
-			left: 0;
-		}
-
-		a:after {
-			right: 0;
-		}
-	</style>
-	<script type="text/javascript" async=""
-		src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/10799997474/?random=1704381942326&amp;cv=11&amp;fst=1704381942326&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45je3bt0v9117034688z86778132&amp;gcd=11l1l1l1l1&amp;dma=0&amp;u_w=1366&amp;u_h=768&amp;url=https%3A%2F%2Ftravel.com.vn%2FtourNDSGN550-016-060124XE-F-1%2Fphan-thiet-mui-ne-hon-rom-doi-cat-bay-trai-nghiem-cung-duong-cao-toc-moi-dau-giay-phan-thiet-kich-cau-du-lich.aspx&amp;ref=https%3A%2F%2Ftravel.com.vn%2Fdong-tour%2Ftour-gia-soc.aspx&amp;hn=www.googleadservices.com&amp;frm=0&amp;tiba=Phan%20Thi%E1%BA%BFt%20-%20M%C5%A9i%20N%C3%A9%20-%20H%C3%B2n%20R%C6%A1m%20-%20%C4%90%E1%BB%93i%20C%C3%A1t%20Bay%20-%20Tr%E1%BA%A3i%20nghi%E1%BB%87m%20cung%20%C4%91%C6%B0%E1%BB%9Dng%20cao%20t%E1%BB%91c%20m%E1%BB%9Bi%20D%E1%BA%A7u%20Gi%C3%A2y%20Phan%20Thi&amp;auid=953656475.1704381932&amp;uaa=x86&amp;uab=64&amp;uafvl=Not_A%2520Brand%3B8.0.0.0%7CChromium%3B120.0.6099.130%7COpera%3B106.0.4998.19&amp;uamb=0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;data=event%3Dgtag.config&amp;rfmt=3&amp;fmt=4"></script>
-	<style type="text/css"
-		data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget css:fb.css.customer_chat_plugin_iframe">
-		.fb_reset {
-			background: none;
-			border: 0;
-			border-spacing: 0;
-			color: #000;
-			cursor: auto;
-			direction: ltr;
-			font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
-			font-size: 11px;
-			font-style: normal;
-			font-variant: normal;
-			font-weight: normal;
-			letter-spacing: normal;
-			line-height: 1;
-			margin: 0;
-			overflow: visible;
-			padding: 0;
-			text-align: left;
-			text-decoration: none;
-			text-indent: 0;
-			text-shadow: none;
-			text-transform: none;
-			visibility: visible;
-			white-space: normal;
-			word-spacing: normal
-		}
-
-		.fb_reset>div {
-			overflow: hidden
-		}
-
-		@keyframes fb_transform {
-			from {
-				opacity: 0;
-				transform: scale(.95)
-			}
-
-			to {
-				opacity: 1;
-				transform: scale(1)
-			}
-		}
-
-		.fb_reset {
-			background: none;
-			border: 0;
-			border-spacing: 0;
-			color: #000;
-			cursor: auto;
-			direction: ltr;
-			font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
-			font-size: 11px;
-			font-style: normal;
-			font-variant: normal;
-			font-weight: normal;
-			letter-spacing: normal;
-			line-height: 1;
-			margin: 0;
-			overflow: visible;
-			padding: 0;
-			text-align: left;
-			text-decoration: none;
-			text-indent: 0;
-			text-shadow: none;
-			text-transform: none;
-			visibility: visible;
-			white-space: normal;
-			word-spacing: normal
-		}
-
-		.fb_reset>div {
-			overflow: hidden
-		}
-
-		@keyframes fb_transform {
-			from {
-				opacity: 0;
-				transform: scale(.95)
-			}
-
-			to {
-				opacity: 1;
-				transform: scale(1)
-			}
-		}
-
-		.fb_dialog_content .dialog_title>span {
-			background: url(https://connect.facebook.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;
-			float: left;
-			padding: 5px 0 7px 26px
-		}
-
-		body.fb_hidden {
-			height: 100%;
-			left: 0;
-			margin: 0;
-			overflow: visible;
-			position: absolute;
-			top: -10000px;
-			transform: none;
-			width: 100%
-		}
-
-
-
-		.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner {
-			width: 100%
-		}
-
-		.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content {
-			background: none
-		}
-
-		.loading.centered #fb_dialog_loader_close {
-			clear: both;
-			color: #fff;
-			display: block;
-			font-size: 18px;
-			padding-top: 20px
-		}
-
-		#fb-root #fb_dialog_ipad_overlay {
-			background: rgba(0, 0, 0, .4);
-			bottom: 0;
-			left: 0;
-			min-height: 100%;
-			position: absolute;
-			right: 0;
-			top: 0;
-			width: 100%;
-			z-index: 10000
-		}
-
-		#fb-root #fb_dialog_ipad_overlay.hidden {
-			display: none
-		}
-
-		.fb_dialog.fb_dialog_mobile.loading iframe {
-			visibility: hidden
-		}
-
-		.fb_dialog_mobile .fb_dialog_iframe {
-			position: sticky;
-			top: 0
-		}
-
-		.fb_dialog_content .dialog_header {
-			background: linear-gradient(from(#738aba), to(#2c4987));
-			border-bottom: 1px solid;
-			border-color: #043b87;
-			box-shadow: white 0 1px 1px -1px inset;
-			color: #fff;
-			font: bold 14px Helvetica, sans-serif;
-			text-overflow: ellipsis;
-			text-shadow: rgba(0, 30, 84, .296875) 0 -1px 0;
-			vertical-align: middle;
-			white-space: nowrap
-		}
-
-		.fb_dialog_content .dialog_header table {
-			height: 43px;
-			width: 100%
-		}
-
-		.fb_dialog_content .dialog_header td.header_left {
-			font-size: 12px;
-			padding-left: 5px;
-			vertical-align: middle;
-			width: 60px
-		}
-
-		.fb_dialog_content .dialog_header td.header_right {
-			font-size: 12px;
-			padding-right: 5px;
-			vertical-align: middle;
-			width: 60px
-		}
-
-		.fb_dialog_content .touchable_button {
-			background: linear-gradient(from(#4267B2), to(#2a4887));
-			background-clip: padding-box;
-			border: 1px solid #29487d;
-			border-radius: 3px;
-			display: inline-block;
-			line-height: 18px;
-			margin-top: 3px;
-			max-width: 85px;
-			padding: 4px 12px;
-			position: relative
-		}
-
-		.fb_dialog_content .dialog_header .touchable_button input {
-			background: none;
-			border: none;
-			color: #fff;
-			font: bold 12px Helvetica, sans-serif;
-			margin: 2px -12px;
-			padding: 2px 6px 3px 6px;
-			text-shadow: rgba(0, 30, 84, .296875) 0 -1px 0
-		}
-
-		.fb_dialog_content .dialog_header .header_center {
-			color: #fff;
-			font-size: 16px;
-			font-weight: bold;
-			line-height: 18px;
-			text-align: center;
-			vertical-align: middle
-		}
-
-		.fb_dialog_content .dialog_content {
-			background: url(https://connect.facebook.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;
-			border: 1px solid #4a4a4a;
-			border-bottom: 0;
-			border-top: 0;
-			height: 150px
-		}
-
-		.fb_dialog_content .dialog_footer {
-			background: #f5f6f7;
-			border: 1px solid #4a4a4a;
-			border-top-color: #ccc;
-			height: 40px
-		}
-
-		#fb_dialog_loader_close {
-			float: left
-		}
-
-		.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon {
-			visibility: hidden
-		}
-
-		#fb_dialog_loader_spinner {
-			animation: rotateSpinner 1.2s linear infinite;
-			background-color: transparent;
-			background-image: url(https://connect.facebook.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);
-			background-position: 50% 50%;
-			background-repeat: no-repeat;
-			height: 24px;
-			width: 24px
-		}
-
-		@keyframes rotateSpinner {
-			0% {
-				transform: rotate(0deg)
-			}
-
-			100% {
-				transform: rotate(360deg)
-			}
-		}
-
-		.fb_iframe_widget {
-			display: inline-block;
-			position: relative
-		}
-
-		.fb_iframe_widget span {
-			display: inline-block;
-			position: relative;
-			text-align: justify
-		}
-
-		.fb_iframe_widget iframe {
-			position: absolute
-		}
-
-		.fb_iframe_widget_fluid_desktop,
-		.fb_iframe_widget_fluid_desktop span,
-		.fb_iframe_widget_fluid_desktop iframe {
-			max-width: 100%
-		}
-
-		.fb_iframe_widget_fluid_desktop iframe {
-			min-width: 220px;
-			position: relative
-		}
-
-		.fb_iframe_widget_lift {
-			z-index: 1
-		}
-
-		.fb_iframe_widget_fluid {
-			display: inline
-		}
-
-		.fb_iframe_widget_fluid span {
-			width: 100%
-		}
-
-		.fb_mpn_mobile_landing_page_slide_out {
-			animation-duration: 200ms;
-			animation-name: fb_mpn_landing_page_slide_out;
-			transition-timing-function: ease-in
-		}
-
-		.fb_mpn_mobile_landing_page_slide_out_from_left {
-			animation-duration: 200ms;
-			animation-name: fb_mpn_landing_page_slide_out_from_left;
-			transition-timing-function: ease-in
-		}
-
-		.fb_mpn_mobile_landing_page_slide_up {
-			animation-duration: 500ms;
-			animation-name: fb_mpn_landing_page_slide_up;
-			transition-timing-function: ease-in
-		}
-
-		.fb_mpn_mobile_bounce_in {
-			animation-duration: 300ms;
-			animation-name: fb_mpn_bounce_in;
-			transition-timing-function: ease-in
-		}
-
-		.fb_mpn_mobile_bounce_out {
-			animation-duration: 300ms;
-			animation-name: fb_mpn_bounce_out;
-			transition-timing-function: ease-in
-		}
-
-		.fb_mpn_mobile_bounce_out_v2 {
-			animation-duration: 300ms;
-			animation-name: fb_mpn_fade_out;
-			transition-timing-function: ease-in
-		}
-
-		.fb_customer_chat_bounce_in_v2 {
-			animation-duration: 300ms;
-			animation-name: fb_bounce_in_v2;
-			transition-timing-function: ease-in
-		}
-
-		.fb_customer_chat_bounce_in_from_left {
-			animation-duration: 300ms;
-			animation-name: fb_bounce_in_from_left;
-			transition-timing-function: ease-in
-		}
-
-		.fb_customer_chat_bounce_out_v2 {
-			animation-duration: 300ms;
-			animation-name: fb_bounce_out_v2;
-			transition-timing-function: ease-in
-		}
-
-		.fb_customer_chat_bounce_out_from_left {
-			animation-duration: 300ms;
-			animation-name: fb_bounce_out_from_left;
-			transition-timing-function: ease-in
-		}
-
-		.fb_invisible_flow {
-			display: inherit;
-			height: 0;
-			overflow-x: hidden;
-			width: 0
-		}
-
-		@keyframes fb_mpn_landing_page_slide_out {
-			0% {
-				margin: 0 12px;
-				width: 100% - 24px
-			}
-
-			60% {
-				border-radius: 18px
-			}
-
-			100% {
-				border-radius: 50%;
-				margin: 0 24px;
-				width: 60px
-			}
-		}
-
-		@keyframes fb_mpn_landing_page_slide_out_from_left {
-			0% {
-				left: 12px;
-				width: 100% - 24px
-			}
-
-			60% {
-				border-radius: 18px
-			}
-
-			100% {
-				border-radius: 50%;
-				left: 12px;
-				width: 60px
-			}
-		}
-
-		@keyframes fb_mpn_landing_page_slide_up {
-			0% {
-				bottom: 0;
-				opacity: 0
-			}
-
-			100% {
-				bottom: 24px;
-				opacity: 1
-			}
-		}
-
-		@keyframes fb_mpn_bounce_in {
-			0% {
-				opacity: .5;
-				top: 100%
-			}
-
-			100% {
-				opacity: 1;
-				top: 0
-			}
-		}
-
-		@keyframes fb_mpn_fade_out {
-			0% {
-				bottom: 30px;
-				opacity: 1
-			}
-
-			100% {
-				bottom: 0;
-				opacity: 0
-			}
-		}
-
-		@keyframes fb_mpn_bounce_out {
-			0% {
-				opacity: 1;
-				top: 0
-			}
-
-			100% {
-				opacity: .5;
-				top: 100%
-			}
-		}
-
-		@keyframes fb_bounce_in_v2 {
-			0% {
-				opacity: 0;
-				transform: scale(0, 0);
-				transform-origin: bottom right
-			}
-
-			50% {
-				transform: scale(1.03, 1.03);
-				transform-origin: bottom right
-			}
-
-			100% {
-				opacity: 1;
-				transform: scale(1, 1);
-				transform-origin: bottom right
-			}
-		}
-
-		@keyframes fb_bounce_in_from_left {
-			0% {
-				opacity: 0;
-				transform: scale(0, 0);
-				transform-origin: bottom left
-			}
-
-			50% {
-				transform: scale(1.03, 1.03);
-				transform-origin: bottom left
-			}
-
-			100% {
-				opacity: 1;
-				transform: scale(1, 1);
-				transform-origin: bottom left
-			}
-		}
-
-		@keyframes fb_bounce_out_v2 {
-			0% {
-				opacity: 1;
-				transform: scale(1, 1);
-				transform-origin: bottom right
-			}
-
-			100% {
-				opacity: 0;
-				transform: scale(0, 0);
-				transform-origin: bottom right
-			}
-		}
-
-		@keyframes fb_bounce_out_from_left {
-			0% {
-				opacity: 1;
-				transform: scale(1, 1);
-				transform-origin: bottom left
-			}
-
-			100% {
-				opacity: 0;
-				transform: scale(0, 0);
-				transform-origin: bottom left
-			}
-		}
-
-		@keyframes slideInFromBottom {
-			0% {
-				opacity: .1;
-				transform: translateY(100%)
-			}
-
-			100% {
-				opacity: 1;
-				transform: translateY(0)
-			}
-		}
-
-		@keyframes slideInFromBottomDelay {
-			0% {
-				opacity: 0;
-				transform: translateY(100%)
-			}
-
-			97% {
-				opacity: 0;
-				transform: translateY(100%)
-			}
-
-			100% {
-				opacity: 1;
-				transform: translateY(0)
-			}
-		}
-	</style>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<style>
-		.mySlides {display:none;}
-		.w3-section {
-			margin-top: 16px!important;
-			margin-bottom: 16px!important;
-		}
-		.w3-content {
-			margin-left: auto;
-			margin-right: auto;
-		}
-		.add-to-cart {
-			align-items: center;
-			background: linear-gradient(64.4deg,#e01600 21.33%,#fe2214 67.61%);
-			border-radius: 5px;
-			color: #fff;
-			display: flex;
-			font-weight: 500;
-			height: 50px;
-			justify-content: center;
-			margin-top: 20px;
-			width: 40%;
-			margin-left: 350px;
-			text-decoration: none;
-			font-size: 17px;
-		}
-		.section-01 {
-			padding: 30px;
-		}
-		.add-to-cart:hover {
-			background: #da2d2d;
-			color: #ffffff;
-		}
-		.mb-4{
-			color: #2d4271;
-			font-size: 36px;
-			font-weight: 700;
-			line-height: 30px;
-			margin-bottom: 12px;
-			max-width: 100%;
-		}
-		.wrapper {
-			align-items: center;
-			display: flex;
-		}
-		.date-left {
-			width: 40px;
-		}
-		 .date-right {
-			 display: flex;
-			 flex-direction: column;
-			 padding-left: 10px;
-			 width: calc(100% - 64px);
-		 }
-		 .day {
-			 align-items: center;
-			 padding-bottom: 34px;
-		 }
-		.day:before {
-			border-left: 0.5px dashed #2d4271;
-			content: "";
-			height: 30%;
-			left: 63px;
-			position: absolute;
-			z-index: 0;
-		}
-			.date-center {
-			align-items: center;
-			background: #fff;
-			background: #e01600;
-			border: 1px solid #e01600;
-			border-radius: 50%;
-			color: #2d4271;
-			color: #fff;
-			cursor: pointer;
-			display: flex;
-			height: 24px;
-			justify-content: center;
-			position: relative;
-			width: 24px;
-			z-index: 1;
-		}
-		.short-rating {
-			display: flex;
-			margin-left: 65px;
-		}
-		.s-rate {
-			align-items: center;
-			display: flex;
-			margin-right: 22px
-		}
-		.newspan {
-			align-items: center;
-			background: #fdc432;
-			border-bottom-right-radius: 5px;
-			border-top-left-radius: 5px;
-			border-top-right-radius: 5px;
-			color: #2d4271;
-			display: flex;
-			font-size: 25px;
-			font-weight: 700;
-			height: 50px;
-			justify-content: center;
-			line-height: 20px;
-			margin-right: 11px;
-			position: relative;
-			width: 65px;
-		}
-		.newspan::before {
-			border-right: 10px solid transparent;
-			border-top: 10px solid #fdc432;
-			content: "";
-			display: block;
-			height: 0;
-			left: 0;
-			position: absolute;
-			top: 100%;
-			width: 0;
-			z-index: 1;
-		}
-		.newP {
-			color: #2d4271;
-			font-size: 13px;
-			margin: 0;
-		}
-		.s-wishlist {
-			align-items: center;
-			background: #fff;
-			border: 0.5px solid #d5d5d5;
-			border-radius: 5px;
-			display: flex;
-			height: 50px;
-			justify-content: center;
-			width: 112px;
-		}
-		.form input {
-			height: 60px;
-			width: 100%;
-			padding: 0 15px;
-			font-size: 17px;
-			margin-bottom: 1.3rem;
-			border: 1px solid #ddd;
-			border-radius: 6px;
-			outline: none;
-		}
-
-		.form input:focus {
-			box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
-		}
-
-		.form a {
-			font-size: 16px;
-			color: #009579;
-			text-decoration: none;
-		}
-
-		.form a:hover {
-			text-decoration: underline;
-		}
-
-		.form input.button {
-			color: #fff;
-			background: #009579;
-			font-size: 1.2rem;
-			font-weight: 500;
-			letter-spacing: 1px;
-			margin-top: 1.7rem;
-			cursor: pointer;
-			transition: 0.4s;
-		}
-
-		.form input.button:hover {
-			background: #006653;
-		}
-
-	</style>
+    }
+
+    .fb_iframe_widget span {
+        display: inline-block;
+        position: relative;
+        text-align: justify
+    }
+
+    .fb_iframe_widget iframe {
+        position: absolute
+    }
+
+
+    .fb_iframe_widget_fluid_desktop iframe {
+        min-width: 220px;
+        position: relative
+    }
+
+
+    .fb_iframe_widget_fluid span {
+        width: 100%
+    }
+
+
+    @keyframes fb_mpn_landing_page_slide_out {
+        0% {
+            margin: 0 12px;
+            width: 100% -24px
+        }
+
+        60% {
+            border-radius: 18px
+        }
+
+        100% {
+            border-radius: 50%;
+            margin: 0 24px;
+            width: 60px
+        }
+    }
+
+    @keyframes fb_mpn_landing_page_slide_out_from_left {
+        0% {
+            left: 12px;
+            width: 100% -24px
+        }
+
+        60% {
+            border-radius: 18px
+        }
+
+        100% {
+            border-radius: 50%;
+            left: 12px;
+            width: 60px
+        }
+    }
+
+    @keyframes fb_mpn_landing_page_slide_up {
+        0% {
+            bottom: 0;
+            opacity: 0
+        }
+
+        100% {
+            bottom: 24px;
+            opacity: 1
+        }
+    }
+
+    @keyframes fb_mpn_bounce_in {
+        0% {
+            opacity: .5;
+            top: 100%
+        }
+
+        100% {
+            opacity: 1;
+            top: 0
+        }
+    }
+
+    @keyframes fb_mpn_fade_out {
+        0% {
+            bottom: 30px;
+            opacity: 1
+        }
+
+        100% {
+            bottom: 0;
+            opacity: 0
+        }
+    }
+
+    @keyframes fb_mpn_bounce_out {
+        0% {
+            opacity: 1;
+            top: 0
+        }
+
+        100% {
+            opacity: .5;
+            top: 100%
+        }
+    }
+
+    @keyframes fb_bounce_in_v2 {
+        0% {
+            opacity: 0;
+            transform: scale(0, 0);
+            transform-origin: bottom right
+        }
+
+        50% {
+            transform: scale(1.03, 1.03);
+            transform-origin: bottom right
+        }
+
+        100% {
+            opacity: 1;
+            transform: scale(1, 1);
+            transform-origin: bottom right
+        }
+    }
+
+    @keyframes fb_bounce_in_from_left {
+        0% {
+            opacity: 0;
+            transform: scale(0, 0);
+            transform-origin: bottom left
+        }
+
+        50% {
+            transform: scale(1.03, 1.03);
+            transform-origin: bottom left
+        }
+
+        100% {
+            opacity: 1;
+            transform: scale(1, 1);
+            transform-origin: bottom left
+        }
+    }
+
+    @keyframes fb_bounce_out_v2 {
+        0% {
+            opacity: 1;
+            transform: scale(1, 1);
+            transform-origin: bottom right
+        }
+
+        100% {
+            opacity: 0;
+            transform: scale(0, 0);
+            transform-origin: bottom right
+        }
+    }
+
+    @keyframes fb_bounce_out_from_left {
+        0% {
+            opacity: 1;
+            transform: scale(1, 1);
+            transform-origin: bottom left
+        }
+
+        100% {
+            opacity: 0;
+            transform: scale(0, 0);
+            transform-origin: bottom left
+        }
+    }
+
+    @keyframes slideInFromBottom {
+        0% {
+            opacity: .1;
+            transform: translateY(100%)
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0)
+        }
+    }
+
+    @keyframes slideInFromBottomDelay {
+        0% {
+            opacity: 0;
+            transform: translateY(100%)
+        }
+
+        97% {
+            opacity: 0;
+            transform: translateY(100%)
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0)
+        }
+    }
+</style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+    .mySlides {
+        display: none;
+    }
+
+    .w3-section {
+        margin-top: 16px !important;
+        margin-bottom: 16px !important;
+    }
+
+    .w3-content {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .add-to-cart {
+        align-items: center;
+        background: linear-gradient(64.4deg, #e01600 21.33%, #fe2214 67.61%);
+        border-radius: 5px;
+        color: #fff;
+        display: flex;
+        font-weight: 500;
+        height: 50px;
+        justify-content: center;
+        margin-top: 20px;
+        width: 40%;
+        margin-left: 350px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+    .section-01 {
+        padding: 30px;
+    }
+
+    .add-to-cart:hover {
+        background: #da2d2d;
+        color: #ffffff;
+    }
+
+    .mb-4 {
+        color: #2d4271;
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 30px;
+        margin-bottom: 12px;
+        max-width: 100%;
+    }
+
+    .wrapper {
+        align-items: center;
+        display: flex;
+    }
+
+    .date-left {
+        width: 40px;
+    }
+
+    .date-right {
+        display: flex;
+        flex-direction: column;
+        padding-left: 10px;
+        width: calc(100% - 64px);
+    }
+
+    .day {
+        align-items: center;
+        padding-bottom: 34px;
+    }
+
+    .day:before {
+        border-left: 0.5px dashed #2d4271;
+        content: "";
+        height: 30%;
+        left: 63px;
+        position: absolute;
+        z-index: 0;
+    }
+
+    .date-center {
+        align-items: center;
+        background: #fff;
+        background: #e01600;
+        border: 1px solid #e01600;
+        border-radius: 50%;
+        color: #2d4271;
+        color: #fff;
+        cursor: pointer;
+        display: flex;
+        height: 24px;
+        justify-content: center;
+        position: relative;
+        width: 24px;
+        z-index: 1;
+    }
+
+    .short-rating {
+        display: flex;
+        margin-left: 65px;
+    }
+
+    .s-rate {
+        align-items: center;
+        display: flex;
+        margin-right: 22px
+    }
+
+    .newspan {
+        align-items: center;
+        background: #fdc432;
+        border-bottom-right-radius: 5px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        color: #2d4271;
+        display: flex;
+        font-size: 25px;
+        font-weight: 700;
+        height: 50px;
+        justify-content: center;
+        line-height: 20px;
+        margin-right: 11px;
+        position: relative;
+        width: 65px;
+    }
+
+    .newspan::before {
+        border-right: 10px solid transparent;
+        border-top: 10px solid #fdc432;
+        content: "";
+        display: block;
+        height: 0;
+        left: 0;
+        position: absolute;
+        top: 100%;
+        width: 0;
+        z-index: 1;
+    }
+
+    .newP {
+        color: #2d4271;
+        font-size: 13px;
+        margin: 0;
+    }
+
+    .s-wishlist {
+        align-items: center;
+        background: #fff;
+        border: 0.5px solid #d5d5d5;
+        border-radius: 5px;
+        display: flex;
+        height: 50px;
+        justify-content: center;
+        width: 112px;
+        margin: 8px 0 0 5px;
+    }
+
+    .form input {
+        height: 60px;
+        width: 100%;
+        padding: 0 15px;
+        font-size: 17px;
+        margin-bottom: 1.3rem;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        outline: none;
+    }
+
+    .form input:focus {
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .form a {
+        font-size: 16px;
+        color: #009579;
+        text-decoration: none;
+    }
+
+    .form a:hover {
+        text-decoration: underline;
+    }
+
+    .form input.button {
+        color: #fff;
+        background: #009579;
+        font-size: 1.2rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+        margin-top: 1.7rem;
+        cursor: pointer;
+        transition: 0.4s;
+    }
+
+    .form input.button:hover {
+        background: #006653;
+    }
+
+</style>
 </head>
-<body data-new-gr-c-s-check-loaded="14.1147.0" data-gr-ext-installed=""><noscript><iframe
-			src="https://www.googletagmanager.com/ns.html?id=GTM-P3D5RK" height="0" width="0"
-			style="display:none;visibility:hidden;color: #2d4271 !important;"></iframe></noscript>
-	<div id="fb-root" class=" fb_reset">
-		<div style="position: absolute; top: -10000px; width: 0px; height: 0px;">
-			<div></div>
-		</div>
-	</div>
-	<div id="root">
-		<div class="flight-hotel-detail detail tour-detail  ">
-			<!-- Hedear -->
-			<div style="background-color: #f9f9f9;" id="header" class="top">
-				<div class="container__header">
-					<a href="#" class="logo">
-						<img style="background:transparent;"
-							src="https://png.pngtree.com/png-clipart/20190920/original/pngtree-japanese-logo-decoration-illustration-png-image_4609124.jpg"
-							alt="">
-					</a>
-					<div class="container__header-option">
-						<div class="menu">
-							<ul style="list-style: none; font-family: Roboto,sans-serif;" class="list-option">
-								<li><a th:href="@{/home}" class="hover">Trang Chủ</a></li>
-								<li><a href="" class="hover">Thông Tin</a></li>
-								<li><a th:href="@{/home/hottour}" class="hover">Địa Điểm</a></li>
-								<li><a href="" class="hover">Hổ Trợ</a></li>
-							</ul>
-							<div class="search">
-								<a th:href="@{/account/login}" class="hover">Đăng Nhập</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Body -->
-			<div class="entry-head">
-				<section class="section-01-title section-01">
-					<div class="container-xl">
-						<div class="row">
-							<div class="col-md-6 col-12 left">
-								<div class="warp-mark"></div>
-								<h1 th:text="${tours.getName()}" style="margin-left: 60px;font-size: 38px;font-weight: 600;color: orange"></h1>
-								<div class="short-rating">
-									<div class="s-rate">
-										<span th:text="${tours.numberView(tours.getCareAbout())}" class="newspan"></span>
-										<div class="s-comment">Tuyệt vời<p class="newP" th:text="${tours.getCareAbout()}">quan tâm</p></div></div><div class="s-wishlist"><i style="color: #e01600;
-    font-size: 22px;" class="fas fa-heart"></i><label style="margin-left: 8px;" th:text="${tours.getView()}"></label></div></div>
-							</div>
-							<div class="col-md-6 col-12 right">
-								<div class="group-price">
-								</div>
-								<div class="group-add-cart">
-									<div class="boder">
-										<a title="Đặt ngay" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="add-to-cart"><i class="fal fa-shopping-cart"></i> Đặt ngay</a>
-										<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-											 aria-labelledby="staticBackdropLabel" aria-hidden="true">
-											<div class="modal-dialog">
-												<div class="modal-content">
-													<div class="modal-header">
-														<h1 class="modal-title fs-5" id="staticBackdropLabel">Đặt tour</h1>
-														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-													</div>
-													<div class="modal-body">
-														<form th:action="@{/pay}" method="get" th:object="${bookings}">
-															<input type="hidden" th:field="*{tour}">
-															<input type="hidden" th:field="*{account}">
-															<input type="hidden" th:field="*{date}">
+<header th:replace="/layout::header"></header>
+<!-- Body -->
+<div class="entry-head">
+    <section class="section-01-title section-01">
+        <div class="container-xl">
+            <div class="row">
+                <div class="col-md-6 col-12 left">
+                    <div class="warp-mark"></div>
+                    <h1 th:text="${tours.getName()}"
+                        style="margin-left: 60px;font-size: 38px;font-weight: 600;color: orange"></h1>
+                    <div class="short-rating">
+                        <div class="s-rate">
+                            <span th:text="${tours.numberView(tours.getCareAbout())}" class="newspan"></span>
+                            <div class="s-comment">Tuyệt vời<p class="newP" th:text="${tours.getCareAbout()}"></p><span style="font-size: 12px;">lượt truy
+                                cập</span></div>
+                        </div>
+                        <div class="s-wishlist"><i style="color: #e01600;
+    font-size: 22px;" class="fas fa-heart"></i><label style="margin-left: 8px;" th:text="${tours.getView()}"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12 right">
+                    <div class="group-price">
+                    </div>
+                    <div class="group-add-cart">
+                        <div class="boder">
+                            <a style="cursor: pointer" title=" Đặt ngay" data-bs-toggle="modal"
+                               data-bs-target="#staticBackdrop" class="add-to-cart"><i class="fal fa-shopping-cart"></i>
+                                Đặt ngay</a>
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                 data-bs-keyboard="false" tabindex="-1"
+                                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Đặt tour</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form th:action="@{/pay}" method="get" th:object="${bookings}">
+                                                <input type="hidden" th:field="*{tour}">
+                                                <input type="hidden" th:field="*{account}">
+                                                <input type="hidden" th:field="*{date}">
 
-															<fieldset disabled>
-																<div class="mb-3">
-																	<label for="disabledTextInput" class="form-label">Tên khách hàng</label>
-																	<input type="text" id="disabledTextInput" class="form-control"
-																		   th:value="${account.getNameClient()}">
-																</div>
-																<div class="mb-3">
-																	<label class="form-label">Tên tour</label>
-																	<input type="text" class="form-control"
-																		   th:value="${tours.getName()}">
-																</div>
-																<div class="mb-3">
-																	<label class="form-label">Giá tiền trẻ em</label>
-																	<input type="text" class="form-control"
-																		   th:value="${tours.getChildrenPrice()}" id="childrenPrice">
-																</div>
-																<div class="mb-3">
-																	<label class="form-label">Giá tiền người lớn</label>
-																	<input type="text" class="form-control"
-																		   th:value="${tours.getAdultPrice()}" id="adultPrice">
-																</div>
-																<div class="mb-3">
-																	<label class="form-label">Số lượng người được dùng</label>
-																	<input type="text" class="form-control"
-																		   th:value="${tours.getQuantity()}" id="sl">
-																</div>
-															</fieldset>
-															<div class="mb-3">
-																<label class="form-label">Nhap so luong nguoi lon: </label>
-																<input class="btn btn-primary" type="button" value="-"
-																	   onclick="adjustQuantity('adult', 'GIAM', 'sl')">
-																<input style="border: none" type="text" name="adultQuantity" id="adultQuantity" value="1"
-																	   th:field="*{adultNumber}"
-																	   readonly>
-																<input class="btn btn-primary" type="button" value="+"
-																	   onclick="adjustQuantity('adult', 'TANG', 'sl')">
-															</div>
-															<!-- Children Quantity -->
-															<div class="mb-3">
-																<label class="form-label">Nhap so luong tre em: </label>
-																<input class="btn btn-primary" type="button" value="-"
-																	   onclick="adjustQuantity('children', 'GIAM', 'sl')">
-																<input style="border: none" type="text" name="childrenQuantity" id="childrenQuantity"
-																	   th:field="*{childrenNumber}"
-																	   value="0" readonly>
-																<input class="btn btn-primary" type="button" value="+"
-																	   onclick="adjustQuantity('children', 'TANG', 'sl')">
-															</div>
-															<div class="mb-3">
-																<label class="form-label"></label>
-																<span id="totalAmount"></span>
-															</div>
-															<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-															<button type="submit" class="btn btn-primary" id="btn-submit" disabled>Đặt</button>
-														</form>
-													</div>
-													<div class="modal-footer">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section >
-					<div class="w3-content w3-section" style="max-width:730px">
-						<div style="border-radius: 10px;overflow: hidden;box-sizing: border-box;" th:each="location:${locations}">
-							<img class="mySlides" th:src="${location.getImg()}" style="width:100%">
-						</div>
-					</div>
-				</section>
-				<div style="color: #2d4271;font-size: 15px" class="map-route">
-					<section class="section-06 mb-5">
-						<div class="container">
-							<div class="row">
-								<div style="color: #2d4271;
+                                                <fieldset disabled>
+                                                    <div class="mb-3">
+                                                        <label for="disabledTextInput" class="form-label">Tên khách
+                                                            hàng</label>
+                                                        <input type="text" id="disabledTextInput" class="form-control"
+                                                               th:value="${account.getNameClient()}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Tên tour</label>
+                                                        <input type="text" class="form-control"
+                                                               th:value="${tours.getName()}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Giá tiền trẻ em</label>
+                                                        <input type="text" class="form-control"
+                                                               th:value="${tours.getChildrenPrice()}"
+                                                               id="childrenPrice">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Giá tiền người lớn</label>
+                                                        <input type="text" class="form-control"
+                                                               th:value="${tours.getAdultPrice()}" id="adultPrice">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Số lượng người được dùng</label>
+                                                        <input type="text" class="form-control"
+                                                               th:value="${tours.getQuantity()}" id="sl">
+                                                    </div>
+                                                </fieldset>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Nhap so luong nguoi lon: </label>
+                                                    <input style="padding: 0px 7px" class="btn btn-primary"
+                                                           type="button" value="-"
+                                                           onclick="adjustQuantity('adult', 'GIAM', 'sl')">
+                                                    <input style="border: none ; width: 60px;text-align: center; "
+                                                           type="text" name="adultQuantity" id="adultQuantity" value="1"
+                                                           th:field="*{adultNumber}"
+                                                           readonly>
+                                                    <input style="padding: 0px 7px" class="btn btn-primary"
+                                                           type="button" value="+"
+                                                           onclick="adjustQuantity('adult', 'TANG', 'sl')">
+                                                </div>
+                                                <!-- Children Quantity -->
+                                                <div class="mb-3">
+                                                    <label style="padding-right: 20px;" class="form-label">Nhap so luong
+                                                        tre em: </label>
+                                                    <input style="padding: 0px 7px" class="btn btn-primary"
+                                                           type="button" value="-"
+                                                           onclick="adjustQuantity('children', 'GIAM', 'sl')">
+                                                    <input style="border: none ; width: 60px;text-align: center;"
+                                                           type="text" name="childrenQuantity" id="childrenQuantity"
+                                                           th:field="*{childrenNumber}"
+                                                           value="0" readonly>
+                                                    <input style="padding: 0px 7px" class="btn btn-primary"
+                                                           type="button" value="+"
+                                                           onclick="adjustQuantity('children', 'TANG', 'sl')">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label"></label>
+                                                    <span id="totalAmount"></span>
+                                                </div>
+                                                <button style="padding: 6px 14px;border: 1px solid;cursor: pointer" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    Đóng
+                                                </button>
+                                                <button style="padding: 6px 21px;border: 1px solid;margin-left: 65%;background-color: red;cursor: pointer" type="submit" class="btn btn-primary" id="btn-submit" disabled>Đặt
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="w3-content w3-section" style="max-width:730px">
+            <div style="border-radius: 10px;overflow: hidden;box-sizing: border-box;" th:each="location:${locations}">
+                <img class="mySlides" th:src="${location.getImg()}" style="width:100%">
+            </div>
+        </div>
+    </section>
+    <div style="color: #2d4271;font-size: 15px" class="map-route">
+        <section class="section-06 mb-5">
+            <div class="container">
+                <div class="row">
+                    <div style="color: #2d4271;
     font-size: 26px;
     font-weight: 700;
     line-height: 30px;
@@ -1118,190 +864,196 @@
     max-width: 100%;
     margin-left: 45%;
     margin-top: 30px;" class="col-md-12 col-12">
-									<h2 class="mb-4">Lịch trình</h2>
-								</div>
-							</div>
-						</div>
-					</section>
-					<section class="section-07-map mb-5">
-						<div style="position: relative" class="container">
-							<div th:each="location:${locations}"  class="row">
-								<div class="col-md-4 d-none d-md-block col-12 left">
-									<div  class="go-tour">
-										<div class="day day-001">
-											<div class="wrapper"><span class="date-left">Ngày</span><span
-											th:text="${location.getTourDay()}" class="date-center "></span><span class="date-right"><span
-														class="date"></span> <span th:text="${location.getDate()}"></span>
+                        <h2 class="mb-4">Lịch trình</h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section-07-map mb-5">
+            <div style="position: relative" class="container">
+                <div th:each="location:${locations}" class="row">
+                    <div class="col-md-4 d-none d-md-block col-12 left">
+                        <div class="go-tour">
+                            <div class="day day-001">
+                                <div class="wrapper"><span class="date-left">Ngày</span><span
+                                        th:text="${location.getTourDay()}" class="date-center "></span><span
+                                        class="date-right"><span
+                                        class="date"></span> <span th:text="${location.getDate()}"></span>
 												<span class="location" th:text="${location.getLocation()}"></span>
 											</span>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-8 col-12 right timeline-section">
-									<div >
-										<h3 style="font-weight: bold" id="day-00">Ngày <span  th:text ="${location.getTourDay()}"></span>
-										</h3>
-										<div class="excerpt"><span class="line"></span>
-											<div>
-												<title></title>
-												<div style="text-align:justify">
-													<div th:text="${location.getDescriptionLocation()}" ></div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</section>
-					<section class="section-08 mb-5">
-						<div class="container-xl">
-							<div class="row">
-								<div class="col-md-6 col-12 left">
-									<h2 class="mb-4">Chi tiết tour</h2>
-									<div class="tour">
-										<div class="detail-tour">
-											<h3 class="tt">Thông tin chuyến bay</h3>
-											<div class="detail-tour-inner">
-												<div class="date"><span>Ngày đi - </span><b>06/01/2024</b></div>
-												<div class="from">
-													<h4>TP. Hồ Chí Minh</h4>
-													<h4>Phan Thiết</h4>
-												</div>
-													<h4>05:00</h4>
-													<h4>00:00</h4>
-												</div>
-											</div>
-										</div>
-								</div>
-								<div class="col-md-6 col-12 right">
-									<h2 class="mb-4">Giá tour</h2>
-									<div class="table-price">
-										<table>
-											<tbody style="color:#2d4271 ">
-												<tr>
-													<th class="l1">Loại khách</th>
-													<th class="l2">Giá tour</th>
-												</tr>
-												<tr>
-													<td>Người lớn (Từ 12 tuổi trở lên)</td>
-													<td th:text="${tours.getAdultPrice()}" class="t-price"></td>
-												</tr>
-												<tr>
-													<td>Trẻ em (Từ 5 - 11 tuổi)</td>
-													<td th:text="${tours.getChildrenPrice()}"  class="t-price"></td>
-												</tr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-12 right timeline-section">
+                        <div>
+                            <h3 style="font-weight: bold" id="day-00">Ngày <span
+                                    th:text="${location.getTourDay()}"></span>
+                            </h3>
+                            <div class="excerpt"><span class="line"></span>
+                                <div>
+                                    <title></title>
+                                    <div style="text-align:justify">
+                                        <div th:text="${location.getDescriptionLocation()}"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section-08 mb-5">
+            <div class="container-xl">
+                <div class="row">
+                    <div class="col-md-6 col-12 left">
+                        <h2 class="mb-4">Chi tiết tour</h2>
+                        <div class="tour">
+                            <div class="detail-tour">
+                                <h3 class="tt">Thông tin chuyến bay</h3>
+                                <div class="detail-tour-inner">
+                                    <div class="date"><span>Ngày đi - </span><b>06/01/2024</b></div>
+                                    <div class="from">
+                                        <h4>TP. Hồ Chí Minh</h4>
+                                        <h4>Phan Thiết</h4>
+                                    </div>
+                                    <h4>05:00</h4>
+                                    <h4>00:00</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12 right">
+                        <h2 class="mb-4">Giá tour</h2>
+                        <div class="table-price">
+                            <table>
+                                <tbody style="color:#2d4271 ">
+                                <tr>
+                                    <th class="l1">Loại khách</th>
+                                    <th class="l2">Giá tour</th>
+                                </tr>
+                                <tr>
+                                    <td>Người lớn (Từ 12 tuổi trở lên)</td>
+                                    <td th:text="${tours.getAdultPrice()}" class="t-price"></td>
+                                </tr>
+                                <tr>
+                                    <td>Trẻ em (Từ 5 - 11 tuổi)</td>
+                                    <td th:text="${tours.getChildrenPrice()}" class="t-price"></td>
+                                </tr>
 
-											</tbody>
-										</table>
-									</div>
-									<h2 class="mb-4">Thông tin hướng dẫn viên</h2>
-									<div class="table-price">
-										<div class="more-info more-info-2">
-											<div class="block"><span>HDV dẫn đoàn</span>
-												<div th:text="${tours.getTourGuild().getName()}"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</section>
-				</div>
-			</div>
-		</div>
-		<!-- Footer -->
-		<footer class="doc-footer">
-			<div align="center">
-				<div class="icon-footer">
-					<i style="color: blue;" class="fa-brands fa-facebook"></i>
-					<i style="color: red;" class="fa-brands fa-instagram"></i>
-					<i style="color: blue;" class="fa-brands fa-twitter"></i>
-				</div>
-				<p style="margin: 0;">TEL: 0768568962</p>
-				<address style="font-size: 20px;">280 Tran Hung Dao, An Hai Tay, Son Tra, Da Nang.</address>
+                                </tbody>
+                            </table>
+                        </div>
+                        <h2 class="mb-4">Thông tin hướng dẫn viên</h2>
+                        <div class="table-price">
+                            <div class="more-info more-info-2">
+                                <div class="block"><span>HDV dẫn đoàn</span>
+                                    <div th:text="${tours.getTourGuild().getName()}"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="doc-footer">
+    <div align="center">
+        <div class="icon-footer">
+            <i style="color: blue;" class="fa-brands fa-facebook"></i>
+            <i style="color: red;" class="fa-brands fa-instagram"></i>
+            <i style="color: blue;" class="fa-brands fa-twitter"></i>
+        </div>
+        <p style="margin: 0;">TEL: 0768568962</p>
+        <address style="font-size: 20px;">280 Tran Hung Dao, An Hai Tay, Son Tra, Da Nang.</address>
 
-			</div>
-		</footer>
-		<div id="fb-customer-chat" class="fb-customerchat" page_id="181053065281290" attribution="biz_inbox"></div>
-	</div>
-	<div id="eJOY__extension_root" class="eJOY__extension_root_class" style="all: unset;"></div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </div>
+</footer>
+<div id="fb-customer-chat" class="fb-customerchat" page_id="181053065281290" attribution="biz_inbox"></div>
+</div>
+<div id="eJOY__extension_root" class="eJOY__extension_root_class" style="all: unset;"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 <script>
-	var myIndex = 0;
-	carousel();
+    var myIndex = 0;
+    carousel();
 
-	function carousel() {
-		var i;
-		var x = document.getElementsByClassName("mySlides");
-		for (i = 0; i < x.length; i++) {
-			x[i].style.display = "none";
-		}
-		myIndex++;
-		if (myIndex > x.length) {myIndex = 1}
-		x[myIndex-1].style.display = "block";
-		setTimeout(carousel, 2000); // Change image every 2 seconds
-	}
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length) {
+            myIndex = 1
+        }
+        x[myIndex - 1].style.display = "block";
+        setTimeout(carousel, 2000); // Change image every 2 seconds
+    }
 </script>
 <script>
-	function adjustQuantity(type, adjustment, sl) {
-		const quantityId = type === 'adult' ? 'adultQuantity' : 'childrenQuantity';
-		const quantity = document.getElementById(quantityId);
-		const maxQuantity = +document.getElementById('sl').value;
+    function adjustQuantity(type, adjustment, sl) {
+        const quantityId = type === 'adult' ? 'adultQuantity' : 'childrenQuantity';
+        const quantity = document.getElementById(quantityId);
+        const maxQuantity = +document.getElementById('sl').value;
 
-		let adultQuantity = +document.getElementById('adultQuantity').value;
-		let childrenQuantity = +document.getElementById('childrenQuantity').value;
+        let adultQuantity = +document.getElementById('adultQuantity').value;
+        let childrenQuantity = +document.getElementById('childrenQuantity').value;
 
-		if (adjustment === 'GIAM') {
-			if (type === 'adult' && adultQuantity > 0) {
-				adultQuantity--;
-			} else if (type === 'children' && childrenQuantity > 0) {
-				childrenQuantity--;
-			}
-		} else if (adjustment === 'TANG') {
-			if (type === 'adult' && adultQuantity < maxQuantity) {
-				adultQuantity++;
-			} else if (type === 'children' && childrenQuantity < maxQuantity) {
-				childrenQuantity++;
-			}
-		}
+        if (adjustment === 'GIAM') {
+            if (type === 'adult' && adultQuantity > 0) {
+                adultQuantity--;
+            } else if (type === 'children' && childrenQuantity > 0) {
+                childrenQuantity--;
+            }
+        } else if (adjustment === 'TANG') {
+            if (type === 'adult' && adultQuantity < maxQuantity) {
+                adultQuantity++;
+            } else if (type === 'children' && childrenQuantity < maxQuantity) {
+                childrenQuantity++;
+            }
+        }
 
-		document.getElementById('adultQuantity').value = adultQuantity;
-		document.getElementById('childrenQuantity').value = childrenQuantity;
+        document.getElementById('adultQuantity').value = adultQuantity;
+        document.getElementById('childrenQuantity').value = childrenQuantity;
 
-		updateTotalAmount();
-	}
+        updateTotalAmount();
+    }
 
-	function updateTotalAmount() {
-		const adultQuantity = +document.getElementById('adultQuantity').value;
-		const childrenQuantity = +document.getElementById('childrenQuantity').value;
-		const adultPrice = +document.getElementById('adultPrice').value;
-		const childrenPrice = +document.getElementById('childrenPrice').value;
-		const maxQuantity = +document.getElementById('sl').value;
+    function updateTotalAmount() {
+        const adultQuantity = +document.getElementById('adultQuantity').value;
+        const childrenQuantity = +document.getElementById('childrenQuantity').value;
+        const adultPrice = +document.getElementById('adultPrice').value;
+        const childrenPrice = +document.getElementById('childrenPrice').value;
+        const maxQuantity = +document.getElementById('sl').value;
 
-		if (adultQuantity + childrenQuantity <= maxQuantity) {
-			const totalAmount = adultQuantity * adultPrice + childrenQuantity * childrenPrice;
-			if (totalAmount === 0) {
-				document.getElementById('totalAmount').innerText = 'Vui lòng nhập số lượng người';
-				document.getElementById('btn-submit').disabled = true;
-			} else {
-				document.getElementById('totalAmount').innerText = 'Tổng tiền: ' + formatMoneyVND(totalAmount);
-				document.getElementById('btn-submit').disabled = false;
-			}
-		} else {
-			document.getElementById('totalAmount').innerText = 'Số lượng người vượt quá giới hạn';
-			document.getElementById('btn-submit').disabled = true;
-		}
-	}
+        if (adultQuantity + childrenQuantity <= maxQuantity) {
+            const totalAmount = adultQuantity * adultPrice + childrenQuantity * childrenPrice;
+            if (totalAmount === 0) {
+                document.getElementById('totalAmount').innerText = 'Vui lòng nhập số lượng người';
+                document.getElementById('btn-submit').disabled = true;
+            } else {
+                document.getElementById('totalAmount').innerText = 'Tổng tiền: ' + formatMoneyVND(totalAmount);
+                document.getElementById('btn-submit').disabled = false;
+            }
+        } else {
+            document.getElementById('totalAmount').innerText = 'Số lượng người vượt quá giới hạn';
+            document.getElementById('btn-submit').disabled = true;
+        }
+    }
 
-	function formatMoneyVND(amount) {
-		const formatter = new Intl.NumberFormat('vi-VN', {
-			style: 'currency',
-			currency: 'VND'
-		});
-		return formatter.format(amount);
-	}
+    function formatMoneyVND(amount) {
+        const formatter = new Intl.NumberFormat('vi-VN', {
+            style: 'currency',
+            currency: 'VND'
+        });
+        return formatter.format(amount);
+    }
 </script>
 </body>
 </html>
