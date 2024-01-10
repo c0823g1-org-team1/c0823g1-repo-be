@@ -41,7 +41,7 @@
     <tr th:each="ac , status : ${accounts}">
         <th scope="row" th:text="${status.count + accounts.size * accounts.number}"></th>
         <td  th:text="${ac.getNameClient()}"></td>
-        <td th:text="${ac.getNameAccount()}"></td>
+        <td th:text="${ac.getUsername()}"></td>
         <td th:text="${ac.getRole().getName()}"></td>
         <td><a></a></td>
     </tr>
