@@ -10,14 +10,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css?display=swap">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css?display=swap"
           integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css?display=swap" rel="stylesheet"
-          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <title>Du lịch Japand</title>
     <script type="text/javascript" async=""
             src="https://www.googletagmanager.com/gtag/js?id=G-39GJVRHQ6K&amp;l=dataLayer&amp;cx=c"></script>
     <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-P3D5RK"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
     <script
             type="text/javascript">!function (e, t, a, n, g) {
         e[n] = e[n] || [], e[n].push({"gtm.start": (new Date).getTime(), event: "gtm.js"});
@@ -1776,240 +1774,180 @@
             border: 1px solid #32a6e5;
         }
 
-        .product-item__summary__btn-logins {
-            background-color: initial;
-            border-radius: 0.25rem;
-            color: #2d4271;
-            cursor: pointer;
-            display: inline-block;
-            font-size: 1rem;
-            font-weight: 400;
-            line-height: 1.5;
-            padding: 0.25rem 0.5rem;
-            text-align: center;
-            text-decoration: none;
-            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-            user-select: none;
-            vertical-align: middle;
-        }
 
-        .tour-item__price--current {
-            align-items: center;
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .btn-primary {
-            align-items: center;
-            display: flex;
-            gap: 0 4px;
-            justify-content: space-around;
-        }
-
-        .btn-sm {
-            border-radius: 0.2rem;
-            font-size: .875rem;
-            padding: 0.25rem 0.5rem;
-        }
-
-        .btn-primary {
-            background-color: #e01600;
-            border-color: #e01600;
-            color: #fff;
-        }
-
-        .btn-primary:hover {
+        .hover {
             background-color: #f53737;
             border: 0px solid;
         }
 
-        .product-item__summary__btn-logins:hover {
+        :hover {
             background-color: #538ee7;
             border: 1px solid;
             color: #ffffff;
         }
 
-        @media (min-width: 768px)
+        @media (min-width: 768px) {
+        }
 
-            .row-cols-md-3 > * {
-                flex: 0 0 auto;
-                width: 33.33333%;
-            }
+        .row-cols-md-3 > * {
+            flex: 0 0 auto;
+            width: 33.33333%;
+        }
 
-            .tour-item {
-                background: #fff;
-                border: 1px solid #dddfe2;
-                border-radius: 10px;
-                box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
-            }
+        .tour-item {
+            background: #fff;
+            border: 1px solid #dddfe2;
+            border-radius: 10px;
+            box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+        }
 
-            .card {
-                position: relative;
-                display: flex;
-                flex-direction: column;
-                min-width: 0;
-                word-wrap: break-word;
-                background-color: #fff;
-                background-clip: border-box;
-                border: 1px solid rgba(0, 0, 0, .125);
-                border-radius: 0.25rem;
-            }
+        .card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+            border: 1px solid rgba(0, 0, 0, .125);
+            border-radius: 0.25rem;
+        }
 
-            .row > * {
-                margin-top: 1.5rem;
-                max-width: 100%;
-                padding-left: calc(1.5rem / 2);
-                padding-right: calc(1.5rem / 2);
-            }
+        .row > * {
+            margin-top: 1.5rem;
+            max-width: 100%;
+            padding-left: calc(1.5rem / 2);
+            padding-right: calc(1.5rem / 2);
+        }
 
-            .tour-item__image-inner__icon-favorite {
-                background-color: rgba(0, 0, 0, .1);
-                border-radius: 8px;
-                color: #fff;
-                cursor: pointer;
-                font-size: 22px;
-                left: 3%;
-                padding: 5px;
-                position: absolute;
-                top: 5%;
-            }
+        .tour-item__image-inner__icon-favorite {
+            background-color: rgba(0, 0, 0, .1);
+            border-radius: 8px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 22px;
+            left: 3%;
+            padding: 5px;
+            position: absolute;
+            top: 5%;
+        }
 
-            .iconImg {
-                cursor: pointer;
-            }
+        .iconImg {
+            cursor: pointer;
+        }
 
-            .iconImg.liked {
-                color: red;
-                font-weight: bold;
-            }
+        .iconImg.liked {
+            color: red;
+            font-weight: bold;
+        }
 
-            /* Foooter */
-            .icon-footer {
-                margin-top: 20px;
-            }
+        /* Foooter */
+        .icon-footer {
+            margin-top: 20px;
+        }
 
-            .icon-footer i {
-                margin: 0 5px;
-            }
+        .icon-footer i {
+            margin: 0 5px;
+        }
 
-            .contain-map {
-                height: 541.65px;
-                width: 100%;
-                margin: 30px auto 0;
-                text-align: center;
-            }
+        .contain-map {
+            height: 541.65px;
+            width: 100%;
+            margin: 30px auto 0;
+            text-align: center;
+        }
 
-            .contain-map img {
-                width: 70%;
-                position: relative;
-                z-index: 1;
-            }
+        .contain-map img {
+            width: 70%;
+            position: relative;
+            z-index: 1;
+        }
 
-            /* Header */
-            .container__header {
-                width: 1100px;
-                margin: 0 auto;
-                padding: 0 30px;
-                font-family: Roboto, sans-serif;
-            }
+        /* Header */
+        .container__header {
+            width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+            font-family: Roboto, sans-serif;
+        }
 
-            .logo {
-                display: inline-block;
-            }
+        .logo {
+            display: inline-block;
+        }
 
-            .logo img {
-                width: 100px;
-                background-color: transparent;
-            }
+        .logo img {
+            width: 100px;
+            background-color: transparent;
+        }
 
-            .container__header-option {
-                float: right;
-                box-sizing: border-box;
-                margin-top: 26px;
+        .container__header-option {
+            float: right;
+            box-sizing: border-box;
+            margin-top: 26px;
 
-            }
+        }
 
-            .menu {
-                display: flex;
-            }
+        .menu {
+            display: flex;
+        }
 
-            .list-option {
-                display: flex;
-            }
+        .list-option {
+            display: flex;
+        }
 
-            .hover {
-                font-size: 22px;
-                display: inline-block;
-                padding: 0 18px;
-                font-weight: 700;
-                color: black;
-                position: relative;
-                font-family: Roboto, sans-serif;
-                text-decoration: none;
-            }
+        .hover {
+            font-size: 22px;
+            display: inline-block;
+            padding: 0 18px;
+            font-weight: 700;
+            color: black;
+            position: relative;
+            font-family: Roboto, sans-serif;
+            text-decoration: none;
+        }
 
-            .button-search {
-                background: transparent;
-                border: none;
-                margin-right: 10px;
-                margin-top: 5px;
-                cursor: pointer;
-            }
 
-            .fa-solid {
-                width: 17px;
-            }
+        .search {
+            display: flex;
+            align-items: center;
+            margin-left: 140px;
 
-            .input {
-                border-radius: 5px;
-                height: 25px;
-                width: 120px;
-                border: 1px solid #544d4d;
-                background-color: transparent;
-            }
+        }
 
-            .search {
-                display: flex;
-                align-items: center;
-                margin-left: 140px;
+        .hover::before,
+        .hover::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #9EA91C;
+            bottom: -5px;
+            transition: 0.25s ease;
+        }
 
-            }
+        .hover:hover::before,
+        .hover:hover::after {
+            width: 50%;
+        }
 
-            .hover::before,
-            .hover::after {
-                content: "";
-                position: absolute;
-                width: 0;
-                height: 2px;
-                background-color: #9EA91C;
-                bottom: -5px;
-                transition: 0.25s ease;
-            }
+        :before {
+            left: 0;
+        }
 
-            .hover:hover::before,
-            .hover:hover::after {
-                width: 50%;
-            }
+        a:after {
+            right: 0;
+        }
 
-            :before {
-                left: 0;
-            }
+        .icon-footer {
+            margin-top: 20px;
+        }
 
-            a:after {
-                right: 0;
-            }
+        .icon-footer i {
+            margin: 0 5px;
+        }
 
-            .icon-footer {
-                margin-top: 20px;
-            }
-
-            .icon-footer i {
-                margin: 0 5px;
-            }
     </style>
 <body>
-
 <div th:fragment="header">
     <div style="background-color: #f9f9f9;font-family: 'Roboto Light';" id="header" class="top">
         <div class="container__header">
@@ -2039,66 +1977,15 @@
         </div>
     </div>
 </div>
-<div th:fragment="homeAdmin">
-    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="height: 100%; float: left; width: 30% ">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-            <span class="fs-4">Sidebar</span>
-        </a>
-        <hr>
-        <ul class="nav nav-pills flex-column mb-auto">
-            <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-                    Home
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link link-dark">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                    Dashboard
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link link-dark">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-                    Orders
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link link-dark">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-                    Products
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link link-dark">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-                    Customers
-                </a>
-            </li>
-        </ul>
-        <hr>
-        <div class="dropdown">
-            <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                <strong>mdo</strong>
-            </a>
-            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                <li><a class="dropdown-item" href="#">New project...</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
 <footer th:fragment="footer">
     <div align="center" style="">
         <p style="margin: 0;">TEL: 0768568962</p>
         <address style="font-size: 20px;">280 Tran Hung Dao, An Hai Tay, Son Tra, Da Nang.</address>
     </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
 </body>
 </html>

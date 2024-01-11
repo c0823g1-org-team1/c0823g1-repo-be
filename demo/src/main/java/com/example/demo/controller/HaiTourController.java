@@ -51,12 +51,12 @@ public class HaiTourController {
     }
 
     @GetMapping
-    public String showTour(@PageableDefault(value = 3) Pageable pageable,
+    public String showTour(@PageableDefault(value = 4) Pageable pageable,
                            Model model) {
         Page<Tour> tourPage = haiTourService.findAll(pageable);
         model.addAttribute("tours", tourPage);
         model.addAttribute("df", DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-        return "/admin_manager/home";
+        return "/admin_manager/display_tour";
     }
 
     @GetMapping("/{id}/detail")
@@ -71,16 +71,16 @@ public class HaiTourController {
             model.addAttribute("location", locationTourDTO);
             List<LocationTour> locationTours = haiLocationTourService.findAll();
             model.addAttribute("locationTour", locationTours);
-            return "/hai_tour/detail";
+            return "admin_manager/detail_tour";
         }
-        return "redirect:/tours";
+        return "redirect:/admin_manager";
     }
 
     @GetMapping("/{id}/edit")
     public String editTour(@PathVariable int id,
                            Model model) {
         model.addAttribute("tour", haiTourService.findById(id));
-        return "/hai_tour/edit";
+        return "/admin_manager/edit_tour";
     }
 
     @PostMapping("/{id}/edit")
@@ -91,14 +91,14 @@ public class HaiTourController {
         new TourDTO().validate(tourDTO, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             model.addAttribute("tour", tourDTO);
-            return "/hai_tour/edit";
+            return "/admin_manager/edit_tour";
         }
         for (Tour t : haiTourService.findAll()) {
             if ((tourDTO.getDepartureDate().isAfter(t.getDepartureDate()) && tourDTO.getDepartureDate().isBefore(t.getEndDate().plusDays(1)))
                     || (tourDTO.getEndDate().isAfter(t.getDepartureDate().minusDays(1)) && tourDTO.getEndDate().isBefore(t.getEndDate()))) {
                 if (t.getTourGuild() == tourDTO.getTourGuild()) {
                     model.addAttribute("mess", "Hướng dẫn viên " + t.getTourGuild().getName() + " có lịch trong thời gian " + t.getDepartureDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) + " đến " + t.getEndDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) + " ! Vui lòng chọn HDV khác");
-                    return "/hai_tour/edit";
+                    return "/admin_manager/edit_tour";
                 }
             }
 
@@ -107,14 +107,14 @@ public class HaiTourController {
         BeanUtils.copyProperties(tourDTO, tour);
         haiTourService.save(tour.get());
         redirectAttributes.addFlashAttribute("message", "Sửa thành công");
-        return "redirect:/tours/" + tour.get().getId() + "/detail";
+        return "redirect:/admin_manager/" + tour.get().getId() + "/detail_tour";
 
     }
 
     @GetMapping("/create")
     public String createTour(Model model) {
         model.addAttribute("tour", new TourDTO());
-        return "/hai_tour/edit";
+        return "/admin_manager/edit_tour";
     }
 
     @PostMapping("/create")
@@ -124,28 +124,28 @@ public class HaiTourController {
         new TourDTO().validate(tourDTO, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             model.addAttribute("tour", tourDTO);
-            return "/hai_tour/edit";
+            return "/admin_manager/edit_tour";
         }
         for (Tour t : haiTourService.findAll()) {
             if ((tourDTO.getDepartureDate().isAfter(t.getDepartureDate()) && tourDTO.getDepartureDate().isBefore(t.getEndDate().plusDays(1)))
                     || (tourDTO.getEndDate().isAfter(t.getDepartureDate().minusDays(1)) && tourDTO.getEndDate().isBefore(t.getEndDate()))) {
                 if (t.getTourGuild() == tourDTO.getTourGuild()) {
                     model.addAttribute("mess", "Hướng dẫn viên " + t.getTourGuild().getName() + " có lịch trong thời gian " + t.getDepartureDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) + " đến " + t.getEndDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) + " ! Vui lòng chọn HDV khác");
-                    return "/hai_tour/edit";
+                    return "/admin_manager/edit_tour";
                 }
             }
 
         }
         if (tourDTO.getChildrenPrice() > tourDTO.getAdultPrice()) {
             model.addAttribute("mess1", "Giá của trẻ em phải nhỏ hơn hoặc bằng giá cho người lớn");
-            return "/hai_tour/edit";
+            return "/admin_manager/edit_tour";
         }
         Tour tour = new Tour();
         BeanUtils.copyProperties(tourDTO, tour);
         haiTourService.save(tour);
         model.addAttribute("tour", tour);
         model.addAttribute("df", DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-        return "redirect:/tours/" + tour.getId() + "/detail";
+        return "redirect:/admin_manager/" + tour.getId() + "/detail_tour";
     }
 
     @PostMapping("/delete")
@@ -153,7 +153,7 @@ public class HaiTourController {
         Optional<Tour> tour = haiTourService.findById(id);
         tour.get().setDelete(true);
         haiTourService.save(tour.get());
-        return "redirect:/tours";
+        return "redirect:/admin_manager/display_tour";
     }
 
     @PostMapping("/search")
@@ -163,7 +163,7 @@ public class HaiTourController {
         Page<Tour> tours = haiTourService.findAllByNameContaining(name, pageable);
         model.addAttribute("df", DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         model.addAttribute("tours", tours);
-        return "/hai_tour/home-tour";
+        return "/admin_manager/display_tour";
     }
 //    @GetMapping("{id}/detail/location")
 //    public ResponseEntity<List<LocationTour>> findAllById(@PathVariable int id){
@@ -180,7 +180,7 @@ public class HaiTourController {
             model.addAttribute("df", DateTimeFormatter.ofPattern("dd-MM-yyyy"));
             model.addAttribute("location", locationTourDTO);
             model.addAttribute("messVaild", "Chưa thêm được điểm đến");
-            return "/hai_tour/detail";
+            return "/admin_manager/detail_tour";
         }
         LocationTour locationTour = new LocationTour();
         BeanUtils.copyProperties(locationTourDTO, locationTour);
@@ -191,7 +191,7 @@ public class HaiTourController {
         model.addAttribute("tour", tour.get());
         List<LocationTour> locationTours = haiLocationTourService.findAll();
         model.addAttribute("locationTour", locationTours);
-        return "redirect:/tours/" + tour.get().getId() + "/detail";
+        return "redirect:/admin_manager/" + tour.get().getId() + "/detail_tour";
     }
 
     @PostMapping("/edit-location")
@@ -202,7 +202,7 @@ public class HaiTourController {
         model.addAttribute("location", locationTour.get());
         model.addAttribute("tour", tour.get());
         model.addAttribute("df", DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-        return "/hai_tour/detail";
+        return "/admin_manager/detail_tour";
     }
 
     @PostMapping("/delete-location")
@@ -220,6 +220,6 @@ public class HaiTourController {
         model.addAttribute("locationTour", locationTours);
         model.addAttribute("location", locationTourDTO);
         redirectAttributes.addFlashAttribute("msg", 1);
-        return "redirect:/tours/" + tour.get().getId() + "/detail";
+        return "redirect:/admin_manager/" + tour.get().getId() + "/detail_tour";
     }
 }

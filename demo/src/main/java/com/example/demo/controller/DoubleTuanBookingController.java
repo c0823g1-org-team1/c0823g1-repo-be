@@ -44,7 +44,7 @@ public class DoubleTuanBookingController {
         Page<Booking> bookingPage = doubleTuanBookingService.getAllBookingPage(pageable, nameSearch);
         model.addAttribute("bookingPage", bookingPage);
         model.addAttribute("msg", 1);
-        return "booking/managerBooking";
+        return "admin_manager/display_booking";
     }
 
     @GetMapping("add")
