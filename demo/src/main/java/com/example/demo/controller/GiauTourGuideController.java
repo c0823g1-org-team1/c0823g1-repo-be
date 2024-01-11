@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.TourGuildDTO;
+import com.example.demo.model.Tour;
 import com.example.demo.model.TourGuild;
+import com.example.demo.service.IBaoBookingService;
 import com.example.demo.service.IGiauTourService;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
@@ -15,37 +17,52 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+
 @Controller
 @RequestMapping("/tourGuide")
 public class  GiauTourGuideController {
     @Autowired
     private IGiauTourService iGiauTourService;
-
+    @Autowired
+    private IBaoBookingService baoBookingService;
     @GetMapping("")
     public String show(@PageableDefault(value = 3) Pageable pageable, Model model) {
         Page<TourGuild> tourGuilds = iGiauTourService.getList(pageable);
         model.addAttribute("tourGuide", tourGuilds);
-        return "giau/list-tour-guide";
+        return "admin_manager/display_guide";
     }
 
-    @PostMapping("/delete")
-    public String delete(@RequestParam("id") int id) {
+    @GetMapping("/delete")
+    public String delete(@RequestParam("id") int id,RedirectAttributes redirectAttributes) {
         TourGuild tourGuild = iGiauTourService.findById(id);
+        List<Tour> list = baoBookingService.findIdTourToIdTourGuild(tourGuild.getId());
+        LocalDate localDate = LocalDate.now();
+        for (Tour tour : list) {
+            LocalDate startTime = tour.getDepartureDate();
+            LocalDate endTime = tour.getEndDate();
+            if (localDate.isAfter(startTime) && localDate.isBefore(endTime)) {
+                redirectAttributes.addFlashAttribute("message", "Hướng dẫn viên du lịch đang dẫn tour. Không thể xóa!!1");
+                return "redirect:/admin_manager/tourGuide";
+            }
+        }
         tourGuild.setDelete(true);
         iGiauTourService.save(tourGuild);
-        return "redirect:/tourGuide";
+        return "redirect:/admin_manager/display_guide";
     }
 
     @GetMapping("/add")
     public String showForm(Model model) {
         model.addAttribute("tourGuide", new TourGuildDTO());
-        return "giau/add-tour-guide";
+        return "admin_manager/add_guide";
     }
 
     @GetMapping("edit/{id}")
     public String showFormEdit(Model model, @PathVariable int id) {
         model.addAttribute("tourGuide", iGiauTourService.findById(id));
-        return "giau/edit-tour-guide";
+        return "admin_manager/edit_guide";
     }
 
     @GetMapping("edit/editGuide")
@@ -55,13 +72,13 @@ public class  GiauTourGuideController {
         new TourGuildDTO().validate(tourGuildDTO, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             model.addAttribute("tourGuide", tourGuildDTO);
-            return "giau/edit-tour-guide";
+            return "/admin_manager/edit_guide";
         }
         TourGuild tourGuild = new TourGuild();
         BeanUtils.copyProperties(tourGuildDTO, tourGuild);
         iGiauTourService.save(tourGuild);
         redirectAttributes.addFlashAttribute("msg", 1);
-        return "redirect:/tourGuide";
+        return "redirect:/admin_manager/display_guide";
 
     }
 
@@ -71,13 +88,13 @@ public class  GiauTourGuideController {
         new TourGuildDTO().validate(tourGuildDTO, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             model.addAttribute("tourGuildDTO", tourGuildDTO);
-            return "giau/add-tour-guide";
+            return "admin_manager/add_guide";
         }
         TourGuild tourGuild = new TourGuild();
         BeanUtils.copyProperties(tourGuildDTO, tourGuild);
         iGiauTourService.save(tourGuild);
         redirectAttributes.addFlashAttribute("msg", 2);
-        return "redirect:/tourGuide";
+        return "redirect:/admin_manager/display_guide";
     }
 
     @PostMapping("/search")
