@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDateTime;
 
@@ -38,12 +39,12 @@ public class DoubleTuanBookingController {
     private JavaMailSender javaMailSender;
 
     @GetMapping("")
-    private String home(Model model, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "") String nameSearch) {
+    private String home(Model model, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "") String nameSearch, RedirectAttributes redirectAttributes) {
         Pageable pageable = PageRequest.of(page, 5);
         Page<Booking> bookingPage = doubleTuanBookingService.getAllBookingPage(pageable, nameSearch);
         model.addAttribute("bookingPage", bookingPage);
-        System.out.println(bookingPage.toString());
-        return "booking/managerBooking";
+        model.addAttribute("msg", 1);
+        return "admin_manager/display_booking";
     }
 
     @GetMapping("add")
@@ -60,7 +61,7 @@ public class DoubleTuanBookingController {
     }
 
     @GetMapping("booking/addBooking")
-    private String addBooking(Booking booking) {
+    private String addBooking(Booking booking, RedirectAttributes redirectAttributes, Model model) {
         booking.setDate(LocalDateTime.now());
         doubleTuanBookingService.save(booking);
         Account account = accountService.findById(booking.getAccount().getId());
@@ -69,6 +70,8 @@ public class DoubleTuanBookingController {
         message.setSubject("Cảm ơn bạn đã sử dụng dịch vụ");
         message.setText("Cảm ơn bạn đã sử dụng dịch vụ");
         javaMailSender.send(message);
+        redirectAttributes.addFlashAttribute("msg", 1);
+        model.addAttribute("msg", 1);
         return "redirect:/home";
     }
 }

@@ -30,4 +30,6 @@ public interface IBaoBookingService {
     void savePayment(Payment payment);
     Payment findIdPayment ( int id);
     Booking save(Booking booking);
+    List<Tour> findIdTourToIdTourGuild(int id);
+
 }

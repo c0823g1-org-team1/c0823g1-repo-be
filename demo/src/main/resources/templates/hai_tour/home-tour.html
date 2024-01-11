@@ -47,7 +47,7 @@
             <div class="card" style="width: 25rem;height: 33rem">
                 <img th:src="${t.image}" class="card-img-top hover-image" style="height: 12rem" alt="...">
                 <div class="card-body" style="height: 15rem">
-<!--                    <p class="card-text h-5"> <span th:text="${t.description}"></span> </p>-->
+                    <!--                    <p class="card-text h-5"> <span th:text="${t.description}"></span> </p>-->
                     <a th:href="@{/tours/{id}/detail(id=${t.id})}" style="text-decoration: none">
                         <h5 class="card-title" th:text="${t.name}" style="position: relative;left: 15px"></h5>
                     </a>
@@ -63,11 +63,11 @@
                 <div class="card-body" style="position: relative;left: 15px;top: 15px">
                     <a th:href="@{/tours/{id}/detail(id=${t.id})}" class="card-link">Xem chi tiết</a>
                     <a th:href="@{/tours/{id}/edit(id=${t.id})}" class="card-link">Chỉnh sửa</a>
-<!--                    <a th:href="@{/tours/{id}/delete(id=${t.id})}" class="card-link">Xóa tour</a>-->
+                    <!--                    <a th:href="@{/tours/{id}/delete(id=${t.id})}" class="card-link">Xóa tour</a>-->
                     <a href="#" class="card-link" data-bs-toggle="modal"
-                            data-bs-target="#deleteModal"
-                            th:attr="id-delete=${t.getId()} ,name-delete=${t.getName()} "
-                            onclick="deleteCustomer(this)">
+                       data-bs-target="#deleteModal"
+                       th:attr="id-delete=${t.getId()} ,name-delete=${t.getName()} "
+                       onclick="deleteCustomer(this)">
                         Xóa
                     </a>
                 </div>

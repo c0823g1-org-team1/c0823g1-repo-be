@@ -2,11 +2,11 @@ use booking_tour;
 insert into role(name)
 values("ROLE_ADMIN"),("ROLE_USER");
 insert into account(date,email_client,identify_client,is_delete,username,name_client, password,phone_client,role_id)
-values ("2001-02-11","admin@gmail.com",191918176,0,"admin","admin","$2a$12$wu9h953gTLVuY/quXJIt6OiWZWWv5ikzXu6UOnfl3UcMEu3wE2H6S","0123546789",2),
-("2001-02-11","bao@gmail.com",191918176,0,"bao","baoo","$2a$12$wu9h953gTLVuY/quXJIt6OiWZWWv5ikzXu6UOnfl3UcMEu3wE2H6S","0123457689",1),
-("2001-02-11","tuan@gmail.com",191918176,0,"tuan","tuann","$2a$12$wu9h953gTLVuY/quXJIt6OiWZWWv5ikzXu6UOnfl3UcMEu3wE2H6S","0132456789",1);
+values ("2001-02-11","admin@gmail.com",191918176,0,"admin","admin","$2a$12$wu9h953gTLVuY/quXJIt6OiWZWWv5ikzXu6UOnfl3UcMEu3wE2H6S","0123546789",1),
+("2001-02-11","bao@gmail.com",191918176,0,"bao","baoo","$2a$12$wu9h953gTLVuY/quXJIt6OiWZWWv5ikzXu6UOnfl3UcMEu3wE2H6S","0123457689",2),
+("2001-02-11","tuan@gmail.com",191918176,0,"tuan","tuann","$2a$12$wu9h953gTLVuY/quXJIt6OiWZWWv5ikzXu6UOnfl3UcMEu3wE2H6S","0132456789",2);
 insert into tour_guild(date,email_guild,is_delete,name,phone_guild)
-values('1999-02-20','tranducphuong@gmail.com',0,'Phuong TD','0912345678'),
+values('1999-02-20','tranducphuong@gmail.com',0,'Phuong TD','0912345678'),	
 ('1993-02-20','lamtran@gmail.com',0,'Lam','0912345678'),
 ('1997-02-20','tronghai@gmail.com',0,'Hai','0912345678'),
 ('2005-02-20','tieuvi@gmail.com',0,'Vi','0912345678'),
