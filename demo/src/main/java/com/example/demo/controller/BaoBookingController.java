@@ -7,6 +7,7 @@ import com.example.demo.model.Tour;
 import com.example.demo.service.IBaoBookingService;
 import com.example.demo.service.ITuanAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,8 +30,6 @@ public class BaoBookingController {
     @GetMapping
     public String getAll(Model model) {
         List<Tour> list = baoBookingService.getAll();
-        LocalDateTime localDateTime = LocalDateTime.now();
-        System.out.println(localDateTime);
         model.addAttribute("tour", list);
         return "/home";
     }
