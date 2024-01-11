@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        .sticky {
+            position: sticky;
+            top: 0;
+            /*background-color: yellow;*/
+            padding: 50px;
+            font-size: 20px;
+        }
+
+        body {
+            /*background-image: url("https://i.pinimg.com/originals/bc/f0/76/bcf076d639983703dac08e2451612a1f.jpg");*/
+        }
+    </style>
+</head>
+<body>
+<div th:replace="/layout_admin::homeAdmin"></div>
+<a th:if="${msg == 1}">
+    <div id="message" class="hidden col-3 " style="margin-left: 80%; z-index: 1000; position: fixed">
+        <div class="toast-header">
+            <img src="https://png.pngtree.com/png-clipart/20190920/original/pngtree-japanese-logo-decoration-illustration-png-image_4609124.jpg"
+                 style="width: 20px; height: 20px" class="rounded me-2" alt="...">
+            <strong class="me-auto"> Thông báo</strong>
+            <small>1s ago</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            <p id="msgContent"></p>
+        </div>
+    </div>
+</a>
+<div class="row" style="float:right; width: 84%">
+    <div class="row container-fluid" style="width: 100%;" onload="displayForm()">
+        <div class="col-4">
+            <div>
+                <table th:object="${tour}">
+                    <input type="hidden" id="id" th:field="*{id}">
+                    <tr style="text-align: center">
+                        <th colspan="2">Thông tin tour <span th:text="${tour.name}"></span></th>
+                    </tr>
+                    <tr>
+                        <th>Số người trong tour:</th>
+                        <td th:text="${tour.quantity}"></td>
+                    </tr>
+                    <tr>
+                        <th>Ngày khởi hành:</th>
+                        <td th:text="${df.format(tour.departureDate)}"></td>
+                    </tr>
+                    <tr>
+                        <th>Ngày kết thúc:</th>
+                        <td th:text="${df.format(tour.endDate)}"></td>
+                    </tr>
+                    <tr>
+                        <th>Giá người lớn:</th>
+                        <td th:text="${tour.adultPrice}"><span>VNĐ</span></td>
+                    </tr>
+                    <tr>
+                        <th>Giá trẻ em:</th>
+                        <td th:text="${tour.childrenPrice}"></td>
+                    </tr>
+                    <tr>
+                        <th>Hướng dẫn viên:</th>
+                        <td th:text="${tour.tourGuild.name}"></td>
+                    </tr>
+                </table>
+                <p th:if="${messVaild}" th:text="${messVaild}" style="color: red"></p>
+                <a class="btn btn-sm btn-primary" onclick="displayForm()">Thêm điểm đến</a>
+                <form id="form-create" method="post" th:object="${location}" th:action="@{/tours/save-location}"
+                      style="display: block">
+                    <input type="hidden" th:field="*{id}">
+                    <div>
+                        <label for="day" class="form-label">Chọn ngày</label>
+                        <select id="day" th:field="*{tourDay}" class="form-control" name="tourDay">
+                            <option th:value="1">Ngày 1
+                            </option>
+                            <option th:value="2">Ngày 2
+                            </option>
+                            <option th:value="3">Ngày 3
+                            </option>
+                            <option th:value="4">Ngày 4
+                            </option>
+                        </select>
+                        <p th:if="${#fields.hasErrors('tourDay')}" th:errors="*{tourDay}" style="color: red">abc</p>
+                    </div>
+                    <div>
+                        <label for="name" class="form-label">Tên địa điểm</label>
+                        <input id="name" type="text" th:field="*{location}" class="form-control" name="location">
+                        <p th:if="${#fields.hasErrors('location')}" th:errors="*{location}" style="color: red">abc</p>
+                    </div>
+                    <div>
+                        <label for="img" class="form-label">Nhập link ảnh</label>
+                        <input id="img" type="text" th:field="*{img}" class="form-control" name="img">
+                        <p th:if="${#fields.hasErrors('img')}" th:errors="*{img}" style="color: red"> abc</p>
+                    </div>
+                    <div>
+                        <label for="descriptionLocation" class="form-label">Chi tiết</label>
+                        <textarea id="descriptionLocation" type="text" th:field="*{descriptionLocation}"
+                                  class="form-control" name="descriptionLocation" rows="5"></textarea>
+                        <p th:if="${#fields.hasErrors('descriptionLocation')}" th:errors="*{descriptionLocation}"
+                           style="color: red">abc</p>
+                    </div>
+                    <div>
+                        <!--                    <label>Chọn Tour</label>-->
+                        <select th:field="*{tour}" class="form-control" id="tour" style="display: none">
+                            <option th:each="t:${tours}" th:value="${t.id}" th:text="${t.name}"
+                                    style="color: red"></option>
+                            <!--                        <option th:value="${tour.id}" th:text="${tour.name}" style="color: red"></option>-->
+                        </select>
+                        <p th:if="${#fields.hasErrors('tour')}" th:errors="*{tour}">abc</p>
+                    </div>
+                    <input type="submit" value="Lưu thông tin" class="form-control">
+                </form>
+            </div>
+        </div>
+        <div class="col-8">
+            <h1>Các địa điểm trong tour <span th:text="${tour.name}"></span></h1>
+            <h3 class="text-center">Giới thiệu tour</h3>
+            <p th:text="${tour.description}"></p>
+            <img th:src="${tour.image}" alt="" style="width: 100%;height: 25em">
+            <div th:each="lct:${locationTour}">
+                <div th:if="${lct.tour.id == tour.id}">
+                    <input type="hidden" th:value="${lct.id}" id="id-location">
+                    <h2>Ngày <span th:text="${lct.tourDay}"></span> <span th:text="${lct.location}"></span></h2>
+                    <form th:action="@{/tours/edit-location}" method="post" style="display: inline-block">
+                        <input name="id-edit" type="hidden" th:value="${lct.id}">
+                        <button type="submit" class="btn btn-sm btn-warning">Chỉnh sửa</button>
+                    </form>
+                    <span>
+                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal"
+                                th:attr="id-delete=${lct.getId()} ,name-delete=${lct.getLocation()} "
+                                onclick="deleteCustomer(this)">
+                    Xóa
+                </button>
+                    </span>
+                    <p th:text="${lct.descriptionLocation}"></p>
+                    <img th:src="${lct.img}" th:alt="${lct.location}" style="width: 100%;height: 15%">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form th:action="@{/tours/delete-location}" method="post">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="deleteModalLabel">Xác nhận:</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Bạn muốn xóa địa điểm <span id="nameDelete"></span>?
+                        <input type="hidden" id="idDelete" name="idDelete" value="idDelete">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" class="btn btn-sm btn-danger">Xóa</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</body>
+<script>
+    function displayForm() {
+        let form = document.getElementById('form-create')
+        if (form.style.display === "none") {
+            form.style.display = "block";
+        } else {
+            form.style.display = "none"
+        }
+    }
+
+    function deleteCustomer(button) {
+        let id = button.getAttribute('id-delete');
+        let name = button.getAttribute('name-delete');
+        document.getElementById("idDelete").value = id;
+        document.getElementById("nameDelete").innerText = name;
+    }
+
+    function showMessage(messageText, duration) {
+        let msgContent;
+        msgContent.innerText = messageText;
+        let message;
+        message.classList.remove('hidden');
+        setTimeout(function () {
+            message.classList.add('hidden');
+        }, duration);
+    }
+
+    showMessage("Sửa thông tin thành công", 3000);
+</script>
+</html>

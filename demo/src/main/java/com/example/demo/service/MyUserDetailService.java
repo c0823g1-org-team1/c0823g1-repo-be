@@ -28,6 +28,7 @@ public class MyUserDetailService implements UserDetailsService {
         }
         List<GrantedAuthority> grantList = new ArrayList<>();
         GrantedAuthority authority = new SimpleGrantedAuthority(account.getRole().getName());
+        System.out.println(authority);
         grantList.add(authority);
 
         return new User(account.getUsername(), //
