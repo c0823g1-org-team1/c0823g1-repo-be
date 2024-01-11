@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        li {
+            margin-top: 20px;
+        }
+
+        body {
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="/layout::homeAdmin"></div>
+<div class="container-fluid" style="float: right; width: 69%;">
+    <div class="row row-cols-1 row-cols-md-4 g-3">
+        <div class="col-12 col-md-4 col-sm-12" th:each="t:${tours}">
+            <div class="card" style="width: 25rem;height: 33rem">
+                <img th:src="${t.image}" class="card-img-top hover-image" style="height: 12rem" alt="...">
+                <div class="card-body" style="height: 15rem">
+                    <!--                    <p class="card-text h-5"> <span th:text="${t.description}"></span> </p>-->
+                    <a th:href="@{/tours/{id}/detail(id=${t.id})}" style="text-decoration: none">
+                        <h5 class="card-title" th:text="${t.name}" style="position: relative;left: 15px"></h5>
+                    </a>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Ngày bắt đầu: <span
+                                th:text="${df.format(t.departureDate)}"></span></li>
+                        <li class="list-group-item">Ngày kết thúc: <span th:text="${df.format(t.endDate)}"></span>
+                        </li>
+                        <li class="list-group-item">Số lượng người: <span th:text="${t.quantity}"></span>
+                            <span>slot</span></li>
+                        <li class="list-group-item">Giá người lớn: <span th:text="${t.adultPrice}"></span> VNĐ</li>
+                        <li class="list-group-item">Giá trẻ em: <span th:text="${t.childrenPrice}"></span> VNĐ</li>
+                        <li class="list-group-item">Hướng dẫn viên: <span th:text="${t.tourGuild.name}"></span></li>
+                    </ul>
+                </div>
+                <div class="card-body" style="position: relative;left: 15px;top: 15px">
+                    <a th:href="@{/tours/{id}/detail(id=${t.id})}" class="card-link">Xem chi tiết</a>
+                    <a th:href="@{/tours/{id}/edit(id=${t.id})}" class="card-link">Chỉnh sửa</a>
+                    <!--                    <a th:href="@{/tours/{id}/delete(id=${t.id})}" class="card-link">Xóa tour</a>-->
+                    <a href="#" class="card-link" data-bs-toggle="modal"
+                       data-bs-target="#deleteModal"
+                       th:attr="id-delete=${t.getId()} ,name-delete=${t.getName()} "
+                       onclick="deleteCustomer(this)">
+                        Xóa
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+</body>
