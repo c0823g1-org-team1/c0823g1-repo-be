@@ -7,9 +7,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface IHaiTourRepository extends JpaRepository<Tour,Integer> {
     @Query(value = "select * from tour where is_delete = 0",nativeQuery = true)
     Page<Tour> findAllTour(Pageable pageable);
     Page<Tour> findAllByNameContaining(String name,Pageable pageable);
+    @Query(value = "select * from tour where is_delete = 0",nativeQuery = true)
+    List<Tour> findAllTour();
 }
