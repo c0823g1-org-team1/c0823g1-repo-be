@@ -2015,7 +2015,7 @@
     <div class="container__header">
       <a href="#" class="logo">
         <img style="background:transparent;"
-             src="https://i.upanh.org/2024/01/10/pngtree-japanese-logo-decoration-illustration-png-image_4609124_preview_rev_1c99f58daab988fb7.png"
+               src="https://i.upanh.org/2024/01/10/pngtree-japanese-logo-decoration-illustration-png-image_4609124_preview_rev_1c99f58daab988fb7.png"
              alt="">
       </a>
       <div class="container__header-option">
@@ -2031,7 +2031,26 @@
               <a th:href="@{account/login}"> Đăng Nhập</a>
             </div>
             <div sec:authorize="isAuthenticated()">
-              <a th:href="@{account/logout}"> Đăng Xuất</a>
+              <div class="dropdown" sec:authorize="hasRole('ROLE_ADMIN')">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" sec:authentication="name">
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" th:href="@{/account}">Quản Lý Tài Khoản</a></li>
+                  <li><a class="dropdown-item" href="#">Quản Lý Booking</a></li>
+                  <li><a class="dropdown-item" href="#">Quản Lý Tour</a></li>
+                  <li><a class="dropdown-item" href="#">Quản Lý Hướng Dẫn Viên Du Lịch</a></li>
+                  <li><a class="dropdown-item" th:href="@{/logout}">Đăng Xuất</a></li>
+                </ul>
+              </div>
+              <div class="dropdown" sec:authorize="hasRole('ROLE_USER')">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" sec:authentication="name">
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                  <li><a class="dropdown-item" th:href="@{/account}">Lịch Sử Đặt Booking</a></li>
+                  <li><a class="dropdown-item" th:href="@{/logout}">Đăng Xuất</a></li>
+                </ul>
+              </div>
+
             </div>
           </div>
         </div>
