@@ -32,7 +32,7 @@ public class GiauTourGuideController {
     public String show(@PageableDefault(value = 3) Pageable pageable, Model model) {
         Page<TourGuild> tourGuilds = iGiauTourService.getList(pageable);
         model.addAttribute("tourGuide", tourGuilds);
-        return "giau/list-tour-guide";
+        return "admin_manager/display_guide";
     }
 
     @GetMapping("/delete")
@@ -50,19 +50,19 @@ public class GiauTourGuideController {
         }
         tourGuild.setDelete(true);
         iGiauTourService.save(tourGuild);
-        return "redirect:/tourGuide";
+        return "redirect:/admin_manager/display_guide";
     }
 
     @GetMapping("/add")
     public String showForm(Model model) {
         model.addAttribute("tourGuide", new TourGuildDTO());
-        return "giau/add-tour-guide";
+        return "admin_manager/add_guide";
     }
 
     @GetMapping("edit/{id}")
     public String showFormEdit(Model model, @PathVariable int id) {
         model.addAttribute("tourGuide", iGiauTourService.findById(id));
-        return "giau/edit-tour-guide";
+        return "admin_manager/edit_guide";
     }
 
     @GetMapping("edit/editGuide")
@@ -72,13 +72,13 @@ public class GiauTourGuideController {
         new TourGuildDTO().validate(tourGuildDTO, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             model.addAttribute("tourGuide", tourGuildDTO);
-            return "giau/edit-tour-guide";
+            return "/admin_manager/edit_guide";
         }
         TourGuild tourGuild = new TourGuild();
         BeanUtils.copyProperties(tourGuildDTO, tourGuild);
         iGiauTourService.save(tourGuild);
         redirectAttributes.addFlashAttribute("msg", 1);
-        return "redirect:/tourGuide";
+        return "redirect:/admin_manager/display_guide";
 
     }
 
@@ -88,13 +88,13 @@ public class GiauTourGuideController {
         new TourGuildDTO().validate(tourGuildDTO, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             model.addAttribute("tourGuildDTO", tourGuildDTO);
-            return "giau/add-tour-guide";
+            return "admin_manager/add_guide";
         }
         TourGuild tourGuild = new TourGuild();
         BeanUtils.copyProperties(tourGuildDTO, tourGuild);
         iGiauTourService.save(tourGuild);
         redirectAttributes.addFlashAttribute("msg", 2);
-        return "redirect:/tourGuide";
+        return "redirect:/admin_manager/display_guide";
     }
 
     @PostMapping("/search")
