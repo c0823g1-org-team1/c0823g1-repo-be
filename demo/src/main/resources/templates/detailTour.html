@@ -1,26 +1,26 @@
-<html lang="en" class="mdl-js">
-<head>
+<html xmlns:th="https://www.thymeleaf.org"
+	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 	<link
-		href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap"
-		rel="stylesheet">
+			href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap"
+			rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css?display=swap">
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css?display=swap"
-		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+		  integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css?display=swap" rel="stylesheet"
-		integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+		  integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 	<link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
-			rel="stylesheet"/>
+		  rel="stylesheet"/>
 	<title>Detail Booking</title>
 	<script type="text/javascript" async=""
-		src="https://www.googletagmanager.com/gtag/js?id=G-39GJVRHQ6K&amp;l=dataLayer&amp;cx=c"></script>
+			src="https://www.googletagmanager.com/gtag/js?id=G-39GJVRHQ6K&amp;l=dataLayer&amp;cx=c"></script>
 	<script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-P3D5RK"></script>
 	<script
-		type="text/javascript">!function (e, t, a, n, g) { e[n] = e[n] || [], e[n].push({ "gtm.start": (new Date).getTime(), event: "gtm.js" }); var m = t.getElementsByTagName(a)[0], r = t.createElement(a); r.async = !0, r.src = "https://www.googletagmanager.com/gtm.js?id=GTM-P3D5RK", m.parentNode.insertBefore(r, m) }(window, document, "script", "dataLayer")</script>
+			type="text/javascript">!function (e, t, a, n, g) { e[n] = e[n] || [], e[n].push({ "gtm.start": (new Date).getTime(), event: "gtm.js" }); var m = t.getElementsByTagName(a)[0], r = t.createElement(a); r.async = !0, r.src = "https://www.googletagmanager.com/gtm.js?id=GTM-P3D5RK", m.parentNode.insertBefore(r, m) }(window, document, "script", "dataLayer")</script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-	integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-	crossorigin="anonymous" referrerpolicy="no-referrer"/>
+		  integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+		  crossorigin="anonymous" referrerpolicy="no-referrer"/>
 	<style type="text/css">
 		.styles__sound_icon___23DuG svg {
 			width: 2rem;
@@ -49,7 +49,7 @@
 			padding: 0 16px;
 			line-height: 1.5;
 			background: rgba(32, 26, 25, 0.8);
-			// text-shadow: 0px 1px 4px black;
+		// text-shadow: 0px 1px 4px black;
 			padding: 0 8px;
 
 			lineHeight: 1.2;
@@ -133,27 +133,27 @@
 		}
 	</style>
 	<style>
-		 /* Foooter */
-		 .icon-footer {
-            margin-top: 20px;
-        }
+		/* Foooter */
+		.icon-footer {
+			margin-top: 20px;
+		}
 
-        .icon-footer i {
-            margin: 0 5px;
-        }
+		.icon-footer i {
+			margin: 0 5px;
+		}
 
-        .contain-map {
-            height: 541.65px;
-            width: 100%;
-            margin: 30px auto 0;
-            text-align: center;
-        }
+		.contain-map {
+			height: 541.65px;
+			width: 100%;
+			margin: 30px auto 0;
+			text-align: center;
+		}
 
-        .contain-map img {
-            width: 70%;
-            position: relative;
-            z-index: 1;
-        }
+		.contain-map img {
+			width: 70%;
+			position: relative;
+			z-index: 1;
+		}
 		/* Header */
 		.container__header {
 			width: 1100px;
@@ -249,9 +249,9 @@
 		}
 	</style>
 	<script type="text/javascript" async=""
-		src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/10799997474/?random=1704381942326&amp;cv=11&amp;fst=1704381942326&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45je3bt0v9117034688z86778132&amp;gcd=11l1l1l1l1&amp;dma=0&amp;u_w=1366&amp;u_h=768&amp;url=https%3A%2F%2Ftravel.com.vn%2FtourNDSGN550-016-060124XE-F-1%2Fphan-thiet-mui-ne-hon-rom-doi-cat-bay-trai-nghiem-cung-duong-cao-toc-moi-dau-giay-phan-thiet-kich-cau-du-lich.aspx&amp;ref=https%3A%2F%2Ftravel.com.vn%2Fdong-tour%2Ftour-gia-soc.aspx&amp;hn=www.googleadservices.com&amp;frm=0&amp;tiba=Phan%20Thi%E1%BA%BFt%20-%20M%C5%A9i%20N%C3%A9%20-%20H%C3%B2n%20R%C6%A1m%20-%20%C4%90%E1%BB%93i%20C%C3%A1t%20Bay%20-%20Tr%E1%BA%A3i%20nghi%E1%BB%87m%20cung%20%C4%91%C6%B0%E1%BB%9Dng%20cao%20t%E1%BB%91c%20m%E1%BB%9Bi%20D%E1%BA%A7u%20Gi%C3%A2y%20Phan%20Thi&amp;auid=953656475.1704381932&amp;uaa=x86&amp;uab=64&amp;uafvl=Not_A%2520Brand%3B8.0.0.0%7CChromium%3B120.0.6099.130%7COpera%3B106.0.4998.19&amp;uamb=0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;data=event%3Dgtag.config&amp;rfmt=3&amp;fmt=4"></script>
+			src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/10799997474/?random=1704381942326&amp;cv=11&amp;fst=1704381942326&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45je3bt0v9117034688z86778132&amp;gcd=11l1l1l1l1&amp;dma=0&amp;u_w=1366&amp;u_h=768&amp;url=https%3A%2F%2Ftravel.com.vn%2FtourNDSGN550-016-060124XE-F-1%2Fphan-thiet-mui-ne-hon-rom-doi-cat-bay-trai-nghiem-cung-duong-cao-toc-moi-dau-giay-phan-thiet-kich-cau-du-lich.aspx&amp;ref=https%3A%2F%2Ftravel.com.vn%2Fdong-tour%2Ftour-gia-soc.aspx&amp;hn=www.googleadservices.com&amp;frm=0&amp;tiba=Phan%20Thi%E1%BA%BFt%20-%20M%C5%A9i%20N%C3%A9%20-%20H%C3%B2n%20R%C6%A1m%20-%20%C4%90%E1%BB%93i%20C%C3%A1t%20Bay%20-%20Tr%E1%BA%A3i%20nghi%E1%BB%87m%20cung%20%C4%91%C6%B0%E1%BB%9Dng%20cao%20t%E1%BB%91c%20m%E1%BB%9Bi%20D%E1%BA%A7u%20Gi%C3%A2y%20Phan%20Thi&amp;auid=953656475.1704381932&amp;uaa=x86&amp;uab=64&amp;uafvl=Not_A%2520Brand%3B8.0.0.0%7CChromium%3B120.0.6099.130%7COpera%3B106.0.4998.19&amp;uamb=0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;data=event%3Dgtag.config&amp;rfmt=3&amp;fmt=4"></script>
 	<style type="text/css"
-		data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget css:fb.css.customer_chat_plugin_iframe">
+		   data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget css:fb.css.customer_chat_plugin_iframe">
 		.fb_reset {
 			background: none;
 			border: 0;
@@ -836,16 +836,16 @@
 		.date-left {
 			width: 40px;
 		}
-		 .date-right {
-			 display: flex;
-			 flex-direction: column;
-			 padding-left: 10px;
-			 width: calc(100% - 64px);
-		 }
-		 .day {
-			 align-items: center;
-			 padding-bottom: 34px;
-		 }
+		.date-right {
+			display: flex;
+			flex-direction: column;
+			padding-left: 10px;
+			width: calc(100% - 64px);
+		}
+		.day {
+			align-items: center;
+			padding-bottom: 34px;
+		}
 		.day:before {
 			border-left: 0.5px dashed #2d4271;
 			content: "";
@@ -854,7 +854,7 @@
 			position: absolute;
 			z-index: 0;
 		}
-			.date-center {
+		.date-center {
 			align-items: center;
 			background: #fff;
 			background: #e01600;
@@ -965,131 +965,131 @@
 
 	</style>
 </head>
-<body data-new-gr-c-s-check-loaded="14.1147.0" data-gr-ext-installed=""><noscript><iframe
-			src="https://www.googletagmanager.com/ns.html?id=GTM-P3D5RK" height="0" width="0"
-			style="display:none;visibility:hidden;color: #2d4271 !important;"></iframe></noscript>
-	<div id="fb-root" class=" fb_reset">
-		<div style="position: absolute; top: -10000px; width: 0px; height: 0px;">
-			<div></div>
-		</div>
-	</div>
-	<div id="root">
-		<div class="flight-hotel-detail detail tour-detail  ">
-			<!-- Hedear -->
-			<div style="background-color: #f9f9f9;" id="header" class="top">
-				<div class="container__header">
-					<a href="#" class="logo">
-						<img style="background:transparent;"
-							src="https://png.pngtree.com/png-clipart/20190920/original/pngtree-japanese-logo-decoration-illustration-png-image_4609124.jpg"
-							alt="">
-					</a>
-					<div class="container__header-option">
-						<div class="menu">
-							<ul style="list-style: none; font-family: Roboto,sans-serif;" class="list-option">
-								<li><a th:href="@{/home}" class="hover">Trang Chủ</a></li>
-								<li><a href="" class="hover">Thông Tin</a></li>
-								<li><a th:href="@{/home/hottour}" class="hover">Địa Điểm</a></li>
-								<li><a href="" class="hover">Hổ Trợ</a></li>
-							</ul>
-							<div class="search">
-								<a th:href="@{/account/login}" class="hover">Đăng Nhập</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Body -->
-			<div class="entry-head">
-				<section class="section-01-title section-01">
-					<div class="container-xl">
-						<div class="row">
-							<div class="col-md-6 col-12 left">
-								<div class="warp-mark"></div>
-								<h1 th:text="${tours.getName()}" style="margin-left: 60px;font-size: 38px;font-weight: 600;color: orange"></h1>
-								<div class="short-rating">
-									<div class="s-rate">
-										<span th:text="${tours.numberView(tours.getCareAbout())}" class="newspan"></span>
-										<div class="s-comment">Tuyệt vời<p class="newP" th:text="${tours.getCareAbout()}">quan tâm</p></div></div><div class="s-wishlist"><i style="color: #e01600;
+<!--<body data-new-gr-c-s-check-loaded="14.1147.0" data-gr-ext-installed=""><noscript><iframe-->
+<!--		src="https://www.googletagmanager.com/ns.html?id=GTM-P3D5RK" height="0" width="0"-->
+<!--		style="display:none;visibility:hidden;color: #2d4271 !important;"></iframe></noscript>-->
+<!--<div id="fb-root" class=" fb_reset">-->
+<!--	<div style="position: absolute; top: -10000px; width: 0px; height: 0px;">-->
+<!--		<div></div>-->
+<!--	</div>-->
+<!--</div>-->
+<!--<div id="root">-->
+<!--	<div class="flight-hotel-detail detail tour-detail  ">-->
+<!--		&lt;!&ndash; Hedear &ndash;&gt;-->
+<!--		<div style="background-color: #f9f9f9;" id="header" class="top">-->
+<!--			<div class="container__header">-->
+<!--				<a href="#" class="logo">-->
+<!--					<img style="background:transparent;"-->
+<!--						 src="https://png.pngtree.com/png-clipart/20190920/original/pngtree-japanese-logo-decoration-illustration-png-image_4609124.jpg"-->
+<!--						 alt="">-->
+<!--				</a>-->
+<!--				<div class="container__header-option">-->
+<!--					<div class="menu">-->
+<!--						<ul style="list-style: none; font-family: Roboto,sans-serif;" class="list-option">-->
+<!--							<li><a th:href="@{/home}" class="hover">Trang Chủ</a></li>-->
+<!--							<li><a href="" class="hover">Thông Tin</a></li>-->
+<!--							<li><a th:href="@{/home/hottour}" class="hover">Địa Điểm</a></li>-->
+<!--							<li><a href="" class="hover">Hổ Trợ</a></li>-->
+<!--						</ul>-->
+<!--						<div class="search">-->
+<!--							<a th:href="@{/account/login}" class="hover">Đăng Nhập</a>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<header th:replace="/layout::header"></header>
+		<!-- Body -->
+		<div class="entry-head">
+			<section class="section-01-title section-01">
+				<div class="container-xl">
+					<div class="row">
+						<div class="col-md-6 col-12 left">
+							<div class="warp-mark"></div>
+							<h1 th:text="${tours.getName()}" style="margin-left: 60px;font-size: 38px;font-weight: 600;color: orange"></h1>
+							<div class="short-rating">
+								<div class="s-rate">
+									<span th:text="${tours.numberView(tours.getCareAbout())}" class="newspan"></span>
+									<div class="s-comment">Tuyệt vời<p class="newP" th:text="${tours.getCareAbout()}">quan tâm</p></div></div><div class="s-wishlist"><i style="color: #e01600;
     font-size: 22px;" class="fas fa-heart"></i><label style="margin-left: 8px;" th:text="${tours.getView()}"></label></div></div>
+						</div>
+						<div class="col-md-6 col-12 right">
+							<div class="group-price">
 							</div>
-							<div class="col-md-6 col-12 right">
-								<div class="group-price">
-								</div>
-								<div class="group-add-cart">
-									<div class="boder">
-										<a title="Đặt ngay" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="add-to-cart"><i class="fal fa-shopping-cart"></i> Đặt ngay</a>
-										<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-											 aria-labelledby="staticBackdropLabel" aria-hidden="true">
-											<div class="modal-dialog">
-												<div class="modal-content">
-													<div class="modal-header">
-														<h1 class="modal-title fs-5" id="staticBackdropLabel">Đặt tour</h1>
-														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-													</div>
-													<div class="modal-body">
-														<form th:action="@{/pay}" method="get" th:object="${bookings}">
-															<input type="hidden" th:field="*{tour}">
-															<input type="hidden" th:field="*{account}">
-															<input type="hidden" th:field="*{date}">
+							<div class="group-add-cart">
+								<div class="boder">
+									<a title="Đặt ngay" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="add-to-cart"><i class="fal fa-shopping-cart"></i> Đặt ngay</a>
+									<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+										 aria-labelledby="staticBackdropLabel" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h1 class="modal-title fs-5" id="staticBackdropLabel">Đặt tour</h1>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body">
+													<form th:action="@{/pay}" method="get" th:object="${bookings}">
+														<input type="hidden" th:field="*{tour}">
+														<input type="hidden" th:field="*{account}">
+														<input type="hidden" th:field="*{date}">
 
-															<fieldset disabled>
-																<div class="mb-3">
-																	<label for="disabledTextInput" class="form-label">Tên khách hàng</label>
-																	<input type="text" id="disabledTextInput" class="form-control"
-																		   th:value="${account.getNameClient()}">
-																</div>
-																<div class="mb-3">
-																	<label class="form-label">Tên tour</label>
-																	<input type="text" class="form-control"
-																		   th:value="${tours.getName()}">
-																</div>
-																<div class="mb-3">
-																	<label class="form-label">Giá tiền trẻ em</label>
-																	<input type="text" class="form-control"
-																		   th:value="${tours.getChildrenPrice()}" id="childrenPrice">
-																</div>
-																<div class="mb-3">
-																	<label class="form-label">Giá tiền người lớn</label>
-																	<input type="text" class="form-control"
-																		   th:value="${tours.getAdultPrice()}" id="adultPrice">
-																</div>
-																<div class="mb-3">
-																	<label class="form-label">Số lượng người được dùng</label>
-																	<input type="text" class="form-control"
-																		   th:value="${tours.getQuantity()}" id="sl">
-																</div>
-															</fieldset>
+														<fieldset disabled>
 															<div class="mb-3">
-																<label class="form-label">Nhap so luong nguoi lon: </label>
-																<input class="btn btn-primary" type="button" value="-"
-																	   onclick="adjustQuantity('adult', 'GIAM', 'sl')">
-																<input style="border: none" type="text" name="adultQuantity" id="adultQuantity" value="1"
-																	   th:field="*{adultNumber}"
-																	   readonly>
-																<input class="btn btn-primary" type="button" value="+"
-																	   onclick="adjustQuantity('adult', 'TANG', 'sl')">
-															</div>
-															<!-- Children Quantity -->
-															<div class="mb-3">
-																<label class="form-label">Nhap so luong tre em: </label>
-																<input class="btn btn-primary" type="button" value="-"
-																	   onclick="adjustQuantity('children', 'GIAM', 'sl')">
-																<input style="border: none" type="text" name="childrenQuantity" id="childrenQuantity"
-																	   th:field="*{childrenNumber}"
-																	   value="0" readonly>
-																<input class="btn btn-primary" type="button" value="+"
-																	   onclick="adjustQuantity('children', 'TANG', 'sl')">
+																<label for="disabledTextInput" class="form-label">Tên khách hàng</label>
+																<input type="text" id="disabledTextInput" class="form-control"
+																	   th:value="${account.getNameClient()}">
 															</div>
 															<div class="mb-3">
-																<label class="form-label"></label>
-																<span id="totalAmount"></span>
+																<label class="form-label">Tên tour</label>
+																<input type="text" class="form-control"
+																	   th:value="${tours.getName()}">
 															</div>
-															<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-															<button type="submit" class="btn btn-primary" id="btn-submit" disabled>Đặt</button>
-														</form>
-													</div>
-													<div class="modal-footer">
-													</div>
+															<div class="mb-3">
+																<label class="form-label">Giá tiền trẻ em</label>
+																<input type="text" class="form-control"
+																	   th:value="${tours.getChildrenPrice()}" id="childrenPrice">
+															</div>
+															<div class="mb-3">
+																<label class="form-label">Giá tiền người lớn</label>
+																<input type="text" class="form-control"
+																	   th:value="${tours.getAdultPrice()}" id="adultPrice">
+															</div>
+															<div class="mb-3">
+																<label class="form-label">Số lượng người được dùng</label>
+																<input type="text" class="form-control"
+																	   th:value="${tours.getQuantity()}" id="sl">
+															</div>
+														</fieldset>
+														<div class="mb-3">
+															<label class="form-label">Nhap so luong nguoi lon: </label>
+															<input class="btn btn-primary" type="button" value="-"
+																   onclick="adjustQuantity('adult', 'GIAM', 'sl')">
+															<input style="border: none" type="text" name="adultQuantity" id="adultQuantity" value="1"
+																   th:field="*{adultNumber}"
+																   readonly>
+															<input class="btn btn-primary" type="button" value="+"
+																   onclick="adjustQuantity('adult', 'TANG', 'sl')">
+														</div>
+														<!-- Children Quantity -->
+														<div class="mb-3">
+															<label class="form-label">Nhap so luong tre em: </label>
+															<input class="btn btn-primary" type="button" value="-"
+																   onclick="adjustQuantity('children', 'GIAM', 'sl')">
+															<input style="border: none" type="text" name="childrenQuantity" id="childrenQuantity"
+																   th:field="*{childrenNumber}"
+																   value="0" readonly>
+															<input class="btn btn-primary" type="button" value="+"
+																   onclick="adjustQuantity('children', 'TANG', 'sl')">
+														</div>
+														<div class="mb-3">
+															<label class="form-label"></label>
+															<span id="totalAmount"></span>
+														</div>
+														<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+														<button type="submit" class="btn btn-primary" id="btn-submit" disabled>Đặt</button>
+													</form>
+												</div>
+												<div class="modal-footer">
 												</div>
 											</div>
 										</div>
@@ -1098,19 +1098,20 @@
 							</div>
 						</div>
 					</div>
-				</section>
-				<section >
-					<div class="w3-content w3-section" style="max-width:730px">
-						<div style="border-radius: 10px;overflow: hidden;box-sizing: border-box;" th:each="location:${locations}">
-							<img class="mySlides" th:src="${location.getImg()}" style="width:100%">
-						</div>
+				</div>
+			</section>
+			<section >
+				<div class="w3-content w3-section" style="max-width:730px">
+					<div style="border-radius: 10px;overflow: hidden;box-sizing: border-box;" th:each="location:${locations}">
+						<img class="mySlides" th:src="${location.getImg()}" style="width:100%">
 					</div>
-				</section>
-				<div style="color: #2d4271;font-size: 15px" class="map-route">
-					<section class="section-06 mb-5">
-						<div class="container">
-							<div class="row">
-								<div style="color: #2d4271;
+				</div>
+			</section>
+			<div style="color: #2d4271;font-size: 15px" class="map-route">
+				<section class="section-06 mb-5">
+					<div class="container">
+						<div class="row">
+							<div style="color: #2d4271;
     font-size: 26px;
     font-weight: 700;
     line-height: 30px;
@@ -1118,115 +1119,115 @@
     max-width: 100%;
     margin-left: 45%;
     margin-top: 30px;" class="col-md-12 col-12">
-									<h2 class="mb-4">Lịch trình</h2>
-								</div>
+								<h2 class="mb-4">Lịch trình</h2>
 							</div>
 						</div>
-					</section>
-					<section class="section-07-map mb-5">
-						<div style="position: relative" class="container">
-							<div th:each="location:${locations}"  class="row">
-								<div class="col-md-4 d-none d-md-block col-12 left">
-									<div  class="go-tour">
-										<div class="day day-001">
-											<div class="wrapper"><span class="date-left">Ngày</span><span
-											th:text="${location.getTourDay()}" class="date-center "></span><span class="date-right"><span
-														class="date"></span> <span th:text="${location.getDate()}"></span>
+					</div>
+				</section>
+				<section class="section-07-map mb-5">
+					<div style="position: relative" class="container">
+						<div th:each="location:${locations}"  class="row">
+							<div class="col-md-4 d-none d-md-block col-12 left">
+								<div  class="go-tour">
+									<div class="day day-001">
+										<div class="wrapper"><span class="date-left">Ngày</span><span
+												th:text="${location.getTourDay()}" class="date-center "></span><span class="date-right"><span
+												class="date"></span> <span th:text="${location.getDate()}"></span>
 												<span class="location" th:text="${location.getLocation()}"></span>
 											</span>
-											</div>
 										</div>
 									</div>
 								</div>
-								<div class="col-md-8 col-12 right timeline-section">
-									<div >
-										<h3 style="font-weight: bold" id="day-00">Ngày <span  th:text ="${location.getTourDay()}"></span>
-										</h3>
-										<div class="excerpt"><span class="line"></span>
-											<div>
-												<title></title>
-												<div style="text-align:justify">
-													<div th:text="${location.getDescriptionLocation()}" ></div>
-												</div>
+							</div>
+							<div class="col-md-8 col-12 right timeline-section">
+								<div >
+									<h3 style="font-weight: bold" id="day-00">Ngày <span  th:text ="${location.getTourDay()}"></span>
+									</h3>
+									<div class="excerpt"><span class="line"></span>
+										<div>
+											<title></title>
+											<div style="text-align:justify">
+												<div th:text="${location.getDescriptionLocation()}" ></div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</section>
-					<section class="section-08 mb-5">
-						<div class="container-xl">
-							<div class="row">
-								<div class="col-md-6 col-12 left">
-									<h2 class="mb-4">Chi tiết tour</h2>
-									<div class="tour">
-										<div class="detail-tour">
-											<h3 class="tt">Thông tin chuyến bay</h3>
-											<div class="detail-tour-inner">
-												<div class="date"><span>Ngày đi - </span><b>06/01/2024</b></div>
-												<div class="from">
-													<h4>TP. Hồ Chí Minh</h4>
-													<h4>Phan Thiết</h4>
-												</div>
-													<h4>05:00</h4>
-													<h4>00:00</h4>
-												</div>
+					</div>
+				</section>
+				<section class="section-08 mb-5">
+					<div class="container-xl">
+						<div class="row">
+							<div class="col-md-6 col-12 left">
+								<h2 class="mb-4">Chi tiết tour</h2>
+								<div class="tour">
+									<div class="detail-tour">
+										<h3 class="tt">Thông tin chuyến bay</h3>
+										<div class="detail-tour-inner">
+											<div class="date"><span>Ngày đi - </span><b>06/01/2024</b></div>
+											<div class="from">
+												<h4>TP. Hồ Chí Minh</h4>
+												<h4>Phan Thiết</h4>
 											</div>
+											<h4>05:00</h4>
+											<h4>00:00</h4>
 										</div>
+									</div>
 								</div>
-								<div class="col-md-6 col-12 right">
-									<h2 class="mb-4">Giá tour</h2>
-									<div class="table-price">
-										<table>
-											<tbody style="color:#2d4271 ">
-												<tr>
-													<th class="l1">Loại khách</th>
-													<th class="l2">Giá tour</th>
-												</tr>
-												<tr>
-													<td>Người lớn (Từ 12 tuổi trở lên)</td>
-													<td th:text="${tours.getAdultPrice()}" class="t-price"></td>
-												</tr>
-												<tr>
-													<td>Trẻ em (Từ 5 - 11 tuổi)</td>
-													<td th:text="${tours.getChildrenPrice()}"  class="t-price"></td>
-												</tr>
+							</div>
+							<div class="col-md-6 col-12 right">
+								<h2 class="mb-4">Giá tour</h2>
+								<div class="table-price">
+									<table>
+										<tbody style="color:#2d4271 ">
+										<tr>
+											<th class="l1">Loại khách</th>
+											<th class="l2">Giá tour</th>
+										</tr>
+										<tr>
+											<td>Người lớn (Từ 12 tuổi trở lên)</td>
+											<td th:text="${tours.getAdultPrice()}" class="t-price"></td>
+										</tr>
+										<tr>
+											<td>Trẻ em (Từ 5 - 11 tuổi)</td>
+											<td th:text="${tours.getChildrenPrice()}"  class="t-price"></td>
+										</tr>
 
-											</tbody>
-										</table>
-									</div>
-									<h2 class="mb-4">Thông tin hướng dẫn viên</h2>
-									<div class="table-price">
-										<div class="more-info more-info-2">
-											<div class="block"><span>HDV dẫn đoàn</span>
-												<div th:text="${tours.getTourGuild().getName()}"></div>
-											</div>
+										</tbody>
+									</table>
+								</div>
+								<h2 class="mb-4">Thông tin hướng dẫn viên</h2>
+								<div class="table-price">
+									<div class="more-info more-info-2">
+										<div class="block"><span>HDV dẫn đoàn</span>
+											<div th:text="${tours.getTourGuild().getName()}"></div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</section>
-				</div>
+					</div>
+				</section>
 			</div>
 		</div>
-		<!-- Footer -->
-		<footer class="doc-footer">
-			<div align="center">
-				<div class="icon-footer">
-					<i style="color: blue;" class="fa-brands fa-facebook"></i>
-					<i style="color: red;" class="fa-brands fa-instagram"></i>
-					<i style="color: blue;" class="fa-brands fa-twitter"></i>
-				</div>
-				<p style="margin: 0;">TEL: 0768568962</p>
-				<address style="font-size: 20px;">280 Tran Hung Dao, An Hai Tay, Son Tra, Da Nang.</address>
-
-			</div>
-		</footer>
-		<div id="fb-customer-chat" class="fb-customerchat" page_id="181053065281290" attribution="biz_inbox"></div>
 	</div>
-	<div id="eJOY__extension_root" class="eJOY__extension_root_class" style="all: unset;"></div>
+	<!-- Footer -->
+	<footer class="doc-footer">
+		<div align="center">
+			<div class="icon-footer">
+				<i style="color: blue;" class="fa-brands fa-facebook"></i>
+				<i style="color: red;" class="fa-brands fa-instagram"></i>
+				<i style="color: blue;" class="fa-brands fa-twitter"></i>
+			</div>
+			<p style="margin: 0;">TEL: 0768568962</p>
+			<address style="font-size: 20px;">280 Tran Hung Dao, An Hai Tay, Son Tra, Da Nang.</address>
+
+		</div>
+	</footer>
+	<div id="fb-customer-chat" class="fb-customerchat" page_id="181053065281290" attribution="biz_inbox"></div>
+</div>
+<div id="eJOY__extension_root" class="eJOY__extension_root_class" style="all: unset;"></div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script>
 	var myIndex = 0;
