@@ -25,26 +25,25 @@ public class MailController {
     }
 
     @GetMapping("/forgot")
-    public String forgot(@RequestParam String account) {
+    public String forgot(@RequestParam String email) {
         SimpleMailMessage message = new SimpleMailMessage();
         List<Account> accountList = accountService.getList();
-        String email = null;
-        String pass = null;
-        int id = 0;
-        for (Account account1 : accountList) {
-            if (account1.getUsername().equals(account)) {
-                email = account1.getEmailClient();
-                id = account1.getId();
-                break;
+        String subject = "Đổi mật khẩu";
+        String url;
+        String buttonText = "Đổi mật khẩu ngay";
+        String htmlButton;
+        for (Account account : accountList) {
+            if (account.getEmailClient().equals(email)) {
+                subject = "Đổi mật khẩu";
+                url = "http://localhost:8080/account/formPassword/" + account.getId();
+                message.setTo(email);
+                message.setSubject(subject);
+                message.setText(url);
+                javaMailSender.send(message);
+                return "redirect:/account/forgot1";
             }
         }
-        String subject = "Đổi mật khẩu ";
-        String url = "http://localhost:8080/Tuan_account/formPassword/" + id;
-        message.setTo(email);
-        message.setSubject(subject);
-        message.setText(url);
-        javaMailSender.send(message);
-        return "Tuan_account/result";
+        return "redirect:/account/forgot1";
     }
 
     @GetMapping("formPassword/{id}")

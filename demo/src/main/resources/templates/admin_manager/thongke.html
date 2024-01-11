@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biểu đồ thống kê giá tiền theo ngày và giờ</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.js"></script>
+</head>
+<body>
+<h1>Biểu đồ thống kê giá tiền theo ngày và giờ</h1>
+<label for="datePicker">Chọn ngày:</label>
+<input type="text" id="datePicker">
+
+<canvas id="myChart" width="400" height="200"></canvas>
+
+<script>
+  flatpickr("#datePicker", {
+    enableTime: false, // Không hiển thị lựa chọn giờ
+    dateFormat: "Y-m-d",
+    onChange: function(selectedDates, dateStr) {
+      // Gọi hàm để cập nhật biểu đồ khi người dùng chọn ngày mới
+      updateChart(dateStr);
+    }
+  });
+
+  // Hàm để cập nhật biểu đồ theo ngày mới
+  function updateChart(selectedDate) {
+    // Đây là nơi bạn sẽ thực hiện truy vấn mới để lấy dữ liệu thống kê theo giờ từ ngày đã chọn
+    // Ví dụ: var hourlyData = fetchDataForSelectedDate(selectedDate);
+
+    // Dữ liệu mẫu
+    var hourlyData = [10, 20, 15, 30, 25, 40, 35, 45, 20, 15, 10, 5];
+
+    // Lấy thẻ canvas và vẽ biểu đồ
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: Array.from({ length: 12 }, (_, i) => i + 1 + 'h'), // Nhãn giờ
+        datasets: [{
+          label: 'Tổng giá tiền',
+          data: hourlyData,
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  }
+</script>
+</body>
+</html>
