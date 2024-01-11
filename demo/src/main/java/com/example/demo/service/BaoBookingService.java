@@ -86,5 +86,10 @@ public class BaoBookingService implements IBaoBookingService {
         return baoBookingRepository.save(booking);
     }
 
+    @Override
+    public List<Tour> findIdTourToIdTourGuild(int id) {
+        return baoTourRepository.findIdTourToIdTourGuild(id);
+    }
+
 
 }
