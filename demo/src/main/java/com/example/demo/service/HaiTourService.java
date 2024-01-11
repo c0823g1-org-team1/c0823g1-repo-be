@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,6 +18,11 @@ public class HaiTourService implements IHaiTourService{
     @Override
     public Page<Tour> findAll(Pageable pageable) {
         return haiTourRepository.findAllTour(pageable);
+    }
+
+    @Override
+    public List<Tour> findAll() {
+        return haiTourRepository.findAllTour();
     }
 
     @Override
