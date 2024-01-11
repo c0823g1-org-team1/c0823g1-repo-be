@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -28,6 +29,8 @@ public class BaoBookingController {
     @GetMapping
     public String getAll(Model model) {
         List<Tour> list = baoBookingService.getAll();
+        LocalDateTime localDateTime = LocalDateTime.now();
+        System.out.println(localDateTime);
         model.addAttribute("tour", list);
         return "/home";
     }
@@ -39,6 +42,10 @@ public class BaoBookingController {
         Booking booking = new Booking();
         tour.setCareAbout(tour.getCareAbout() + 1);
         baoBookingService.saveTour(tour);
+        booking.setTour(tour);
+        booking.setAccount(account);
+        booking.setDate(LocalDateTime.now());
+        booking.setId(5);
         List<LocationTour> location = baoBookingService.findLocation(tour.getId());
         model.addAttribute("locations", location);
         model.addAttribute("tours", tour);
@@ -115,20 +122,26 @@ public class BaoBookingController {
         }
         List<Tour> save = new ArrayList<>();
         for (Tour tour : selectedTours) {
-            if ((days == 3 && tour.getCareAbout() >= typeTours) ||
-                    (days == 4  && tour.getCareAbout() >= typeTours) ||
-                    (days == 3  && tour.getAdultPrice() >= savePrices) ||
-                    (days == 4  && tour.getCareAbout() >= savePrices)) {
+            if ((days == 3 && tour.getCareAbout() >= typeTours && utilDate != null) ||
+                    (days == 4  && tour.getCareAbout() >= typeTours && utilDate != null) ||
+                    (days == 3  && tour.getAdultPrice() >= savePrices && utilDate != null) ||
+                    (days == 4  && tour.getCareAbout() >= savePrices && utilDate != null)) {
                 save.addAll(baoBookingService.searchManyOption(utilDate));
+                break;
+            }else if (days == 3 || days == 4){
+                save.addAll(Collections.singleton(tour));
                 break;
             }
         }
         for (Tour tour : tours) {
-            if (tour.getAdultPrice() <= savePrices && utilDate == null){
+            if (tour.getAdultPrice() <= savePrices && utilDate == null && savePrices != 0){
                 save.addAll(baoBookingService.searchSavePrice(savePrices));
                 break;
-            }else {
+            }else if (tour.getCareAbout() >= typeTours && utilDate == null && typeTours != 0){
                 save.addAll(baoBookingService.searchHotTour(typeTours));
+                break;
+            }else {
+                save.addAll(baoBookingService.searchManyOption(utilDate));
                 break;
             }
         }
