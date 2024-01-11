@@ -61,7 +61,7 @@
                     </ul>
                 </div>
                 <div class="card-body" style="position: relative;left: 15px;top: 15px">
-                    <a th:href="@{/home/detail/{id}(id=${t.id})}" class="card-link">Xem chi tiết</a>
+                    <a th:href="@{/tours/{id}/detail(id=${t.id})}" class="card-link">Xem chi tiết</a>
                     <a th:href="@{/tours/{id}/edit(id=${t.id})}" class="card-link">Chỉnh sửa</a>
 <!--                    <a th:href="@{/tours/{id}/delete(id=${t.id})}" class="card-link">Xóa tour</a>-->
                     <a href="#" class="card-link" data-bs-toggle="modal"
