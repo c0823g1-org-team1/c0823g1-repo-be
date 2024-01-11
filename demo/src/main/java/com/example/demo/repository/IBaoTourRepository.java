@@ -27,4 +27,7 @@ public interface IBaoTourRepository extends JpaRepository<Tour, Integer> {
 
     @Query(value = "select * from tour t where t.adult_price <= :adultPrice",nativeQuery = true)
     List<Tour> searchSavePrice(@Param("adultPrice") int adultPrice);
+
+    @Query (value = "select  * from tour t where t.tour_guild_id = :id",nativeQuery = true)
+    List<Tour> findIdTourToIdTourGuild(@Param("id") int id);
 }
