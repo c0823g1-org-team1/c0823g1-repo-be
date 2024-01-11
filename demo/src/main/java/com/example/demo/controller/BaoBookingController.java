@@ -24,6 +24,8 @@ public class BaoBookingController {
     @GetMapping
     public String getAll(Model model) {
         List<Tour> list = baoBookingService.getAll();
+        LocalDateTime localDateTime = LocalDateTime.now();
+        System.out.println(localDateTime);
         model.addAttribute("tour", list);
         return "/home";
     }

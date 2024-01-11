@@ -58,4 +58,34 @@ public class BaoBookingService implements IBaoBookingService {
         return baoTourRepository.searchSaveMoney(date);
     }
 
+<<<<<<< HEAD
 }
+=======
+    @Override
+    public List<Tour> searchHotTour(int careAbout) {
+        return baoTourRepository.searchHotTour(careAbout);
+    }
+
+    @Override
+    public List<Tour> searchSavePrice(int adultPrice) {
+        return baoTourRepository.searchSavePrice(adultPrice);
+    }
+
+    @Override
+    public void savePayment(Payment payment) {
+        baoPaymentRepository.save(payment);
+    }
+
+    @Override
+    public Payment findIdPayment(int id) {
+        return baoPaymentRepository.findIdPayment(id);
+    }
+
+    @Override
+    public Booking save(Booking booking) {
+        return baoBookingRepository.save(booking);
+    }
+
+
+}
+>>>>>>> 528a61ba7cc1424ca93960a5d0620ddb65ca55ab
