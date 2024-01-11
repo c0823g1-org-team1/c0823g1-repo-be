@@ -17,7 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/tourGuide")
-public class GiauTourGuideController {
+public class  GiauTourGuideController {
     @Autowired
     private IGiauTourService iGiauTourService;
 
