@@ -1,4 +1,4 @@
-<html  xmlns:th="https://www.thymeleaf.org" style="" class="mdl-js">
+<html xmlns:th="https://www.thymeleaf.org" style="" class="mdl-js">
 <head>
     <script async="true" type="text/javascript"
             src="//static.contineljs.com/cpa/core/tp2_core.min.js?t=1704987848247"></script>
@@ -32,6 +32,11 @@
     <meta name="revisit-after" content="1 days">
     <meta charset="utf-8">
     <style></style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style data-n-href="/_next/static/css/64cf308c0f623d38.css">
         .Breadcrumbs_breadcrumbs__04vpL {
@@ -1335,6 +1340,7 @@
         .DateField_date-field__RbdnW .DateField_group__wqSan [class=react-date-picker__wrapper] + span > div > div {
             width: 100%
         }
+
         .DateField_date-field__RbdnW.DateField_error__Vs4BQ label {
             color: #f33060
         }
@@ -1383,7 +1389,6 @@
         .Button_pc-button__GX6DG svg {
             vertical-align: middle
         }
-
 
 
         .Modal_header__Efm1l .Modal_close-icon__Nz3e1 svg {
@@ -1565,30 +1570,39 @@
                                 </div>
                             </div>
                             <div class="container flex">
-                                <form th:action="@{editAccount}" method="get" th:object="${account}" style="width: 100%; position: relative">
+                                <form th:action="@{/home/editAccount}" th:object="${account}"
+                                      style="width: 100%; position: relative">
                                     <div class="form-group">
                                         <input type="hidden" th:field="*{id}">
                                         <label for="name" class="form-label">Tên:</label>
-                                        <input type="text" class="form-control" id="name" name="name" th:field="*{nameClient}" maxlength="30" required>
-                                        <div class="form-text" style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{nameClient}"></div>
+                                        <input type="text" class="form-control" id="name" name="name"
+                                               th:field="*{nameClient}" maxlength="30" required>
+                                        <small style="color: red" th:if="${#fields.hasErrors('nameClient')}"
+                                               th:errors="*{nameClient}"></small><br>
+
                                     </div>
                                     <br>
                                     <div class="form-group">
                                         <label for="date" class="form-label">Ngày sinh:</label>
-                                        <input type="date" class="form-control" id="date" name="date" th:field="*{date}" required>
-                                        <div class="form-text" style="color: red" th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></div>
+                                        <input type="date" class="form-control" id="date" name="date" th:field="*{date}"
+                                               required>
                                     </div>
                                     <br>
                                     <div class="form-group">
                                         <label for="phoneGuild" class="form-label">Số điện thoại:</label>
-                                        <input type="tel" class="form-control" id="phoneGuild" name="phoneGuild" th:field="*{phoneClient}" maxlength="13" required minlength="10">
-                                        <div class="form-text" style="color: red" th:if="${#fields.hasErrors('phoneGuild')}" th:errors="*{phoneClient}"></div>
+                                        <input type="tel" class="form-control" id="phoneGuild" name="phoneGuild"
+                                               th:field="*{phoneClient}" maxlength="13" required minlength="10">
+                                        <small style="color: red" th:if="${#fields.hasErrors('phoneClient')}"
+                                               th:errors="*{phoneClient}"></small><br>
+
                                     </div>
                                     <br>
                                     <div class="form-group">
                                         <label for="emailGuild" class="form-label">Email:</label>
-                                        <input type="email" class="form-control" id="emailGuild" name="emailGuild" th:field="*{emailClient}" required>
-                                        <div class="form-text" style="color: red" th:if="${#fields.hasErrors('emailGuild')}" th:errors="*{emailClient}"></div>
+                                        <input type="email" class="form-control" id="emailGuild" name="emailGuild"
+                                               th:field="*{emailClient}" required>
+                                        <small style="color: red" th:if="${#fields.hasErrors('emailClient')}"
+                                               th:errors="*{emailClient}"></small><br>
                                     </div>
                                     <br>
                                     <br>
