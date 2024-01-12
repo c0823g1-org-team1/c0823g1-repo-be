@@ -1,19 +1,15 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.AccountDTO;
 import com.example.demo.model.Account;
 import com.example.demo.model.Booking;
 import com.example.demo.model.LocationTour;
 import com.example.demo.model.Tour;
 import com.example.demo.service.IBaoBookingService;
 import com.example.demo.service.ITuanAccountService;
-import jakarta.validation.Valid;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -24,6 +20,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Controller
 @CrossOrigin(origins = "localhost:8080")
@@ -164,19 +162,59 @@ public class BaoBookingController {
         model.addAttribute("account", account);
         return "/inforAccount";
     }
+
     @PreAuthorize("isAuthenticated()")
+    @GetMapping("/formChangePass")
+    public String formChangePass(Model model, Principal principal) {
+        Account account = baoBookingService.getUserInforByUserName(principal.getName());
+        model.addAttribute("account", account);
+        return "/change_pass";
+    }
+
+    @GetMapping("/changePass")
+    private String changePass(Model model, Account account) {
+        boolean flag = false;
+        Account account1 = tuanAccountService.findById(account.getId());
+        if (account.getPassword() != account1.getPassword()) {
+            flag = true;
+            model.addAttribute("msg", 1);
+        }
+        if (account.getUsername() != account.getEmailClient()) {
+            flag = true;
+            model.addAttribute("msg", 2);
+        }
+        if (flag = true) {
+            return "change_pass";
+        }
+        account1.setPassword(account.getUsername());
+        tuanAccountService.save(account1);
+        return "redirect:/home";
+    }
+
+    //    @PreAuthorize("isAuthenticated()")
     @GetMapping("/editAccount")
-    public String updateAccount(@Valid @ModelAttribute("account") AccountDTO account, Model model,
-                                BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-        System.out.println("OK");
-        new AccountDTO().validate(account, bindingResult);
-        if (bindingResult.hasFieldErrors()) {
-            model.addAttribute("account", account);
+    public String updateAccount(Account account, Model model, RedirectAttributes redirectAttributes) {
+        boolean flag = false;
+        if (checkRegex("^(0|84)(2(0[3-9]|1[0-6|8|9]|2[0-2|5-9]|3[2-9]|4[0-9]|5[1|2|4-9]|6[0-3|9]|7[0-7]|8[0-9]|9[0-4|6|7|9])|3[2-9]|5[5|6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])([0-9]{7})$", account.getPhoneClient()) == false) {
+            model.addAttribute("msg", 2);
+            flag = true;
+        }
+        if (checkRegex("^([\\p{Lu}][\\p{Ll}]{1,8})(\\s([\\p{Lu}]|[\\p{Lu}][\\p{Ll}]{1,10})){0,5}$", account.getNameClient()) == false) {
+            model.addAttribute("msg", 3);
+            flag = true;
+        }
+        if (flag == true) {
             return "inforAccount";
         }
-        Account account1 = new Account();
-        BeanUtils.copyProperties(account, account1);
-        tuanAccountService.save(account1);
-        return "redirect:/home/accountuser";
+        tuanAccountService.save(account);
+        redirectAttributes.addFlashAttribute("success", 1);
+        return "redirect:/home";
+    }
+
+
+    public boolean checkRegex(String regex, String str) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(str);
+        return matcher.matches();
     }
 }

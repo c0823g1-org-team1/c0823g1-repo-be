@@ -1524,9 +1524,9 @@
                                                 </svg>
                                             </button>
                                         </li>
-                                    </a><a th:href="@{formChangePass}">
+                                    </a><a href="/account/coupon">
                                         <li class="">
-                                            <h3 class="AccountMenu_menu-label__lHtVn">Đổi mật khau</h3>
+                                            <h3 class="AccountMenu_menu-label__lHtVn">Mã giảm giá</h3>
                                             <button>
                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                                     <path d="M5.66699 3.33268L10.3337 7.99935L5.66699 12.666"
@@ -1570,60 +1570,37 @@
                                 </div>
                             </div>
                             <div class="container flex">
-                                <form th:action="@{/home/editAccount}" th:object="${account}"
-                                      style="width: 100%; position: relative">
+                                <form th:action="@{changePass}"
+                                      style="width: 100%; position: relative" th:object="${account}">
+                                    <input type="hidden" th:field="*{id}">
+                                    <input type="hidden" th:field="*{nameClient}">
+                                    <input type="hidden" th:field="*{identifyClient}">
+                                    <input type="hidden" th:field="*{phoneClient}">
+                                    <input type="hidden" th:field="*{date}">
+                                    <input type="hidden" th:field="*{role}">
                                     <div class="form-group">
-                                        <input type="hidden" th:field="*{id}">
-                                        <input type="hidden" th:field="*{password}">
-                                        <input type="hidden" th:field="*{username}">
-                                        <input type="hidden" th:field="*{role}">
-                                        <input type="hidden" th:field="*{identifyClient}">
-                                        <fieldset disabled>
-                                            <div class="mb-3">
-                                                <label for="disabledTextInput" class="form-label">Tài khoản</label>
-                                                <input type="text" id="disabledTextInput" class="form-control"
-                                                       th:value="${account.username}">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="disabledTextInput1" class="form-label">Số căn cước công
-                                                    dân</label>
-                                                <input type="text" id="disabledTextInput1" class="form-control"
-                                                       th:value="${account.identifyClient}">
-                                            </div>
-                                        </fieldset>
-                                        <label for="name" class="form-label">Tên:</label>
-                                        <input type="text" class="form-control" id="name"
-                                               th:field="*{nameClient}" maxlength="30" required>
-                                        <span style="color:red;" th:if="${msg == 3}">Tên không được chứa kí tự đặc bịệt và số</span><br>
-
-                                    </div>
-                                    <br>
-                                    <div class="form-group">
-                                        <label for="date" class="form-label">Ngày sinh:</label>
-                                        <input type="date" class="form-control" id="date" th:field="*{date}"
-                                               required>
-                                    </div>
-                                    <br>
-                                    <div class="form-group">
-                                        <label for="phone" class="form-label">Số điện thoại:</label>
-                                        <input type="text" class="form-control" id="phone"
-                                               th:field="*{phoneClient}" maxlength="10" required minlength="10">
-                                        <span style="color:red;" th:if="${msg == 2}">Chỉ được nhập 10 số</span><br>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="em" class="form-label">Email:</label>
-                                        <input type="text" class="form-control" id="em"
-                                               th:field="*{emailClient}" required>
-                                        <span style="color:red;"
-                                              th:if="${msg == 1}">Nhập đúng định dạng email</span><br>
-
-                                    </div>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <input type="submit" class="btn btn-primary" value="Lưu"
-                                           style="left: 30%;width: 45%; position: absolute;bottom: 0">
+                                        <div class="form-group">
+                                            <label class="form-label">Nhập mật khẩu cũ:</label>
+                                            <input type="password" class="form-control" th:field="*{password}" required>
+                                            <span style="color:red;"
+                                                  th:if="${msg == 1}">Mật khẩu cũ không đúng</span><br>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Nhập mật khẩu mới:</label>
+                                            <input type="password" class="form-control" th:field="*{username}" required>
+                                            <span style="color:red;"
+                                                  th:if="${msg == 2}">Hai mật khẩu phải trùng nhau</span><br>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Nhập lại mật khẩu mới</label>
+                                            <input type="password" class="form-control" th:field="*{emailClient}"
+                                                   required>
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <input type="submit" class="btn btn-primary" value="Lưu"
+                                               style="left: 30%;width: 45%; position: absolute;bottom: 0">
                                 </form>
                             </div>
                         </div>
