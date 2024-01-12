@@ -33,4 +33,8 @@ public interface TuanAccountRepository extends JpaRepository<Account, Integer> {
 //    @Query("select a from Account a join Role r on a.role.id = r.id where a.username = :#{#username} ")
 //    Account findByAccountName(@Param("username") String username);
     Account findByUsername(String userName);
+
+    @Query(value = "select * from account a where a.username like :name",nativeQuery = true)
+    Account getUserInforByUserName(@Param("name") String name);
+
 }
