@@ -1,843 +1,854 @@
 <html xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
-  <meta charset="utf-8">
-  <meta name="robots" content="index, follow">
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <link
-          href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap"
-          rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css?display=swap">
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css?display=swap"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css?display=swap" rel="stylesheet"
-        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  <title>Du lịch Japand</title>
-  <script type="text/javascript" async=""
-          src="https://www.googletagmanager.com/gtag/js?id=G-39GJVRHQ6K&amp;l=dataLayer&amp;cx=c"></script>
-  <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-P3D5RK"></script>
-  <script
-          type="text/javascript">!function (e, t, a, n, g) {
-    e[n] = e[n] || [], e[n].push({"gtm.start": (new Date).getTime(), event: "gtm.js"});
-    var m = t.getElementsByTagName(a)[0], r = t.createElement(a);
-    r.async = !0, r.src = "https://www.googletagmanager.com/gtm.js?id=GTM-P3D5RK", m.parentNode.insertBefore(r, m)
-  }(window, document, "script", "dataLayer")</script>
-  <style type="text/css" id="operaUserStyle"></style>
-  <style>
-    @-webkit-keyframes swal2-show {
-      0% {
-        -webkit-transform: scale(.7);
-        transform: scale(.7)
-      }
-
-      45% {
-        -webkit-transform: scale(1.05);
-        transform: scale(1.05)
-      }
-
-      80% {
-        -webkit-transform: scale(.95);
-        transform: scale(.95)
-      }
-
-      100% {
-        -webkit-transform: scale(1);
-        transform: scale(1)
-      }
-    }
-
-    @keyframes swal2-show {
-      0% {
-        -webkit-transform: scale(.7);
-        transform: scale(.7)
-      }
-
-      45% {
-        -webkit-transform: scale(1.05);
-        transform: scale(1.05)
-      }
-
-      80% {
-        -webkit-transform: scale(.95);
-        transform: scale(.95)
-      }
-
-      100% {
-        -webkit-transform: scale(1);
-        transform: scale(1)
-      }
-    }
-
-    @-webkit-keyframes swal2-hide {
-      0% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-        opacity: 1
-      }
-
-      100% {
-        -webkit-transform: scale(.5);
-        transform: scale(.5);
-        opacity: 0
-      }
-    }
-
-    @keyframes swal2-hide {
-      0% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-        opacity: 1
-      }
-
-      100% {
-        -webkit-transform: scale(.5);
-        transform: scale(.5);
-        opacity: 0
-      }
-    }
-
-    @-webkit-keyframes swal2-animate-success-line-tip {
-      0% {
-        top: 1.1875em;
-        left: .0625em;
-        width: 0
-      }
-
-      54% {
-        top: 1.0625em;
-        left: .125em;
-        width: 0
-      }
-
-      70% {
-        top: 2.1875em;
-        left: -.375em;
-        width: 3.125em
-      }
-
-      84% {
-        top: 3em;
-        left: 1.3125em;
-        width: 1.0625em
-      }
-
-      100% {
-        top: 2.8125em;
-        left: .875em;
-        width: 1.5625em
-      }
-    }
-
-    @keyframes swal2-animate-success-line-tip {
-      0% {
-        top: 1.1875em;
-        left: .0625em;
-        width: 0
-      }
-
-      54% {
-        top: 1.0625em;
-        left: .125em;
-        width: 0
-      }
-
-      70% {
-        top: 2.1875em;
-        left: -.375em;
-        width: 3.125em
-      }
-
-      84% {
-        top: 3em;
-        left: 1.3125em;
-        width: 1.0625em
-      }
-
-      100% {
-        top: 2.8125em;
-        left: .875em;
-        width: 1.5625em
-      }
-    }
-
-    @-webkit-keyframes swal2-animate-success-line-long {
-      0% {
-        top: 3.375em;
-        right: 2.875em;
-        width: 0
-      }
-
-      65% {
-        top: 3.375em;
-        right: 2.875em;
-        width: 0
-      }
-
-      84% {
-        top: 2.1875em;
-        right: 0;
-        width: 3.4375em
-      }
-
-      100% {
-        top: 2.375em;
-        right: .5em;
-        width: 2.9375em
-      }
-    }
-
-    @keyframes swal2-animate-success-line-long {
-      0% {
-        top: 3.375em;
-        right: 2.875em;
-        width: 0
-      }
-
-      65% {
-        top: 3.375em;
-        right: 2.875em;
-        width: 0
-      }
-
-      84% {
-        top: 2.1875em;
-        right: 0;
-        width: 3.4375em
-      }
-
-      100% {
-        top: 2.375em;
-        right: .5em;
-        width: 2.9375em
-      }
-    }
-
-    @-webkit-keyframes swal2-rotate-success-circular-line {
-      0% {
-        -webkit-transform: rotate(-45deg);
-        transform: rotate(-45deg)
-      }
-
-      5% {
-        -webkit-transform: rotate(-45deg);
-        transform: rotate(-45deg)
-      }
-
-      12% {
-        -webkit-transform: rotate(-405deg);
-        transform: rotate(-405deg)
-      }
-
-      100% {
-        -webkit-transform: rotate(-405deg);
-        transform: rotate(-405deg)
-      }
-    }
-
-    @keyframes swal2-rotate-success-circular-line {
-      0% {
-        -webkit-transform: rotate(-45deg);
-        transform: rotate(-45deg)
-      }
-
-      5% {
-        -webkit-transform: rotate(-45deg);
-        transform: rotate(-45deg)
-      }
-
-      12% {
-        -webkit-transform: rotate(-405deg);
-        transform: rotate(-405deg)
-      }
-
-      100% {
-        -webkit-transform: rotate(-405deg);
-        transform: rotate(-405deg)
-      }
-    }
-
-    @-webkit-keyframes swal2-animate-error-x-mark {
-      0% {
-        margin-top: 1.625em;
-        -webkit-transform: scale(.4);
-        transform: scale(.4);
-        opacity: 0
-      }
-
-      50% {
-        margin-top: 1.625em;
-        -webkit-transform: scale(.4);
-        transform: scale(.4);
-        opacity: 0
-      }
-
-      80% {
-        margin-top: -.375em;
-        -webkit-transform: scale(1.15);
-        transform: scale(1.15)
-      }
-
-      100% {
-        margin-top: 0;
-        -webkit-transform: scale(1);
-        transform: scale(1);
-        opacity: 1
-      }
-    }
-
-    @keyframes swal2-animate-error-x-mark {
-      0% {
-        margin-top: 1.625em;
-        -webkit-transform: scale(.4);
-        transform: scale(.4);
-        opacity: 0
-      }
-
-      50% {
-        margin-top: 1.625em;
-        -webkit-transform: scale(.4);
-        transform: scale(.4);
-        opacity: 0
-      }
-
-      80% {
-        margin-top: -.375em;
-        -webkit-transform: scale(1.15);
-        transform: scale(1.15)
-      }
-
-      100% {
-        margin-top: 0;
-        -webkit-transform: scale(1);
-        transform: scale(1);
-        opacity: 1
-      }
-    }
-
-    @-webkit-keyframes swal2-animate-error-icon {
-      0% {
-        -webkit-transform: rotateX(100deg);
-        transform: rotateX(100deg);
-        opacity: 0
-      }
-
-      100% {
-        -webkit-transform: rotateX(0);
-        transform: rotateX(0);
-        opacity: 1
-      }
-    }
-
-    @keyframes swal2-animate-error-icon {
-      0% {
-        -webkit-transform: rotateX(100deg);
-        transform: rotateX(100deg);
-        opacity: 0
-      }
-
-      100% {
-        -webkit-transform: rotateX(0);
-        transform: rotateX(0);
-        opacity: 1
-      }
-    }
-    @-webkit-keyframes showSweetToast {
-      0% {
-        -webkit-transform: translateY(-.625em) rotateZ(2deg);
-        transform: translateY(-.625em) rotateZ(2deg);
-        opacity: 0
-      }
-
-      33% {
-        -webkit-transform: translateY(0) rotateZ(-2deg);
-        transform: translateY(0) rotateZ(-2deg);
-        opacity: .5
-      }
-
-      66% {
-        -webkit-transform: translateY(.3125em) rotateZ(2deg);
-        transform: translateY(.3125em) rotateZ(2deg);
-        opacity: .7
-      }
-
-      100% {
-        -webkit-transform: translateY(0) rotateZ(0);
-        transform: translateY(0) rotateZ(0);
-        opacity: 1
-      }
-    }
-
-    @keyframes showSweetToast {
-      0% {
-        -webkit-transform: translateY(-.625em) rotateZ(2deg);
-        transform: translateY(-.625em) rotateZ(2deg);
-        opacity: 0
-      }
-
-      33% {
-        -webkit-transform: translateY(0) rotateZ(-2deg);
-        transform: translateY(0) rotateZ(-2deg);
-        opacity: .5
-      }
-
-      66% {
-        -webkit-transform: translateY(.3125em) rotateZ(2deg);
-        transform: translateY(.3125em) rotateZ(2deg);
-        opacity: .7
-      }
-
-      100% {
-        -webkit-transform: translateY(0) rotateZ(0);
-        transform: translateY(0) rotateZ(0);
-        opacity: 1
-      }
-    }
-
-    @-webkit-keyframes hideSweetToast {
-      0% {
-        opacity: 1
-      }
-
-      33% {
-        opacity: .5
-      }
-
-      100% {
-        -webkit-transform: rotateZ(1deg);
-        transform: rotateZ(1deg);
-        opacity: 0
-      }
-    }
-
-    @keyframes hideSweetToast {
-      0% {
-        opacity: 1
-      }
-
-      33% {
-        opacity: .5
-      }
-
-      100% {
-        -webkit-transform: rotateZ(1deg);
-        transform: rotateZ(1deg);
-        opacity: 0
-      }
-    }
-
-    @-webkit-keyframes animate-toast-success-tip {
-      0% {
-        top: .5625em;
-        left: .0625em;
-        width: 0
-      }
-
-      54% {
-        top: .125em;
-        left: .125em;
-        width: 0
-      }
-
-      70% {
-        top: .625em;
-        left: -.25em;
-        width: 1.625em
-      }
-
-      84% {
-        top: 1.0625em;
-        left: .75em;
-        width: .5em
-      }
-
-      100% {
-        top: 1.125em;
-        left: .1875em;
-        width: .75em
-      }
-    }
-
-    @keyframes animate-toast-success-tip {
-      0% {
-        top: .5625em;
-        left: .0625em;
-        width: 0
-      }
-
-      54% {
-        top: .125em;
-        left: .125em;
-        width: 0
-      }
-
-      70% {
-        top: .625em;
-        left: -.25em;
-        width: 1.625em
-      }
-
-      84% {
-        top: 1.0625em;
-        left: .75em;
-        width: .5em
-      }
-
-      100% {
-        top: 1.125em;
-        left: .1875em;
-        width: .75em
-      }
-    }
-
-    @-webkit-keyframes animate-toast-success-long {
-      0% {
-        top: 1.625em;
-        right: 1.375em;
-        width: 0
-      }
-
-      65% {
-        top: 1.25em;
-        right: .9375em;
-        width: 0
-      }
-
-      84% {
-        top: .9375em;
-        right: 0;
-        width: 1.125em
-      }
-
-      100% {
-        top: .9375em;
-        right: .1875em;
-        width: 1.375em
-      }
-    }
-
-    @keyframes animate-toast-success-long {
-      0% {
-        top: 1.625em;
-        right: 1.375em;
-        width: 0
-      }
-
-      65% {
-        top: 1.25em;
-        right: .9375em;
-        width: 0
-      }
-
-      84% {
-        top: .9375em;
-        right: 0;
-        width: 1.125em
-      }
-
-      100% {
-        top: .9375em;
-        right: .1875em;
-        width: 1.375em
-      }
-    }
-
-    .swal2-popup .swal2-range input {
-      width: 80%
-    }
-
-    .swal2-popup .swal2-range output {
-      width: 20%;
-      font-weight: 600;
-      text-align: center
-    }
-
-    .swal2-popup .swal2-range input,
-    .swal2-popup .swal2-range output {
-      height: 2.625em;
-      margin: 1em auto;
-      padding: 0;
-      font-size: 1.125em;
-      line-height: 2.625em
-    }
-
-    .swal2-popup .swal2-checkbox label,
-    .swal2-popup .swal2-radio label {
-      margin: 0 .6em;
-      font-size: 1.125em
-    }
-
-    .swal2-popup .swal2-checkbox input,
-    .swal2-popup .swal2-radio input {
-      margin: 0 .4em
-    }
-
-    @supports (-ms-accelerator:true) {
-      .swal2-range input {
-        width: 100% !important
-      }
-
-      .swal2-range output {
-        display: none
-      }
-    }
-
-    @media all and (-ms-high-contrast: none),
-    (-ms-high-contrast: active) {
-      .swal2-range input {
-        width: 100% !important
-      }
-
-      .swal2-range output {
-        display: none
-      }
-    }
-
-    @-moz-document url-prefix() {
-      .swal2-close:focus {
-        outline: 2px solid rgba(50, 100, 150, .4)
-      }
-    }
-
-    .swal2-progresssteps li {
-      display: inline-block;
-      position: relative
-    }
-
-    @-webkit-keyframes swal2-rotate-loading {
-      0% {
-        -webkit-transform: rotate(0);
-        transform: rotate(0)
-      }
-
-      100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg)
-      }
-    }
-
-    @keyframes swal2-rotate-loading {
-      0% {
-        -webkit-transform: rotate(0);
-        transform: rotate(0)
-      }
-
-      100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg)
-      }
-    }
-
-    @media print {
-      body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
-        overflow-y: scroll !important
-      }
-
-      body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) > [aria-hidden=true] {
-        display: none
-      }
-
-      body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container {
-        position: initial !important
-      }
-    }
-  </style>
-  <style type="text/css">
-    .styles__sound_icon___23DuG svg {
-      width: 2rem;
-      height: 2rem;
-    }
-
-    .styles__sound_icon_auto_width___EVA69 svg {
-      width: auto;
-      height: auto;
-    }
-
-    .styles__sound_icon___23DuG svg path {
-      -webkit-transition: fill .5s;
-      transition: fill .5s;
-    }
-
-    .styles__sound_active___2_Hr_ svg path {
-      fill: #7AC70C;
-    }
-  </style>
-  <script type="text/javascript" async=""
-          src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/10799997474/?random=1704535221204&amp;cv=11&amp;fst=1704535221204&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45je4130v9117034688z86778132&amp;gcd=11l1l1l1l1&amp;dma=0&amp;u_w=1366&amp;u_h=768&amp;url=https%3A%2F%2Ftravel.com.vn%2FtourNDDNG2640-001-100124VU%2F%25F0%259F%2594%25A5-ha-noi-bai-dinh-khu-du-lich-trang-an-bai-dinh-ha-long-yen-tu.aspx&amp;ref=https%3A%2F%2Ftravel.com.vn%2Fdu-lich-ha-noi.aspx&amp;hn=www.googleadservices.com&amp;frm=0&amp;tiba=%F0%9F%94%A5%20H%C3%A0%20N%E1%BB%99i%20-%20B%C3%A1i%20%C4%90%C3%ADnh%20-%20Khu%20Du%20L%E1%BB%8Bch%20Tr%C3%A0ng%20An%20-%20B%C3%A1i%20%C4%90%C3%ADnh%20-%20H%E1%BA%A1%20Long%20-%20Y%C3%AAn%20T%E1%BB%AD.%20M%C3%A3%20tour%20NDDNG2640-001-100124VU%20-%20Vietra&amp;auid=953656475.1704381932&amp;uaa=x86&amp;uab=64&amp;uafvl=Not_A%2520Brand%3B8.0.0.0%7CChromium%3B120.0.6099.130%7COpera%3B106.0.4998.19&amp;uamb=0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;data=event%3Dgtag.config&amp;rfmt=3&amp;fmt=4"></script>
-  <style data-emotion="css" data-s=""></style>
-  <style>
-    @media (min-width: 768px)
-
-      .row-cols-md-3 > * {
-        flex: 0 0 auto;
-        width: 33.33333%;
-      }
-      .row > * {
-        margin-top: 1.5rem;
-        max-width: 100%;
-        padding-left: calc(1.5rem / 2);
-        padding-right: calc(1.5rem / 2);
-      }
-
-      /* Foooter */
-      .icon-footer {
-        margin-top: 20px;
-      }
-
-      .icon-footer i {
-        margin: 0 5px;
-      }
-
-      .contain-map {
-        height: 541.65px;
-        width: 100%;
-        margin: 30px auto 0;
-        text-align: center;
-      }
-
-      .contain-map img {
-        width: 70%;
-        position: relative;
-        z-index: 1;
-      }
-
-      /* Header */
-      .container__header {
-        width: 1100px;
-        margin: 0 auto;
-        padding: 0 30px;
-        font-family: Roboto, sans-serif;
-      }
-
-      .logo {
-        display: inline-block;
-      }
-
-      .logo img {
-        width: 100px;
-        background-color: transparent;
-      }
-
-      .container__header-option {
-        float: right;
-        box-sizing: border-box;
-        margin-top: 26px;
-
-      }
-
-      .menu {
-        display: flex;
-      }
-
-      .list-option {
-        display: flex;
-      }
-
-      .hover {
-        font-size: 22px;
-        display: inline-block;
-        padding: 0 18px;
-        font-weight: 700;
-        color: black;
-        position: relative;
-        font-family: Roboto, sans-serif;
-        text-decoration: none;
-      }
-      .search {
-        display: flex;
-        align-items: center;
-        margin-left: 140px;
-
-      }
-
-      .hover::before,
-      .hover::after {
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 2px;
-        background-color: #9EA91C;
-        bottom: -5px;
-        transition: 0.25s ease;
-      }
-
-      .hover:hover::before,
-      .hover:hover::after {
-        width: 50%;
-      }
-
-      :before {
-        left: 0;
-      }
-
-      a:after {
-        right: 0;
-      }
-
-      .icon-footer {
-        margin-top: 20px;
-      }
-
-      .icon-footer i {
-        margin: 0 5px;
-      }
-  </style>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap"
+            rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css?display=swap">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css?display=swap"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css?display=swap" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <title>Du lịch Japand</title>
+    <script type="text/javascript" async=""
+            src="https://www.googletagmanager.com/gtag/js?id=G-39GJVRHQ6K&amp;l=dataLayer&amp;cx=c"></script>
+    <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-P3D5RK"></script>
+    <script
+            type="text/javascript">!function (e, t, a, n, g) {
+        e[n] = e[n] || [], e[n].push({"gtm.start": (new Date).getTime(), event: "gtm.js"});
+        var m = t.getElementsByTagName(a)[0], r = t.createElement(a);
+        r.async = !0, r.src = "https://www.googletagmanager.com/gtm.js?id=GTM-P3D5RK", m.parentNode.insertBefore(r, m)
+    }(window, document, "script", "dataLayer")</script>
+    <style type="text/css" id="operaUserStyle"></style>
+    <style>
+        @-webkit-keyframes swal2-show {
+            0% {
+                -webkit-transform: scale(.7);
+                transform: scale(.7)
+            }
+
+            45% {
+                -webkit-transform: scale(1.05);
+                transform: scale(1.05)
+            }
+
+            80% {
+                -webkit-transform: scale(.95);
+                transform: scale(.95)
+            }
+
+            100% {
+                -webkit-transform: scale(1);
+                transform: scale(1)
+            }
+        }
+
+        @keyframes swal2-show {
+            0% {
+                -webkit-transform: scale(.7);
+                transform: scale(.7)
+            }
+
+            45% {
+                -webkit-transform: scale(1.05);
+                transform: scale(1.05)
+            }
+
+            80% {
+                -webkit-transform: scale(.95);
+                transform: scale(.95)
+            }
+
+            100% {
+                -webkit-transform: scale(1);
+                transform: scale(1)
+            }
+        }
+
+        @-webkit-keyframes swal2-hide {
+            0% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+                opacity: 1
+            }
+
+            100% {
+                -webkit-transform: scale(.5);
+                transform: scale(.5);
+                opacity: 0
+            }
+        }
+
+        @keyframes swal2-hide {
+            0% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+                opacity: 1
+            }
+
+            100% {
+                -webkit-transform: scale(.5);
+                transform: scale(.5);
+                opacity: 0
+            }
+        }
+
+        @-webkit-keyframes swal2-animate-success-line-tip {
+            0% {
+                top: 1.1875em;
+                left: .0625em;
+                width: 0
+            }
+
+            54% {
+                top: 1.0625em;
+                left: .125em;
+                width: 0
+            }
+
+            70% {
+                top: 2.1875em;
+                left: -.375em;
+                width: 3.125em
+            }
+
+            84% {
+                top: 3em;
+                left: 1.3125em;
+                width: 1.0625em
+            }
+
+            100% {
+                top: 2.8125em;
+                left: .875em;
+                width: 1.5625em
+            }
+        }
+
+        @keyframes swal2-animate-success-line-tip {
+            0% {
+                top: 1.1875em;
+                left: .0625em;
+                width: 0
+            }
+
+            54% {
+                top: 1.0625em;
+                left: .125em;
+                width: 0
+            }
+
+            70% {
+                top: 2.1875em;
+                left: -.375em;
+                width: 3.125em
+            }
+
+            84% {
+                top: 3em;
+                left: 1.3125em;
+                width: 1.0625em
+            }
+
+            100% {
+                top: 2.8125em;
+                left: .875em;
+                width: 1.5625em
+            }
+        }
+
+        @-webkit-keyframes swal2-animate-success-line-long {
+            0% {
+                top: 3.375em;
+                right: 2.875em;
+                width: 0
+            }
+
+            65% {
+                top: 3.375em;
+                right: 2.875em;
+                width: 0
+            }
+
+            84% {
+                top: 2.1875em;
+                right: 0;
+                width: 3.4375em
+            }
+
+            100% {
+                top: 2.375em;
+                right: .5em;
+                width: 2.9375em
+            }
+        }
+
+        @keyframes swal2-animate-success-line-long {
+            0% {
+                top: 3.375em;
+                right: 2.875em;
+                width: 0
+            }
+
+            65% {
+                top: 3.375em;
+                right: 2.875em;
+                width: 0
+            }
+
+            84% {
+                top: 2.1875em;
+                right: 0;
+                width: 3.4375em
+            }
+
+            100% {
+                top: 2.375em;
+                right: .5em;
+                width: 2.9375em
+            }
+        }
+
+        @-webkit-keyframes swal2-rotate-success-circular-line {
+            0% {
+                -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg)
+            }
+
+            5% {
+                -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg)
+            }
+
+            12% {
+                -webkit-transform: rotate(-405deg);
+                transform: rotate(-405deg)
+            }
+
+            100% {
+                -webkit-transform: rotate(-405deg);
+                transform: rotate(-405deg)
+            }
+        }
+
+        @keyframes swal2-rotate-success-circular-line {
+            0% {
+                -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg)
+            }
+
+            5% {
+                -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg)
+            }
+
+            12% {
+                -webkit-transform: rotate(-405deg);
+                transform: rotate(-405deg)
+            }
+
+            100% {
+                -webkit-transform: rotate(-405deg);
+                transform: rotate(-405deg)
+            }
+        }
+
+        @-webkit-keyframes swal2-animate-error-x-mark {
+            0% {
+                margin-top: 1.625em;
+                -webkit-transform: scale(.4);
+                transform: scale(.4);
+                opacity: 0
+            }
+
+            50% {
+                margin-top: 1.625em;
+                -webkit-transform: scale(.4);
+                transform: scale(.4);
+                opacity: 0
+            }
+
+            80% {
+                margin-top: -.375em;
+                -webkit-transform: scale(1.15);
+                transform: scale(1.15)
+            }
+
+            100% {
+                margin-top: 0;
+                -webkit-transform: scale(1);
+                transform: scale(1);
+                opacity: 1
+            }
+        }
+
+        @keyframes swal2-animate-error-x-mark {
+            0% {
+                margin-top: 1.625em;
+                -webkit-transform: scale(.4);
+                transform: scale(.4);
+                opacity: 0
+            }
+
+            50% {
+                margin-top: 1.625em;
+                -webkit-transform: scale(.4);
+                transform: scale(.4);
+                opacity: 0
+            }
+
+            80% {
+                margin-top: -.375em;
+                -webkit-transform: scale(1.15);
+                transform: scale(1.15)
+            }
+
+            100% {
+                margin-top: 0;
+                -webkit-transform: scale(1);
+                transform: scale(1);
+                opacity: 1
+            }
+        }
+
+        @-webkit-keyframes swal2-animate-error-icon {
+            0% {
+                -webkit-transform: rotateX(100deg);
+                transform: rotateX(100deg);
+                opacity: 0
+            }
+
+            100% {
+                -webkit-transform: rotateX(0);
+                transform: rotateX(0);
+                opacity: 1
+            }
+        }
+
+        @keyframes swal2-animate-error-icon {
+            0% {
+                -webkit-transform: rotateX(100deg);
+                transform: rotateX(100deg);
+                opacity: 0
+            }
+
+            100% {
+                -webkit-transform: rotateX(0);
+                transform: rotateX(0);
+                opacity: 1
+            }
+        }
+
+        @-webkit-keyframes showSweetToast {
+            0% {
+                -webkit-transform: translateY(-.625em) rotateZ(2deg);
+                transform: translateY(-.625em) rotateZ(2deg);
+                opacity: 0
+            }
+
+            33% {
+                -webkit-transform: translateY(0) rotateZ(-2deg);
+                transform: translateY(0) rotateZ(-2deg);
+                opacity: .5
+            }
+
+            66% {
+                -webkit-transform: translateY(.3125em) rotateZ(2deg);
+                transform: translateY(.3125em) rotateZ(2deg);
+                opacity: .7
+            }
+
+            100% {
+                -webkit-transform: translateY(0) rotateZ(0);
+                transform: translateY(0) rotateZ(0);
+                opacity: 1
+            }
+        }
+
+        @keyframes showSweetToast {
+            0% {
+                -webkit-transform: translateY(-.625em) rotateZ(2deg);
+                transform: translateY(-.625em) rotateZ(2deg);
+                opacity: 0
+            }
+
+            33% {
+                -webkit-transform: translateY(0) rotateZ(-2deg);
+                transform: translateY(0) rotateZ(-2deg);
+                opacity: .5
+            }
+
+            66% {
+                -webkit-transform: translateY(.3125em) rotateZ(2deg);
+                transform: translateY(.3125em) rotateZ(2deg);
+                opacity: .7
+            }
+
+            100% {
+                -webkit-transform: translateY(0) rotateZ(0);
+                transform: translateY(0) rotateZ(0);
+                opacity: 1
+            }
+        }
+
+        @-webkit-keyframes hideSweetToast {
+            0% {
+                opacity: 1
+            }
+
+            33% {
+                opacity: .5
+            }
+
+            100% {
+                -webkit-transform: rotateZ(1deg);
+                transform: rotateZ(1deg);
+                opacity: 0
+            }
+        }
+
+        @keyframes hideSweetToast {
+            0% {
+                opacity: 1
+            }
+
+            33% {
+                opacity: .5
+            }
+
+            100% {
+                -webkit-transform: rotateZ(1deg);
+                transform: rotateZ(1deg);
+                opacity: 0
+            }
+        }
+
+        @-webkit-keyframes animate-toast-success-tip {
+            0% {
+                top: .5625em;
+                left: .0625em;
+                width: 0
+            }
+
+            54% {
+                top: .125em;
+                left: .125em;
+                width: 0
+            }
+
+            70% {
+                top: .625em;
+                left: -.25em;
+                width: 1.625em
+            }
+
+            84% {
+                top: 1.0625em;
+                left: .75em;
+                width: .5em
+            }
+
+            100% {
+                top: 1.125em;
+                left: .1875em;
+                width: .75em
+            }
+        }
+
+        @keyframes animate-toast-success-tip {
+            0% {
+                top: .5625em;
+                left: .0625em;
+                width: 0
+            }
+
+            54% {
+                top: .125em;
+                left: .125em;
+                width: 0
+            }
+
+            70% {
+                top: .625em;
+                left: -.25em;
+                width: 1.625em
+            }
+
+            84% {
+                top: 1.0625em;
+                left: .75em;
+                width: .5em
+            }
+
+            100% {
+                top: 1.125em;
+                left: .1875em;
+                width: .75em
+            }
+        }
+
+        @-webkit-keyframes animate-toast-success-long {
+            0% {
+                top: 1.625em;
+                right: 1.375em;
+                width: 0
+            }
+
+            65% {
+                top: 1.25em;
+                right: .9375em;
+                width: 0
+            }
+
+            84% {
+                top: .9375em;
+                right: 0;
+                width: 1.125em
+            }
+
+            100% {
+                top: .9375em;
+                right: .1875em;
+                width: 1.375em
+            }
+        }
+
+        @keyframes animate-toast-success-long {
+            0% {
+                top: 1.625em;
+                right: 1.375em;
+                width: 0
+            }
+
+            65% {
+                top: 1.25em;
+                right: .9375em;
+                width: 0
+            }
+
+            84% {
+                top: .9375em;
+                right: 0;
+                width: 1.125em
+            }
+
+            100% {
+                top: .9375em;
+                right: .1875em;
+                width: 1.375em
+            }
+        }
+
+        .swal2-popup .swal2-range input {
+            width: 80%
+        }
+
+        .swal2-popup .swal2-range output {
+            width: 20%;
+            font-weight: 600;
+            text-align: center
+        }
+
+        .swal2-popup .swal2-range input,
+        .swal2-popup .swal2-range output {
+            height: 2.625em;
+            margin: 1em auto;
+            padding: 0;
+            font-size: 1.125em;
+            line-height: 2.625em
+        }
+
+        .swal2-popup .swal2-checkbox label,
+        .swal2-popup .swal2-radio label {
+            margin: 0 .6em;
+            font-size: 1.125em
+        }
+
+        .swal2-popup .swal2-checkbox input,
+        .swal2-popup .swal2-radio input {
+            margin: 0 .4em
+        }
+
+        @supports (-ms-accelerator:true) {
+            .swal2-range input {
+                width: 100% !important
+            }
+
+            .swal2-range output {
+                display: none
+            }
+        }
+
+        @media all and (-ms-high-contrast: none),
+        (-ms-high-contrast: active) {
+            .swal2-range input {
+                width: 100% !important
+            }
+
+            .swal2-range output {
+                display: none
+            }
+        }
+
+        @-moz-document url-prefix() {
+            .swal2-close:focus {
+                outline: 2px solid rgba(50, 100, 150, .4)
+            }
+        }
+
+        .swal2-progresssteps li {
+            display: inline-block;
+            position: relative
+        }
+
+        @-webkit-keyframes swal2-rotate-loading {
+            0% {
+                -webkit-transform: rotate(0);
+                transform: rotate(0)
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg)
+            }
+        }
+
+        @keyframes swal2-rotate-loading {
+            0% {
+                -webkit-transform: rotate(0);
+                transform: rotate(0)
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg)
+            }
+        }
+
+        @media print {
+            body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+                overflow-y: scroll !important
+            }
+
+            body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) > [aria-hidden=true] {
+                display: none
+            }
+
+            body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container {
+                position: initial !important
+            }
+        }
+    </style>
+    <style type="text/css">
+        .styles__sound_icon___23DuG svg {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        .styles__sound_icon_auto_width___EVA69 svg {
+            width: auto;
+            height: auto;
+        }
+
+        .styles__sound_icon___23DuG svg path {
+            -webkit-transition: fill .5s;
+            transition: fill .5s;
+        }
+
+        .styles__sound_active___2_Hr_ svg path {
+            fill: #7AC70C;
+        }
+    </style>
+    <script type="text/javascript" async=""
+            src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/10799997474/?random=1704535221204&amp;cv=11&amp;fst=1704535221204&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45je4130v9117034688z86778132&amp;gcd=11l1l1l1l1&amp;dma=0&amp;u_w=1366&amp;u_h=768&amp;url=https%3A%2F%2Ftravel.com.vn%2FtourNDDNG2640-001-100124VU%2F%25F0%259F%2594%25A5-ha-noi-bai-dinh-khu-du-lich-trang-an-bai-dinh-ha-long-yen-tu.aspx&amp;ref=https%3A%2F%2Ftravel.com.vn%2Fdu-lich-ha-noi.aspx&amp;hn=www.googleadservices.com&amp;frm=0&amp;tiba=%F0%9F%94%A5%20H%C3%A0%20N%E1%BB%99i%20-%20B%C3%A1i%20%C4%90%C3%ADnh%20-%20Khu%20Du%20L%E1%BB%8Bch%20Tr%C3%A0ng%20An%20-%20B%C3%A1i%20%C4%90%C3%ADnh%20-%20H%E1%BA%A1%20Long%20-%20Y%C3%AAn%20T%E1%BB%AD.%20M%C3%A3%20tour%20NDDNG2640-001-100124VU%20-%20Vietra&amp;auid=953656475.1704381932&amp;uaa=x86&amp;uab=64&amp;uafvl=Not_A%2520Brand%3B8.0.0.0%7CChromium%3B120.0.6099.130%7COpera%3B106.0.4998.19&amp;uamb=0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;data=event%3Dgtag.config&amp;rfmt=3&amp;fmt=4"></script>
+    <style data-emotion="css" data-s=""></style>
+    <style>
+        @media (min-width: 768px)
+
+            .row-cols-md-3 > * {
+                flex: 0 0 auto;
+                width: 33.33333%;
+            }
+
+            .row > * {
+                margin-top: 1.5rem;
+                max-width: 100%;
+                padding-left: calc(1.5rem / 2);
+                padding-right: calc(1.5rem / 2);
+            }
+
+            /* Foooter */
+            .icon-footer {
+                margin-top: 20px;
+            }
+
+            .icon-footer i {
+                margin: 0 5px;
+            }
+
+            .contain-map {
+                height: 541.65px;
+                width: 100%;
+                margin: 30px auto 0;
+                text-align: center;
+            }
+
+            .contain-map img {
+                width: 70%;
+                position: relative;
+                z-index: 1;
+            }
+
+            /* Header */
+            .container__header {
+                width: 1100px;
+                margin: 0 auto;
+                padding: 0 30px;
+                font-family: Roboto, sans-serif;
+            }
+
+            .logo {
+                display: inline-block;
+            }
+
+            .logo img {
+                width: 100px;
+                background-color: transparent;
+            }
+
+            .container__header-option {
+                float: right;
+                box-sizing: border-box;
+                margin-top: 26px;
+
+            }
+
+            .menu {
+                display: flex;
+            }
+
+            .list-option {
+                display: flex;
+            }
+
+            .hover {
+                font-size: 22px;
+                display: inline-block;
+                padding: 0 18px;
+                font-weight: 700;
+                color: black;
+                position: relative;
+                font-family: Roboto, sans-serif;
+                text-decoration: none;
+            }
+
+            .search {
+                display: flex;
+                align-items: center;
+                margin-left: 140px;
+
+            }
+
+            .hover::before,
+            .hover::after {
+                content: "";
+                position: absolute;
+                width: 0;
+                height: 2px;
+                background-color: #9EA91C;
+                bottom: -5px;
+                transition: 0.25s ease;
+            }
+
+            .hover:hover::before,
+            .hover:hover::after {
+                width: 50%;
+            }
+
+            :before {
+                left: 0;
+            }
+
+            a:after {
+                right: 0;
+            }
+
+            .icon-footer {
+                margin-top: 20px;
+            }
+
+            .icon-footer i {
+                margin: 0 5px;
+            }
+    </style>
 <body>
 <div th:fragment="header">
-  <div style="background-color: #f9f9f9;font-family: 'Roboto Light';" id="header" class="top">
-    <div class="container__header">
-      <a href="#" class="logo">
-        <img style="background:transparent;"
-               src="https://i.upanh.org/2024/01/10/pngtree-japanese-logo-decoration-illustration-png-image_4609124_preview_rev_1c99f58daab988fb7.png"
-             alt="">
-      </a>
-      <div class="container__header-option">
-        <div class="menu">
-          <ul style="list-style: none;" class="list-option">
-            <li><a th:href="@{/home}" class="hover">Trang Chủ</a></li>
-            <li><a href="" class="hover">Thông Tin</a></li>
-            <li><a th:href="@{/home/hottour}" class="hover">Địa Điểm</a></li>
-            <li><a href="" class="hover">Hổ Trợ</a></li>
-          </ul>
-          <div class="search">
-            <div sec:authorize="!isAuthenticated()">
-              <a th:href="@{account/login}"> Đăng Nhập</a>
-            </div>
-            <div sec:authorize="isAuthenticated()">
-              <div class="dropdown" sec:authorize="hasRole('ROLE_ADMIN')">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" sec:authentication="name">
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" th:href="@{/account}">Quản Lý Tài Khoản</a></li>
-                  <li><a class="dropdown-item" href="#">Quản Lý Booking</a></li>
-                  <li><a class="dropdown-item" href="#">Quản Lý Tour</a></li>
-                  <li><a class="dropdown-item" href="#">Quản Lý Hướng Dẫn Viên Du Lịch</a></li>
-                  <li><a class="dropdown-item" th:href="@{/logout}">Đăng Xuất</a></li>
-                </ul>
-              </div>
-              <div class="dropdown" sec:authorize="hasRole('ROLE_USER')">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" sec:authentication="name">
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                  <li><a class="dropdown-item" th:href="@{/account}">Lịch Sử Đặt Booking</a></li>
-                  <li><a class="dropdown-item" th:href="@{/logout}">Đăng Xuất</a></li>
-                </ul>
-              </div>
+    <div style="background-color: #f9f9f9;font-family: 'Roboto Light';" id="header" class="top">
+        <div class="container__header">
+            <a href="#" class="logo">
+                <img style="background:transparent;"
+                     src="https://i.upanh.org/2024/01/10/pngtree-japanese-logo-decoration-illustration-png-image_4609124_preview_rev_1c99f58daab988fb7.png"
+                     alt="">
+            </a>
+            <div class="container__header-option">
+                <div class="menu">
+                    <ul style="list-style: none;" class="list-option">
+                        <li><a th:href="@{/home}" class="hover">Trang Chủ</a></li>
+                        <li><a href="" class="hover">Thông Tin</a></li>
+                        <li><a th:href="@{/home/hottour}" class="hover">Địa Điểm</a></li>
+                        <li><a href="" class="hover">Hổ Trợ</a></li>
+                    </ul>
+                    <div class="search">
+                        <div sec:authorize="!isAuthenticated()">
+                            <a th:href="@{account/login}"> Đăng Nhập</a>
+                        </div>
+                        <div sec:authorize="isAuthenticated()">
+                            <div class="dropdown" sec:authorize="hasRole('ROLE_ADMIN')">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                        data-bs-toggle="dropdown" aria-expanded="false" sec:authentication="name">
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" th:href="@{/account}">Quản Lý Tài Khoản</a></li>
+                                    <li><a class="dropdown-item" href="#">Quản Lý Booking</a></li>
+                                    <li><a class="dropdown-item" href="#">Quản Lý Tour</a></li>
+                                    <li><a class="dropdown-item" href="#">Quản Lý Hướng Dẫn Viên Du Lịch</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/logout}">Đăng Xuất</a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown" sec:authorize="hasRole('ROLE_USER')">
+                                <button class="btn btn-secondary dropdown-toggle" type="button"
+                                        id="dropdownMenuButton22" data-bs-toggle="dropdown" aria-expanded="false"
+                                        th:text="${#authentication.principal.id}">
+                                </button>
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                                        data-bs-toggle="dropdown" aria-expanded="false" sec:authentication="name">
 
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                        <li><a class="dropdown-item"
+                                               th:href="@{/account/{id}(id=${#authentication.getPrincipal()})}">Lịch Sử
+                                            Đặt Booking</a></li>
+                                        <li><a class="dropdown-item" th:href="@{/logout}">Đăng Xuất</a></li>
+                                    </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 
 <footer th:fragment="footer">
-  <div align="center" style="">
-    <p style="margin: 0;">TEL: 0768568962</p>
-    <address style="font-size: 20px;">280 Tran Hung Dao, An Hai Tay, Son Tra, Da Nang.</address>
-  </div>
+    <div align="center" style="">
+        <p style="margin: 0;">TEL: 0768568962</p>
+        <address style="font-size: 20px;">280 Tran Hung Dao, An Hai Tay, Son Tra, Da Nang.</address>
+    </div>
 </footer>
 </body>
 </html>

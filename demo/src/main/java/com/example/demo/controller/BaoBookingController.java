@@ -7,6 +7,8 @@ import com.example.demo.model.Tour;
 import com.example.demo.service.IBaoBookingService;
 import com.example.demo.service.ITuanAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -49,8 +51,8 @@ public class BaoBookingController {
         List<LocationTour> location = baoBookingService.findLocation(tour.getId());
         model.addAttribute("locations", location);
         model.addAttribute("tours", tour);
-        model.addAttribute("bookings",booking);
-        model.addAttribute("account",account);
+        model.addAttribute("bookings", booking);
+        model.addAttribute("account", account);
         return "detailTour";
     }
 
@@ -69,6 +71,7 @@ public class BaoBookingController {
         list2.addAll(list1);
         model.addAttribute("hotTour", list2);
         model.addAttribute("tour", list);
+        model.addAttribute("account", new Account());
         return "/searchTour";
     }
 
@@ -97,16 +100,16 @@ public class BaoBookingController {
     }
 
     @GetMapping("/searchTour")
-    public String searchOptionTour(Model model, @RequestParam(name = "AmountDate",defaultValue = "0") String day,
+    public String searchOptionTour(Model model, @RequestParam(name = "AmountDate", defaultValue = "0") String day,
                                    @RequestParam(name = "date", required = false) String date,
-                                   @RequestParam(name = "TourLine", required = false,defaultValue = "0") String typeTour,
-                                   @RequestParam(name = "savePrice", required = false,defaultValue = "0") String savePrice) throws ParseException {
+                                   @RequestParam(name = "TourLine", required = false, defaultValue = "0") String typeTour,
+                                   @RequestParam(name = "savePrice", required = false, defaultValue = "0") String savePrice) throws ParseException {
         List<Tour> tours = baoBookingService.getAll();
         List<Tour> selectedTours = new ArrayList<>();
         LocalDate utilDate = null;
         try {
-             utilDate = LocalDate.parse(date);
-        }catch (DateTimeParseException e) {
+            utilDate = LocalDate.parse(date);
+        } catch (DateTimeParseException e) {
             e.printStackTrace();
         }
         int days = Integer.parseInt(day);
@@ -123,24 +126,24 @@ public class BaoBookingController {
         List<Tour> save = new ArrayList<>();
         for (Tour tour : selectedTours) {
             if ((days == 3 && tour.getCareAbout() >= typeTours && utilDate != null) ||
-                    (days == 4  && tour.getCareAbout() >= typeTours && utilDate != null) ||
-                    (days == 3  && tour.getAdultPrice() >= savePrices && utilDate != null) ||
-                    (days == 4  && tour.getCareAbout() >= savePrices && utilDate != null)) {
+                    (days == 4 && tour.getCareAbout() >= typeTours && utilDate != null) ||
+                    (days == 3 && tour.getAdultPrice() >= savePrices && utilDate != null) ||
+                    (days == 4 && tour.getCareAbout() >= savePrices && utilDate != null)) {
                 save.addAll(baoBookingService.searchManyOption(utilDate));
                 break;
-            }else if (days == 3 || days == 4){
+            } else if (days == 3 || days == 4) {
                 save.addAll(Collections.singleton(tour));
                 break;
             }
         }
         for (Tour tour : tours) {
-            if (tour.getAdultPrice() <= savePrices && utilDate == null && savePrices != 0){
+            if (tour.getAdultPrice() <= savePrices && utilDate == null && savePrices != 0) {
                 save.addAll(baoBookingService.searchSavePrice(savePrices));
                 break;
-            }else if (tour.getCareAbout() >= typeTours && utilDate == null && typeTours != 0){
+            } else if (tour.getCareAbout() >= typeTours && utilDate == null && typeTours != 0) {
                 save.addAll(baoBookingService.searchHotTour(typeTours));
                 break;
-            }else {
+            } else {
                 save.addAll(baoBookingService.searchManyOption(utilDate));
                 break;
             }
