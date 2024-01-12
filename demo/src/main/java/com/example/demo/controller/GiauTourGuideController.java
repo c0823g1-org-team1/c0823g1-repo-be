@@ -23,7 +23,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/tourGuide")
-public class GiauTourGuideController {
+public class  GiauTourGuideController {
     @Autowired
     private IGiauTourService iGiauTourService;
     @Autowired
