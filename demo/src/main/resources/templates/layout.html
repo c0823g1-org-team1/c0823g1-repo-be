@@ -858,10 +858,20 @@
                             <div class="dropdown" sec:authorize="hasRole('ROLE_USER')">
                                 <span class="list__menu" sec:authentication="name"></span>
                                 <ul class="dropdown__account" aria-labelledby="dropdownMenuButton2">
-                                     <li class="tag__first"><a th:href="@{/account}">Lịch Sử Đặt Booking</a></li>
-                                    <li class="tag__first"><a th:href="@{/logout}">Đăng Xuất</a></li>
+                                    <li class="tag__first">
+                                        <a  th:href="@{/home/accountuser}">
+                                            Thông tin tài khoản
+                                        </a>
+                                    </li>
+                                    <li class="tag__first">
+                                        <a th:href="@{/logout}"></a>
+                                    </li>
+                                    <li class="tag__first">
+                                        <a th:href="@{/logout}">Đăng Xuất</a>
+                                    </li>
                                 </ul>
                             </div>
+
                         </div>
                     </div>
                 </div>

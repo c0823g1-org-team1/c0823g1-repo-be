@@ -31,5 +31,6 @@ public interface IBaoBookingService {
     Payment findIdPayment ( int id);
     Booking save(Booking booking);
     List<Tour> findIdTourToIdTourGuild(int id);
+    Account getUserInforByUserName(@Param("name") String name);
 
 }
