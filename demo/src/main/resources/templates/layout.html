@@ -670,121 +670,161 @@
     <style>
         @media (min-width: 768px)
 
-            .row-cols-md-3 > * {
-                flex: 0 0 auto;
-                width: 33.33333%;
-            }
+        .row-cols-md-3 > * {
+            flex: 0 0 auto;
+            width: 33.33333%;
+        }
 
-            .row > * {
-                margin-top: 1.5rem;
-                max-width: 100%;
-                padding-left: calc(1.5rem / 2);
-                padding-right: calc(1.5rem / 2);
-            }
+        .row > * {
+            margin-top: 1.5rem;
+            max-width: 100%;
+            padding-left: calc(1.5rem / 2);
+            padding-right: calc(1.5rem / 2);
+        }
 
-            /* Foooter */
-            .icon-footer {
-                margin-top: 20px;
-            }
+        /* Foooter */
+        .icon-footer {
+            margin-top: 20px;
+        }
 
-            .icon-footer i {
-                margin: 0 5px;
-            }
+        .icon-footer i {
+            margin: 0 5px;
+        }
 
-            .contain-map {
-                height: 541.65px;
-                width: 100%;
-                margin: 30px auto 0;
-                text-align: center;
-            }
+        .contain-map {
+            height: 541.65px;
+            width: 100%;
+            margin: 30px auto 0;
+            text-align: center;
+        }
 
-            .contain-map img {
-                width: 70%;
-                position: relative;
-                z-index: 1;
-            }
+        .contain-map img {
+            width: 70%;
+            position: relative;
+            z-index: 1;
+        }
 
-            /* Header */
-            .container__header {
-                width: 1100px;
-                margin: 0 auto;
-                padding: 0 30px;
-                font-family: Roboto, sans-serif;
-            }
+        /* Header */
+        .container__header {
+            width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+            font-family: Roboto, sans-serif;
+        }
 
-            .logo {
-                display: inline-block;
-            }
+        .logo {
+            display: inline-block;
+        }
 
-            .logo img {
-                width: 100px;
-                background-color: transparent;
-            }
+        .logo img {
+            width: 100px;
+            background-color: transparent;
+        }
 
-            .container__header-option {
-                float: right;
-                box-sizing: border-box;
-                margin-top: 26px;
+        .container__header-option {
+            float: right;
+            box-sizing: border-box;
+            margin-top: 26px;
 
-            }
+        }
 
-            .menu {
-                display: flex;
-            }
+        .menu {
+            display: flex;
+        }
 
-            .list-option {
-                display: flex;
-            }
+        .list-option {
+            display: flex;
+        }
 
-            .hover {
-                font-size: 22px;
-                display: inline-block;
-                padding: 0 18px;
-                font-weight: 700;
-                color: black;
-                position: relative;
-                font-family: Roboto, sans-serif;
-                text-decoration: none;
-            }
+        .hover {
+            font-size: 22px;
+            display: inline-block;
+            padding: 0 18px;
+            font-weight: 700;
+            color: black;
+            position: relative;
+            font-family: Roboto, sans-serif;
+            text-decoration: none;
+        }
 
-            .search {
-                display: flex;
-                align-items: center;
-                margin-left: 140px;
+        .search {
+            display: flex;
+            align-items: center;
+            margin-left: 140px;
 
-            }
+        }
 
-            .hover::before,
-            .hover::after {
-                content: "";
-                position: absolute;
-                width: 0;
-                height: 2px;
-                background-color: #9EA91C;
-                bottom: -5px;
-                transition: 0.25s ease;
-            }
+        .hover::before,
+        .hover::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #9EA91C;
+            bottom: -5px;
+            transition: 0.25s ease;
+        }
 
-            .hover:hover::before,
-            .hover:hover::after {
-                width: 50%;
-            }
+        .hover:hover::before,
+        .hover:hover::after {
+            width: 50%;
+        }
 
-            :before {
-                left: 0;
-            }
+        :before {
+            left: 0;
+        }
 
-            a:after {
-                right: 0;
-            }
+        a:after {
+            right: 0;
+        }
 
-            .icon-footer {
-                margin-top: 20px;
-            }
+        .icon-footer {
+            margin-top: 20px;
+        }
 
-            .icon-footer i {
-                margin: 0 5px;
-            }
+        .icon-footer i {
+            margin: 0 5px;
+        }
+
+        .dropdown {
+            font-size: 16px;
+            font-weight: bold;
+            padding: 0 5px 0 5px;
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .dropdown__account {
+            position: absolute;
+            background-color: #555B65;
+            animation: fadeIn ease-in 0.2s;
+            z-index: 1;
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+            width: 160px;
+            border-radius: 2px;
+            display: none;
+            left: 0;
+            padding: 0;
+            z-index: 99;
+        }
+
+        .tag__first:hover {
+            background-color: #89bbf3;
+        }
+
+        .dropdown .tag__first a {
+            font-size: 13px;
+            line-height: 34px;
+            color: #e5e5e5;
+            font-weight: 500;
+            display: block;
+            padding: 2px 10px 2px 15px;
+            font-family: "Motiva Sans", Sans-serif;
+        }
+        .list__menu:hover .dropdown__account {
+            display: block;
+        }
     </style>
 <body>
 <div th:fragment="header">
@@ -809,31 +849,27 @@
                         </div>
                         <div sec:authorize="isAuthenticated()">
                             <div class="dropdown" sec:authorize="hasRole('ROLE_ADMIN')">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                        data-bs-toggle="dropdown" aria-expanded="false" sec:authentication="name">
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" th:href="@{/account}">Quản Lý Tài Khoản</a></li>
-                                    <li><a class="dropdown-item" href="#">Quản Lý Booking</a></li>
-                                    <li><a class="dropdown-item" href="#">Quản Lý Tour</a></li>
-                                    <li><a class="dropdown-item" href="#">Quản Lý Hướng Dẫn Viên Du Lịch</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/logout}">Đăng Xuất</a></li>
-                                </ul>
+                                <span class="list__menu" sec:authentication="name"></span>
+                                  <ul class="dropdown__account" aria-labelledby="dropdownMenuButton1">
+                                      <li class="tag__first"><a th:href="@{/admin}">Quản Lý Tour</a></li>
+                                      <li class="tag__first"><a th:href="@{/logout}">Đăng Xuất</a></li>
+                                  </ul>
                             </div>
                             <div class="dropdown" sec:authorize="hasRole('ROLE_USER')">
-                                <button class="btn btn-secondary dropdown-toggle" type="button"
-                                        id="dropdownMenuButton22" data-bs-toggle="dropdown" aria-expanded="false"
-                                        th:text="${#authentication.principal.id}">
-                                </button>
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
-                                        data-bs-toggle="dropdown" aria-expanded="false" sec:authentication="name">
-
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                        <li><a class="dropdown-item"
-                                               th:href="@{/account/{id}(id=${#authentication.getPrincipal()})}">Lịch Sử
-                                            Đặt Booking</a></li>
-                                        <li><a class="dropdown-item" th:href="@{/logout}">Đăng Xuất</a></li>
-                                    </ul>
+                                <span class="list__menu" sec:authentication="name"></span>
+                                <ul class="dropdown__account" aria-labelledby="dropdownMenuButton2">
+                                    <li class="tag__first">
+                                        <a  th:href="@{/home/accountuser}">
+                                            Thông tin tài khoản
+                                        </a>
+                                    </li>
+                                    <li class="tag__first">
+                                        <a th:href="@{/logout}"></a>
+                                    </li>
+                                    <li class="tag__first">
+                                        <a th:href="@{/logout}">Đăng Xuất</a>
+                                    </li>
+                                </ul>
                             </div>
 
                         </div>

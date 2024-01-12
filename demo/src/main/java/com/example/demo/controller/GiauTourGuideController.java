@@ -45,7 +45,7 @@ public class GiauTourGuideController {
             LocalDate endTime = tour.getEndDate();
             if (localDate.isAfter(startTime) && localDate.isBefore(endTime)) {
                 redirectAttributes.addFlashAttribute("message", "Hướng dẫn viên du lịch đang dẫn tour. Không thể xóa!!1");
-                return "redirect:/tourGuide";
+                return "redirect:/admin_manager/tourGuide";
             }
         }
         tourGuild.setDelete(true);

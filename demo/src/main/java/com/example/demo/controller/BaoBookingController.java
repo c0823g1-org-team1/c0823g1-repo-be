@@ -7,12 +7,13 @@ import com.example.demo.model.Tour;
 import com.example.demo.service.IBaoBookingService;
 import com.example.demo.service.ITuanAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -31,8 +32,8 @@ public class BaoBookingController {
     @GetMapping
     public String getAll(Model model) {
         List<Tour> list = baoBookingService.getAll();
-        LocalDateTime localDateTime = LocalDateTime.now();
-        System.out.println(localDateTime);
+        Account account = new Account();
+        model.addAttribute("account", account);
         model.addAttribute("tour", list);
         return "/home";
     }
@@ -71,7 +72,6 @@ public class BaoBookingController {
         list2.addAll(list1);
         model.addAttribute("hotTour", list2);
         model.addAttribute("tour", list);
-        model.addAttribute("account", new Account());
         return "/searchTour";
     }
 
@@ -150,5 +150,20 @@ public class BaoBookingController {
         }
         model.addAttribute("tour", save);
         return "/search";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/accountuser")
+    public String Account(Model model,Principal principal) {
+        Account account = baoBookingService.getUserInforByUserName(principal.getName());
+        System.out.println(account);
+        model.addAttribute("account",account);
+        return "/inforAccount";
+    }
+
+    @GetMapping("editAccount")
+    public String updateAccount(Account account){
+        tuanAccountService.save(account);
+        return "redirect:/home/accountuser";
     }
 }
