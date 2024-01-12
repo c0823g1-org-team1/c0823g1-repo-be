@@ -1573,7 +1573,7 @@
                                 <form th:action="@{changePass}"
                                       style="width: 100%; position: relative" th:object="${account}">
                                     <input type="hidden" th:field="*{id}">
-                                    <input type="hidden" th:field="*{nameClient}">
+                                    <input type="hidden" th:field="*{emailClient}">
                                     <input type="hidden" th:field="*{identifyClient}">
                                     <input type="hidden" th:field="*{phoneClient}">
                                     <input type="hidden" th:field="*{date}">
@@ -1593,7 +1593,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="form-label">Nhập lại mật khẩu mới</label>
-                                            <input type="password" class="form-control" th:field="*{emailClient}"
+                                            <input type="password" class="form-control" th:field="*{nameClient}"
                                                    required>
                                         </div>
                                         <br>

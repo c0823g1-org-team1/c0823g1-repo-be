@@ -8,6 +8,8 @@ import com.example.demo.service.IBaoBookingService;
 import com.example.demo.service.ITuanAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +33,8 @@ public class BaoBookingController {
     private IBaoBookingService baoBookingService;
     @Autowired
     private ITuanAccountService tuanAccountService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping
     public String getAll(Model model) {
@@ -173,20 +177,23 @@ public class BaoBookingController {
 
     @GetMapping("/changePass")
     private String changePass(Model model, Account account) {
-        boolean flag = false;
+        String pass1 = account.getUsername();
+        String pass2 = account.getNameClient();
+        String pass = account.getPassword();
         Account account1 = tuanAccountService.findById(account.getId());
-        if (account.getPassword() != account1.getPassword()) {
-            flag = true;
-            model.addAttribute("msg", 1);
-        }
-        if (account.getUsername() != account.getEmailClient()) {
-            flag = true;
+
+        if (!pass1.equals(pass2)) {
             model.addAttribute("msg", 2);
-        }
-        if (flag = true) {
             return "change_pass";
         }
-        account1.setPassword(account.getUsername());
+
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        if (!encoder.matches(pass, account1.getPassword())) {
+            model.addAttribute("msg", 1);
+            return "change_pass";
+        }
+
+        account1.setPassword(encoder.encode(pass1));
         tuanAccountService.save(account1);
         return "redirect:/home";
     }
