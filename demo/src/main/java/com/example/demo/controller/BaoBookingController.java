@@ -1,17 +1,21 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.AccountDTO;
 import com.example.demo.model.Account;
 import com.example.demo.model.Booking;
 import com.example.demo.model.LocationTour;
 import com.example.demo.model.Tour;
 import com.example.demo.service.IBaoBookingService;
 import com.example.demo.service.ITuanAccountService;
+import jakarta.validation.Valid;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 import java.text.ParseException;
@@ -22,6 +26,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 @Controller
+@CrossOrigin(origins = "localhost:8080")
 @RequestMapping("/home")
 public class BaoBookingController {
     @Autowired
@@ -35,7 +40,7 @@ public class BaoBookingController {
         Account account = new Account();
         model.addAttribute("account", account);
         model.addAttribute("tour", list);
-        return "/home";
+        return "home";
     }
 
     @GetMapping("detail/{id}")
@@ -154,16 +159,24 @@ public class BaoBookingController {
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/accountuser")
-    public String Account(Model model,Principal principal) {
+    public String Account(Model model, Principal principal) {
         Account account = baoBookingService.getUserInforByUserName(principal.getName());
-        System.out.println(account);
-        model.addAttribute("account",account);
+        model.addAttribute("account", account);
         return "/inforAccount";
     }
-
-    @GetMapping("editAccount")
-    public String updateAccount(Account account){
-        tuanAccountService.save(account);
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/editAccount")
+    public String updateAccount(@Valid @ModelAttribute("account") AccountDTO account, Model model,
+                                BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        System.out.println("OK");
+        new AccountDTO().validate(account, bindingResult);
+        if (bindingResult.hasFieldErrors()) {
+            model.addAttribute("account", account);
+            return "inforAccount";
+        }
+        Account account1 = new Account();
+        BeanUtils.copyProperties(account, account1);
+        tuanAccountService.save(account1);
         return "redirect:/home/accountuser";
     }
 }

@@ -142,6 +142,6 @@ public class PaymentController {
             baoBookingService.savePayment(payment);
             redirectAttributes.addFlashAttribute("message", 2);
         }
-        return "/home";
+        return "home";
     }
 }
