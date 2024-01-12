@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.AccountDTO;
+import com.example.demo.dto.RankDTO;
 import com.example.demo.model.*;
 import com.example.demo.repository.*;
 
@@ -91,6 +92,11 @@ public class BaoBookingService implements IBaoBookingService {
     @Override
     public Account getUserInforByUserName(String name) {
         return tuanAccountService.getUserInforByUserName('%'+name+'%');
+    }
+
+    @Override
+    public List<RankDTO> showBookingUser(int id) {
+        return baoBookingRepository.showBookingUser(id);
     }
 
 

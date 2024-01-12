@@ -1550,7 +1550,7 @@
                                 <div class="AccountMenu_box__DisFh">
                                     <ul><a th:href="@{/home/historyTour}">
                                         <li class="">
-                                            <h3 class="AccountMenu_menu-label__lHtVn">Lịch sử đơn hàng</h3>
+                                            <h3 class="AccountMenu_menu-label__lHtVn">Lịch sử đặt tour</h3>
                                             <button>
                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                                     <path d="M5.66699 3.33268L10.3337 7.99935L5.66699 12.666"
@@ -1559,7 +1559,7 @@
                                                 </svg>
                                             </button>
                                         </li>
-                                    </a><a >
+                                    </a><a href="/account/coupon">
                                         <li class="">
                                             <h3 class="AccountMenu_menu-label__lHtVn">Mã giảm giá</h3>
                                             <button>
@@ -1605,46 +1605,41 @@
                                 </div>
                             </div>
                             <div class="container flex">
-                                <form th:action="@{/home/editAccount}" th:object="${account}"
-                                      style="width: 100%; position: relative">
-                                    <div class="form-group">
-                                        <input type="hidden" th:field="*{id}">
-                                        <label for="name" class="form-label">Tên:</label>
-                                        <input type="text" class="form-control" id="name" name="name"
-                                               th:field="*{nameClient}" maxlength="30" required>
-<!--                                        <small style="color: red" th:if="${#fields.hasErrors('nameClient')}"-->
-<!--                                               th:errors="*{nameClient}"></small><br>-->
-
+                                <h1 class="h1">Quản lý booking</h1>
+                                <!--<a th:if="${msg == 1}">-->
+                                <!--    <div id="myToast" class="toast"></div>-->
+                                <!--</a>-->
+                                <div style="float: left;width: 75%;">
+                                    <div class="table-responsive sticky-top" style="margin-left: 12%">
+                                        <table class="table table-striped table-hover">
+                                            <tr>
+                                                <td>STT</td>
+                                                <td>Tên Tour</td>
+                                                <td>Thời gian đặt</td>
+                                                <td>Tổng tiền</td>
+                                                <td>Hành động</td>
+                                            </tr>
+<!--                                            <tr th:each="b, l : ${booking}">-->
+<!--                                                <td th:text="${l.count}"></td>-->
+<!--                                                <td th:text="${b.getTour().getName()}"></td>-->
+<!--                                                <td th:text="${b.getDate()}"></td>-->
+<!--                                                <td th:text="${b.getChildrenNumber()*b.getTour().getChildrenPrice() + b.getAdultNumber()*b.getTour().getAdultPrice()}"></td>-->
+<!--                                                <td th:if="${b.getTour().getEndDate() < date}">Da di</td>-->
+<!--                                                <td th:if="${b.getTour().getDepartureDate() > date}">Chua di</td>-->
+<!--                                                <td th:if="${b.getTour().getDepartureDate() > date < b.getTour().getEndDate()}">Dang di</td>-->
+<!--                                            </tr>-->
+                                            <tr th:each="b, l : ${booking}">
+                                                <td th:text="${l.count}"></td>
+                                                <td th:text="${b.getNameTour()}"></td>
+                                                <td th:text="${b.getDate()}"></td>
+                                                <td th:text="${b.getChildrenNumber()*b.getChildrenPrice() + b.getAdultNumber()*b.getAdultPrice()}"></td>
+                                                <td th:if="${b.getEndDate()< date}">Da di</td>
+                                                <td th:if="${b.getDepartureDate() > date}">Chua di</td>
+                                                <td th:if="${b.getDepartureDate() > date < b.getEndDate()}">Dang di</td>
+                                            </tr>
+                                        </table>
                                     </div>
-                                    <br>
-                                    <div class="form-group">
-                                        <label for="date" class="form-label">Ngày sinh:</label>
-                                        <input type="date" class="form-control" id="date" name="date" th:field="*{date}"
-                                               required>
-                                    </div>
-                                    <br>
-                                    <div class="form-group">
-                                        <label for="phoneGuild" class="form-label">Số điện thoại:</label>
-                                        <input type="tel" class="form-control" id="phoneGuild" name="phoneGuild"
-                                               th:field="*{phoneClient}" maxlength="13" required minlength="10">
-<!--                                        <small style="color: red" th:if="${#fields.hasErrors('phoneClient')}"-->
-<!--                                               th:errors="*{phoneClient}"></small><br>-->
-
-                                    </div>
-                                    <br>
-                                    <div class="form-group">
-                                        <label for="emailGuild" class="form-label">Email:</label>
-                                        <input type="email" class="form-control" id="emailGuild" name="emailGuild"
-                                               th:field="*{emailClient}" required>
-<!--                                        <small style="color: red" th:if="${#fields.hasErrors('emailClient')}"-->
-<!--                                               th:errors="*{emailClient}"></small><br>-->
-                                    </div>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <input type="submit" class="btn btn-primary" value="Lưu"
-                                           style="left: 30%;width: 45%; position: absolute;bottom: 0">
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>

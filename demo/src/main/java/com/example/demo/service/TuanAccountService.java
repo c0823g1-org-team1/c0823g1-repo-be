@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.RankDTO;
 import com.example.demo.model.Account;
 import com.example.demo.repository.TuanAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,6 @@ import java.util.List;
 public class TuanAccountService implements ITuanAccountService {
     @Autowired
     private TuanAccountRepository accountRepository;
-
-
 
     @Override
     public void save(Account account) {
@@ -66,4 +65,10 @@ public class TuanAccountService implements ITuanAccountService {
     public Account findByUserName(String userName) {
         return accountRepository.findByUsername(userName);
     }
+
+    @Override
+    public List<RankDTO> checkRank(int id) {
+        return accountRepository.checkRank(id);
+    }
+
 }
