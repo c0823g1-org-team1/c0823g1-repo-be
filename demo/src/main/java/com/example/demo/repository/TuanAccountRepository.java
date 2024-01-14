@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import com.example.demo.dto.RankDTO;
 import com.example.demo.model.Account;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -7,6 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface TuanAccountRepository extends JpaRepository<Account, Integer> {
@@ -37,4 +40,14 @@ public interface TuanAccountRepository extends JpaRepository<Account, Integer> {
     @Query(value = "select * from account a where a.username like :name",nativeQuery = true)
     Account getUserInforByUserName(@Param("name") String name);
 
+    @Query(value = "select a.name_client as nameClient," +
+            "b.adult_number as adultNumber," +
+            "b.children_number as childrenNumber, p.status,t.adult_price as adultPrice" +
+            ",t.children_price as childrenPrice \n" +
+            "from account a \n" +
+            "join booking b on a.id = b.account_id \n" +
+            "join payment p on p.booking_id = b.id \n" +
+            "join tour t on t.id = b.tour_id\n" +
+            "where a.id = :id ",nativeQuery = true)
+    List<RankDTO> checkRank(@Param("id") int id);
 }

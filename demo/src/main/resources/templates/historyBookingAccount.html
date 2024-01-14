@@ -1495,7 +1495,7 @@
                                     <div class="CardMember_cardMember__TUWjo">
                                         <div class="CardMember_container__6OXPr">
                                             <div class="CardMember_content__RCqvE">
-                                                <!--                                                1-->
+<!--                                                1-->
                                                 <div th:if="${rank == 1}" class="CardMember_header__r1eZV"><img
                                                         src="https://i.upanh.org/2024/01/12/league_of_legends_challenger_rank_vector_by_masnera_dee9njr-pre_preview_rev_1c8ccf403f69acc6c.png"
                                                         alt="Gold member" width="48" height="48">
@@ -1510,7 +1510,7 @@
 
                                                     </div>
                                                 </div>
-                                                <!--                                                2-->
+<!--                                                2-->
                                                 <div th:if="${rank == 2}" class="CardMember_header__r1eZV"><img
                                                         src="https://i.upanh.org/2024/01/12/3120721-small_preview_rev_1a769bc382fd6bb1f.png"
                                                         alt="Gold member" width="48" height="48">
@@ -1525,7 +1525,7 @@
                                                         <div class="CardMember_nameMember__0SJK7" th:text="${money}"></div><span>VNĐ</span>
                                                     </div>
                                                 </div>
-                                                <!--                                                3-->
+<!--                                                3-->
                                                 <div th:if="${rank == 3}" class="CardMember_header__r1eZV"><img
                                                         src="https://data-service.pharmacity.io/pmc-upload-media/production/media/app-config/app-loyalty-star.png"
                                                         alt="Gold member" width="48" height="48">
@@ -1594,48 +1594,50 @@
                         <div class="Desktop_big__tVnHI" style="padding: 24px;">
                             <div
                                     class="CommonHeaderMobile_fixed-header-mobile-wrapper__9H2nW common-header-profile">
-                                <div class="CommonHeaderMobile_common-header-mobile__WPYuo">
+                                <div style="margin-bottom: 45px" class="CommonHeaderMobile_common-header-mobile__WPYuo">
                                     <div class="container d-flex justify-content-between align-items-center">
                                         <div class="CommonHeaderMobile_left-content__tD7mq">
-                                            <h1>Đổi mật khẩu</h1>
+                                            <h1 style="position: relative;left: 134%;">Lịch sử đặt tour</h1>
                                         </div>
                                         <div class="CommonHeaderMobile_group-cart__LnPfk"></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="container flex">
-                                <form th:action="@{changePass}"
-                                      style="width: 100%; position: relative" th:object="${account}">
-                                    <input type="hidden" th:field="*{id}">
-                                    <input type="hidden" th:field="*{emailClient}">
-                                    <input type="hidden" th:field="*{identifyClient}">
-                                    <input type="hidden" th:field="*{phoneClient}">
-                                    <input type="hidden" th:field="*{date}">
-                                    <input type="hidden" th:field="*{role}">
-                                    <div class="form-group">
-                                        <div class="form-group">
-                                            <label class="form-label">Nhập mật khẩu cũ:</label>
-                                            <input type="password" class="form-control" th:field="*{password}" required>
-                                            <span style="color:red;"
-                                                  th:if="${msg == 1}">Mật khẩu cũ không đúng</span><br>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-label">Nhập mật khẩu mới:</label>
-                                            <input type="password" class="form-control" th:field="*{username}" required>
-                                            <span style="color:red;"
-                                                  th:if="${msg == 2}">Hai mật khẩu phải trùng nhau</span><br>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-label">Nhập lại mật khẩu mới</label>
-                                            <input type="password" class="form-control" th:field="*{nameClient}"
-                                                   required>
-                                        </div>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <input type="submit" class="btn btn-primary" value="Lưu"
-                                               style="left: 30%;width: 45%; position: absolute;bottom: 0">
-                                </form>
+                                <div>
+                                    <div class="table-responsive sticky-top" style="margin-left: 12%">
+                                        <table class="table table-striped table-hover">
+                                            <tr>
+                                                <td>STT</td>
+                                                <td>Tên Tour</td>
+                                                <td>Thời gian đặt</td>
+                                                <td>Tổng tiền</td>
+                                                <td>Trạng thái</td>
+                                            </tr>
+                                            <tr th:each="b, l : ${booking}">
+                                                <td th:text="${l.count}"></td>
+                                                <td th:text="${b.getNameTour()}"></td>
+                                                <td th:text="${b.getDate()}"></td>
+                                                <td th:text="${b.getChildrenNumber()*b.getChildrenPrice() + b.getAdultNumber()*b.getAdultPrice()}"></td>
+                                                <td th:if="${b.getEndDate()< date}">
+                                                    <button type="button" class="btn custom-btn-1">
+                                                        Đã Đi
+                                                    </button>
+                                                </td>
+                                                <td th:if="${b.getDepartureDate() > date}">
+                                                    <button type="button" class="btn custom-btn-1">
+                                                        Chưa Đi
+                                                    </button>
+                                                </td>
+                                                <td th:if="${b.getDepartureDate() < date && date < b.getEndDate()}">
+                                                    <button type="button" class="btn custom-btn-1">
+                                                        Đang đi
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
