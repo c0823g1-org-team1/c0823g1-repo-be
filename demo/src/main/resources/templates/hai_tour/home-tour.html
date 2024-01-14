@@ -16,35 +16,41 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-<div>
-    <span>
-        <a th:href="@{/home}" style="text-decoration: none;margin-left: 0.5em">Trang chủ</a>
-    </span>
-    <span style="margin-left: 15em;color: rgb(13,110,253);font-size: 40px">Quản lý tour
-    </span>
-</div>
+<!--<div>-->
+<!--    <span>-->
+<!--        <a th:href="@{/home}" style="text-decoration: none;margin-left: 0.5em">Trang chủ</a>-->
+<!--    </span>-->
+<!--    <span style="margin-left: 15em;color: rgb(13,110,253);font-size: 40px">Quản lý tour-->
+<!--    </span>-->
+<!--</div>-->
 
-<div class="container-fluid row row-cols-1 row-cols-md-4 g-3">
-    <table style="width: 100%">
-        <tr>
-            <th style="width: 50%">
-                <a th:href="@{/tours/create}" style="text-decoration: none">Thêm Tour</a>
-            </th>
-            <th style=" width: 50%;">
-                <form th:action="@{/tours/search}" method="post" style="text-align: right;position: relative;right: 5em">
-                    <input type="text" name="name-search" placeholder="Nhập tour cần tìm">
-                <button type="submit" class="btn btn-sm btn-primary" style="position: relative;bottom: 3px">Search</button>
-                </form>
-            </th>
-        </tr>
-    </table>
-</div>
+<!--<div class="container-fluid row row-cols-1 row-cols-md-4 g-3">-->
+<!--    <table style="width: 100%">-->
+<!--        <tr>-->
+<!--            <th style="width: 50%">-->
+<!--&lt;!&ndash;                <a th:href="@{/tours/create}" style="text-decoration: none">Thêm Tour</a>&ndash;&gt;-->
+<!--            </th>-->
+<!--            <th style=" width: 50%;">-->
+<!--                <form th:action="@{/tours/search}" method="post" style="text-align: right;position: relative;right: 5em">-->
+<!--                    <input type="text" name="name-search" placeholder="Nhập tour cần tìm">-->
+<!--                <button type="submit" class="btn btn-sm btn-primary" style="position: relative;bottom: 3px">Search</button>-->
+<!--                </form>-->
+<!--            </th>-->
+<!--        </tr>-->
+<!--    </table>-->
+<!--</div>-->
 
-<br>
+<!--<br>-->
+<h3 style="text-align: center;color: rgb(13,110,253)">Quản lí tour</h3>
+<form th:action="@{/tours/search}" method="post" style="text-align: right;position: relative;right: 5em">
+    <input type="text" name="name-search" placeholder="Nhập tour cần tìm">
+    <button type="submit" class="btn btn-sm btn-primary" style="position: relative;bottom: 3px">Search</button>
+</form>
 <div class="container-fluid" >
     <div class="row row-cols-1 row-cols-md-4 g-3" >
-        <div class="col-12 col-md-4 col-sm-12" th:each="t:${tours}">
-            <div class="card" style="width: 25rem;height: 33rem">
+        <div th:replace="layout_admin" class="col-md-3"></div>
+        <div class="col-12 col-md-3 col-sm-12" th:each="t:${tours}">
+            <div class="card" style="width: 20rem;height: 33rem;">
                 <img th:src="${t.image}" class="card-img-top hover-image" style="height: 12rem" alt="...">
                 <div class="card-body" style="height: 15rem">
                     <!--                    <p class="card-text h-5"> <span th:text="${t.description}"></span> </p>-->
@@ -73,12 +79,10 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 <br>
-
-<div style="text-align: center">
+<div style="text-align: center;position: relative;left: 10em">
     <a th:if="${tours.hasPrevious()}" th:href="@{/tours(page = ${tours.number - 1})}">Previous</a>
     <span th:text="${tours.number +1 }"></span>/<span th:text="${tours.totalPages}"></span>
     <a th:if="${tours.hasNext()}" th:href="@{/tours(page = ${tours.number + 1})}">Next</a>
@@ -103,6 +107,7 @@
         </div>
     </div>
 </div>
+
 </body>
 <script>
     function deleteCustomer(button) {
