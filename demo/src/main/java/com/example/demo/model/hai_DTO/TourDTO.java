@@ -1,6 +1,7 @@
 package com.example.demo.model.hai_DTO;
 
 import com.example.demo.model.TourGuild;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,6 +24,7 @@ public class TourDTO implements Validator{
     @NotNull(message = "Trường bắt buộc phải nhập")
     @Min(value = 1,message = "Số lượng phải lớn hơn hoặc bằng 1")
     private int quantity;
+    @NotBlank(message = "Trường bắt buộc phải nhập")
     private String image;
 
 
@@ -55,6 +57,9 @@ public class TourDTO implements Validator{
             if (tourDTO.getDepartureDate().isAfter(tourDTO.getEndDate())){
                 errors.rejectValue("departureDate","departureDate.fail");
             }
+        }
+        if (tourDTO.getTourGuild() == null){
+            errors.rejectValue("tourGuild","tourGuild.fail");
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.RankDTO;
 import com.example.demo.model.Account;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,4 +23,7 @@ public interface ITuanAccountService {
     Account checkIndentifyAccount(String identify_client);
     Page<Account> getAllAccountPage(Pageable pageable, @Param("account_name")String account_name, @Param("role_id") Integer role_id);
     Account findByUserName(String userName);
+    List<RankDTO> checkRank(int id);
+
+
 }

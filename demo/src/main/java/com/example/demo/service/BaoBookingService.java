@@ -1,14 +1,10 @@
 package com.example.demo.service;
 
-import com.example.demo.model.Booking;
-import com.example.demo.model.LocationTour;
-import com.example.demo.model.Payment;
-import com.example.demo.model.Tour;
-import com.example.demo.repository.IBaoBookingRepository;
-import com.example.demo.repository.IBaoPaymentRepository;
-import com.example.demo.repository.IBaoTourRepository;
+import com.example.demo.dto.AccountDTO;
+import com.example.demo.dto.RankDTO;
+import com.example.demo.model.*;
+import com.example.demo.repository.*;
 
-import com.example.demo.repository.IBaoLocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +21,8 @@ public class BaoBookingService implements IBaoBookingService {
     private IBaoPaymentRepository baoPaymentRepository;
     @Autowired
     private IBaoBookingRepository baoBookingRepository;
+    @Autowired
+    private TuanAccountRepository tuanAccountService;
 
     @Override
     public List<Tour> getAll() {
@@ -89,6 +87,16 @@ public class BaoBookingService implements IBaoBookingService {
     @Override
     public List<Tour> findIdTourToIdTourGuild(int id) {
         return baoTourRepository.findIdTourToIdTourGuild(id);
+    }
+
+    @Override
+    public Account getUserInforByUserName(String name) {
+        return tuanAccountService.getUserInforByUserName('%'+name+'%');
+    }
+
+    @Override
+    public List<RankDTO> showBookingUser(int id) {
+        return baoBookingRepository.showBookingUser(id);
     }
 
 

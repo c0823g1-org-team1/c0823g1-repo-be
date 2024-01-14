@@ -12,6 +12,7 @@
             /*background-color: yellow;*/
             padding: 50px;
             font-size: 20px;
+
         }
 
         body {
@@ -24,6 +25,7 @@
     </style>
 </head>
 <body>
+<input type="hidden" th:value="${message}" id="message">
 <div>
     <h3  class="text-center">Thông tin tour</h3>
 </div>
@@ -52,15 +54,18 @@
     <p th:if="${#fields.hasErrors('childrenPrice')}" th:errors="*{childrenPrice}">a</p>
     <p th:if="${mess1}" th:text="${mess1}" style="color: red"></p>
     <div>
-        <label for="tourGuy" class="form-label">Hướng dẫn viên: </label>
+        <label for="tourGuid" class="form-label">Hướng dẫn viên: </label>
+
         <!--    <input id="tourGuy" type="text" th:field="*{tourGuide}" class="form-control">-->
-            <select id="tourGuy" th:field="*{tourGuild}" class="form-control">
+            <select id="tourGuid" th:field="*{tourGuild}" class="form-control">
+                <option th:value="0" selected>----Chọn Hướng dẫn viên----</option>
                 <option th:each="tg:${tourGuild}" th:value="${tg.id}" th:text="${tg.name}"></option>
             </select>
+        <p th:if="${#fields.hasErrors('tourGuild')}" th:errors="*{tourGuild}" style="color: red"></p>
     </div>
     <p th:if="${mess}" th:text="${mess}" style="color: red"></p>
-    <label for="img" class="form-label">Link ảnh: </label>
-    <input id="img" type="text" th:field="*{image}" class="form-control">
+    <label for="image" class="form-label">Link ảnh: </label>
+    <input id="image" type="text" th:field="*{image}" class="form-control">
     <p th:if="${#fields.hasErrors('image')}" th:errors="*{image}">a</p>
     <label for="detail" class="form-label">Giới thiệu tour</label>
     <textarea id="detail" th:field="*{description}" class="form-control" cols="50" rows="10"></textarea>
@@ -69,8 +74,5 @@
     <br>
     <input type="submit" value="Save" class="btn btn-primary float-end" style="width: 100%">
 </form>
-<script>
-
-</script>
 </body>
 </html>

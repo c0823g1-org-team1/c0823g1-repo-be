@@ -1,37 +1,52 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.AccountDTO;
+import com.example.demo.dto.RankDTO;
 import com.example.demo.model.Account;
 import com.example.demo.model.Booking;
 import com.example.demo.model.LocationTour;
 import com.example.demo.model.Tour;
+import com.example.demo.service.DoubleTuanBookingService;
 import com.example.demo.service.IBaoBookingService;
 import com.example.demo.service.ITuanAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.security.Principal;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Controller
+@CrossOrigin(origins = "localhost:8080")
 @RequestMapping("/home")
 public class BaoBookingController {
     @Autowired
     private IBaoBookingService baoBookingService;
     @Autowired
     private ITuanAccountService tuanAccountService;
+    @Autowired
+    private DoubleTuanBookingService tuanBookingService;
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping
     public String getAll(Model model) {
         List<Tour> list = baoBookingService.getAll();
+        Account account = new Account();
+        model.addAttribute("account", account);
         model.addAttribute("tour", list);
-        return "/home";
+        return "home";
     }
 
     @GetMapping("detail/{id}")
@@ -48,8 +63,8 @@ public class BaoBookingController {
         List<LocationTour> location = baoBookingService.findLocation(tour.getId());
         model.addAttribute("locations", location);
         model.addAttribute("tours", tour);
-        model.addAttribute("bookings",booking);
-        model.addAttribute("account",account);
+        model.addAttribute("bookings", booking);
+        model.addAttribute("account", account);
         return "detailTour";
     }
 
@@ -96,16 +111,16 @@ public class BaoBookingController {
     }
 
     @GetMapping("/searchTour")
-    public String searchOptionTour(Model model, @RequestParam(name = "AmountDate",defaultValue = "0") String day,
+    public String searchOptionTour(Model model, @RequestParam(name = "AmountDate", defaultValue = "0") String day,
                                    @RequestParam(name = "date", required = false) String date,
-                                   @RequestParam(name = "TourLine", required = false,defaultValue = "0") String typeTour,
-                                   @RequestParam(name = "savePrice", required = false,defaultValue = "0") String savePrice) throws ParseException {
+                                   @RequestParam(name = "TourLine", required = false, defaultValue = "0") String typeTour,
+                                   @RequestParam(name = "savePrice", required = false, defaultValue = "0") String savePrice) throws ParseException {
         List<Tour> tours = baoBookingService.getAll();
         List<Tour> selectedTours = new ArrayList<>();
         LocalDate utilDate = null;
         try {
-             utilDate = LocalDate.parse(date);
-        }catch (DateTimeParseException e) {
+            utilDate = LocalDate.parse(date);
+        } catch (DateTimeParseException e) {
             e.printStackTrace();
         }
         int days = Integer.parseInt(day);
@@ -122,24 +137,24 @@ public class BaoBookingController {
         List<Tour> save = new ArrayList<>();
         for (Tour tour : selectedTours) {
             if ((days == 3 && tour.getCareAbout() >= typeTours && utilDate != null) ||
-                    (days == 4  && tour.getCareAbout() >= typeTours && utilDate != null) ||
-                    (days == 3  && tour.getAdultPrice() >= savePrices && utilDate != null) ||
-                    (days == 4  && tour.getCareAbout() >= savePrices && utilDate != null)) {
+                    (days == 4 && tour.getCareAbout() >= typeTours && utilDate != null) ||
+                    (days == 3 && tour.getAdultPrice() >= savePrices && utilDate != null) ||
+                    (days == 4 && tour.getCareAbout() >= savePrices && utilDate != null)) {
                 save.addAll(baoBookingService.searchManyOption(utilDate));
                 break;
-            }else if (days == 3 || days == 4){
+            } else if (days == 3 || days == 4) {
                 save.addAll(Collections.singleton(tour));
                 break;
             }
         }
         for (Tour tour : tours) {
-            if (tour.getAdultPrice() <= savePrices && utilDate == null && savePrices != 0){
+            if (tour.getAdultPrice() <= savePrices && utilDate == null && savePrices != 0) {
                 save.addAll(baoBookingService.searchSavePrice(savePrices));
                 break;
-            }else if (tour.getCareAbout() >= typeTours && utilDate == null && typeTours != 0){
+            } else if (tour.getCareAbout() >= typeTours && utilDate == null && typeTours != 0) {
                 save.addAll(baoBookingService.searchHotTour(typeTours));
                 break;
-            }else {
+            } else {
                 save.addAll(baoBookingService.searchManyOption(utilDate));
                 break;
             }
@@ -147,4 +162,133 @@ public class BaoBookingController {
         model.addAttribute("tour", save);
         return "/search";
     }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/accountuser")
+    public String Account(Model model, Principal principal) {
+        Account account = baoBookingService.getUserInforByUserName(principal.getName());
+        int id = account.getId();
+        List<RankDTO> list = tuanAccountService.checkRank(id);
+        int money = 0;
+        for (RankDTO rankDTO : list) {
+            if (rankDTO.getStatus() == true) {
+                money += rankDTO.getAdultNumber() * rankDTO.getAdultPrice() + rankDTO.getChildrenNumber() * rankDTO.getChildrenPrice();
+            }
+        }
+        if (money > 2000000) {
+            model.addAttribute("rank", 1);
+            model.addAttribute("money", money);
+        } else if (money > 1000000) {
+            model.addAttribute("rank", 2);
+            model.addAttribute("money", money);
+        } else if (money > 500000) {
+            model.addAttribute("rank", 3);
+            model.addAttribute("money", money);
+        }
+        model.addAttribute("account", account);
+        return "/inforAccount";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/formChangePass")
+    public String formChangePass(Model model, Principal principal) {
+        Account account = baoBookingService.getUserInforByUserName(principal.getName());
+        int id = account.getId();
+        List<RankDTO> list = tuanAccountService.checkRank(id);
+        int money = 0;
+        for (RankDTO rankDTO : list) {
+            if (rankDTO.getStatus() == true) {
+                money += rankDTO.getAdultNumber() * rankDTO.getAdultPrice() + rankDTO.getChildrenNumber() * rankDTO.getChildrenPrice();
+            }
+        }
+        if (money > 2000000) {
+            model.addAttribute("rank", 1);
+            model.addAttribute("money", money);
+        } else if (money > 1000000) {
+            model.addAttribute("rank", 2);
+            model.addAttribute("money", money);
+        } else if (money > 500000) {
+            model.addAttribute("rank", 3);
+            model.addAttribute("money", money);
+        }
+        model.addAttribute("account", account);
+        return "/change_pass";
+    }
+
+    @GetMapping("/changePass")
+    private String changePass(Model model, Account account) {
+        String pass1 = account.getUsername();
+        String pass2 = account.getNameClient();
+        String pass = account.getPassword();
+        Account account1 = tuanAccountService.findById(account.getId());
+
+        if (!pass1.equals(pass2)) {
+            model.addAttribute("msg", 2);
+            return "change_pass";
+        }
+
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        if (!encoder.matches(pass, account1.getPassword())) {
+            model.addAttribute("msg", 1);
+            return "change_pass";
+        }
+        account1.setPassword(encoder.encode(pass1));
+        tuanAccountService.save(account1);
+        return "redirect:/home";
+    }
+
+    @GetMapping("/editAccount")
+    public String updateAccount(Account account, Model model, RedirectAttributes redirectAttributes) {
+        boolean flag = false;
+        if (checkRegex("^(0|84)(2(0[3-9]|1[0-6|8|9]|2[0-2|5-9]|3[2-9]|4[0-9]|5[1|2|4-9]|6[0-3|9]|7[0-7]|8[0-9]|9[0-4|6|7|9])|3[2-9]|5[5|6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])([0-9]{7})$", account.getPhoneClient()) == false) {
+            model.addAttribute("msg", 2);
+            flag = true;
+        }
+        if (checkRegex("^([\\p{Lu}][\\p{Ll}]{1,8})(\\s([\\p{Lu}]|[\\p{Lu}][\\p{Ll}]{1,10})){0,5}$", account.getNameClient()) == false) {
+            model.addAttribute("msg", 3);
+            flag = true;
+        }
+        if (flag == true) {
+            return "inforAccount";
+        }
+        tuanAccountService.save(account);
+        redirectAttributes.addFlashAttribute("success", 1);
+        return "redirect:/home";
+    }
+
+
+    public boolean checkRegex(String regex, String str) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(str);
+        return matcher.matches();
+    }
+
+    @GetMapping("/historyTour")
+    public String showHistoryTour(Model model, Principal principal) {
+        Account account = baoBookingService.getUserInforByUserName(principal.getName());
+        int id = account.getId();
+        List<RankDTO> list = baoBookingService.showBookingUser(id);
+        List<RankDTO> list1 = tuanAccountService.checkRank(id);
+        int money = 0;
+        for (RankDTO rankDTO : list1) {
+            if (rankDTO.getStatus() == true) {
+                money += rankDTO.getAdultNumber() * rankDTO.getAdultPrice() + rankDTO.getChildrenNumber() * rankDTO.getChildrenPrice();
+            }
+        }
+        if (money > 2000000) {
+            model.addAttribute("rank", 1);
+            model.addAttribute("money", money);
+        } else if (money > 1000000) {
+            model.addAttribute("rank", 2);
+            model.addAttribute("money", money);
+        } else if (money > 500000) {
+            model.addAttribute("rank", 3);
+            model.addAttribute("money", money);
+        }
+        model.addAttribute("account", account);
+        model.addAttribute("booking", list);
+        model.addAttribute("date", LocalDate.now());
+        return "/historyBookingAccount";
+    }
+
 }
