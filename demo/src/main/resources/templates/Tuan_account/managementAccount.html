@@ -44,7 +44,8 @@
         <td  th:text="${ac.getNameClient()}"></td>
         <td th:text="${ac.getUsername()}"></td>
         <td th:text="${ac.getRole().getName()}"></td>
-        <td><button id="btn-showDetail"  data-bs-toggle="modal" data-bs-target="#exampleModal" th:value="${ac.getId()}" >Chi Tiết</button></td>
+        <td><button id="btn-showDetail" data-bs-toggle="modal" data-bs-target="#exampleModal" th:value="${ac.getId()}">Chi Tiết</button></td>
+<!--        <td><a th:href="@{api/account/detail/${ac.getId()}}" id="btn-showDetail" th:value="${ac.getId()}" data-bs-toggle="modal" data-bs-target="#exampleModal">Chi Tiet</a></td>-->
     </tr>
     </tbody>
 </table>
@@ -63,39 +64,51 @@
                     <tr>
                         <td>
                             <p>Tài Khoản:</p>
-                            <p id="userName"></p>
+                        </td>
+                        <td>
+                            <input type="text" disabled id="userName"></input>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <p>Ngày Sinh:</p>
-                            <p id="date_user"></p>
+                        </td>
+                        <td>
+                            <input type="date" disabled id="date_user"></input>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <p>Email:</p>
-                            <p id="email_user"></p>
+                        </td>
+                        <td>
+                            <input type="text" disabled id="email_user"></input>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <p>Số Điện Thoại:</p>
-                            <p id="phone_user"></p>
+                        </td>
+                        <td>
+                            <input type="text" disabled id="phone_user"></input>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <p>Số CCCD:</p>
-                            <p id="identìy_user"></p>
                         </td>
-                    </tr>
-                    <tr>
                         <td>
-                            <p>Role:</p>
-                            <p id="role_user"></p>
+                            <input type="text" disabled id="identify_user"></input>
                         </td>
                     </tr>
+<!--                    <tr>-->
+<!--                        <td>-->
+<!--                            <p>Role:</p>-->
+<!--                        </td>-->
+<!--                        <td>-->
+<!--                            <input type="text" disabled id="role_user"></input>-->
+<!--                        </td>-->
+<!--                    </tr>-->
                 </table>
             </div>
             <div class="modal-footer">
@@ -109,45 +122,68 @@
     function getData() {
 
     }
-
-    $("#btn-showDetail").click(function (){
+    $("#btn-showDetail").click(function () {
         let idAcc = $("#btn-showDetail").val();
         let newAccount = {
-            id : idAcc
-        }
-            $.ajax({
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*'
-                },
-                type: "POST",
-                data: JSON.stringify(newAccount),
-                url: "http://localhost:8080/api/account/detail",
-                success: function (data){
+            id: idAcc
+        };
 
-                    let user = $("#userName").val(data.username);
-                    $("#email_user").val(data.emailClient);
-                    $("#phone_user").val(data.phoneClient);
-                    $("#identìy_user").val(data.identifyClient);
-                    $("#date_user").val(data.date);
-                    $("#role_user").val("ngu");
+        $.ajax({
+            type: "GET",
+            url: `http://localhost:8080/api/account/detail/${idAcc}`,
+            success: function (data) {
+                console.log(data);
+               let displayName = data.nameClient;
+                   $("#userName").val(data.username);
+                $("#email_user").val(data.emailClient);
+                $("#phone_user").val(data.phoneClient);
+                $("#identify_user").val(data.identifyClient);
+                $("#date_user").val(data.date);
+                document.getElementById('name_client').innerText = displayName;
+                // $("#role_user").val(data.role.name);
+            }
+        });
 
-                 document.getElementById('userName').innerText = user;
-                }
-            })
-        // function detail(id){
-        //     let content = "";
-        //     $.ajax({
-        //         url: "http://localhost:8080/api/account/detail",
-        //         method:"GET",
-        //         data: {id:id},
-        //         success: (data) => {
-        //             getData()
-        //
-        //         }
-        //     })
-        // }
-    })
+    });
+
+    // $("#btn-showDetail").click(function (){
+    //     let idAcc = $("#btn-showDetail").val();
+    //     let newAccount = {
+    //         id : idAcc
+    //     }
+    //         $.ajax({
+    //             headers: {
+    //                 'Accept': 'application/json',
+    //                 'Content-Type': 'application/json',
+    //                 'Access-Control-Allow-Origin': '*'
+    //             },
+    //             type: "POST",
+    //             data: JSON.stringify(newAccount),
+    //             url: "http://localhost:8080/api/account/detail/idAcc",
+    //             success: function (data){
+    //
+    //                 let user = $("#userName").val(data.username);
+    //                 $("#email_user").val(data.emailClient);
+    //                 $("#phone_user").val(data.phoneClient);
+    //                 $("#identìy_user").val(data.identifyClient);
+    //                 $("#date_user").val(data.date);
+    //                 $("#role_user").val("ngu");
+    //
+    //              document.getElementById('userName').innerText = user;
+    //             }
+    //         })
+    //     // function detail(id){
+    //     //     let content = "";
+    //     //     $.ajax({
+    //     //         url: "http://localhost:8080/api/account/detail",
+    //     //         method:"GET",
+    //     //         data: {id:id},
+    //     //         success: (data) => {
+    //     //             getData()
+    //     //
+    //     //         }
+    //     //     })
+    //     // }
+    // })
 </script>
 </html>

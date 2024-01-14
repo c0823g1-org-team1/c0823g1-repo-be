@@ -10,15 +10,15 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin()
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api")
 public class RestAccountController {
     @Autowired
     private ITuanAccountService iTuanAccountService;
-    @GetMapping("/account/detail")
-    public ResponseEntity<Account> getDetail(@RequestParam AccountDTODO accountDTODO){
-        Account account = iTuanAccountService.findById(accountDTODO.getId());
+    @GetMapping("/account/detail/{accId}")
+    public ResponseEntity<Account> getDetail(@PathVariable int accId){
+        Account account = iTuanAccountService.findById(accId);
         if (account == null){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
