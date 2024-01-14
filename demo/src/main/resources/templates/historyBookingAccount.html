@@ -1521,9 +1521,6 @@
                                                         <div class="CardMember_nameMember__0SJK7">Bạc</span></div>
                                                     </div>
                                                     <div class="CardMember_infoMember__STkBO">
-                                                        <!--                                                        <div class="CardMember_label__lxV2z"-->
-                                                        <!--                                                             style="background-color: rgb(193, 143, 15);">HẠNG-->
-                                                        <!--                                                        </div>-->
                                                         <div class="CardMember_nameMember__0SJK7">Bạn đã thanh toán:</div>
                                                         <div class="CardMember_nameMember__0SJK7" th:text="${money}"></div><span>VNĐ</span>
                                                     </div>
@@ -1559,9 +1556,9 @@
                                                 </svg>
                                             </button>
                                         </li>
-                                    </a><a href="/account/coupon">
+                                    </a><a th:href="@{formChangePass}">
                                         <li class="">
-                                            <h3 class="AccountMenu_menu-label__lHtVn">Mã giảm giá</h3>
+                                            <h3 class="AccountMenu_menu-label__lHtVn">Đổi mật khẩu</h3>
                                             <button>
                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                                     <path d="M5.66699 3.33268L10.3337 7.99935L5.66699 12.666"
@@ -1570,7 +1567,7 @@
                                                 </svg>
                                             </button>
                                         </li>
-                                    </a><a href="/account">
+                                    </a><a th:href="@{/home/accountuser}">
                                         <li class="AccountMenu_active__P8X_O">
                                             <h3 class="AccountMenu_menu-label__lHtVn">Chỉnh sửa thông tin cá
                                                 nhân</h3>
@@ -1587,7 +1584,9 @@
                                     <div class="AccountMenu_support__W_V9P">
                                         <div class="container">
                                         </div>
-                                        <button>Đăng xuất</button>
+                                        <button>
+                                            <a th:href="@{/logout}">Đăng xuất</a>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -1595,21 +1594,17 @@
                         <div class="Desktop_big__tVnHI" style="padding: 24px;">
                             <div
                                     class="CommonHeaderMobile_fixed-header-mobile-wrapper__9H2nW common-header-profile">
-                                <div class="CommonHeaderMobile_common-header-mobile__WPYuo">
+                                <div style="margin-bottom: 45px" class="CommonHeaderMobile_common-header-mobile__WPYuo">
                                     <div class="container d-flex justify-content-between align-items-center">
                                         <div class="CommonHeaderMobile_left-content__tD7mq">
-                                            <h1>Chỉnh sửa thông tin cá nhân</h1>
+                                            <h1 style="position: relative;left: 134%;">Lịch sử đặt tour</h1>
                                         </div>
                                         <div class="CommonHeaderMobile_group-cart__LnPfk"></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="container flex">
-                                <h1 class="h1">Quản lý booking</h1>
-                                <!--<a th:if="${msg == 1}">-->
-                                <!--    <div id="myToast" class="toast"></div>-->
-                                <!--</a>-->
-                                <div style="float: left;width: 75%;">
+                                <div>
                                     <div class="table-responsive sticky-top" style="margin-left: 12%">
                                         <table class="table table-striped table-hover">
                                             <tr>
@@ -1617,25 +1612,28 @@
                                                 <td>Tên Tour</td>
                                                 <td>Thời gian đặt</td>
                                                 <td>Tổng tiền</td>
-                                                <td>Hành động</td>
+                                                <td>Trạng thái</td>
                                             </tr>
-<!--                                            <tr th:each="b, l : ${booking}">-->
-<!--                                                <td th:text="${l.count}"></td>-->
-<!--                                                <td th:text="${b.getTour().getName()}"></td>-->
-<!--                                                <td th:text="${b.getDate()}"></td>-->
-<!--                                                <td th:text="${b.getChildrenNumber()*b.getTour().getChildrenPrice() + b.getAdultNumber()*b.getTour().getAdultPrice()}"></td>-->
-<!--                                                <td th:if="${b.getTour().getEndDate() < date}">Da di</td>-->
-<!--                                                <td th:if="${b.getTour().getDepartureDate() > date}">Chua di</td>-->
-<!--                                                <td th:if="${b.getTour().getDepartureDate() > date < b.getTour().getEndDate()}">Dang di</td>-->
-<!--                                            </tr>-->
                                             <tr th:each="b, l : ${booking}">
                                                 <td th:text="${l.count}"></td>
                                                 <td th:text="${b.getNameTour()}"></td>
                                                 <td th:text="${b.getDate()}"></td>
                                                 <td th:text="${b.getChildrenNumber()*b.getChildrenPrice() + b.getAdultNumber()*b.getAdultPrice()}"></td>
-                                                <td th:if="${b.getEndDate()< date}">Da di</td>
-                                                <td th:if="${b.getDepartureDate() > date}">Chua di</td>
-                                                <td th:if="${b.getDepartureDate() > date < b.getEndDate()}">Dang di</td>
+                                                <td th:if="${b.getEndDate()< date}">
+                                                    <button type="button" class="btn custom-btn-1">
+                                                        Đã Đi
+                                                    </button>
+                                                </td>
+                                                <td th:if="${b.getDepartureDate() > date}">
+                                                    <button type="button" class="btn custom-btn-1">
+                                                        Chưa Đi
+                                                    </button>
+                                                </td>
+                                                <td th:if="${b.getDepartureDate() < date && date < b.getEndDate()}">
+                                                    <button type="button" class="btn custom-btn-1">
+                                                        Đang đi
+                                                    </button>
+                                                </td>
                                             </tr>
                                         </table>
                                     </div>

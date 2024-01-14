@@ -13,8 +13,8 @@ public interface IBaoBookingRepository extends JpaRepository<Booking,Integer> {
     @Query(value = "select * from booking b where b.tour_id = :id",nativeQuery = true)
     Booking findBookingId (@Param("id") int id);
 
-    @Query(value = "select b.adult_number,b.children_number, b.date," +
-            " p.status,t.adult_price,t.children_price,t.name as nameTour," +
+    @Query(value = "select a.name_client as nameClient,b.adult_number as adultNumber,b.children_number as childrenNumber, b.date," +
+            " p.status,t.adult_price as adultPrice,t.children_price as childrenPrice,t.name as nameTour," +
             "tg.name as nameTourGuild,t.departure_date as departureDate,t.end_date as endDate\n" +
             "from account a \n" +
             "join booking b on a.id = b.account_id \n" +

@@ -110,7 +110,9 @@
             border-radius: 12px;
             height: 180px;
             background-size: cover;
-            width: 100%
+            width: 100%;
+            border: 1px solid #d1d177;
+            background-color: #f9f956;
         }
 
         .CardMember_cardMember__TUWjo .CardMember_container__6OXPr {
@@ -1466,11 +1468,6 @@
                         <ol class="Breadcrumbs_breadcrumbs__04vpL" itemscope=""
                             itemtype="http://schema.org/BreadcrumbList">
                             <li class="Breadcrumbs_item__e9mbT" itemprop="itemListElement" itemscope=""
-                                itemtype="http://schema.org/ListItem"><a itemprop="item" href="/"><span
-                                    itemprop="name">Pharmacity</span></a>
-                                <meta itemprop="position" content="1">
-                            </li>
-                            <li class="Breadcrumbs_item__e9mbT" itemprop="itemListElement" itemscope=""
                                 itemtype="http://schema.org/ListItem"><a itemprop="item" href="/account"><span
                                     itemprop="name">Trang cá nhân</span></a>
                                 <meta itemprop="position" content="2">
@@ -1492,20 +1489,55 @@
                                 <div class="AccountMenu_head__Mo2N3" style="background: rgb(170, 124, 13);">
                                     <div class="AvatarAndName_avatarAndName__Mdt7q"><img
                                             class="AvatarAndName_avatarDefault__7jUBv"
-                                            src="/images/account/user-default.svg" alt="Khach hang">
-                                        <div class="AvatarAndName_fullName__gKJ2N">Khach hang</div>
+                                            src="https://i.pinimg.com/736x/3f/3c/9a/3f3c9a765bdeb8b74d1fe6c5084f6b34.jpg" alt="Khach hang">
+                                        <div class="AvatarAndName_fullName__gKJ2N"><span th:text="${account.getNameClient()}"></span></div>
                                     </div>
                                     <div class="CardMember_cardMember__TUWjo">
                                         <div class="CardMember_container__6OXPr">
                                             <div class="CardMember_content__RCqvE">
-                                                <div class="CardMember_header__r1eZV"><img
+                                                <!--                                                1-->
+                                                <div th:if="${rank == 1}" class="CardMember_header__r1eZV"><img
+                                                        src="https://i.upanh.org/2024/01/12/league_of_legends_challenger_rank_vector_by_masnera_dee9njr-pre_preview_rev_1c8ccf403f69acc6c.png"
+                                                        alt="Gold member" width="48" height="48">
+                                                    <div class="CardMember_infoMember__STkBO">
+                                                        <div class="CardMember_label__lxV2z"
+                                                             style="background-color: rgb(193, 143, 15);">HẠNG
+                                                        </div>
+                                                        <div class="CardMember_nameMember__0SJK7">Vàng</div>
+                                                    </div>
+                                                    <div style="position: absolute ; top: 34%; display: flex;font-weight: 600">
+                                                        <div class="CardMember_nameMember__0SJK7">Bạn đã thanh toán: </div> <div style="margin-left: 4px" class="CardMember_nameMember__0SJK7" th:text="${money}"></div><span style="margin-left: 3px"> VNĐ</span>
+
+                                                    </div>
+                                                </div>
+                                                <!--                                                2-->
+                                                <div th:if="${rank == 2}" class="CardMember_header__r1eZV"><img
+                                                        src="https://i.upanh.org/2024/01/12/3120721-small_preview_rev_1a769bc382fd6bb1f.png"
+                                                        alt="Gold member" width="48" height="48">
+                                                    <div class="CardMember_infoMember__STkBO">
+                                                        <div class="CardMember_label__lxV2z"
+                                                             style="background-color: rgb(193, 143, 15);">HẠNG
+                                                        </div>
+                                                        <div class="CardMember_nameMember__0SJK7">Bạc</span></div>
+                                                    </div>
+                                                    <div class="CardMember_infoMember__STkBO">
+                                                        <div class="CardMember_nameMember__0SJK7">Bạn đã thanh toán:</div>
+                                                        <div class="CardMember_nameMember__0SJK7" th:text="${money}"></div><span>VNĐ</span>
+                                                    </div>
+                                                </div>
+                                                <!--                                                3-->
+                                                <div th:if="${rank == 3}" class="CardMember_header__r1eZV"><img
                                                         src="https://data-service.pharmacity.io/pmc-upload-media/production/media/app-config/app-loyalty-star.png"
                                                         alt="Gold member" width="48" height="48">
                                                     <div class="CardMember_infoMember__STkBO">
                                                         <div class="CardMember_label__lxV2z"
                                                              style="background-color: rgb(193, 143, 15);">HẠNG
                                                         </div>
-                                                        <div class="CardMember_nameMember__0SJK7">VÀNG</div>
+                                                        <div class="CardMember_nameMember__0SJK7">Đồng</div>
+                                                    </div>
+                                                    <div style="position: absolute">
+                                                        <div class="CardMember_nameMember__0SJK7">Bạn đã thanh toán:</div>
+                                                        <div class="CardMember_nameMember__0SJK7" th:text="${money}"></div><span>VNĐ</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1513,9 +1545,9 @@
                                     </div>
                                 </div>
                                 <div class="AccountMenu_box__DisFh">
-                                    <ul><a href="/account/orders">
+                                    <ul><a th:href="@{/home/historyTour}">
                                         <li class="">
-                                            <h3 class="AccountMenu_menu-label__lHtVn">Lịch sử đơn hàng</h3>
+                                            <h3 class="AccountMenu_menu-label__lHtVn">Lịch sử đặt tour</h3>
                                             <button>
                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                                     <path d="M5.66699 3.33268L10.3337 7.99935L5.66699 12.666"
@@ -1524,9 +1556,9 @@
                                                 </svg>
                                             </button>
                                         </li>
-                                    </a><a href="/account/coupon">
+                                    </a><a th:href="@{formChangePass}">
                                         <li class="">
-                                            <h3 class="AccountMenu_menu-label__lHtVn">Mã giảm giá</h3>
+                                            <h3 class="AccountMenu_menu-label__lHtVn">Đổi mật khẩu</h3>
                                             <button>
                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                                     <path d="M5.66699 3.33268L10.3337 7.99935L5.66699 12.666"
@@ -1535,7 +1567,7 @@
                                                 </svg>
                                             </button>
                                         </li>
-                                    </a><a href="/account">
+                                    </a><a th:href="@{/home/accountuser}">
                                         <li class="AccountMenu_active__P8X_O">
                                             <h3 class="AccountMenu_menu-label__lHtVn">Chỉnh sửa thông tin cá
                                                 nhân</h3>
@@ -1552,7 +1584,9 @@
                                     <div class="AccountMenu_support__W_V9P">
                                         <div class="container">
                                         </div>
-                                        <button>Đăng xuất</button>
+                                        <button>
+                                            <a th:href="@{/logout}">Đăng xuất</a>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -1563,7 +1597,7 @@
                                 <div class="CommonHeaderMobile_common-header-mobile__WPYuo">
                                     <div class="container d-flex justify-content-between align-items-center">
                                         <div class="CommonHeaderMobile_left-content__tD7mq">
-                                            <h1>Chỉnh sửa thông tin cá nhân</h1>
+                                            <h1>Đổi mật khẩu</h1>
                                         </div>
                                         <div class="CommonHeaderMobile_group-cart__LnPfk"></div>
                                     </div>

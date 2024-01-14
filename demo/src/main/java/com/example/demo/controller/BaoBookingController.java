@@ -193,6 +193,24 @@ public class BaoBookingController {
     @GetMapping("/formChangePass")
     public String formChangePass(Model model, Principal principal) {
         Account account = baoBookingService.getUserInforByUserName(principal.getName());
+        int id = account.getId();
+        List<RankDTO> list = tuanAccountService.checkRank(id);
+        int money = 0;
+        for (RankDTO rankDTO : list) {
+            if (rankDTO.getStatus() == true) {
+                money += rankDTO.getAdultNumber() * rankDTO.getAdultPrice() + rankDTO.getChildrenNumber() * rankDTO.getChildrenPrice();
+            }
+        }
+        if (money > 2000000) {
+            model.addAttribute("rank", 1);
+            model.addAttribute("money", money);
+        } else if (money > 1000000) {
+            model.addAttribute("rank", 2);
+            model.addAttribute("money", money);
+        } else if (money > 500000) {
+            model.addAttribute("rank", 3);
+            model.addAttribute("money", money);
+        }
         model.addAttribute("account", account);
         return "/change_pass";
     }
@@ -214,13 +232,11 @@ public class BaoBookingController {
             model.addAttribute("msg", 1);
             return "change_pass";
         }
-
         account1.setPassword(encoder.encode(pass1));
         tuanAccountService.save(account1);
         return "redirect:/home";
     }
 
-    //    @PreAuthorize("isAuthenticated()")
     @GetMapping("/editAccount")
     public String updateAccount(Account account, Model model, RedirectAttributes redirectAttributes) {
         boolean flag = false;
@@ -247,20 +263,31 @@ public class BaoBookingController {
         return matcher.matches();
     }
 
-    @GetMapping("historyTour")
+    @GetMapping("/historyTour")
     public String showHistoryTour(Model model, Principal principal) {
         Account account = baoBookingService.getUserInforByUserName(principal.getName());
         int id = account.getId();
         List<RankDTO> list = baoBookingService.showBookingUser(id);
-//        List<Booking> list = tuanBookingService.getList();
-//        List<Booking> list1 = new ArrayList<>();
-//        for (Booking booking : list) {
-//            if (booking.getAccount().getId() == id) {
-//                list1.add(booking);
-//            }
-//        }
+        List<RankDTO> list1 = tuanAccountService.checkRank(id);
+        int money = 0;
+        for (RankDTO rankDTO : list1) {
+            if (rankDTO.getStatus() == true) {
+                money += rankDTO.getAdultNumber() * rankDTO.getAdultPrice() + rankDTO.getChildrenNumber() * rankDTO.getChildrenPrice();
+            }
+        }
+        if (money > 2000000) {
+            model.addAttribute("rank", 1);
+            model.addAttribute("money", money);
+        } else if (money > 1000000) {
+            model.addAttribute("rank", 2);
+            model.addAttribute("money", money);
+        } else if (money > 500000) {
+            model.addAttribute("rank", 3);
+            model.addAttribute("money", money);
+        }
+        model.addAttribute("account", account);
         model.addAttribute("booking", list);
-        model.addAttribute("date",LocalDateTime.now());
+        model.addAttribute("date", LocalDate.now());
         return "/historyBookingAccount";
     }
 
