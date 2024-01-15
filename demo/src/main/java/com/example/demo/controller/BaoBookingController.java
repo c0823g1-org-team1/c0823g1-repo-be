@@ -49,10 +49,11 @@ public class BaoBookingController {
         return "home";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("detail/{id}")
-    public String detail(@PathVariable int id, Model model) {
+    public String detail(@PathVariable int id, Model model, Principal principal) {
         Tour tour = baoBookingService.findById(id);
-        Account account = tuanAccountService.findById(1);
+        Account account = baoBookingService.getUserInforByUserName(principal.getName());
         Booking booking = new Booking();
         tour.setCareAbout(tour.getCareAbout() + 1);
         baoBookingService.saveTour(tour);
@@ -68,8 +69,10 @@ public class BaoBookingController {
         return "detailTour";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/hottour")
-    public String searchTour(Model model) {
+    public String searchTour(Model model, Principal principal) {
+        Account account = baoBookingService.getUserInforByUserName(principal.getName());
         List<Tour> list = baoBookingService.getAll();
         Collections.sort(list, Comparator.comparing(Tour::getCareAbout).reversed());
         Tour tour0 = list.get(0);
@@ -83,6 +86,7 @@ public class BaoBookingController {
         list2.addAll(list1);
         model.addAttribute("hotTour", list2);
         model.addAttribute("tour", list);
+        model.addAttribute("account", account);
         return "/searchTour";
     }
 

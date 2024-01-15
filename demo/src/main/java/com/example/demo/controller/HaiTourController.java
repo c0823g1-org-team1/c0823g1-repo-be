@@ -70,7 +70,7 @@ public class HaiTourController {
         Page<Tour> tourPage = haiTourService.findAll(pageable);
         model.addAttribute("tours", tourPage);
         model.addAttribute("df", DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-        return "/hai_tour/home-tour";
+        return "/admin_manager/display_tour";
     }
 
     @GetMapping("/{id}/detail")
