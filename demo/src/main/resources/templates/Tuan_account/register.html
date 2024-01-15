@@ -124,7 +124,7 @@
 <div class="container">
     <input type="checkbox" id="check">
     <div class="login form">
-        <header>Signup</header>
+        <header>Đăng Ký</header>
         <form th:action="@{/account/register}" th:object="${accountDto}" method="post">
             <label for="tk">Tên Tài Khoản</label>
             <input id="tk" type="text" placeholder="Ex:tuan123" th:field="*{username}">
@@ -152,16 +152,16 @@
             <input id="cmnd" type="text" placeholder="Ex:123456789101" th:field="*{identifyClient}">
             <small style="color: red" th:if="${#fields.hasErrors('identifyClient')}"
                    th:errors="*{identifyClient}"></small>
-            <input type="submit" class="button" value="Register">
+            <input type="submit" class="button" value="Đăng Ký">
         </form>
         <div class="signup">
-        <span class="signup">Do have an account?
-        <a th:href="@{/account/login}"><label>Login</label></a>
+        <span class="signup">Bạn Đã Có Tài Khoản
+        <a th:href="@{/account/login}"><label>Đăng Nhập</label></a>
         </span>
         </div>
         <div class="signup">
-        <span class="signup">Forgot your password ?
-        <a th:href="@{/account/forgot1}"><label>Forgot</label></a>
+        <span class="signup">Bạn Đã Quên Mật Khẩu
+        <a th:href="@{/account/forgot1}"><label>Quên Mật Khẩu</label></a>
         </span>
         </div>
     </div>
