@@ -14,7 +14,7 @@
             <form class="d-flex" method="get" th:action="@{/account}">
                 <input class="form-control me-2" name="account_name" type="search" placeholder="Search" aria-label="Search" th:value="${account_name}">
                 <button class="btn btn-outline-success" type="submit">Search</button>
-    <select class="form-select" aria-label="Default select example" name="role_id">
+    <select class="form-select" aria-label="Default select example" name="role_id" th:value="${role_id}">
         <option th:each="r , status : ${roles}" th:text="${r.getName()}" th:value="${r.getId()}"></option>
     </select>
     </form>
@@ -44,11 +44,33 @@
         <td  th:text="${ac.getNameClient()}"></td>
         <td th:text="${ac.getUsername()}"></td>
         <td th:text="${ac.getRole().getName()}"></td>
-        <td><button id="btn-showDetail" data-bs-toggle="modal" data-bs-target="#exampleModal" th:value="${ac.getId()}">Chi Tiết</button></td>
+        <td><button class="btn-showDetail" data-bs-toggle="modal" data-bs-target="#exampleModal" th:value="${ac.getId()}">Chi Tiết</button></td>
 <!--        <td><a th:href="@{api/account/detail/${ac.getId()}}" id="btn-showDetail" th:value="${ac.getId()}" data-bs-toggle="modal" data-bs-target="#exampleModal">Chi Tiet</a></td>-->
     </tr>
     </tbody>
 </table>
+<nav aria-label="..." th:if="${accounts.getTotalPages() > 1}">
+    <ul class="pagination pagination-circle">
+        <li class="page-item" th:if="${accounts.hasPrevious()}">
+            <a class="page-link" th:href="@{/account(page=${accounts.number - 1}, account_name=${account_name}, role_id=${role_id})}">Previous</a>
+        </li>
+        <div th:each="item, loop : ${#numbers.sequence(1, accounts.totalPages )}">
+            <div th:if="${accounts.number + 1 == item}">
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link" th:href="@{/account(page=${item - 1}, account_name=${account_name}, role_id=${role_id})}" th:text="${item}"><span
+                            class="visually-hidden">(current)</span></a>
+                </li>
+            </div>
+            <div th:unless="${accounts.number + 1 == item}">
+                <li class="page-item"><a class="page-link" th:href="@{/account(page=${item - 1}, account_name=${account_name}, role_id=${role_id})}"
+                                         th:text="${item}"></a></li>
+            </div>
+        </div>
+        <li class="page-item" th:if="${accounts.hasNext()}">
+            <a class="page-link" th:href="@{/account(page=${accounts.number + 1}, account_name=${account_name}, role_id=${role_id})}">Next</a>
+        </li>
+    </ul>
+</nav>
 
 
 
@@ -119,11 +141,15 @@
 </div>
 </body>
 <script>
+
+
+
+
     function getData() {
 
     }
-    $("#btn-showDetail").click(function () {
-        let idAcc = $("#btn-showDetail").val();
+    $(".btn-showDetail").click(function () {
+        let idAcc =  $(this).val();
         let newAccount = {
             id: idAcc
         };
