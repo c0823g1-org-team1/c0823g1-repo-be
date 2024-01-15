@@ -74,6 +74,7 @@ public class WebSecurityConfig {
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authorize -> authorize
                     .requestMatchers("/booking","/account").hasRole("ADMIN")
+                    .requestMatchers("/**").permitAll()
                     .anyRequest().permitAll()
             )
             .formLogin((formLogin) ->
@@ -83,5 +84,4 @@ public class WebSecurityConfig {
             .httpBasic(Customizer.withDefaults())
             .build();
     }
-
 }

@@ -11,14 +11,12 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 
 @SpringBootApplication
 public class DemoApplication {
-
-
-    @Bean
-    public MessageSource messageSource() {
-        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasenames("validation-message");
-        return messageSource;
-    }
+//    @Bean
+//    public MessageSource messageSource() {
+//        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+//        messageSource.setBasenames("validation-message");
+//        return messageSource;
+//    }
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
