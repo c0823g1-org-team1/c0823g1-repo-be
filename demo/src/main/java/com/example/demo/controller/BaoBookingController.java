@@ -144,7 +144,6 @@ public class BaoBookingController {
                 break;
             } else if (days == 3 || days == 4) {
                 save.addAll(Collections.singleton(tour));
-                break;
             }
         }
         for (Tour tour : tours) {
