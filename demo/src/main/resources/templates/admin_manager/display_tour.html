@@ -9,14 +9,23 @@
         li {
             margin-top: 20px;
         }
+        .card{
+            margin-right: 100px;
+            margin-left: 20px;
+        }
+        body{
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
     </style>
 </head>
 <body>
 <div th:replace="/layout_admin::homeAdmin"></div>
 <h1 style="text-align: center">Quản lý tour</h1>
 <div style="float: right;">
-    <div class="row row-cols-1 row-cols-md-4 g-3">
-        <div class="col-5" th:each="t:${tours}">
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+        <div class="" th:each="t:${tours}">
             <div class="card" style="width: 25rem;height: 42rem">
                 <img th:src="${t.image}" class="card-img-top hover-image" style="height: 12rem" alt="...">
                 <div class="card-body" style="height: 15rem">
