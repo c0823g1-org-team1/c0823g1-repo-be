@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 
+import com.example.demo.dto.RankDTO;
 import com.example.demo.model.*;
 import org.springframework.data.repository.query.Param;
 
@@ -36,6 +37,7 @@ public interface IBaoBookingService {
 
     List<Tour> findIdTourToIdTourGuild(int id);
 
-    Account getUserInforByUserName(@Param("name") String name);
+    Account getUserInforByUserName(String name);
 
+    List<RankDTO> showBookingUser(int id);
 }

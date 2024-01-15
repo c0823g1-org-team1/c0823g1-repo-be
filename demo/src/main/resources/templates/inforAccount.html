@@ -110,7 +110,9 @@
             border-radius: 12px;
             height: 180px;
             background-size: cover;
-            width: 100%
+            width: 100%;
+            border: 1px solid #d1d177;
+            background-color: #f9f956;
         }
 
         .CardMember_cardMember__TUWjo .CardMember_container__6OXPr {
@@ -278,15 +280,11 @@
             display: none
         }
 
-        .AccountMenu_menu__t7684 .AccountMenu_box__DisFh ul li.AccountMenu_active__P8X_O,
-        .AccountMenu_menu__t7684 .AccountMenu_box__DisFh ul li:hover {
+        .AccountMenu_box__DisFh ul li:hover {
             background-color: #f2f6fe
         }
 
-        .AccountMenu_menu__t7684 .AccountMenu_box__DisFh ul li.AccountMenu_active__P8X_O figure.AccountMenu_fill-icon__O1IFB svg,
-        .AccountMenu_menu__t7684 .AccountMenu_box__DisFh ul li:hover figure.AccountMenu_fill-icon__O1IFB svg {
-            stroke: none
-        }
+
 
         .AccountMenu_menu__t7684 .AccountMenu_box__DisFh ul li figure {
             width: 24px;
@@ -450,10 +448,7 @@
                 right: 1.5rem
             }
 
-            .AccountMenu_menu__t7684 .AccountMenu_box__DisFh ul li.AccountMenu_active__P8X_O,
-            .AccountMenu_menu__t7684 .AccountMenu_box__DisFh ul li:hover {
-                background-color: #0000
-            }
+
 
             .AccountMenu_menu__t7684 .AccountMenu_box__DisFh ul .AccountMenu_history__al8_B label {
                 display: flex;
@@ -618,11 +613,6 @@
             .AccountMenu_menu__t7684 .AccountMenu_box__DisFh ul li:after {
                 left: 1.5rem;
                 right: 1.5rem
-            }
-
-            .AccountMenu_menu__t7684 .AccountMenu_box__DisFh ul li.AccountMenu_active__P8X_O,
-            .AccountMenu_menu__t7684 .AccountMenu_box__DisFh ul li:hover {
-                background-color: #0000
             }
 
             .AccountMenu_menu__t7684 .AccountMenu_box__DisFh ul .AccountMenu_history__al8_B label {
@@ -1451,12 +1441,183 @@
         }
 
     </style>
+    <style>
+        ul {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        @media (min-width: 768px)
+
+        .row-cols-md-3 > * {
+            flex: 0 0 auto;
+            width: 33.33333%;
+        }
+
+        .row > * {
+            margin-top: 1.5rem;
+            max-width: 100%;
+            padding-left: calc(1.5rem / 2);
+            padding-right: calc(1.5rem / 2);
+        }
+
+        /* Foooter */
+        .icon-footer {
+            margin-top: 20px;
+        }
+
+        .icon-footer i {
+            margin: 0 5px;
+        }
+
+        .contain-map {
+            height: 541.65px;
+            width: 100%;
+            margin: 30px auto 0;
+            text-align: center;
+        }
+
+        .contain-map img {
+            width: 70%;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .container__header {
+            width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+            font-family: Roboto, sans-serif;
+        }
+
+        .logo {
+            display: inline-block;
+        }
+
+        .logo img {
+            width: 100px;
+            background-color: transparent;
+        }
+
+        .container__header-option {
+            float: right;
+            box-sizing: border-box;
+            margin-top: 26px;
+
+        }
+
+        .menu {
+            display: flex;
+        }
+
+        .list-option {
+            display: flex;
+        }
+
+        .hover {
+            font-size: 22px;
+            display: inline-block;
+            padding: 0 18px;
+            font-weight: 700;
+            color: black;
+            position: relative;
+            font-family: Roboto, sans-serif;
+            text-decoration: none;
+        }
+
+        .search {
+            display: flex;
+            align-items: center;
+            margin-left: 170px;
+
+        }
+
+        .hover::before,
+        .hover::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #9EA91C;
+            bottom: -5px;
+            transition: 0.25s ease;
+        }
+
+        .hover:hover::before,
+        .hover:hover::after {
+            width: 50%;
+        }
+
+        :before {
+            left: 0;
+        }
+
+        a:after {
+            right: 0;
+        }
+
+        .icon-footer {
+            margin-top: 20px;
+        }
+
+        .icon-footer i {
+            margin: 0 5px;
+        }
+
+        .dropdown {
+            font-size: 16px;
+            font-weight: bold;
+            padding: 11px;
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .dropdown__account {
+            position: absolute;
+            background-color: #c5dbff;
+            animation: fadeIn ease-in 0.2s;
+            z-index: 1;
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+            width: 160px;
+            border-radius: 2px;
+            display: none;
+            left: 14px;
+            padding: 0;
+        }
+
+        .tag__first:hover {
+            background-color: #9ac2f3;
+        }
+
+        .dropdown .tag__first a {
+            font-size: 12px;
+            line-height: 32px;
+            color: #252121;
+            font-weight: 500;
+            display: block;
+            padding: 2px 10px 2px 15px;
+            font-family: "Motiva Sans", Sans-serif;
+        }
+
+        .dropdown:hover .dropdown__account {
+            display: block;
+        }
+        .list__menu {
+            font-family: 'PT Serif', serif;
+            font-size: 20px;
+        }
+    </style>
 </head>
 <body data-new-gr-c-s-check-loaded="14.1149.0" data-gr-ext-installed="">
 <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N2PRT9T&gtm_auth=&gtm_preview=&gtm_cookies_win=x"
             height="0" width="0" style="display:none;visibility:hidden" id="tag-manager"></iframe>
 </noscript>
+<header th:replace="/layout::header" class="header">
+</header>
 <div id="__next">
     <main class="MainLayout_main-layout__riclp">
         <div class="MainLayout_content__hCocE">
@@ -1465,11 +1626,6 @@
                     <nav>
                         <ol class="Breadcrumbs_breadcrumbs__04vpL" itemscope=""
                             itemtype="http://schema.org/BreadcrumbList">
-                            <li class="Breadcrumbs_item__e9mbT" itemprop="itemListElement" itemscope=""
-                                itemtype="http://schema.org/ListItem"><a itemprop="item" href="/"><span
-                                    itemprop="name">Pharmacity</span></a>
-                                <meta itemprop="position" content="1">
-                            </li>
                             <li class="Breadcrumbs_item__e9mbT" itemprop="itemListElement" itemscope=""
                                 itemtype="http://schema.org/ListItem"><a itemprop="item" href="/account"><span
                                     itemprop="name">Trang cá nhân</span></a>
@@ -1492,20 +1648,58 @@
                                 <div class="AccountMenu_head__Mo2N3" style="background: rgb(170, 124, 13);">
                                     <div class="AvatarAndName_avatarAndName__Mdt7q"><img
                                             class="AvatarAndName_avatarDefault__7jUBv"
-                                            src="/images/account/user-default.svg" alt="Khach hang">
-                                        <div class="AvatarAndName_fullName__gKJ2N">Khach hang</div>
+                                            src="https://i.pinimg.com/736x/3f/3c/9a/3f3c9a765bdeb8b74d1fe6c5084f6b34.jpg" alt="Khach hang">
+                                        <div class="AvatarAndName_fullName__gKJ2N"><span th:text="${account.getNameClient()}"></span></div>
                                     </div>
                                     <div class="CardMember_cardMember__TUWjo">
                                         <div class="CardMember_container__6OXPr">
                                             <div class="CardMember_content__RCqvE">
-                                                <div class="CardMember_header__r1eZV"><img
+<!--                                                1-->
+                                                <div th:if="${rank == 1}" class="CardMember_header__r1eZV"><img
+                                                        src="https://i.upanh.org/2024/01/12/league_of_legends_challenger_rank_vector_by_masnera_dee9njr-pre_preview_rev_1c8ccf403f69acc6c.png"
+                                                        alt="Gold member" width="48" height="48">
+                                                    <div class="CardMember_infoMember__STkBO">
+                                                        <div class="CardMember_label__lxV2z"
+                                                             style="background-color: rgb(193, 143, 15);">HẠNG
+                                                        </div>
+                                                        <div class="CardMember_nameMember__0SJK7">Vàng</div>
+                                                    </div>
+                                                    <div style="position: absolute ; top: 34%; display: flex;font-weight: 600">
+                                                        <div class="CardMember_nameMember__0SJK7">Bạn đã thanh toán: </div> <div style="margin-left: 4px" class="CardMember_nameMember__0SJK7" th:text="${money}"></div><span style="margin-left: 3px"> VNĐ</span>
+
+                                                    </div>
+                                                </div>
+<!--                                                2-->
+                                                <div th:if="${rank == 2}" class="CardMember_header__r1eZV"><img
+                                                        src="https://i.upanh.org/2024/01/12/3120721-small_preview_rev_1a769bc382fd6bb1f.png"
+                                                        alt="Gold member" width="48" height="48">
+                                                    <div class="CardMember_infoMember__STkBO">
+                                                        <div class="CardMember_label__lxV2z"
+                                                             style="background-color: rgb(193, 143, 15);">HẠNG
+                                                        </div>
+                                                        <div class="CardMember_nameMember__0SJK7">Bạc</span></div>
+                                                    </div>
+                                                    <div class="CardMember_infoMember__STkBO">
+                                                        <!--                                                        <div class="CardMember_label__lxV2z"-->
+                                                        <!--                                                             style="background-color: rgb(193, 143, 15);">HẠNG-->
+                                                        <!--                                                        </div>-->
+                                                        <div class="CardMember_nameMember__0SJK7">Bạn đã thanh toán:</div>
+                                                        <div class="CardMember_nameMember__0SJK7" th:text="${money}"></div><span>VNĐ</span>
+                                                    </div>
+                                                </div>
+<!--                                                3-->
+                                                <div th:if="${rank == 3}" class="CardMember_header__r1eZV"><img
                                                         src="https://data-service.pharmacity.io/pmc-upload-media/production/media/app-config/app-loyalty-star.png"
                                                         alt="Gold member" width="48" height="48">
                                                     <div class="CardMember_infoMember__STkBO">
                                                         <div class="CardMember_label__lxV2z"
                                                              style="background-color: rgb(193, 143, 15);">HẠNG
                                                         </div>
-                                                        <div class="CardMember_nameMember__0SJK7">VÀNG</div>
+                                                        <div class="CardMember_nameMember__0SJK7">Đồng</div>
+                                                    </div>
+                                                    <div style="position: absolute">
+                                                        <div class="CardMember_nameMember__0SJK7">Bạn đã thanh toán:</div>
+                                                        <div class="CardMember_nameMember__0SJK7" th:text="${money}"></div><span>VNĐ</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1513,9 +1707,9 @@
                                     </div>
                                 </div>
                                 <div class="AccountMenu_box__DisFh">
-                                    <ul><a href="/account/orders">
+                                    <ul><a th:href="@{/home/historyTour}">
                                         <li class="">
-                                            <h3 class="AccountMenu_menu-label__lHtVn">Lịch sử đơn hàng</h3>
+                                            <h3 class="AccountMenu_menu-label__lHtVn">Lịch sử đặt tour</h3>
                                             <button>
                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                                     <path d="M5.66699 3.33268L10.3337 7.99935L5.66699 12.666"
@@ -1526,7 +1720,7 @@
                                         </li>
                                     </a><a th:href="@{formChangePass}">
                                         <li class="">
-                                            <h3 class="AccountMenu_menu-label__lHtVn">Đổi mật khau</h3>
+                                            <h3 class="AccountMenu_menu-label__lHtVn">Đổi mật khẩu</h3>
                                             <button>
                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                                     <path d="M5.66699 3.33268L10.3337 7.99935L5.66699 12.666"
@@ -1535,7 +1729,7 @@
                                                 </svg>
                                             </button>
                                         </li>
-                                    </a><a href="/account">
+                                    </a><a th:href="@{/home/accountuser}">
                                         <li class="AccountMenu_active__P8X_O">
                                             <h3 class="AccountMenu_menu-label__lHtVn">Chỉnh sửa thông tin cá
                                                 nhân</h3>
@@ -1552,7 +1746,9 @@
                                     <div class="AccountMenu_support__W_V9P">
                                         <div class="container">
                                         </div>
-                                        <button>Đăng xuất</button>
+                                        <button>
+                                            <a th:href="@{/logout}">Đăng xuất</a>
+                                        </button>
                                     </div>
                                 </div>
                             </div>

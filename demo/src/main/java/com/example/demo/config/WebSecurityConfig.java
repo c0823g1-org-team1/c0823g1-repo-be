@@ -84,5 +84,4 @@ public class WebSecurityConfig {
             .httpBasic(Customizer.withDefaults())
             .build();
     }
-
 }
