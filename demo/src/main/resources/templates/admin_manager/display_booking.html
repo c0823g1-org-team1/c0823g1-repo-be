@@ -11,38 +11,50 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             crossorigin="anonymous"></script>
+    <style>
+        .h1 {
+            text-align: center;
+            font-weight: bold;
+            color: black;
+            margin-bottom: 50px;
+            text-transform: uppercase
+        }
+    </style>
 
 </head>
 
 <body>
-<div th:replace="/layout_admin::homeAdmin"></div>
-<h1>Quản lý booking</h1>
-<a th:if="${msg == 1}">
-    <div id="myToast" class="toast"></div>
-</a>
-<div style="float: left;width: 84%;">
-    <table class="table table-bordered border-primary">
-        <tr>
-            <td>STT</td>
-            <td>Tên khách hàng</td>
-            <td>Thời gian đặt</td>
-            <td>Số lượng người</td>
-            <td>Tài khoản</td>
-            <td>Tên tour</td>
-            <td>Tổng tiền</td>
-            <td>Hành động</td>
-        </tr>
-        <tr th:each="b, l : ${bookingPage}">
-            <td th:text="${l.count}"></td>
-            <td th:text="${b.getAccount().nameClient}"></td>
-            <td th:text="${b.getDate()}"></td>
-            <td th:text="${b.getChildrenNumber() + b.getAdultNumber()}"></td>
-            <td th:text="${b.getAccount().getUsername()}"></td>
-            <td th:text="${b.getTour().getName()}"></td>
-            <td th:text="${b.getChildrenNumber() * b.getTour().getChildrenPrice() + b.getAdultNumber() * b.getTour().getAdultPrice()}"></td>
-        </tr>
-    </table>
-    <nav aria-label="..." th:if="${bookingPage.getTotalPages() > 1}" style="justify-content: center;display: flex">
+<div th:replace="/layout_admin::homeAdmin" style="float: left; width: 30%"></div>
+<h1 class="h1">Quản lý booking</h1>
+<!--<a th:if="${msg == 1}">-->
+<!--    <div id="myToast" class="toast"></div>-->
+<!--</a>-->
+<div style="float: left;width: 75%;">
+    <div class="table-responsive sticky-top" style="margin-left: 12%">
+        <table class="table table-striped table-hover">
+            <tr>
+                <td>STT</td>
+                <td>Tên khách hàng</td>
+                <td>Thời gian đặt</td>
+                <td>Số lượng người</td>
+                <td>Tài khoản</td>
+                <td>Tên tour</td>
+                <td>Tổng tiền</td>
+                <td>Hành động</td>
+            </tr>
+            <tr th:each="b, l : ${bookingPage}">
+                <td th:text="${l.count}"></td>
+                <td th:text="${b.getAccount().nameClient}"></td>
+                <td th:text="${b.getDate()}"></td>
+                <td th:text="${b.getChildrenNumber() + b.getAdultNumber()}"></td>
+                <td th:text="${b.getAccount().getUsername()}"></td>
+                <td th:text="${b.getTour().getName()}"></td>
+                <td th:text="${b.getChildrenNumber() * b.getTour().getChildrenPrice() + b.getAdultNumber() * b.getTour().getAdultPrice()}"></td>
+            </tr>
+        </table>
+    </div>
+    <nav aria-label="..." th:if="${bookingPage.getTotalPages() > 1}"
+         style="justify-content: center;display: flex">
         <ul class="pagination pagination-circle">
             <li class="page-item" th:if="${bookingPage.hasPrevious()}">
                 <a class="page-link" th:href="@{booking(page=${bookingPage.number - 1})}">Previous</a>
