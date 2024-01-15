@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <style>
         .h2 {
             text-align: center;
@@ -16,54 +14,236 @@
             margin-bottom: 40px;
             text-transform: uppercase
         }
+        .pagination-centered {
+            display: flex;
+            justify-content: center;
+        }
+        .pagination-wrapper {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
     </style>
 </head>
 <body>
 <div th:replace="/layout_admin::homeAdmin" style="float: left; width: 30%"></div>
-<h2 class="h2">Danh sách tài khoản</h2>
-<div style="float: left;width: 75%;">
+<h2 class="h2">Danh Sách Tài Khoản</h2>
+<div style="float: left;width: 75%">
     <div style="margin-left: 12%">
-        <div>
-            <nav class="navbar navbar-light ">
-                <div class="container-fluid">
-                    <form class="d-flex" method="get" th:action="@{/account}">
-                        <input class="form-control me-2" name="account_name" type="search" placeholder="Search"
-                               aria-label="Search" th:value="${account_name}">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                        <select class="form-select" aria-label="Default select example" name="role_id">
-                            <option th:each="r , status : ${roles}" th:text="${r.getName()}"
-                                    th:value="${r.getId()}"></option>
-                        </select>
-                    </form>
-                </div>
-            </nav>
+
+
+
+<div>
+    <nav class="navbar navbar-light ">
+        <div class="container-fluid">
+            <form class="d-flex" method="get" th:action="@{/account}">
+                <input class="form-control me-2" name="account_name" type="search" placeholder="Search" aria-label="Search" th:value="${account_name}">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+                <select class="form-select" aria-label="Default select example" name="role_id" th:value="${role_id}">
+                    <option th:each="r , status : ${roles}" th:text="${r.getName()}" th:value="${r.getId()}"></option>
+                </select>
+            </form>
         </div>
+    </nav>
+
+
+
+</div>
+
         <div style="margin-top: 40px">
-            <table class="table table-light table-striped table-hover">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Họ Và Tên</th>
-                    <th scope="col">Tài Khoản</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:if="${accounts.getTotalElements() <= 0}">
-                    <th colspan="5" class="text-center">Không có dữ liệu</th>
-                </tr>
-                <tr th:each="ac , status : ${accounts}">
-                    <th scope="row" th:text="${status.count + accounts.size * accounts.number}"></th>
-                    <td th:text="${ac.getNameClient()}"></td>
-                    <td th:text="${ac.getUsername()}"></td>
-                    <td th:text="${ac.getRole().getName()}"></td>
-                    <td><a></a></td>
-                </tr>
-                </tbody>
-            </table>
+
+<table class="table table-light table-striped table-hover">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Họ Và Tên</th>
+        <th scope="col">Tài Khoản</th>
+        <th scope="col">Role</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${accounts.getTotalElements() <= 0}">
+        <th colspan="5" class="text-center">Không có dữ liệu</th>
+    </tr>
+    <tr th:each="ac , status : ${accounts}">
+        <th scope="row" th:text="${status.count + accounts.size * accounts.number}"></th>
+        <td  th:text="${ac.getNameClient()}"></td>
+        <td th:text="${ac.getUsername()}"></td>
+        <td th:text="${ac.getRole().getName()}"></td>
+        <td><button class="btn-showDetail" data-bs-toggle="modal" data-bs-target="#exampleModal" th:value="${ac.getId()}">Chi Tiết</button></td>
+        <!--        <td><a th:href="@{api/account/detail/${ac.getId()}}" id="btn-showDetail" th:value="${ac.getId()}" data-bs-toggle="modal" data-bs-target="#exampleModal">Chi Tiet</a></td>-->
+    </tr>
+    </tbody>
+</table>
+            <div class="pagination-wrapper">
+
+<nav aria-label="..." th:if="${accounts.getTotalPages() > 1}">
+    <ul class="pagination pagination-circle pagination-centered ">
+        <li class="page-item" th:if="${accounts.hasPrevious()}">
+            <a class="page-link" th:href="@{/account(page=${accounts.number - 1}, account_name=${account_name}, role_id=${role_id})}">Previous</a>
+        </li>
+        <div th:each="item, loop : ${#numbers.sequence(1, accounts.totalPages )}">
+            <div th:if="${accounts.number + 1 == item}">
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link" th:href="@{/account(page=${item - 1}, account_name=${account_name}, role_id=${role_id})}" th:text="${item}"><span
+                            class="visually-hidden">(current)</span></a>
+                </li>
+            </div>
+            <div th:unless="${accounts.number + 1 == item}">
+                <li class="page-item"><a class="page-link" th:href="@{/account(page=${item - 1}, account_name=${account_name}, role_id=${role_id})}"
+                                         th:text="${item}"></a></li>
+            </div>
+        </div>
+        <li class="page-item" th:if="${accounts.hasNext()}">
+            <a class="page-link" th:href="@{/account(page=${accounts.number + 1}, account_name=${account_name}, role_id=${role_id})}">Next</a>
+        </li>
+    </ul>
+</nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Chi Tiết Của <span id="name_client"></span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tr>
+                        <td>
+                            <p>Tài Khoản:</p>
+                        </td>
+                        <td>
+                            <input type="text" disabled id="userName"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Ngày Sinh:</p>
+                        </td>
+                        <td>
+                            <input type="date" disabled id="date_user"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Email:</p>
+                        </td>
+                        <td>
+                            <input type="text" disabled id="email_user"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Số Điện Thoại:</p>
+                        </td>
+                        <td>
+                            <input type="text" disabled id="phone_user"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Số CCCD:</p>
+                        </td>
+                        <td>
+                            <input type="text" disabled id="identify_user"></input>
+                        </td>
+                    </tr>
+                    <!--                    <tr>-->
+                    <!--                        <td>-->
+                    <!--                            <p>Role:</p>-->
+                    <!--                        </td>-->
+                    <!--                        <td>-->
+                    <!--                            <input type="text" disabled id="role_user"></input>-->
+                    <!--                        </td>-->
+                    <!--                    </tr>-->
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>
 </body>
+<script>
+
+
+
+
+    function getData() {
+
+    }
+    $(".btn-showDetail").click(function () {
+        let idAcc =  $(this).val();
+        let newAccount = {
+            id: idAcc
+        };
+
+        $.ajax({
+            type: "GET",
+            url: `http://localhost:8080/api/account/detail/${idAcc}`,
+            success: function (data) {
+                console.log(data);
+                let displayName = data.nameClient;
+                $("#userName").val(data.username);
+                $("#email_user").val(data.emailClient);
+                $("#phone_user").val(data.phoneClient);
+                $("#identify_user").val(data.identifyClient);
+                $("#date_user").val(data.date);
+                document.getElementById('name_client').innerText = displayName;
+                // $("#role_user").val(data.role.name);
+            }
+        });
+
+    });
+
+    // $("#btn-showDetail").click(function (){
+    //     let idAcc = $("#btn-showDetail").val();
+    //     let newAccount = {
+    //         id : idAcc
+    //     }
+    //         $.ajax({
+    //             headers: {
+    //                 'Accept': 'application/json',
+    //                 'Content-Type': 'application/json',
+    //                 'Access-Control-Allow-Origin': '*'
+    //             },
+    //             type: "POST",
+    //             data: JSON.stringify(newAccount),
+    //             url: "http://localhost:8080/api/account/detail/idAcc",
+    //             success: function (data){
+    //
+    //                 let user = $("#userName").val(data.username);
+    //                 $("#email_user").val(data.emailClient);
+    //                 $("#phone_user").val(data.phoneClient);
+    //                 $("#identìy_user").val(data.identifyClient);
+    //                 $("#date_user").val(data.date);
+    //                 $("#role_user").val("ngu");
+    //
+    //              document.getElementById('userName').innerText = user;
+    //             }
+    //         })
+    //     // function detail(id){
+    //     //     let content = "";
+    //     //     $.ajax({
+    //     //         url: "http://localhost:8080/api/account/detail",
+    //     //         method:"GET",
+    //     //         data: {id:id},
+    //     //         success: (data) => {
+    //     //             getData()
+    //     //
+    //     //         }
+    //     //     })
+    //     // }
+    // })
+</script>
 </html>

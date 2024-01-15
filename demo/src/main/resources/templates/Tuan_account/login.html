@@ -124,7 +124,7 @@
 <div class="container">
     <input type="checkbox" id="check">
     <div class="login form">
-        <header>Login</header>
+        <header>Đăng Nhập</header>
 <!--        <div th:if="${#request.getParameter('error') == 'true'}"-->
 <!--             style="color:red;margin:10px 0px;">-->
 <!--            Login Failed!!!<br/>-->
@@ -137,22 +137,16 @@
 <!--        </div>-->
 
         <form name='f'  method="post">
-            <input type="text" name="username" placeholder="Enter your email" >
-            <input type="password" name="password" placeholder="Enter your password">
-            <a href="#">Forgot password?</a>
-
-
-            <input type="submit" class="button" value="Login">
+            <input type="text" name="username" placeholder="Nhập Tài Khoản Của Bạn" >
+            <input type="password" name="password" placeholder="Nhập Mặt Khẩu Của Bạn">
+            <a th:href="@{/account/forgot1}">Quên Mật Khẩu</a>
+            <input type="submit" class="button" value="Đăng Nhập">
         </form>
         <div class="signup">
-        <span class="signup">Don't have an account?
-       <a th:href="@{/account/register}"><label>Signup</label></a>
+        <span class="signup">Bạn Chưa Có Tài Khoản?
+       <a th:href="@{/account/register}"><label>Đăng Ký </label></a>
         </span>
         </div>
-        <div class="signup">
-        <span class="signup">Forgot your password ?
-        <a th:href="@{/account/forgot1}"><label>Forgot</label></a>
-        </span>
         </div>
     </div>
 </div>
