@@ -38,7 +38,7 @@
     <nav class="navbar navbar-light ">
         <div class="container-fluid">
             <form class="d-flex" method="get" th:action="@{/account}">
-                <input class="form-control me-2" name="account_name" type="search" placeholder="Search" aria-label="Search" th:value="${account_name}">
+                <input class="form-control me-2" name="account_name" type="search" placeholder="Search" aria-label="Search" th:value="${account_name}" >
                 <button class="btn btn-outline-success" type="submit">Search</button>
                 <select class="form-select" aria-label="Default select example" name="role_id" th:value="${role_id}">
                     <option th:each="r , status : ${roles}" th:text="${r.getName()}" th:value="${r.getId()}"></option>
